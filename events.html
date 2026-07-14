@@ -17,17 +17,18 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         body { margin: 0; font-family: 'Pretendard', 'Inter', -apple-system, sans-serif; }
-        body.ex-header-on-light header > div:first-child,
-        body.ex-header-on-light header nav a { color: #111111 !important; }
-        body.ex-header-on-light header img { filter: brightness(0); }
-        body.ex-header-on-light header > div:last-child > a[href="#"]:not([style*="background"]) { color: #111111 !important; }
-        body.ex-header-on-light header > div:last-child i.ph { color: #111111 !important; }
-        body.ex-header-on-light header nav li > div > div,
-        body.ex-header-on-light header > div:last-child > div > div > div { background: #FFFFFF !important; border-color: rgba(0,0,0,0.08) !important; }
-        body.ex-header-on-light header nav li > div > div a,
-        body.ex-header-on-light header > div:last-child > div > div > div a { color: #111111 !important; }
-        body.ex-header-on-light header nav li > div > div a:hover,
-        body.ex-header-on-light header > div:last-child > div > div > div a:hover { background: rgba(0,0,0,0.05) !important; }
+        body.ev-header-on-light header > div:first-child,
+        body.ev-header-on-light header nav a { color: #111111 !important; }
+        body.ev-header-on-light header img { filter: brightness(0); }
+        body.ev-header-on-light header > div:last-child > a[href="#"]:not(.ginovo-login):not([style*="background"]) { color: #111111 !important; }
+        body.ev-header-on-light .ginovo-login { color: #FFFFFF !important; }
+        body.ev-header-on-light header > div:last-child i.ph { color: #111111 !important; }
+        body.ev-header-on-light header nav li > div > div,
+        body.ev-header-on-light header > div:last-child > div > div > div { background: #FFFFFF !important; border-color: rgba(0,0,0,0.08) !important; }
+        body.ev-header-on-light header nav li > div > div a,
+        body.ev-header-on-light header > div:last-child > div > div > div a { color: #111111 !important; }
+        body.ev-header-on-light header nav li > div > div a:hover,
+        body.ev-header-on-light header > div:last-child > div > div > div a:hover { background: rgba(0,0,0,0.05) !important; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes exHeroFadeUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -416,7 +417,7 @@ class Component extends DCLogic {
       const r = s.getBoundingClientRect();
       if (r.top <= y && r.bottom >= y) target = s;
     });
-    if (!target) { document.body.classList.remove('ex-header-on-light'); return; }
+    if (!target) { document.body.classList.remove('ev-header-on-light'); return; }
     const bg = getComputedStyle(target).backgroundColor;
     const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
     let isLight = false;
@@ -428,7 +429,7 @@ class Component extends DCLogic {
         isLight = lum > 0.6;
       }
     }
-    document.body.classList.toggle('ex-header-on-light', isLight);
+    document.body.classList.toggle('ev-header-on-light', isLight);
   }
 
   componentWillUnmount() {
