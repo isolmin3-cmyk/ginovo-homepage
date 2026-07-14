@@ -175,19 +175,12 @@
             <div style="position: absolute; inset: 0; z-index: 0;">
                 <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3; filter: var(--hero-filter);">
                 <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--hero-overlay) 80%, transparent), color-mix(in srgb, var(--hero-overlay) 70%, transparent) 50%, var(--hero-overlay)); z-index: 1;"></div>
-                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(66,232,255,0.15) 0%, rgba(33,11,189,0.1) 40%, transparent 70%); z-index: 1;"></div>
-                <div style="display: var(--orbit-display); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(12deg); width: 100%; max-width: 900px; height: 400px; border: 1px solid rgba(66,232,255,0.2); border-radius: 100%; opacity: 0.3; z-index: 2; pointer-events: none;"></div>
-                <div style="display: var(--orbit-display); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-6deg); width: 100%; max-width: 640px; height: 200px; border: 1px solid rgba(33,11,189,0.3); border-radius: 100%; opacity: 0.4; z-index: 2; pointer-events: none;"></div>
             </div>
 
             
             
 
             <div style="position: relative; z-index: 3; text-align: var(--hero-align); max-width: 900px; margin: 48px auto 0; padding: 0 24px;">
-                <div style="display: var(--hero-badge-display); padding: 8px 24px; border-radius: 100px; background: var(--hero-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(66,232,255,0.3); color: var(--accent-cyan); font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;">
-                    기술이 구현된 훈련 솔루션
-                </div>
-
                 <h1 style="font-size: clamp(48px, 8vw, 100px); font-weight: 700; color: var(--hero-heading); letter-spacing: -0.03em; line-height: 1; margin: 0 0 24px;" data-reveal="true" data-reveal-delay="0.2">
                     지노버 경사 퍼팅매트
                 </h1>
@@ -254,8 +247,8 @@
                 </div>
 
                 
-            </div><div style="margin-top: 125px; overflow: visible;">
-                    <h3 style="font-size: 20px; color: var(--f90-heading); font-weight: 600; margin: 0 0 24px; text-align: center;" data-reveal="true">프로들의 90cm 퍼팅매트 활용 영상</h3>
+            </div><div style="margin-top: 165px; margin-bottom: 95px; overflow: visible;">
+                    <h3 style="font-size: 20px; color: var(--f90-heading); font-weight: 600; margin: 0 0 36px; text-align: center;" data-reveal="true">프로들의 90cm 퍼팅매트 활용 영상</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
                         <div data-reveal="true" data-reveal-delay="0.1">
                             <div style="aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: var(--f90-box-bg); border: 1px solid rgba(255,255,255,0.08);">
@@ -687,31 +680,40 @@ class Component extends DCLogic {
     this.scrollTicking = true;
     requestAnimationFrame(() => {
       this.scrollTicking = false;
+      const header = document.querySelector('header');
       const root = this.rootRef.current;
-      if (!root) return;
-      const probeY = 64;
+      if (!header || !root) return;
+      const hRect = header.getBoundingClientRect();
+      const probeY = hRect.top + hRect.height / 2;
       const sections = root.querySelectorAll('main > section, footer[data-screen-label]');
-      let onLight = false;
-      for (const el of sections) {
+      let target = null;
+      sections.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= probeY && rect.bottom >= probeY) {
-          const bg = getComputedStyle(el).backgroundColor;
-          const m = bg.match(/rgba?\(([^)]+)\)/);
-          if (m) {
-            const parts = m[1].split(',').map(s => parseFloat(s));
-            const [r, g, b] = parts;
-            const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-            onLight = luminance > 175;
+        if (rect.top <= probeY && rect.bottom >= probeY) target = el;
+      });
+      let onLight = false;
+      if (target) {
+        const bg = getComputedStyle(target).backgroundColor;
+        const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+        if (m) {
+          const alpha = m[4] !== undefined ? parseFloat(m[4]) : 1;
+          if (alpha > 0.4) {
+            const r = Number(m[1]);
+            const g = Number(m[2]);
+            const b = Number(m[3]);
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            onLight = luminance > 0.6;
           }
-          break;
         }
       }
+      document.body.classList.toggle('pm-header-on-light', onLight);
       if (onLight !== this.state.headerOnLight) this.setState({ headerOnLight: onLight });
     });
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('resize', this.handleScroll);
     this.handleScroll();
     const els = this.rootRef.current ? this.rootRef.current.querySelectorAll('[data-reveal]') : [];
     if (!els.length) return;
@@ -737,6 +739,8 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleScroll);
+    document.body.classList.remove('pm-header-on-light');
   }
 
   hexToRgba(hex, alpha) {
