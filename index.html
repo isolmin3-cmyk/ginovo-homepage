@@ -594,12 +594,8 @@
         <section id="gt-sec-hero" data-screen-label="히어로" class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 pb-24">
 
             <div class="absolute inset-0 z-0">
-                <img id="gt-hero-img" src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" class="w-full h-full object-cover opacity-40" style="opacity: var(--hero-img-opacity)">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black z-10"></div>
-                <div class="absolute inset-0 bg-hero-glow z-10"></div>
-
-                <div class="gt-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] border border-brand-cyan/20 rounded-[100%] rotate-12 opacity-30 z-20 pointer-events-none"></div>
-                <div class="gt-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[200px] border border-brand-blue/30 rounded-[100%] -rotate-6 opacity-40 z-20 pointer-events-none"></div>
+                <img id="gt-hero-img" src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" class="w-full h-full object-cover" style="opacity: 1">
+                <div class="absolute inset-0 z-10" style="background: linear-gradient(to bottom, rgba(0,0,0,0.50), rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80));"></div>
             </div>
 
             
@@ -644,28 +640,26 @@
                 <div class="mb-12 lg:mb-16 reveal-up gt-reveal-rtl">
                     <div class="relative aspect-[16/9] min-h-[360px] lg:min-h-[560px] rounded-3xl overflow-hidden glass-panel group">
                         <video src="./assets/putting-mat-demo.mp4" class="gt-scroll-video w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" autoplay muted loop playsinline controls preload="auto" poster="./assets/06-mrhrqr9k.jpg" aria-label="지노버 경사 매트 시연 영상"></video>
-                        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.34) 42%, rgba(0,0,0,0.05) 100%);"></div>
-                        <div class="absolute left-6 right-6 bottom-6 md:left-10 md:bottom-10 lg:left-14 lg:bottom-14 max-w-none">
-                            <p class="text-sm md:text-base font-semibold tracking-[0.28em] uppercase mb-4" style="color:#34D399;">GINOVO SLOPE MAT</p>
-                            <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">지노버 경사 매트</h3>
-                            <p class="text-base md:text-lg leading-relaxed" style="color: rgba(255,255,255,0.78); white-space: nowrap;">
-                                실제 필드의 경사를 실내에서 경험할 수 있도록 USGA 그린설계 가이드 그대로 퍼팅매트에 구현했습니다.
-                            </p>
-                        </div>
+                    </div>
+                    <div class="mt-8 px-2 md:px-4">
+                        <p class="text-sm md:text-base font-semibold tracking-[0.28em] uppercase mb-4" style="color:#34D399;">GINOVO SLOPE MAT</p>
+                        <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">지노버 경사 매트</h3>
+                        <p class="text-base md:text-lg leading-relaxed" style="color: rgba(255,255,255,0.78);">
+                            실제 필드의 경사를 실내에서 경험할 수 있도록 USGA 그린설계 가이드 그대로 퍼팅매트에 구현했습니다.
+                        </p>
                     </div>
                 </div>
 
                 <div class="mb-20 lg:mb-28 reveal-up gt-reveal-ltr" style="padding-top: 40px">
                     <div class="relative aspect-[16/9] min-h-[360px] lg:min-h-[560px] rounded-3xl overflow-hidden glass-panel group">
                         <video src="./assets/smart-golf-ball-demo.mp4" class="gt-scroll-video w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" autoplay muted loop playsinline controls preload="auto" poster="./assets/img-017.png" aria-label="지노버 스마트 골프 볼 시연 영상"></video>
-                        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.32) 44%, rgba(0,0,0,0.06) 100%);"></div>
-                        <div class="absolute left-6 right-6 bottom-6 md:left-10 md:bottom-10 lg:left-14 lg:bottom-14 max-w-none">
-                            <p class="text-sm md:text-base font-semibold tracking-[0.28em] uppercase mb-4" style="color:#34D399;">GINOVO SMART GOLF BALL</p>
-                            <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">지노버 스마트 골프 볼</h3>
-                            <p class="text-base md:text-lg leading-relaxed" style="color: rgba(255,255,255,0.78); white-space: nowrap;">
-                                골프 공 내부에 6축 센서와 BLE 무선 통신 모듈을 완벽하게 패키징하여 볼의 구질 정보를 실시간으로 모바일 앱에 가시화합니다.
-                            </p>
-                        </div>
+                    </div>
+                    <div class="mt-8 px-2 md:px-4">
+                        <p class="text-sm md:text-base font-semibold tracking-[0.28em] uppercase mb-4" style="color:#34D399;">GINOVO SMART GOLF BALL</p>
+                        <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">지노버 스마트 골프 볼</h3>
+                        <p class="text-base md:text-lg leading-relaxed" style="color: rgba(255,255,255,0.78);">
+                            골프 공 내부에 6축 센서와 BLE 무선 통신 모듈을 완벽하게 패키징하여 볼의 구질 정보를 실시간으로 모바일 앱에 가시화합니다.
+                        </p>
                     </div>
                 </div>
 
