@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="./image-slot.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Pretendard', 'Inter', -apple-system, sans-serif; }
+        body.ex-header-on-light header > div:first-child,
+        body.ex-header-on-light header nav a { color: #111111 !important; }
+        body.ex-header-on-light header img { filter: brightness(0); }
+        body.ex-header-on-light header > div:last-child > a[href="#"]:not([style*="background"]) { color: #111111 !important; }
+        body.ex-header-on-light header > div:last-child i.ph { color: #111111 !important; }
+        body.ex-header-on-light header nav li > div > div,
+        body.ex-header-on-light header > div:last-child > div > div > div { background: #FFFFFF !important; border-color: rgba(0,0,0,0.08) !important; }
+        body.ex-header-on-light header nav li > div > div a,
+        body.ex-header-on-light header > div:last-child > div > div > div a { color: #111111 !important; }
+        body.ex-header-on-light header nav li > div > div a:hover,
+        body.ex-header-on-light header > div:last-child > div > div > div a:hover { background: rgba(0,0,0,0.05) !important; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes exHeroFadeUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--accent-cyan:{{ accentCyan }}; --accent-blue:{{ accentBlue }}; --bg:{{ bgColor }}; --nav-radius:{{ navRadius }}; --header-position:{{ headerPosition }}; --header-bg:{{ headerBg }}; --header-text:{{ headerText }}; --hero-bg:{{ heroBg }}; --hero-heading:{{ heroHeading }}; --hero-body:{{ heroBody }}; --highlights-bg:{{ highlightsBg }}; --highlights-heading:{{ highlightsHeading }}; --highlights-body:{{ highlightsBody }}; --highlights-box:{{ highlightsBox }}; --timeline-bg:{{ timelineBg }}; --timeline-heading:{{ timelineHeading }}; --timeline-body:{{ timelineBody }}; --timeline-box:{{ timelineBox }}; --cta-heading:{{ ctaHeading }}; --cta-body:{{ ctaBody }}; --footer-bg:{{ footerBg }}; --footer-heading:{{ footerHeading }}; --footer-body:{{ footerBody }}; --footer-cols:{{ footerCols }};">
+
+    <header data-screen-label="헤더" style="position: var(--header-position); top: 32px; left: 50%; transform: translateX(-50%); width: auto; min-width: 600px; padding: 12px 32px; display: flex; justify-content: space-between; align-items: center; gap: 40px; z-index: 1000; background: var(--header-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--nav-radius); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <a href="./index.html" style="display: flex; align-items: center; white-space: nowrap; text-decoration: none;">
+            <img src="./assets/logo.png" alt="GREEN TALK" style="height: 26px; width: auto; display: block; transition: filter 0.3s ease;">
+        </a>
+        <nav>
+            <ul style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0;">
+                <li style="position: relative;" onMouseEnter="{{ openNav1 }}" onMouseLeave="{{ closeNav }}">
+                    <a href="#" style="text-decoration: none; color: var(--header-text); font-size: 14px; font-weight: 500; cursor: pointer;">회사</a>
+                    <div style="position: absolute; top: 100%; left: 50%; transform: translate(-50%, 0); padding-top: 12px; background: transparent; z-index: 1001;">
+                      <div style="background: #111111; backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); padding: 12px; min-width: 160px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: flex; flex-direction: column; transition: opacity 0.25s ease; opacity: {{ dropdown1Opacity }}; visibility: {{ dropdown1Visibility }};">
+                        <a href="./index.html#gt-sec-esg" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">회사 소개</a>
+                        <a href="./index.html#gt-sec-history" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">회사 연혁</a>
+                        <a href="./index.html#gt-sec-location" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">오시는 길</a>
+                      </div>
+                    </div>
+                </li>
+                <li style="position: relative;" onMouseEnter="{{ openNav2 }}" onMouseLeave="{{ closeNav }}">
+                    <a href="#" style="text-decoration: none; color: var(--header-text); font-size: 14px; font-weight: 500; cursor: pointer;">제품 소개</a>
+                    <div style="position: absolute; top: 100%; left: 50%; transform: translate(-50%, 0); padding-top: 12px; background: transparent; z-index: 1001;">
+                      <div style="background: #111111; backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); padding: 12px; min-width: 160px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: flex; flex-direction: column; transition: opacity 0.25s ease; opacity: {{ dropdown2Opacity }}; visibility: {{ dropdown2Visibility }};">
+                        <a href="./putting-mat.html" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">경사 퍼팅매트</a>
+                        <a href="./smart-golf-ball.html" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">스마트 골프 볼</a>
+                      </div>
+                    </div>
+                </li>
+                <li style="position: relative;"><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">Shop</a></li>
+            </ul>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="#" style="text-decoration: none; color: white; font-size: 13px; font-weight: 600; background: var(--accent-blue); padding: 8px 20px; border-radius: 100px; white-space: nowrap;">로그인</a>
+            <div style="position: relative; opacity: 0.7;" onMouseEnter="{{ openNav3 }}" onMouseLeave="{{ closeNav }}">
+                <a href="#" style="text-decoration: none; color: var(--header-text); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;"><i class="ph ph-globe" style="font-size: 16px;"></i> <i class="ph ph-caret-down" style="font-size: 11px;"></i></a>
+                <div style="position: absolute; top: 100%; right: 0; padding-top: 12px; background: transparent; z-index: 1001;">
+                  <div style="background: #111111; backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); padding: 12px; min-width: 140px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: flex; flex-direction: column; transition: opacity 0.25s ease; opacity: {{ dropdown3Opacity }}; visibility: {{ dropdown3Visibility }};">
+                    <a href="#" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">한국어</a>
+                    <a href="#" style="padding: 8px 16px; border-radius: 8px; display: block; text-decoration: none; color: #FFFFFF; font-size: 14px; font-weight: 500;">영어</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="width: 100%;">
+
+        <section data-screen-label="히어로" style="position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 160px 24px 80px; background: var(--hero-bg);">
+            <div style="position: absolute; inset: 0; z-index: 0;">
+                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-cyan) 12%, transparent) 0%, color-mix(in srgb, var(--accent-blue) 8%, transparent) 40%, transparent 70%);"></div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 120%; height: 120%; border: 1px solid color-mix(in srgb, var(--accent-cyan) 5%, transparent); border-radius: 50%; opacity: 0.3;"></div>
+            </div>
+            <div style="position: relative; z-index: 3; text-align: center; max-width: 860px; padding: 0 24px;">
+                <div style="display: inline-block; padding: 6px 16px; border-radius: 100px; background: var(--highlights-box); backdrop-filter: blur(20px); border: 1px solid color-mix(in srgb, var(--accent-cyan) 30%, transparent); color: var(--accent-cyan); font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: exHeroFadeUp 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.1s forwards;">Global Presence</div>
+                <h1 style="font-size: clamp(36px, 6vw, 64px); font-weight: 700; margin: 0 0 32px; color: var(--hero-heading); letter-spacing: -0.03em; opacity: 0; animation: exHeroFadeUp 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.3s forwards;">전시 및 행사</h1>
+                <p style="font-size: clamp(15px, 1.5vw, 19px); color: var(--hero-body); line-height: 1.7; margin: 0; opacity: 0; animation: exHeroFadeUp 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.5s forwards;">그린토크는 매년 세계 최대 규모의 전시회에 참가하여 혁신적인 골프 데이터 솔루션을 선보이고 있습니다.<br>글로벌 전문가들이 인정한 독보적인 기술력을 지금 확인하세요.</p>
+            </div>
+        </section>
+
+        <section data-screen-label="글로벌 하이라이트" style="padding: 96px 24px; position: relative; z-index: 1; background: var(--highlights-bg); color: var(--highlights-heading); border-top: 1px solid rgba(255,255,255,0.03);">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="margin-bottom: 48px;" data-reveal="true">
+                    <h2 style="font-size: clamp(26px, 3.5vw, 32px); font-weight: 700; margin: 0 0 8px; text-align: center">글로벌 하이라이트</h2>
+                    <p style="color: var(--highlights-body); font-size: 14px; margin: 0; text-align: center">Green Talk Overseas Exhibitions</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                    <div data-reveal="true">
+                        <div style="position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; background: var(--highlights-box); margin-bottom: 24px;">
+                            <image-slot id="ex-highlight-pga" shape="rect" fit="cover" placeholder="PGA SHOW 2026 사진"></image-slot>
+                            <div style="position: absolute; bottom: 24px; left: 24px; pointer-events: none;"><span style="background: var(--accent-blue); color: white; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.1em;">Major Event</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+                            <div style="color: var(--accent-cyan); font-family: 'Inter', monospace; font-size: 14px;">2026.01</div>
+                            <span style="background: rgba(250,204,21,0.15); color: #FDE047; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; border: 1px solid rgba(250,204,21,0.2);">올해 1월</span>
+                        </div>
+                        <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 10px;">PGA SHOW 2026</h3>
+                        <p style="color: #CBCBCB; font-size: 14px; line-height: 1.6; margin: 0 0 14px">미국 올랜도에서 개최되는 세계 최대 골프 산업 박람회에서 지노버의 차세대 스마트 솔루션을 공개합니다.</p>
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--highlights-body);"><i class="ph ph-map-pin"></i> Orlando, Florida, USA</div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.12">
+                        <div style="position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; background: var(--highlights-box); margin-bottom: 24px;">
+                            <image-slot id="ex-highlight-british" shape="rect" fit="cover" placeholder="British Golf Show 사진"></image-slot>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+                            <div style="color: var(--accent-cyan); font-family: 'Inter', monospace; font-size: 14px;">2026.05</div>
+                            <span style="background: rgba(250,204,21,0.15); color: #FDE047; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; border: 1px solid rgba(250,204,21,0.2);">영국</span>
+                        </div>
+                        <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 10px;">British Golf Show</h3>
+                        <p style="color: #CBCBCB; font-size: 14px; line-height: 1.6; margin: 0 0 14px">유럽 시장 공략의 교두보인 영국 골프 쇼에서 지노버만의 정교한 퍼팅 분석 데이터를 선보입니다.</p>
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--highlights-body);"><i class="ph ph-map-pin"></i> Wycombe Air Park, UK</div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.24">
+                        <div style="position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; background: var(--highlights-box); margin-bottom: 24px;">
+                            <image-slot id="ex-highlight-ces" shape="rect" fit="cover" placeholder="CES 2025 사진"></image-slot>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+                            <div style="color: var(--accent-cyan); font-family: 'Inter', monospace; font-size: 14px;">2025.01</div>
+                            <span style="background: rgba(250,204,21,0.15); color: #FDE047; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; border: 1px solid rgba(250,204,21,0.2);">CES Eureka Park</span>
+                        </div>
+                        <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 10px;">CES 2025</h3>
+                        <p style="color: #CBCBCB; font-size: 14px; line-height: 1.6; margin: 0 0 14px">세계 가전/IT 박람회 CES에서 스포츠 테크놀로지의 정점인 스마트 골프볼 센싱 기술을 시연합니다.</p>
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--highlights-body);"><i class="ph ph-map-pin"></i> Las Vegas, Nevada, USA</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section data-screen-label="국내 전시 및 행사" style="padding: 96px 24px; position: relative; z-index: 1; background: var(--timeline-bg); color: var(--timeline-heading); border-top: 1px solid rgba(255,255,255,0.03);">
+            <div style="max-width: 860px; width: 100%; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 72px;" data-reveal="true">
+                    <h2 style="font-size: clamp(26px, 3.5vw, 32px); font-weight: 700; margin: 0 0 8px;">국내 전시 및 행사</h2>
+                    <p style="color: var(--timeline-body); font-size: 14px; margin: 0;">Green Talk Local Events &amp; Exhibitions</p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 40px; position: relative; padding-left: 36px;">
+                    <div style="position: absolute; left: 4px; top: 8px; bottom: 8px; width: 1px; background: color-mix(in srgb, var(--accent-cyan) 20%, transparent);"></div>
+
+                    <div data-reveal="true" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--accent-cyan); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2026.02</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">매경 KPGA 골프엑스포</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">국내 최대 규모의 골프 전문 박람회 참가 및 신제품 런칭</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.08" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2025.10</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">광주 창업 페스티벌 (G-Startup)</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">지역 유망 스타트업 기술 시연 및 투자 유치 네트워킹</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.16" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2025.07</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">국제스포츠사회학 학술대회</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">스포츠 IT 데이터 분석 방법론 및 기술 사례 발표</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.24" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2025.03</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">SPOEX 2025 (서울국제스포츠레저산업전)</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">COEX 전시관 운영 및 일반 고객 대상 체험 이벤트</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.32" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2024.11</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">산업기술 R&amp;D 종합대전</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">국가 R&amp;D 우수 성과물 전시 및 기술 교류</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.4" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2024.11</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">광주 창업 페스티벌</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">2024년 우수 창업 기업 선정 및 기술 홍보</p>
+                        </div>
+                    </div>
+
+                    <div data-reveal="true" data-reveal-delay="0.48" style="position: relative; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+                        <div style="color: var(--timeline-body); font-family: 'Inter', monospace; font-size: 16px; font-weight: 600;">2024.10</div>
+                        <div style="background: var(--timeline-box); padding: 20px; border-radius: 16px;">
+                            <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">중소기업융합대전</h4>
+                            <p style="font-size: 13px; color: var(--timeline-body); margin: 0;">이업종 간 기술 융합 우수 사례 전시</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+    <section data-screen-label="마무리 CTA" style="position: relative; z-index: 1; overflow: hidden; padding: 160px 24px; border-top: 1px solid rgba(255,255,255,0.05); background: #000000;">
+        <image-slot id="ex-cta-bg-photo" shape="rect" fit="cover" placeholder="CTA 배경 사진 (풀 스크린)" style="position: absolute; inset: 0; z-index: 0;"></image-slot>
+        <div style="position: absolute; inset: 0; z-index: 0; background: url(&quot;./assets/img-027.jpg&quot;) center / cover no-repeat; pointer-events: none; opacity: 0.67"></div>
+        <div style="max-width: 768px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
+            <p style="font-size: clamp(16px, 2vw, 22px); font-weight: 700; margin: 0 0 20px; color: #FFFFFFD6; letter-spacing: -0.01em;">Beyond Tech, Into Culture: The New Standard Powered by Data</p>
+            <h2 style="font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: -0.02em; white-space: nowrap;">데이터로 기술의 한계를 넘어 소통의 문화를 엽니다.</h2>
+        </div>
+    </section>
+
+    </main>
+
+    <footer data-screen-label="푸터" style="position: relative; z-index: 1; background: var(--footer-bg); color: var(--footer-heading); border-top: 1px solid rgba(255,255,255,0.1); padding: 80px 40px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(var(--footer-cols), 1fr); gap: 48px; margin-bottom: 60px;">
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: var(--footer-heading); margin: 0 0 20px; letter-spacing: -0.02em;">고객센터</h4>
+                <p style="font-size: 24px; font-weight: 600; color: var(--footer-heading); margin: 0 0 8px;">062-716-0995</p>
+                <p style="font-size: 13px; color: var(--footer-body); line-height: 1.6; margin: 0;">오전 9:00 - 오후 5:00 | 점심시간 12:00 - 13:00<br>주말 및 공휴일 휴무</p>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: var(--footer-heading); margin: 0 0 20px; letter-spacing: -0.02em;">은행 정보</h4>
+                <p style="font-size: 13px; color: var(--footer-body); line-height: 1.6; margin: 0;">기업은행 65904714504019 (주)그린토크</p>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: var(--footer-heading); margin: 0 0 20px; letter-spacing: -0.02em;">그린토크</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0;">
+                    <li><a href="#" style="font-size: 13px; color: var(--footer-body); text-decoration: none;">회사소개</a></li>
+                    <li><a href="#" style="font-size: 13px; color: var(--footer-body); text-decoration: none;">창업 가치</a></li>
+                    <li><a href="#" style="font-size: 13px; color: var(--footer-body); text-decoration: none;">디자인 어워드</a></li>
+                    <li><a href="#" style="font-size: 13px; color: var(--footer-body); text-decoration: none;">오시는 길</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: var(--footer-heading); margin: 0 0 20px; letter-spacing: -0.02em;">사업자 정보</h4>
+                <p style="font-size: 12px; color: var(--footer-body); line-height: 1.8; margin: 0;">상호명 : (주)그린토크 　 대표 : 손영국 　 주소 : 광주광역시 신호구 손재로 236 그린토크 　 사업자등록번호 : 603-87-02720</p>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+            <p style="font-size: 12px; color: var(--footer-body); margin: 0;">(c) GREEN TALK. All rights reserved.</p>
+        </div>
+    </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#34D399&quot;,&quot;options&quot;:[&quot;#42E8FF&quot;,&quot;#22D3A5&quot;,&quot;#34D399&quot;,&quot;#FFC233&quot;,&quot;#FF6B6B&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;전역 스타일&quot;},&quot;secondaryAccent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#210BBD&quot;,&quot;options&quot;:[&quot;#210BBD&quot;,&quot;#7C3AED&quot;,&quot;#0EA5E9&quot;,&quot;#DB2777&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;전역 스타일&quot;},&quot;bgTone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;true-black&quot;,&quot;options&quot;:[&quot;true-black&quot;,&quot;charcoal&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;전역 스타일&quot;},&quot;navStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;pill&quot;,&quot;options&quot;:[&quot;pill&quot;,&quot;flat&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;헤더&quot;},&quot;stickyHeader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;헤더&quot;},&quot;headerBgColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF1A&quot;,&quot;options&quot;:[&quot;#FFFFFF1A&quot;,&quot;#00000066&quot;,&quot;#000000CC&quot;,&quot;#FFFFFF&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;헤더&quot;},&quot;headerTextColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF&quot;,&quot;options&quot;:[&quot;#FFFFFF&quot;,&quot;#000000&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;헤더&quot;},&quot;heroBgColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;히어로&quot;},&quot;heroHeadingColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;히어로&quot;},&quot;heroBodyColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF99&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;히어로&quot;},&quot;highlightsBgColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;글로벌 하이라이트&quot;},&quot;highlightsHeadingColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#fafafa&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;글로벌 하이라이트&quot;},&quot;highlightsBodyColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#a3a3a3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;글로벌 하이라이트&quot;},&quot;highlightsBoxColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF08&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;글로벌 하이라이트&quot;},&quot;timelineBgColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;국내 전시/행사&quot;},&quot;timelineHeadingColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;국내 전시/행사&quot;},&quot;timelineBodyColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#a3a3a3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;국내 전시/행사&quot;},&quot;timelineBoxColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#f0f0f0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;국내 전시/행사&quot;},&quot;ctaHeadingColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;참여 문의 CTA&quot;},&quot;ctaBodyColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF99&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;참여 문의 CTA&quot;},&quot;footerColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:4,&quot;options&quot;:[2,4],&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;푸터&quot;},&quot;footerBgColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;푸터&quot;},&quot;footerHeadingColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;푸터&quot;},&quot;footerBodyColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFFFFF99&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;푸터&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { openNav: null };
+    this.rootRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this._onScroll = () => {
+      if (this._scrollTicking) return;
+      this._scrollTicking = true;
+      requestAnimationFrame(() => { this.updateHeaderContrast(); this._scrollTicking = false; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll);
+    this.updateHeaderContrast();
+
+    const root = this.rootRef.current;
+    const els = root ? root.querySelectorAll('[data-reveal]') : [];
+    if (!els.length) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach((el) => {
+      const delay = parseFloat(el.getAttribute('data-reveal-delay') || '0');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px)';
+      el.style.transition = 'all 0.8s cubic-bezier(0.2,0.8,0.2,1)' + (delay ? ' ' + delay + 's' : '');
+      io.observe(el);
+    });
+  }
+
+  updateHeaderContrast() {
+    const root = this.rootRef.current;
+    const header = root ? root.querySelector('header') : null;
+    if (!header) return;
+    const hRect = header.getBoundingClientRect();
+    const y = hRect.top + hRect.height / 2;
+    const areas = root.querySelectorAll('main > section, footer[data-screen-label]');
+    let target = null;
+    areas.forEach((s) => {
+      const r = s.getBoundingClientRect();
+      if (r.top <= y && r.bottom >= y) target = s;
+    });
+    if (!target) { document.body.classList.remove('ex-header-on-light'); return; }
+    const bg = getComputedStyle(target).backgroundColor;
+    const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    let isLight = false;
+    if (m) {
+      const a = m[4] !== undefined ? parseFloat(m[4]) : 1;
+      if (a > 0.4) {
+        const r = +m[1], g = +m[2], b = +m[3];
+        const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        isLight = lum > 0.6;
+      }
+    }
+    document.body.classList.toggle('ex-header-on-light', isLight);
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) {
+      window.removeEventListener('scroll', this._onScroll);
+      window.removeEventListener('resize', this._onScroll);
+    }
+  }
+
+  renderVals() {
+    const p = this.props || {};
+    const accentCyan = p.accentColor ?? '#42E8FF';
+    const accentBlue = p.secondaryAccent ?? '#210BBD';
+    const bgTone = p.bgTone ?? 'true-black';
+    const bgColor = bgTone === 'charcoal' ? '#0a0a0a' : '#000000';
+
+    const navStyle = p.navStyle ?? 'pill';
+    const navRadius = navStyle === 'flat' ? '16px' : '100px';
+    const stickyHeader = p.stickyHeader ?? true;
+    const headerPosition = stickyHeader ? 'fixed' : 'absolute';
+    const headerBg = p.headerBgColor ?? '#FFFFFF1A';
+    const headerText = p.headerTextColor ?? '#FFFFFF';
+
+    const heroBg = p.heroBgColor ?? '#000000';
+    const heroHeading = p.heroHeadingColor ?? '#FFFFFF';
+    const heroBody = p.heroBodyColor ?? '#FFFFFF99';
+
+    const highlightsBg = p.highlightsBgColor ?? '#000000';
+    const highlightsHeading = p.highlightsHeadingColor ?? '#FFFFFF';
+    const highlightsBody = p.highlightsBodyColor ?? '#FFFFFF99';
+    const highlightsBox = p.highlightsBoxColor ?? '#FFFFFF08';
+
+    const timelineBg = p.timelineBgColor ?? '#0a0a0a';
+    const timelineHeading = p.timelineHeadingColor ?? '#FFFFFF';
+    const timelineBody = p.timelineBodyColor ?? '#FFFFFF99';
+    const timelineBox = p.timelineBoxColor ?? '#FFFFFF08';
+
+    const ctaHeading = p.ctaHeadingColor ?? '#FFFFFF';
+    const ctaBody = p.ctaBodyColor ?? '#FFFFFF99';
+
+    const footerBg = p.footerBgColor ?? '#000000';
+    const footerHeading = p.footerHeadingColor ?? '#FFFFFF';
+    const footerBody = p.footerBodyColor ?? '#FFFFFF99';
+    const footerCols = p.footerColumns ?? 4;
+
+    const openNav = this.state.openNav;
+
+    return {
+      rootRef: this.rootRef,
+      accentCyan, accentBlue, bgColor,
+      navRadius, headerPosition, headerBg, headerText,
+      heroBg, heroHeading, heroBody,
+      highlightsBg, highlightsHeading, highlightsBody, highlightsBox,
+      timelineBg, timelineHeading, timelineBody, timelineBox,
+      ctaHeading, ctaBody,
+      footerBg, footerHeading, footerBody, footerCols,
+      dropdown1Opacity: openNav === 1 ? 1 : 0,
+      dropdown1Visibility: openNav === 1 ? 'visible' : 'hidden',
+      dropdown2Opacity: openNav === 2 ? 1 : 0,
+      dropdown2Visibility: openNav === 2 ? 'visible' : 'hidden',
+      dropdown3Opacity: openNav === 3 ? 1 : 0,
+      dropdown3Visibility: openNav === 3 ? 'visible' : 'hidden',
+      openNav1: () => this.setState({ openNav: 1 }),
+      openNav2: () => this.setState({ openNav: 2 }),
+      openNav3: () => this.setState({ openNav: 3 }),
+      closeNav: () => this.setState({ openNav: null }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
