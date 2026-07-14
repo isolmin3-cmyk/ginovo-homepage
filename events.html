@@ -183,8 +183,8 @@
 
         <section data-screen-label="히어로" style="position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 160px 24px 80px; background: var(--hero-bg);">
             <div style="position: absolute; inset: 0; z-index: 0;">
-                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-cyan) 12%, transparent) 0%, color-mix(in srgb, var(--accent-blue) 8%, transparent) 40%, transparent 70%);"></div>
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 120%; height: 120%; border: 1px solid color-mix(in srgb, var(--accent-cyan) 5%, transparent); border-radius: 50%; opacity: 0.3;"></div>
+                <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1;">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.50), rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80)); z-index: 1;"></div>
             </div>
             <div style="position: relative; z-index: 3; text-align: center; max-width: 860px; padding: 0 24px;">
                 <div style="display: inline-block; padding: 6px 16px; border-radius: 100px; background: var(--highlights-box); backdrop-filter: blur(20px); border: 1px solid color-mix(in srgb, var(--accent-cyan) 30%, transparent); color: var(--accent-cyan); font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: exHeroFadeUp 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.1s forwards;">Global Presence</div>
@@ -203,7 +203,7 @@
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
                     <div data-reveal="true">
                         <div style="position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; background: var(--highlights-box); margin-bottom: 24px;">
-                            <image-slot id="ex-highlight-pga" shape="rect" fit="cover" placeholder="PGA SHOW 2026 사진"></image-slot>
+                            <img src="./assets/event-global-highlight-left.png" alt="PGA SHOW 2026 전시 부스" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             <div style="position: absolute; bottom: 24px; left: 24px; pointer-events: none;"><span style="background: var(--accent-blue); color: white; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.1em;">Major Event</span></div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
@@ -230,7 +230,7 @@
 
                     <div data-reveal="true" data-reveal-delay="0.24">
                         <div style="position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; background: var(--highlights-box); margin-bottom: 24px;">
-                            <image-slot id="ex-highlight-ces" shape="rect" fit="cover" placeholder="CES 2025 사진"></image-slot>
+                            <img src="./assets/event-global-highlight-right.png" alt="CES 2025 전시 부스" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
                             <div style="color: var(--accent-cyan); font-family: 'Inter', monospace; font-size: 14px;">2025.01</div>
