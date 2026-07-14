@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="./image-slot.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        :root {
+            --bg: #000000;
+            --text: #FFFFFF;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --accent-cyan: #34D399;
+            --accent-blue: #210BBD;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        html { font-size: 16px; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Pretendard', 'Inter', '-apple-system', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+        }
+        body.cert-header-on-light header > a,
+        body.cert-header-on-light header nav a { color: #111111 !important; }
+        body.cert-header-on-light header img { filter: brightness(0); }
+        body.cert-header-on-light header > div:last-child > a[href="#"]:not([style*="background"]) { color: #111111 !important; }
+        body.cert-header-on-light header > div:last-child i.ph { color: #111111 !important; }
+        body.cert-header-on-light header nav li > div > div,
+        body.cert-header-on-light header > div:last-child > div > div > div { background: #FFFFFF !important; }
+        body.cert-header-on-light header nav li > div > div a,
+        body.cert-header-on-light header > div:last-child > div > div > div a { color: #111111 !important; }
+        body.cert-header-on-light header nav li > div > div a:hover,
+        body.cert-header-on-light header > div:last-child > div > div > div a:hover { background: rgba(0,0,0,0.05) !important; }
+        a { color: var(--accent-cyan); }
+        a:hover { color: #6EE7B7; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+        .glass-panel-hover:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(66, 232, 255, 0.3);
+        }
+    </style>
+
+    <style id="ginovo-common-layout">
+        .ginovo-header {
+            position: fixed;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 680px;
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 36px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 100px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            line-height: normal;
+            box-sizing: content-box;
+            color: #FFFFFF;
+        }
+        .ginovo-header a { text-decoration: none; }
+        .ginovo-logo { display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; }
+        .ginovo-logo img { height: 26px; width: auto; display: block; transition: filter 0.3s ease; }
+        .ginovo-nav { flex-shrink: 0; }
+        .ginovo-nav-list { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+        .ginovo-nav-item { position: relative; }
+        .ginovo-nav-link { color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+        .ginovo-dropdown-wrap { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; background: transparent; z-index: 1001; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .ginovo-nav-item:hover .ginovo-dropdown-wrap,
+        .ginovo-lang:hover .ginovo-dropdown-wrap { opacity: 1; visibility: visible; }
+        .ginovo-dropdown-panel { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); padding: 12px; min-width: 160px; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.22); display: flex; flex-direction: column; }
+        .ginovo-dropdown-panel a { padding: 8px 16px; border-radius: 8px; display: block; color: #111111; font-size: 14px; font-weight: 500; white-space: nowrap; }
+        .ginovo-dropdown-panel a:hover { background: rgba(0,0,0,0.05); }
+        .ginovo-header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+        .ginovo-login { color: #FFFFFF; font-size: 13px; font-weight: 600; background: #210BBD; padding: 8px 20px; border-radius: 100px; white-space: nowrap; }
+        .ginovo-lang { position: relative; opacity: 0.78; }
+        .ginovo-lang > a { color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+        .ginovo-lang .ginovo-dropdown-wrap { right: 0; left: auto; transform: none; }
+        .ginovo-lang .ginovo-dropdown-panel { min-width: 140px; }
+        body.gt-header-on-light .ginovo-header,
+        body.pm-header-on-light .ginovo-header,
+        body.sgb-header-on-light .ginovo-header,
+        body.ev-header-on-light .ginovo-header,
+        body.news-header-on-light .ginovo-header,
+        body.cu-header-on-light .ginovo-header,
+        body.cert-header-on-light .ginovo-header { color: #111111; }
+        body.gt-header-on-light .ginovo-nav-link,
+        body.pm-header-on-light .ginovo-nav-link,
+        body.sgb-header-on-light .ginovo-nav-link,
+        body.ev-header-on-light .ginovo-nav-link,
+        body.news-header-on-light .ginovo-nav-link,
+        body.cu-header-on-light .ginovo-nav-link,
+        body.cert-header-on-light .ginovo-nav-link,
+        body.gt-header-on-light .ginovo-lang > a,
+        body.pm-header-on-light .ginovo-lang > a,
+        body.sgb-header-on-light .ginovo-lang > a,
+        body.ev-header-on-light .ginovo-lang > a,
+        body.news-header-on-light .ginovo-lang > a,
+        body.cu-header-on-light .ginovo-lang > a,
+        body.cert-header-on-light .ginovo-lang > a { color: #111111 !important; }
+        body.gt-header-on-light .ginovo-logo img,
+        body.pm-header-on-light .ginovo-logo img,
+        body.sgb-header-on-light .ginovo-logo img,
+        body.ev-header-on-light .ginovo-logo img,
+        body.news-header-on-light .ginovo-logo img,
+        body.cu-header-on-light .ginovo-logo img,
+        body.cert-header-on-light .ginovo-logo img { filter: brightness(0); }
+        .ginovo-common-cta { position: relative; z-index: 1; overflow: hidden; padding: 160px 24px; border-top: 1px solid rgba(255,255,255,0.05); background: #000000; }
+        .ginovo-common-cta-bg { position: absolute; inset: 0; z-index: 0; background: url("./assets/gemini_generated_image_8p64lj8p64lj8p64-mrjnlv9t-187y.jpg") center / cover no-repeat; opacity: 0.67; pointer-events: none; }
+        .ginovo-common-cta-content { max-width: 768px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+        .ginovo-common-cta-content p { font-size: clamp(16px, 2vw, 22px); font-weight: 700; margin: 0 0 20px; color: #FFFFFFD6; letter-spacing: -0.01em; }
+        .ginovo-common-cta-content h2 { font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: -0.02em; white-space: nowrap; }
+        .ginovo-footer { position: relative; z-index: 1; background: #000000; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 80px 40px 40px; }
+        .ginovo-footer-container { max-width: 1200px; margin: 0 auto 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
+        .ginovo-footer h4 { font-size: 14px; font-weight: 600; color: #FFFFFF; margin: 0 0 20px; letter-spacing: 0; }
+        .ginovo-footer p { margin: 0; }
+        .ginovo-footer-phone { font-size: 24px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px !important; }
+        .ginovo-footer-muted { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .ginovo-footer-info { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+        .ginovo-footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0; }
+        .ginovo-footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; }
+        .ginovo-footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .ginovo-footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); margin: 0; }
+        @media (max-width: 900px) {
+            .ginovo-header { min-width: 0; width: calc(100% - 32px); gap: 18px; padding: 12px 18px; }
+            .ginovo-nav-list { gap: 16px; }
+            .ginovo-login { display: none; }
+            .ginovo-footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .ginovo-header { top: 16px; overflow-x: auto; justify-content: flex-start; }
+            .ginovo-footer-container { grid-template-columns: 1fr; }
+            .ginovo-common-cta-content h2 { white-space: normal; }
+        }
+    </style>
+
+</helmet>
+
+<div ref="{{ rootRef }}" style="min-height: 100vh;">
+
+    <header class="ginovo-header" data-screen-label="헤더">
+        <a href="./index.html" class="ginovo-logo" aria-label="GREEN TALK Home">
+            <img src="./assets/logo.png" alt="GREEN TALK">
+        </a>
+        <nav class="ginovo-nav" aria-label="Primary navigation">
+            <ul class="ginovo-nav-list">
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./index.html">Home</a></li>
+                <li class="ginovo-nav-item">
+                    <a class="ginovo-nav-link" href="./index.html#gt-sec-esg">회사</a>
+                    <div class="ginovo-dropdown-wrap">
+                        <div class="ginovo-dropdown-panel">
+                            <a href="./index.html#gt-sec-esg">회사 소개</a>
+                            <a href="./index.html#gt-sec-history">회사 연혁</a>
+                            <a href="./index.html#gt-sec-location">오시는 길</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="ginovo-nav-item">
+                    <a class="ginovo-nav-link" href="./putting-mat.html">제품 소개</a>
+                    <div class="ginovo-dropdown-wrap">
+                        <div class="ginovo-dropdown-panel">
+                            <a href="./putting-mat.html">경사 퍼팅매트</a>
+                            <a href="./smart-golf-ball.html">스마트 골프 볼</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="ginovo-header-right">
+            <a class="ginovo-login" href="#">로그인</a>
+            <div class="ginovo-lang">
+                <a href="#"><i class="ph ph-globe" style="font-size: 16px;"></i> <i class="ph ph-caret-down" style="font-size: 11px;"></i></a>
+                <div class="ginovo-dropdown-wrap">
+                    <div class="ginovo-dropdown-panel">
+                        <a href="#">한국어</a>
+                        <a href="#">영어</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main style="width: 100%;">
+        <section class="px-6 py-20 lg:py-28" style="padding-top: 180px;">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16" style="text-align: center;">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border text-xs font-semibold tracking-widest uppercase mb-6" style="border-color: var(--border); color: rgba(255,255,255,0.6)">
+                        Certifications
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4">전체 인증서</h1>
+                    <p class="text-lg" style="color: rgba(255,255,255,0.6)">그린토크가 보유한 특허, 상표, 인증 자료 21건을 확인하세요.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <sc-for list="{{ certs }}" as="cert" hint-placeholder-count="11">
+                        <div class="glass-panel glass-panel-hover rounded-xl overflow-hidden flex flex-col">
+                            <div class="aspect-[3/4] overflow-hidden" style="background: {{ cert.bgStyle }}">
+                                <sc-if value="{{ cert.needsSlot }}" hint-placeholder-val="{{ false }}">
+                                    <image-slot id="{{ cert.slotId }}" shape="rect" placeholder="인증서 이미지" style="width:100%;height:100%"></image-slot>
+                                </sc-if>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold text-sm leading-tight">{{ cert.title }}</h4>
+                            </div>
+                        </div>
+                    </sc-for>
+                </div>
+            </div>
+        </section>
+
+        <section id="gt-sec-cta" class="ginovo-common-cta" data-screen-label="마무리 CTA">
+            <div class="ginovo-common-cta-bg"></div>
+            <div class="ginovo-common-cta-content">
+                <p>Beyond Tech, Into Culture: The New Standard Powered by Data</p>
+                <h2>데이터로 기술의 한계를 넘어 소통의 문화를 엽니다.</h2>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="ginovo-footer" data-screen-label="푸터">
+        <div class="ginovo-footer-container">
+            <div>
+                <h4>고객센터</h4>
+                <p class="ginovo-footer-phone">062-716-0995</p>
+                <p class="ginovo-footer-muted">오전 9:00 - 오후 5:00 | 점심시간 12:00 - 13:00<br>주말 및 공휴일 휴무</p>
+            </div>
+            <div>
+                <h4>은행 정보</h4>
+                <p class="ginovo-footer-muted">기업은행 65904714504019 (주)그린토크</p>
+            </div>
+            <div>
+                <h4>그린토크</h4>
+                <ul class="ginovo-footer-links">
+                    <li><a href="./index.html#gt-sec-esg">회사소개</a></li>
+                    <li><a href="./index.html#gt-sec-history">창업 가치</a></li>
+                    <li><a href="./certificates.html">디자인 어워드</a></li>
+                    <li><a href="./index.html#gt-sec-location">오시는 길</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>사업자 정보</h4>
+                <p class="ginovo-footer-info">상호명 : (주)그린토크 　 대표 : 손영국 　 주소 : 광주광역시 신호구 손재로 236 그린토크 　 사업자등록번호 : 603-87-02720</p>
+            </div>
+        </div>
+        <div class="ginovo-footer-bottom">
+            <p>(c) GREEN TALK. All rights reserved.</p>
+        </div>
+    </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { openNav: null };
+    this.rootRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this._onScroll = () => {
+      if (this._scrollTicking) return;
+      this._scrollTicking = true;
+      requestAnimationFrame(() => { this.updateHeaderContrast(); this._scrollTicking = false; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll);
+    this.updateHeaderContrast();
+  }
+
+  updateHeaderContrast() {
+    const root = this.rootRef.current;
+    const header = root ? root.querySelector('header') : null;
+    if (!header) return;
+    const hRect = header.getBoundingClientRect();
+    const y = hRect.top + hRect.height / 2;
+    const areas = root.querySelectorAll('main > section, footer[data-screen-label]');
+    let target = null;
+    areas.forEach((s) => {
+      const r = s.getBoundingClientRect();
+      if (r.top <= y && r.bottom >= y) target = s;
+    });
+    if (!target) { document.body.classList.remove('cert-header-on-light'); return; }
+    const bg = getComputedStyle(target).backgroundColor;
+    const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    let isLight = false;
+    if (m) {
+      const a = m[4] !== undefined ? parseFloat(m[4]) : 1;
+      if (a > 0.4) {
+        const r = +m[1], g = +m[2], b = +m[3];
+        const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        isLight = lum > 0.6;
+      }
+    }
+    document.body.classList.toggle('cert-header-on-light', isLight);
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) {
+      window.removeEventListener('scroll', this._onScroll);
+      window.removeEventListener('resize', this._onScroll);
+    }
+  }
+
+  renderVals() {
+    const openNav = this.state.openNav;
+    const known = [
+      { title: '특허증', file: './assets/cert-018.jpg' },
+      { title: '특허증', file: './assets/cert-019.jpg' },
+      { title: '특허증', file: './assets/cert-020.jpg' },
+      { title: '특허증', file: './assets/cert-021.jpg' },
+      { title: 'ISO 9001 인증서', file: './assets/cert-022.png' },
+      { title: 'ISO 9001 인증서', file: './assets/cert-023.png' },
+      { title: 'ESG 경영수준확인서', file: './assets/cert-024.png' },
+      { title: 'ESG 경영수준확인서', file: './assets/cert-025.png' },
+      { title: '디자인등록증', file: './assets/cert-026.png' },
+      { title: '디자인등록증', file: './assets/cert-027.png' },
+      { title: '상표등록증', file: './assets/cert-028.png' },
+      { title: '디자인등록증', file: './assets/cert-029.png' },
+      { title: '특허증', file: './assets/cert-030.png' },
+      { title: '디자인등록증', file: './assets/cert-031.png' },
+      { title: '특허증', file: './assets/cert-032.png' },
+      { title: '상표등록증', file: './assets/cert-033.png' },
+      { title: '특허증', file: './assets/cert-034.png' },
+      { title: '특허증', file: './assets/cert-035.png' },
+      { title: '상표등록증', file: './assets/cert-036.png' },
+      { title: 'ISO 14001 인증서', file: './assets/cert-037.png' },
+      { title: 'ISO 14001 인증서', file: './assets/cert-038.png' }
+    ];
+    const extraTitles = [];
+
+    const certs = known.map((k, i) => ({
+      title: k.title,
+      bgStyle: 'url("' + k.file + '") center / cover no-repeat',
+      needsSlot: false,
+      slotId: 'cert-slot-' + i,
+    }));
+
+    extraTitles.forEach((title, i) => {
+      certs.push({
+        title,
+        bgStyle: 'rgba(255,255,255,0.05)',
+        needsSlot: true,
+        slotId: 'cert-slot-' + (known.length + i),
+      });
+    });
+
+    return {
+      rootRef: this.rootRef,
+      certs,
+      dropdown1Opacity: openNav === 1 ? 1 : 0,
+      dropdown1Visibility: openNav === 1 ? 'visible' : 'hidden',
+      dropdown2Opacity: openNav === 2 ? 1 : 0,
+      dropdown2Visibility: openNav === 2 ? 'visible' : 'hidden',
+      dropdown3Opacity: openNav === 3 ? 1 : 0,
+      dropdown3Visibility: openNav === 3 ? 'visible' : 'hidden',
+      openNav1: () => this.setState({ openNav: 1 }),
+      openNav2: () => this.setState({ openNav: 2 }),
+      openNav3: () => this.setState({ openNav: 3 }),
+      closeNav: () => this.setState({ openNav: null }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

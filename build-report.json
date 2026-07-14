@@ -1,0 +1,47 @@
+{
+  "folder": "/Users/isolmin/Documents/Codex/2026-07-14/new-chat/outputs/ginovo-revised-github-ready2",
+  "zip": "/Users/isolmin/Documents/Codex/2026-07-14/new-chat/outputs/ginovo-revised-github-ready2.zip",
+  "sizeMB": 34.3,
+  "assetsCount": 60,
+  "htmlFiles": [
+    "certificates.html",
+    "contact.html",
+    "events.html",
+    "index.html",
+    "news.html",
+    "putting-mat.html",
+    "smart-golf-ball.html"
+  ],
+  "localRefsChecked": 67,
+  "missingLocalRefs": [],
+  "removedDuplicateAssets": [
+    "06-mrhu6dwo.jpg",
+    "gemini_generated_image_8p64lj8p64lj8p64-mriov9ji.jpg",
+    "gemini_generated_image_8p64lj8p64lj8p64-mrit2jcl.jpg",
+    "gemini_generated_image_8p64lj8p64lj8p64-mrjorjlf-1xgi.jpg"
+  ],
+  "addedCertificateAssets": [
+    "cert-026.png",
+    "cert-027.png",
+    "cert-028.png",
+    "cert-029.png",
+    "cert-030.png",
+    "cert-031.png",
+    "cert-032.png",
+    "cert-033.png",
+    "cert-034.png",
+    "cert-035.png",
+    "cert-036.png",
+    "cert-037.png",
+    "cert-038.png"
+  ],
+  "attachedCertificatesAlreadyPresent": [
+    "cert-022.png",
+    "cert-023.png",
+    "cert-024.png",
+    "cert-025.png"
+  ],
+  "certificatePageCount": 21,
+  "remainingExactDuplicateAssets": {},
+  "originalUntouched": true
+}
