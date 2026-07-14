@@ -174,7 +174,10 @@
         <section data-screen-label="히어로" style="position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 80px 0 96px;">
             <div style="position: absolute; inset: 0; z-index: 0;">
                 <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: var(--hero-filter);">
-                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--hero-overlay) 80%, transparent), color-mix(in srgb, var(--hero-overlay) 70%, transparent) 50%, var(--hero-overlay)); z-index: 1;"></div>
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.80), rgba(0,0,0,0.60) 50%, #000000); z-index: 1;"></div>
+                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(66,232,255,0.15) 0%, rgba(33,11,189,0.1) 40%, transparent 70%); z-index: 1;"></div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(12deg); width: 100%; max-width: 896px; height: 400px; border: 1px solid rgba(66,232,255,0.2); border-radius: 100%; opacity: 0.3; z-index: 2; pointer-events: none;"></div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-6deg); width: 100%; max-width: 672px; height: 200px; border: 1px solid rgba(33,11,189,0.3); border-radius: 100%; opacity: 0.4; z-index: 2; pointer-events: none;"></div>
             </div>
 
             
@@ -195,7 +198,7 @@
             </div>
         </section>
 
-        <section id="features" data-screen-label="대표 모델 90cm" style="padding: 120px 24px; position: relative; z-index: 1; background: var(--f90-bg); color: var(--f90-heading);">
+        <section id="features" data-screen-label="대표 모델 90cm" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--f90-bg); color: var(--f90-heading);">
             <div style="max-width: 1200px; margin: 0 auto;">
                 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px;">
                     <div style="flex: 1 1 480px; min-width: 320px;">
@@ -247,8 +250,8 @@
                 </div>
 
                 
-            </div><div style="margin-top: 120px; margin-bottom: 0; overflow: visible;">
-                    <h3 style="font-size: 20px; color: var(--f90-heading); font-weight: 600; margin: 0 0 48px; text-align: center;" data-reveal="true">프로들의 90cm 퍼팅매트 활용 영상</h3>
+            </div><div style="margin-top: 240px; margin-bottom: 0; overflow: visible;">
+                    <h3 style="font-size: 20px; color: var(--f90-heading); font-weight: 600; margin: 0 0 96px; text-align: center;" data-reveal="true">프로들의 90cm 퍼팅매트 활용 영상</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
                         <div data-reveal="true" data-reveal-delay="0.1">
                             <div style="aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: var(--f90-box-bg); border: 1px solid rgba(255,255,255,0.08);">
@@ -266,7 +269,7 @@
                 </div>
         </section>
 
-        <section data-screen-label="컴팩트 모델 60cm" style="padding: 120px 24px; position: relative; z-index: 1; background: var(--f60-bg); color: var(--f60-heading);">
+        <section data-screen-label="컴팩트 모델 60cm" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--f60-bg); color: var(--f60-heading);">
             <div style="max-width: 1200px; margin: 0 auto;">
                 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px;">
                     <div style="flex: 1 1 480px; min-width: 320px;">
@@ -318,7 +321,7 @@
 
         
 
-<section data-screen-label="슬로핑 매트" style="padding: 120px 24px; position: relative; z-index: 1; background: var(--sloping-bg); color: var(--sloping-heading);">
+<section data-screen-label="슬로핑 매트" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--sloping-bg); color: var(--sloping-heading);">
             <div style="max-width: 1200px; margin: 0 auto;">
                 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px;">
                     <div style="flex: 1 1 480px; min-width: 320px;">
