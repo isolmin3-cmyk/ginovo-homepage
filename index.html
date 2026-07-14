@@ -649,13 +649,13 @@
                         </p>
                     </div>
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden glass-panel">
-                        <image-slot id="gt-slot-mat" shape="rounded" radius="16" placeholder="지노버 경사 매트 사진" style="width: 100%; height: 100%; background: url(&quot;./assets/06-mrhrqr9k.jpg&quot;) center / cover no-repeat"></image-slot>
+                        <video src="./assets/putting-mat-demo.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline controls preload="metadata" poster="./assets/06-mrhrqr9k.jpg" aria-label="지노버 경사 매트 시연 영상"></video>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-20 lg:mb-28 reveal-up gt-reveal-ltr" style="padding-top: 87px">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden glass-panel">
-                        <image-slot id="gt-slot-ball" shape="rounded" radius="16" placeholder="스마트 골프 공 사진" fit="contain" src="./assets/img-017.png" style="width:100%;height:100%"></image-slot>
+                        <video src="./assets/smart-golf-ball-demo.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline controls preload="metadata" poster="./assets/img-017.png" aria-label="지노버 스마트 골프 볼 시연 영상"></video>
                     </div>
                     <div>
                         <h3 class="text-2xl md:text-3xl font-bold mb-5">지노버 스마트 골프 볼</h3>
@@ -736,8 +736,8 @@
 
                 <div class="max-w-4xl mx-auto flex flex-col gap-16" style="margin-top: 79px">
                     <div class="w-full flex flex-col sm:flex-row items-center gap-10 reveal-up gt-reveal-ltr">
-                        <div class="w-full sm:w-1/2 max-w-[440px] aspect-[2/1] rounded-2xl overflow-hidden shrink-0">
-                            <div style="box-sizing: border-box"><img src="./assets/--mrho4mnd.jpg" alt="-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></div>
+                        <div class="w-full sm:w-1/2 max-w-[440px] aspect-[2/1] rounded-2xl overflow-hidden shrink-0" style="background:#050505; border:1px solid rgba(255,255,255,0.08);">
+                            <img src="./assets/mobile-data-visualization.png" alt="모바일 데이터 시각화 화면" style="width:100%; height:100%; display:block; object-fit:cover;">
                         </div>
                         <div class="w-full sm:w-1/2">
                             <h3 class="text-2xl font-bold mb-4">모바일 데이터 시각화</h3>
@@ -923,42 +923,48 @@
                     </div>
                 </div>
 
-                <div class="flex gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-                    <div class="glass-panel rounded-xl reveal-up shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-1" shape="rect" placeholder="ESG 경영수준확인서" style="width:100%;height:100%"></image-slot>
-                        </div>
-                        
+                <div class="mt-14">
+                    <div class="mb-6 reveal-up">
+                        <h3 class="text-2xl font-bold mb-2">품질·환경·ESG 인증</h3>
+                        <p class="text-sm text-brand-muted">특허증, 디자인등록증, 상표등록증을 제외한 운영·품질·환경 인증 자료입니다.</p>
                     </div>
-                    <div class="glass-panel rounded-xl reveal-up delay-100 shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-2" shape="rect" placeholder="Assurance of ESG Management" style="width:100%;height:100%"></image-slot>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div class="glass-panel rounded-xl reveal-up overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-022.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ISO 9001 인증서</h4>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="glass-panel rounded-xl reveal-up delay-200 shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-3" shape="rect" placeholder="ISO 9001:2015 품질경영시스템 인증" style="width:100%;height:100%"></image-slot>
+                        <div class="glass-panel rounded-xl reveal-up delay-100 overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-023.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ISO 9001 인증서</h4>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="glass-panel rounded-xl reveal-up delay-300 shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-4" shape="rect" placeholder="ISO 14001:2015 환경경영시스템 인증" style="width:100%;height:100%"></image-slot>
+                        <div class="glass-panel rounded-xl reveal-up delay-200 overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-024.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ESG 경영수준확인서</h4>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="glass-panel rounded-xl reveal-up delay-300 shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-5" shape="rect" placeholder="벤처기업 확인서" style="width:100%;height:100%"></image-slot>
+                        <div class="glass-panel rounded-xl reveal-up delay-200 overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-025.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ESG 경영수준확인서</h4>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="glass-panel rounded-xl reveal-up delay-300 shrink-0 flex flex-col overflow-hidden" style="width: 260px; scroll-snap-align: start;">
-                        <div class="w-full aspect-[3/4] overflow-hidden bg-white/5">
-                            <image-slot id="gt-slot-esg-cert-6" shape="rect" placeholder="기업부설연구소 인정서" style="width:100%;height:100%"></image-slot>
+                        <div class="glass-panel rounded-xl reveal-up delay-100 overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-037.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ISO 14001 인증서</h4>
+                            </div>
                         </div>
-                        
+                        <div class="glass-panel rounded-xl reveal-up delay-200 overflow-hidden" style="border-color: rgba(255,255,255,0.12);">
+                            <div class="aspect-[3/4] bg-white overflow-hidden" style="background: url(&quot;./assets/cert-038.png&quot;) center / cover no-repeat;"></div>
+                            <div class="p-4">
+                                <h4 class="text-sm font-semibold text-white">ISO 14001 인증서</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
