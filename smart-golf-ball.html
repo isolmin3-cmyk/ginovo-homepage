@@ -218,7 +218,7 @@
                 
 
                 <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: var(--assembly-box); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-                    <video src="./assets/smart-golf-ball-demo.mp4" autoplay muted loop playsinline controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                    <video class="sgb-scroll-restart-video" src="./assets/smart-golf-ball-demo.mp4" autoplay muted loop playsinline controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                     
                 </div>
             </div>
@@ -291,8 +291,8 @@
                     
                 </div>
                 <div data-reveal="true" data-reveal-dir="ltr" data-reveal-delay="0.2" style="flex: 1 1 420px; min-width: 320px;">
-                    <a href="https://drive.google.com/file/d/1mLg-LHVOnZ95ESq6IqsOEojjREMFu4iq/view?usp=drive_link" target="_blank" rel="noopener" aria-label="실시간 퍼팅 데이터 영상 보기" style="position: relative; width: 100%; max-width: 480px; margin: 0 auto; aspect-ratio: 16/9; background: #0a0a0a; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; text-decoration: none;">
-                        <img src="./assets/smart-golf-app-score-card.png" alt="앱에서 확인하는 실시간 퍼팅 데이터" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    <a href="https://drive.google.com/file/d/1mLg-LHVOnZ95ESq6IqsOEojjREMFu4iq/view?usp=drive_link" target="_blank" rel="noopener" aria-label="실시간 퍼팅 데이터 영상 보기" style="position: relative; width: 100%; max-width: 480px; margin: 0 auto; aspect-ratio: 16/9; background: #0a0a0a; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; text-decoration: none; padding: 14px; box-sizing: border-box;">
+                        <img src="./assets/smart-golf-app-score-card.png" alt="앱에서 확인하는 실시간 퍼팅 데이터" style="width: 92%; height: 92%; object-fit: contain; display: block;">
                         <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 76px; height: 76px; border-radius: 999px; background: rgba(0,0,0,0.42); border: 3px solid rgba(255,255,255,0.82); display: flex; align-items: center; justify-content: center; font-size: 30px; line-height: 1; padding-left: 6px; color: #ffffff; box-shadow: 0 18px 48px rgba(0,0,0,0.28);">▶</span>
                     </a>
                 </div>
@@ -385,7 +385,7 @@
                 </div>
                 <div style="flex: 1 1 480px; min-width: 320px;">
                     <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: var(--charge-box); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
-                        <video src="./assets/smart-golf-ball-wireless-charging.mp4" autoplay muted loop playsinline controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                        <video data-force-muted="true" src="./assets/smart-golf-ball-wireless-charging.mp4" autoplay muted defaultMuted loop playsinline controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                         <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
                             
                         </div>
@@ -474,10 +474,10 @@ class Component extends DCLogic {
     // Smart Point boxes: sequential top-down reveal, Point 1 -> Point 4.
     this._pointsRevealed = false;
     const pointBoxes = this.rootRef.current ? this.rootRef.current.querySelectorAll('.sgb-point-box') : [];
-    if (pointBoxes.length) {
-      pointBoxes.forEach((b) => {
-        const order = parseInt(b.getAttribute('data-reveal-point'), 10) || 1;
-        b.style.animationDelay = ((order - 1) * 0.15) + 's';
+      if (pointBoxes.length) {
+        pointBoxes.forEach((b) => {
+          const order = parseInt(b.getAttribute('data-reveal-point'), 10) || 1;
+          b.style.animationDelay = ((order - 1) * 0.15) + 's';
       });
       this._pointIo = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -490,6 +490,49 @@ class Component extends DCLogic {
       }, { threshold: 0.2 });
       this._pointIo.observe(pointBoxes[0]);
     }
+    this.setupVideoBehavior();
+  }
+
+  setupVideoBehavior() {
+    const root = this.rootRef.current;
+    if (!root) return;
+
+    const restartVideos = root.querySelectorAll('.sgb-scroll-restart-video');
+    if (restartVideos.length && !this._scrollVideoIo) {
+      this._scrollVideoIo = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            if (video.dataset.inView !== '1') {
+              video.dataset.inView = '1';
+              video.currentTime = 0;
+              video.muted = true;
+              video.play().catch(() => {});
+            }
+          } else {
+            video.dataset.inView = '0';
+            video.pause();
+          }
+        });
+      }, { threshold: 0.55 });
+    }
+    restartVideos.forEach((video) => {
+      if (video.dataset.scrollObserved === '1') return;
+      video.dataset.scrollObserved = '1';
+      this._scrollVideoIo.observe(video);
+    });
+
+    root.querySelectorAll('video[data-force-muted="true"]').forEach((video) => {
+      const keepMuted = () => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.volume = 0;
+      };
+      keepMuted();
+      if (video.dataset.muteLocked === '1') return;
+      video.dataset.muteLocked = '1';
+      video.addEventListener('volumechange', keepMuted);
+    });
   }
 
   revealPointBoxes() {
@@ -548,6 +591,7 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     this.setupReveals();
+    this.setupVideoBehavior();
     // React can replace the point boxes' DOM nodes on re-render, wiping the
     // 'sgb-in-view' class along with any inline animationDelay it wasn't
     // aware of — reapply both if we've already triggered the reveal once.
@@ -592,6 +636,7 @@ class Component extends DCLogic {
       window.removeEventListener('scroll', this._onScroll);
       window.removeEventListener('resize', this._onScroll);
     }
+    if (this._scrollVideoIo) this._scrollVideoIo.disconnect();
   }
 
   renderVals() {
