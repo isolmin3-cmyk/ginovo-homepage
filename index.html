@@ -543,6 +543,42 @@
         }
     </style>
 
+    <style id="homepage-redesign-phase1">
+        /* 원본 디자인 3종은 자르기·필터·오버레이 없이 원본 비율로 표시합니다. */
+        .gt-protected-design {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #070c18;
+            line-height: 0;
+        }
+
+        .gt-protected-design img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            object-fit: contain;
+            filter: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        #gt-sec-hero video {
+            display: block;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #gt-sec-hero video {
+                animation: none;
+            }
+        }
+    </style>
+
 </helmet>
 
     <header class="ginovo-header" data-screen-label="헤더">
@@ -591,11 +627,21 @@
 
     <main class="w-full">
 
-        <section id="gt-sec-hero" data-screen-label="히어로" class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 pb-24">
+        <section id="gt-sec-hero" data-screen-label="히어로" class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
 
             <div class="absolute inset-0 z-0">
-                <img id="gt-hero-img" src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&amp;fit=crop&amp;q=80&amp;w=2000" alt="Golf Putting Mat" class="w-full h-full object-cover" style="opacity: 1">
-                <div class="absolute inset-0 z-10" style="background: linear-gradient(to bottom, rgba(0,0,0,0.50), rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80));"></div>
+                <video
+                    class="w-full h-full object-cover"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    aria-label="지노버 골프 브랜드 영상"
+                >
+                    <source src="./assets/videos/hero-video.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 z-10" style="background: linear-gradient(to bottom, rgba(3,8,18,0.28), rgba(3,8,18,0.42) 52%, rgba(3,8,18,0.76));"></div>
             </div>
 
             
@@ -625,6 +671,31 @@
                     
                 </div>
             </div>
+        </section>
+
+        <!-- 원본 디자인 이미지: 파일 및 내부 콘텐츠 수정 금지 -->
+        <section class="gt-protected-design" data-screen-label="스마트 골프공 소개 원본 디자인">
+            <img
+                src="./assets/protected/smartball-intro.jpg"
+                alt="지노버 스마트 골프공 소개"
+                loading="eager"
+            >
+        </section>
+
+        <section class="gt-protected-design" data-screen-label="Unity 골프 시스템 원본 디자인">
+            <img
+                src="./assets/protected/unity-golf-system.jpg"
+                alt="Unity 기반 물리엔진 스크린 골프 시스템"
+                loading="lazy"
+            >
+        </section>
+
+        <section class="gt-protected-design" data-screen-label="퍼팅 연습 시스템 원본 디자인">
+            <img
+                src="./assets/protected/putting-training-system.jpg"
+                alt="지노버 4단계 퍼팅 연습 시스템"
+                loading="lazy"
+            >
         </section>
 
         <section id="gt-sec-products" data-screen-label="제품" class="py-24 lg:py-32 px-6 relative z-10">
