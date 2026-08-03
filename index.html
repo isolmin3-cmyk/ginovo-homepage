@@ -572,9 +572,175 @@
             min-height: 100%;
         }
 
+        .hero-copy-panel {
+            width: min(calc(100% - 96px), 1520px);
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 52%;
+            text-align: right;
+        }
+
+        .hero-copy-panel h1,
+        .hero-copy-panel p {
+            margin-left: auto;
+        }
+
+        .hero-copy-panel .flex {
+            justify-content: flex-end;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             #gt-sec-hero video {
                 animation: none;
+            }
+        }
+
+        /* 참고 이미지 기준 헤더 */
+        .ginovo-header {
+            top: 40px;
+            width: min(calc(100% - 96px), 1520px);
+            min-width: 0;
+            min-height: 82px;
+            padding: 12px 28px 12px 38px;
+            gap: 42px;
+            background: linear-gradient(90deg, rgba(29,32,38,0.94), rgba(92,94,94,0.52));
+            border: 1px solid rgba(255,255,255,0.22);
+            box-sizing: border-box;
+        }
+
+        .ginovo-logo img {
+            height: 30px;
+        }
+
+        .ginovo-nav {
+            margin-left: auto;
+        }
+
+        .ginovo-nav-list {
+            gap: clamp(28px, 3.2vw, 64px);
+        }
+
+        .ginovo-nav-link {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .ginovo-header-right {
+            gap: 24px;
+        }
+
+        .ginovo-login {
+            padding: 13px 28px;
+            font-size: 16px;
+            background: #2050d8;
+        }
+
+        .ginovo-lang > a {
+            color: #fff !important;
+        }
+
+        /* 새 CTA 이미지 */
+        .ginovo-common-cta-bg {
+            background:
+                linear-gradient(90deg, rgba(0,0,0,0.48), rgba(0,0,0,0.08)),
+                url("./assets/cta-golf.png") center / cover no-repeat;
+            opacity: 1;
+        }
+
+        /* 참고 이미지 기준 3열 푸터 */
+        .ginovo-footer {
+            padding: 110px 5vw 120px;
+            background: #000;
+        }
+
+        .ginovo-footer-container {
+            max-width: 1720px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1.1fr 1fr;
+            align-items: center;
+            gap: clamp(60px, 8vw, 170px);
+        }
+
+        .ginovo-footer h4 {
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.78);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .ginovo-footer-phone {
+            margin-bottom: 32px !important;
+            font-size: clamp(34px, 3vw, 52px);
+            font-weight: 700;
+        }
+
+        .ginovo-footer-muted,
+        .ginovo-footer-info {
+            margin-top: 15px !important;
+            color: rgba(255,255,255,0.72);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .ginovo-footer-email a {
+            color: #fff;
+            font-size: clamp(28px, 2.7vw, 46px);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1050px) {
+            .ginovo-header {
+                top: 20px;
+                width: calc(100% - 32px);
+                min-height: 68px;
+                padding: 10px 18px;
+                gap: 20px;
+                overflow-x: auto;
+            }
+
+            .ginovo-logo img { height: 24px; }
+            .ginovo-nav-list { gap: 22px; }
+            .ginovo-nav-link { font-size: 14px; }
+            .ginovo-login { padding: 10px 18px; font-size: 14px; }
+
+            .ginovo-footer-container {
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+
+            .hero-copy-panel {
+                width: calc(100% - 48px);
+                padding-left: 38%;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .ginovo-header {
+                justify-content: flex-start;
+                border-radius: 28px;
+            }
+
+            .ginovo-nav { margin-left: 0; }
+            .ginovo-login { display: inline-flex; }
+            .ginovo-footer { padding: 80px 24px; }
+            .ginovo-footer-email a { white-space: normal; }
+
+            .hero-copy-panel {
+                width: calc(100% - 32px);
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .hero-copy-panel h1,
+            .hero-copy-panel p {
+                margin-right: auto;
+            }
+
+            .hero-copy-panel .flex {
+                justify-content: center;
             }
         }
     </style>
@@ -587,33 +753,16 @@
         </a>
         <nav class="ginovo-nav" aria-label="Primary navigation">
             <ul class="ginovo-nav-list">
-                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./index.html">Home</a></li>
-                <li class="ginovo-nav-item">
-                    <a class="ginovo-nav-link" href="./index.html#gt-sec-esg">회사</a>
-                    <div class="ginovo-dropdown-wrap">
-                        <div class="ginovo-dropdown-panel">
-                            <a href="./index.html#gt-sec-esg">회사 소개</a>
-                            <a href="./index.html#gt-sec-history">회사 연혁</a>
-                            <a href="./index.html#gt-sec-location">오시는 길</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="ginovo-nav-item">
-                    <a class="ginovo-nav-link" href="./putting-mat.html">제품 소개</a>
-                    <div class="ginovo-dropdown-wrap">
-                        <div class="ginovo-dropdown-panel">
-                            <a href="./putting-mat.html">경사 퍼팅매트</a>
-                            <a href="./smart-golf-ball.html">스마트 골프 볼</a>
-                        </div>
-                    </div>
-                </li>
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./index.html#gt-sec-esg">About us</a></li>
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./smart-golf-ball.html">스마트 골프공</a></li>
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./putting-mat.html">경사 퍼팅매트</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer">Shop</a></li>
             </ul>
         </nav>
         <div class="ginovo-header-right">
-            <a class="ginovo-login" href="#">로그인</a>
+            <a class="ginovo-login" href="#" aria-label="로그인">로그인</a>
             <div class="ginovo-lang">
-                <a href="#"><i class="ph ph-globe" style="font-size: 16px;"></i> <i class="ph ph-caret-down" style="font-size: 11px;"></i></a>
+                <a href="#" aria-label="언어 선택"><i class="ph ph-globe" style="font-size: 20px;"></i> <i class="ph ph-caret-down" style="font-size: 12px;"></i></a>
                 <div class="ginovo-dropdown-wrap">
                     <div class="ginovo-dropdown-panel">
                         <a href="#">한국어</a>
@@ -647,7 +796,7 @@
             
             
 
-            <div class="relative z-30 text-center max-w-5xl mx-auto px-6 mt-12">
+            <div class="hero-copy-panel relative z-30 mt-12">
                 <div class="inline-block px-6 py-2 rounded-full glass-panel border-brand-cyan/30 text-brand-cyan text-xs md:text-sm font-semibold tracking-widest uppercase mb-8">
                     기술은 심플하게, 피드백은 확실하게
                 </div>
@@ -1159,31 +1308,22 @@
 
     <footer class="ginovo-footer" data-screen-label="푸터">
         <div class="ginovo-footer-container">
-            <div>
+            <div class="ginovo-footer-service">
                 <h4>고객센터</h4>
                 <p class="ginovo-footer-phone">062-716-0995</p>
-                <p class="ginovo-footer-muted">오전 9:00 - 오후 5:00 | 점심시간 12:00 - 13:00<br>주말 및 공휴일 휴무</p>
+                <p class="ginovo-footer-muted">오전 9:00 ~ 오후 5:00 / 점심시간 12:00 ~ 13:00</p>
+                <p class="ginovo-footer-muted">주말 및 공휴일 휴무</p>
             </div>
-            <div>
-                <h4>은행 정보</h4>
-                <p class="ginovo-footer-muted">기업은행 65904714504019 (주)그린토크</p>
+            <div class="ginovo-footer-email">
+                <h4>E-mail</h4>
+                <a href="mailto:green-talk@naver.com">green-talk@naver.com</a>
             </div>
-            <div>
-                <h4>그린토크</h4>
-                <ul class="ginovo-footer-links">
-                    <li><a href="./index.html#gt-sec-esg">회사소개</a></li>
-                    <li><a href="./index.html#gt-sec-history">창업 가치</a></li>
-                    <li><a href="./certificates.html">디자인 어워드</a></li>
-                    <li><a href="./index.html#gt-sec-location">오시는 길</a></li>
-                </ul>
-            </div>
-            <div>
+            <div class="ginovo-footer-business">
                 <h4>사업자 정보</h4>
-                <p class="ginovo-footer-info">상호명 : (주)그린토크 　 대표 : 손영국 　 주소 : 광주광역시 신호구 손재로 236 그린토크 　 사업자등록번호 : 603-87-02720</p>
+                <p class="ginovo-footer-info">상호명 : (주) 그린토크　　대표 : 손영국</p>
+                <p class="ginovo-footer-info">주소 : 광주광역시 광산구 손재로 236 그린토크</p>
+                <p class="ginovo-footer-info">사업자등록번호 : 603-87-02720</p>
             </div>
-        </div>
-        <div class="ginovo-footer-bottom">
-            <p>(c) GREEN TALK. All rights reserved.</p>
         </div>
     </footer>
 
