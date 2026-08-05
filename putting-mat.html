@@ -20,8 +20,9 @@
         *, *::before, *::after { box-sizing: border-box; }
         body { margin: 0; font-family: 'Pretendard', 'Inter', -apple-system, sans-serif; }
         html, body { background: #070C17; }
-        x-dc > div { background: #070C17 !important; }
+        x-dc > div { --accent-cyan: #2BFFE5 !important; background: #070C17 !important; }
         main > section:not(.ginovo-common-cta) { background: #070C17 !important; }
+        *[style*="#34D399"] { color: #2BFFE5 !important; border-color: #2BFFE5 !important; }
         .pm-reference-hidden,
         [data-screen-label="컴팩트 모델 60cm"],
         [data-screen-label="훈련 모드"],
@@ -41,6 +42,16 @@
         [data-screen-label="대표 모델 90cm"],
         [data-screen-label="슬로핑 매트"] { padding-top: 96px !important; padding-bottom: 96px !important; }
         [data-screen-label="사이즈 비교"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+        [data-screen-label="대표 모델 90cm"] h2,
+        [data-screen-label="슬로핑 매트"] h2,
+        [data-screen-label="사이즈 비교"] h2 { font-size: clamp(30px, 3vw, 40px) !important; line-height: 1.2 !important; letter-spacing: -.035em !important; }
+        [data-screen-label="대표 모델 90cm"] h3,
+        [data-screen-label="슬로핑 매트"] h3 { color: #2BFFE5 !important; font-size: 20px !important; line-height: 1.4 !important; }
+        [data-screen-label="슬로핑 매트"] [style*="text-transform: uppercase"] { color: #2BFFE5 !important; border-color: #2BFFE5 !important; }
+        [data-screen-label="사이즈 비교"] h3 + p { color: #2BFFE5 !important; }
+        [data-screen-label="대표 모델 90cm"] p,
+        [data-screen-label="슬로핑 매트"] p { font-size: 16px !important; line-height: 1.75 !important; }
+        [data-screen-label="사이즈 비교"] > div > div:first-child > p { font-size: 16px !important; line-height: 1.75 !important; }
     </style>
 
     <style id="ginovo-common-layout">
