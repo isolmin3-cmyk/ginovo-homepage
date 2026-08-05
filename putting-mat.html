@@ -29,13 +29,18 @@
         [data-screen-label="경기 방식"],
         [data-screen-label="득점"],
         [data-screen-label="게임 영상"] { display: none !important; }
-        .pm-review-section { padding: 140px 24px 180px; background: #070C17; }
+        .pm-review-section { padding: 96px 24px 120px; background: #070C17; }
         .pm-review-inner { width: min(100%, 1000px); margin: 0 auto; }
         .pm-review-frame { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,.1); background: #000; }
         .pm-review-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .train-card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
         .train-card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); border-color: rgba(52,211,153,0.6) !important; }
+        .ginovo-nav-link.is-active,
+        body.pm-header-on-light .ginovo-nav-link.is-active { color: #34D399 !important; font-weight: 700; }
+        [data-screen-label="대표 모델 90cm"],
+        [data-screen-label="슬로핑 매트"] { padding-top: 140px !important; padding-bottom: 140px !important; }
+        [data-screen-label="사이즈 비교"] { padding-top: 100px !important; padding-bottom: 100px !important; }
     </style>
 
     <style id="ginovo-common-layout">
@@ -108,10 +113,10 @@
         body.news-header-on-light .ginovo-logo img,
         body.cu-header-on-light .ginovo-logo img,
         body.cert-header-on-light .ginovo-logo img { filter: brightness(0); }
-        .pm-hero { position: relative; min-height: 100vh; width: 100%; display: flex; align-items: center; overflow: hidden; }
+        .pm-hero { position: relative; min-height: 100vh; width: 100%; display: flex; align-items: flex-end; overflow: hidden; }
         .pm-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .pm-hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(2,7,15,.68) 0%, rgba(2,7,15,.38) 46%, rgba(2,7,15,.08) 78%), linear-gradient(0deg, rgba(2,7,15,.34), transparent 42%); }
-        .pm-hero-copy { position: relative; z-index: 2; width: min(calc(100% - 64px), 1280px); margin: 80px auto 0; text-align: left; }
+        .pm-hero-copy { position: relative; z-index: 2; width: min(calc(100% - 64px), 1280px); margin: 0 auto 72px; text-align: left; }
         .pm-hero-copy h1 { max-width: 850px; margin: 0; color: #fff; font-size: clamp(52px, 7vw, 100px); font-weight: 700; line-height: .98; letter-spacing: -.065em; }
         .pm-hero-copy p { margin: 24px 0 0; color: rgba(255,255,255,.72); font-size: clamp(18px, 2vw, 25px); font-weight: 500; }
         .ginovo-common-cta { position: relative; z-index: 1; min-height: 520px; overflow: hidden; padding: 0 24px; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000000; }
@@ -143,6 +148,11 @@
             .ginovo-common-cta-content h2 { white-space: normal; }
             .pm-hero-copy { width: calc(100% - 36px); }
             .pm-hero-copy h1 { font-size: 48px; }
+            .pm-hero-copy { margin-bottom: 48px; }
+            [data-screen-label="대표 모델 90cm"],
+            [data-screen-label="슬로핑 매트"] { padding-top: 88px !important; padding-bottom: 88px !important; }
+            [data-screen-label="사이즈 비교"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+            .pm-review-section { padding-top: 64px; padding-bottom: 80px; }
             .ginovo-footer-email { white-space: normal; }
         }
     </style>
@@ -159,7 +169,7 @@
             <ul class="ginovo-nav-list">
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./index.html#about">About us</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./smart-golf-ball.html">스마트 골프공</a></li>
-                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./putting-mat.html">경사 퍼팅매트</a></li>
+                <li class="ginovo-nav-item"><a class="ginovo-nav-link is-active" href="./putting-mat.html" aria-current="page">경사 퍼팅매트</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer">Shop</a></li>
             </ul>
         </nav>
@@ -187,7 +197,6 @@
             <div class="pm-hero-overlay" aria-hidden="true"></div>
             <div class="pm-hero-copy">
                 <h1 data-reveal="true" data-reveal-delay="0.2">경사 퍼팅매트</h1>
-                <p data-reveal="true" data-reveal-delay="0.4">실제 그린의 경사와 라인을 실내에서 훈련하는 퍼팅 솔루션</p>
             </div>
         </section>
 
