@@ -20,15 +20,17 @@
         .main-nav{margin-left:0;flex-shrink:0}.main-nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}.main-nav a{font-size:14px;font-weight:500;white-space:nowrap}.main-nav a:hover{color:var(--cyan)}.main-nav a[aria-current="page"]{color:var(--cyan);font-weight:700}
     .header-tools{display:flex;align-items:center;gap:20px;flex-shrink:0}.login{padding:8px 20px;background:#210bbd;border-radius:100px;font-size:13px;font-weight:600}.language{position:relative;opacity:.78}.language-button{display:flex;align-items:center;gap:6px;padding:4px;border:0;background:none;color:#fff;font-size:14px;cursor:pointer}.language-button img{width:16px;height:16px;object-fit:contain}.language-caret{font-size:12px;line-height:1}.language-menu{position:absolute;top:38px;right:0;min-width:120px;padding:8px;display:none;background:#fff;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.28)}.language:hover .language-menu{display:grid}.language-menu a{padding:9px 12px;color:#111;border-radius:8px;font-size:13px}.language-menu a:hover{background:#f0f2f4}
     .smartball-page{padding-top:0;background:var(--bg)}
-    .smartball-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:#070c17}
+    .smartball-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#070c17}
     .smartball-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .smartball-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,12,23,.68),rgba(7,12,23,.20) 55%,rgba(7,12,23,.05))}
+    .smartball-hero-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:0 auto 72px;text-align:left}
+    .smartball-hero-copy h1{max-width:850px;margin:0;color:#fff;font-size:clamp(52px,7vw,100px);font-weight:700;line-height:.98;letter-spacing:-.065em}
     .design-section{width:100%;margin:0;background:var(--bg)}
     .design-section img{width:min(100%,1920px);height:auto;margin:0 auto;object-fit:contain;filter:none;transform:none}
     .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf.png') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:auto;padding:0;text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:clamp(16px,1.45vw,21px);font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:clamp(30px,4.2vw,41px);line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
     .site-footer{min-height:439px;padding:88px 32px 70px;background:#151718;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1063px);margin:0 auto;display:grid;grid-template-columns:.95fr 1fr 1.1fr;gap:86px;align-items:start}.site-footer h4{margin:0 0 26px;color:#fff;font-size:14px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:18px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.65}.footer-email{color:rgba(255,255,255,.72);font-size:18px;font-weight:600;white-space:nowrap}
     @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:40px}.cta h2{white-space:normal}}
-    @media(max-width:700px){.cta-copy{width:calc(100% - 36px)}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}}
+    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}}
   </style>
 </head>
 <body>
@@ -48,6 +50,7 @@
       <video autoplay muted loop playsinline preload="metadata" aria-label="스마트 골프공 커버 영상">
         <source src="./assets/videos/smartball-cover.mp4" type="video/mp4">
       </video>
+      <div class="smartball-hero-copy"><h1>스마트 골프공</h1></div>
     </section>
     <section class="design-section"><img src="./assets/smartball-page-01.jpg" alt="골프 공 내부 시뮬레이터 구조"></section>
     <section class="design-section"><img src="./assets/smartball-page-02.jpg" alt="GINOVO 퍼팅 시스템과 무선 충전 시스템"></section>
