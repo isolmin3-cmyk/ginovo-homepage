@@ -133,9 +133,9 @@
         .ginovo-common-cta { position: relative; z-index: 1; min-height: 520px; overflow: hidden; padding: 0 24px; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000000; }
         .ginovo-common-cta-bg { position: absolute; inset: 0; z-index: 0; background: url("./assets/cta-golf.png") center / cover no-repeat; opacity: 1; pointer-events: none; }
         .ginovo-common-cta::after { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(0,0,0,.18); }
-        .ginovo-common-cta-content { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 20px; text-align: center; position: relative; z-index: 1; }
-        .ginovo-common-cta-content p { font-size: clamp(16px, 2vw, 22px); font-weight: 700; margin: 0 0 20px; color: #FFFFFFD6; letter-spacing: -0.01em; }
-        .ginovo-common-cta-content h2 { max-width: 900px; margin: 0 auto; font-size: clamp(28px, 3.2vw, 41px); font-weight: 700; line-height: 1.35; color: #FFFFFF; letter-spacing: -0.02em; text-align: center; white-space: normal; overflow-wrap: anywhere; text-wrap: balance; }
+        .ginovo-common-cta-content { position: relative; z-index: 1; width: min(calc(100% - 64px), 1280px); margin: auto; padding: 0; text-align: center; }
+        .ginovo-common-cta-content p { margin: 0 0 26px; color: #D6DBE3; font-size: clamp(16px, 1.45vw, 21px); font-weight: 700; letter-spacing: .01em; text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.85); }
+        .ginovo-common-cta-content h2 { margin: 0; color: #FFFFFF; font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; text-align: center; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.75); }
         .ginovo-footer { position: relative; z-index: 1; min-height: 439px; background: #151718; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 88px 32px 70px; }
         .ginovo-footer-container { max-width: 1063px; margin: 0 auto; display: grid; grid-template-columns: .95fr 1fr 1.1fr; gap: 86px; }
         .ginovo-footer h4 { font-size: 14px; font-weight: 600; color: #FFFFFF; margin: 0 0 20px; letter-spacing: 0; }
@@ -152,6 +152,7 @@
             .ginovo-login { display: none; }
             .ginovo-footer { min-height: auto; }
             .ginovo-footer-container { grid-template-columns: 1fr; gap: 40px; }
+            .ginovo-common-cta-content h2 { white-space: normal; }
         }
         @media (max-width: 640px) {
             .ginovo-header { top: 16px; overflow-x: auto; justify-content: flex-start; }
@@ -654,9 +655,9 @@
 
         <section id="gt-sec-cta" class="ginovo-common-cta" data-screen-label="마무리 CTA">
             <div class="ginovo-common-cta-bg"></div>
-            <div class="ginovo-common-cta-content" style="width:100%;max-width:920px;margin:0 auto;padding:0 24px;text-align:center;box-sizing:border-box;">
+            <div class="ginovo-common-cta-content">
                 <p>Beyond Tech, Into Culture: The New Standard Powered by Data</p>
-                <h2 style="max-width:900px;margin:0 auto;text-align:center;white-space:normal;overflow-wrap:anywhere;line-height:1.35;">Beyond the limits of technology,<br>we are creating a new golf culture.</h2>
+                <h2>Beyond the limits of technology, we are creating a new golf culture.</h2>
             </div>
         </section>
 
