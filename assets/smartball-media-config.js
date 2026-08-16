@@ -14,5 +14,7 @@ window.SMARTBALL_MEDIA = {
   'distance-analysis-screen': './assets/smartball-slot-distance-analysis.png',
   'slope-practice-screen': './assets/smartball-slot-slope-practice.png',
   'slope-selection-screen': './assets/smartball-slot-slope-selection.png',
-  'battle-panel': './assets/smartball-slot-battle-panel.png'
+  'battle-panel': './assets/smartball-slot-battle-panel.png',
+  'battle-player-a': './assets/smartball-battle-player-a.jpg',
+  'battle-player-b': './assets/smartball-battle-player-b.jpg'
 };
