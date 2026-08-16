@@ -48,12 +48,12 @@
     .contact-card{padding:26px}.contact-card span{color:var(--cyan);font-size:12px;font-weight:700}.contact-card h3{margin:24px 0 0;font-size:17px;line-height:1.7}.map{margin-top:24px;aspect-ratio:16/7;overflow:hidden;border-radius:18px;border:1px solid var(--line)}.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) brightness(.8)}
     .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf.png') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(100%,var(--max));margin:auto;padding-inline:var(--page-gutter);text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:21px;font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:41px;line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
 
-    /* 스마트 골프공 페이지와 동일한 본문 섹션 고정 폰트 크기 */
-    .title,#putting .title,.home-feature h2{font-size:54px}
-    .home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:30px}
-    .eyebrow,.home-section-one .home-eyebrow,.category,.contact-card span,.exhibit-card h3,.news-card h3,.history-row h3,.ip-item h3{font-size:25px}
-    .exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:22px}
-    #news .heading,#certificates .ip-layout>div:first-child,#history .heading{text-align:center}#news .news-card-body{text-align:center}#certificates .ip-layout{grid-template-columns:1fr}#certificates .ip-visual{display:none}#certificates .desc{margin-left:auto;margin-right:auto}#certificates .ip-list{max-width:980px;margin:36px auto 0}#certificates .ip-item{grid-template-columns:1fr;text-align:center}#certificates .ip-dot{margin:auto}.history-row,.history-row:nth-child(even){text-align:center}.history-row li,.history-row:nth-child(even) li{justify-content:center}
+    /* 스마트 골프공 페이지 기준 반응형 타이포그래피: 54 / 40 / 30 / 25 / 22px */
+    .title,#putting .title,.home-feature h2{font-size:clamp(32px,2.8125vw,54px)}
+    .home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:clamp(18px,1.5625vw,30px)}
+    .eyebrow,.home-section-one .home-eyebrow,.category,.contact-card span,.exhibit-card h3,.news-card h3,.history-row h3,.ip-item h3{font-size:clamp(20px,1.3021vw,25px)}
+    .exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:clamp(16px,1.1458vw,22px)}
+    #news .heading,#certificates .ip-layout>div:first-child{text-align:center}#news .news-card-body{text-align:center}#certificates .ip-layout{grid-template-columns:1fr}#certificates .ip-visual{display:none}#certificates .desc{margin-left:auto;margin-right:auto}#certificates .ip-list{max-width:980px;margin:36px auto 0}#certificates .ip-item{grid-template-columns:1fr;text-align:center}#certificates .ip-dot{margin:auto}
 
     /* 첨부 기준: 1063 × 439px 푸터와 작은 글자 */
     .site-footer{min-height:439px;padding:88px 32px 70px;background:#151718;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1063px);margin:0 auto;display:grid;grid-template-columns:.95fr 1fr 1.1fr;gap:86px;align-items:start}.site-footer h4{margin:0 0 26px;color:#fff;font-size:14px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:18px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.65}.footer-email{color:rgba(255,255,255,.72);font-size:18px;font-weight:600;white-space:nowrap}
@@ -100,7 +100,7 @@ NEP 신제품인증의 모든 기준을 완벽히 충족한
 
     <section class="section video-only-section"><div class="container"><div class="video-frame"><video src="./assets/videos/putting-home.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="경사 퍼팅매트 시연 영상"></video></div></div></section>
 
-    <section class="section alt" id="history"><div class="container"><div class="heading center"><p class="eyebrow">History</p><h2 class="title">그린토크 연혁</h2></div><div class="history">
+    <section class="section alt" id="history"><div class="container"><div class="heading"><p class="eyebrow">History</p><h2 class="title">그린토크 연혁</h2></div><div class="history">
       <div class="history-row"><div class="year">2025~현재</div><h3>Phase 3. 글로벌 인증 및 도약</h3><ul><li><span>·</span>25.04~06 스마트 골프 공 CE 및 FCC 해외 인증 동시 획득</li><li><span>·</span>25.05 GINOVO 스마트 골프 공 &amp; 롱 핏 매트 정식 출시</li><li><span>·</span>25.06 창업도약패키지 과제 선정</li><li><span>·</span>25.07 TIPS (R&amp;D일반)</li></ul></div>
       <div class="history-row"><div class="year">2024</div><h3>Phase 2. 라인업 완성 및 시장 진입</h3><ul><li><span>·</span>23.11 GINOVO 경사 퍼팅 매트 출시</li><li><span>·</span>24.04 초기창업패키지 과제 선정</li><li><span>·</span>24.05 스마트제조 지원강화 사업 승인 (양산 인프라 고도화)</li></ul></div>
       <div class="history-row"><div class="year">2022.08~2023</div><h3>Phase 1. R&amp;D 및 기반 구축</h3><ul><li><span>·</span>22.08 (주)그린토크 법인 설립</li><li><span>·</span>23.02 기업부설연구소 설립 및 벤처기업 승인</li><li><span>·</span>23.05 지역 특화 R&amp;D 및 스마트 홈 부품산업 과제 승인 (기술 검증)</li></ul></div>
