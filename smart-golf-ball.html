@@ -34,12 +34,24 @@
     .media-slot img{width:100%;height:100%;margin:0;object-fit:cover;opacity:0}
     .media-slot img[src]:not([src=""]){opacity:1}
     .media-slot[data-fit="contain"] img{object-fit:contain}
+    .composed-section{position:relative;overflow:hidden;padding:clamp(72px,8vw,150px) 32px;background:#070c17}
+    .composed-section::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 65% 45%,rgba(45,71,99,.28),transparent 38%)}
+    .section-shell{position:relative;z-index:1;width:min(100%,1660px);margin:0 auto}
+    .section-heading{margin:0;color:#fff;font-size:clamp(34px,4vw,64px);line-height:1.2;letter-spacing:-.045em}
+    .section-lead{margin:28px 0 0;color:#d6dbe3;font-size:clamp(17px,2vw,31px);line-height:1.7}
+    .section-points{margin:32px 0 0;padding:0;list-style:none;color:#d6dbe3;font-size:clamp(17px,1.8vw,28px);line-height:1.75}.section-points li+li{margin-top:14px}.section-points li::before{content:"•";margin-right:18px;color:#fff}
+    .cms-slot{overflow:hidden}.cms-slot img{width:100%;height:100%;margin:0;object-fit:contain;opacity:0}.cms-slot img[src]:not([src=""]){opacity:1}
+    .spec-section{text-align:center}.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,52px);margin-top:clamp(54px,7vw,100px)}.spec-card{aspect-ratio:.97;padding:2px}
+    .system-section{padding-bottom:clamp(90px,12vw,190px)}.system-intro{max-width:780px;margin-left:auto}.system-intro .accent{color:var(--cyan)}.system-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,7vw,120px);align-items:center;margin-top:clamp(30px,4vw,60px)}.system-card{min-width:0}.system-card img{max-height:720px}.system-copy h3{margin:0;color:var(--cyan);font-size:clamp(30px,3vw,52px)}.system-copy p{margin:22px 0 0;color:#fff;font-size:clamp(19px,2vw,31px);font-weight:700;line-height:1.6}.system-copy .muted{color:#c6cbd2;font-size:clamp(15px,1.4vw,23px);font-weight:400}.system-grid.secondary{margin-top:20px}.system-grid.secondary .system-card{order:2}.system-grid.secondary .system-copy{text-align:center}
+    .practice-section{background:#0a111d}.practice-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:clamp(70px,9vw,135px)}.practice-card{aspect-ratio:1.655;border:2px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 16px 45px rgba(0,0,0,.26)}.practice-card img{object-fit:cover}
+    .slope-section{background:#070c17}
+    .battle-section{background:linear-gradient(rgba(7,12,23,.55),rgba(7,12,23,.72)),url('./assets/cta-golf.png') center/cover no-repeat}.battle-section::before{backdrop-filter:blur(10px);background:rgba(7,12,23,.35)}.battle-section .section-heading,.battle-section .section-lead{text-align:center}.battle-panel{width:min(100%,1500px);aspect-ratio:1.645;margin:55px auto 0;border-radius:28px;box-shadow:0 20px 70px rgba(0,0,0,.4)}.battle-panel img{object-fit:cover}
     .design-section.reveal-ready{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);will-change:opacity,transform}
     .design-section.reveal-ready.is-visible{opacity:1;transform:translateY(0)}
     .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf.png') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:auto;padding:0;text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:clamp(16px,1.45vw,21px);font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:clamp(30px,4.2vw,41px);line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
     .site-footer{min-height:439px;padding:88px 32px 70px;background:#151718;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1063px);margin:0 auto;display:grid;grid-template-columns:.95fr 1fr 1.1fr;gap:86px;align-items:start}.site-footer h4{margin:0 0 26px;color:#fff;font-size:14px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:18px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.65}.footer-email{color:rgba(255,255,255,.72);font-size:18px;font-weight:600;white-space:nowrap}
-    @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:40px}.cta h2{white-space:normal}}
-    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}}
+    @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:40px}.cta h2{white-space:normal}.spec-grid{grid-template-columns:repeat(2,1fr)}.system-grid,.practice-grid{grid-template-columns:1fr}.system-intro{margin-left:0}.system-grid.secondary .system-card{order:0}.system-copy{text-align:center}}
+    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}.composed-section{padding:68px 18px}.spec-grid{grid-template-columns:1fr 1fr;gap:12px}.practice-grid{margin-top:48px}.practice-card{border-radius:14px}.battle-panel{margin-top:34px;border-radius:16px}}
     @media(prefers-reduced-motion:reduce){.smartball-hero-copy h1{animation:none}.design-section.reveal-ready{opacity:1;transform:none;transition:none}}
   </style>
 </head>
@@ -63,42 +75,60 @@
       <div class="smartball-hero-copy"><h1>스마트 골프공</h1></div>
     </section>
     <section class="design-section"><img src="./assets/smartball-page-01.png" alt="스마트 골프공 내부 시뮬레이터 구조"></section>
-    <section class="design-section" data-editable-section="spec-status">
-      <div class="editable-media-layout">
-        <img class="design-base" src="./assets/smartball-page-02.png" alt="스마트 골프공 물리적 스펙 목표 달성 현황">
-        <div class="media-slot" data-media-slot="spec-weight" style="--slot-x:6.6%;--slot-y:31.5%;--slot-w:20%;--slot-h:54%;"><img alt="무게 스펙 이미지"></div>
-        <div class="media-slot" data-media-slot="spec-size" style="--slot-x:30%;--slot-y:31.5%;--slot-w:20%;--slot-h:54%;"><img alt="외경 사이즈 스펙 이미지"></div>
-        <div class="media-slot" data-media-slot="spec-rebound" style="--slot-x:53.4%;--slot-y:31.5%;--slot-w:20%;--slot-h:54%;"><img alt="반발력 스펙 이미지"></div>
-        <div class="media-slot" data-media-slot="spec-eccentricity" style="--slot-x:76.8%;--slot-y:31.5%;--slot-w:20%;--slot-h:54%;"><img alt="편심도 스펙 이미지"></div>
+    <section class="design-section composed-section spec-section" data-editable-section="spec-status">
+      <div class="section-shell">
+        <h2 class="section-heading">물리적 스펙 목표 100% 달성 현황</h2>
+        <div class="spec-grid">
+          <div class="cms-slot spec-card" data-media-slot="spec-weight"><img alt="무게 스펙 이미지"></div>
+          <div class="cms-slot spec-card" data-media-slot="spec-size"><img alt="외경 사이즈 스펙 이미지"></div>
+          <div class="cms-slot spec-card" data-media-slot="spec-rebound"><img alt="반발력 스펙 이미지"></div>
+          <div class="cms-slot spec-card" data-media-slot="spec-eccentricity"><img alt="편심도 스펙 이미지"></div>
+        </div>
       </div>
     </section>
-    <section class="design-section" data-editable-section="putting-system">
-      <div class="editable-media-layout">
-        <img class="design-base" src="./assets/smartball-page-system.png" alt="GINOVO 퍼팅 시스템과 스마트 무선 충전 시스템">
-        <div class="media-slot" data-media-slot="putting-system-set" data-fit="contain" style="--slot-x:0%;--slot-y:4%;--slot-w:50%;--slot-h:58%;--slot-radius:0;"><img alt="퍼팅 시스템 세트 이미지"></div>
-        <div class="media-slot" data-media-slot="wireless-charger" data-fit="contain" style="--slot-x:43%;--slot-y:49%;--slot-w:57%;--slot-h:51%;--slot-radius:0;"><img alt="스마트 골프공 무선 충전기 이미지"></div>
+    <section class="design-section composed-section system-section" data-editable-section="putting-system">
+      <div class="section-shell">
+        <div class="system-intro">
+          <h2 class="section-heading accent">GINOVO 퍼팅 시스템</h2>
+          <p class="section-lead">퍼팅 연습에 집중할 수 있는 스마트 골프의 완벽한 구성</p>
+          <p class="section-lead">스마트 골프공, 무선 충전기, 퍼팅매트, 반사판, 모바일 거치대 set 구성</p>
+        </div>
+        <div class="system-grid">
+          <div class="cms-slot system-card" data-media-slot="putting-system-set"><img alt="퍼팅 시스템 세트 이미지"></div>
+          <div class="system-copy"><h3>자유로운 연습부터<br>실전 그린 정밀 분석까지</h3></div>
+        </div>
+        <div class="system-grid secondary">
+          <div class="cms-slot system-card" data-media-slot="wireless-charger"><img alt="스마트 골프공 무선 충전기 이미지"></div>
+          <div class="system-copy"><h3>스마트 무선 충전 시스템</h3><p>장소 제약 없는 휴대 가능한 무선 충전기</p></div>
+        </div>
       </div>
     </section>
-    <section class="design-section" data-editable-section="distance-practice">
-      <div class="editable-media-layout">
-        <img class="design-base" src="./assets/smartball-page-03.png" alt="목표 거리와 그린 스피드별 퍼팅 연습">
-        <div class="media-slot" data-media-slot="distance-practice-screen" style="--slot-x:6.4%;--slot-y:42%;--slot-w:44.5%;--slot-h:49%;"><img alt="목표 거리 퍼팅 연습 화면"></div>
-        <div class="media-slot" data-media-slot="distance-analysis-screen" style="--slot-x:53%;--slot-y:42%;--slot-w:44%;--slot-h:49%;"><img alt="퍼팅 정량성과 타점 분석 화면"></div>
+    <section class="design-section composed-section practice-section" data-editable-section="distance-practice">
+      <div class="section-shell">
+        <h2 class="section-heading">목표 거리 / 그린 스피드별 반복적이고 정량적인 퍼팅 연습</h2>
+        <ul class="section-points"><li>거리 제약 없는 완벽한 퍼팅 연습 지원</li><li>목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원</li></ul>
+        <div class="practice-grid">
+          <div class="cms-slot practice-card" data-media-slot="distance-practice-screen"><img alt="목표 거리 퍼팅 연습 화면"></div>
+          <div class="cms-slot practice-card" data-media-slot="distance-analysis-screen"><img alt="퍼팅 정량성과 타점 분석 화면"></div>
+        </div>
       </div>
     </section>
-    <section class="design-section" data-editable-section="slope-practice">
-      <div class="editable-media-layout">
-        <img class="design-base" src="./assets/smartball-page-04.png" alt="그린 분석을 통한 경사별 퍼팅 연습">
-        <div class="media-slot" data-media-slot="slope-practice-screen" style="--slot-x:6.4%;--slot-y:42%;--slot-w:44.5%;--slot-h:49%;"><img alt="경사 퍼팅 연습 화면"></div>
-        <div class="media-slot" data-media-slot="slope-selection-screen" style="--slot-x:53%;--slot-y:42%;--slot-w:44%;--slot-h:49%;"><img alt="그린 경사 위치 선택 화면"></div>
+    <section class="design-section composed-section practice-section slope-section" data-editable-section="slope-practice">
+      <div class="section-shell">
+        <h2 class="section-heading">그린 분석을 통한 경사별 유연한 퍼팅 연습 지원</h2>
+        <ul class="section-points"><li>나만의 경사 설계로 반복 연습을 통한 정량적 스트로크 지원</li></ul>
+        <div class="practice-grid">
+          <div class="cms-slot practice-card" data-media-slot="slope-practice-screen"><img alt="경사 퍼팅 연습 화면"></div>
+          <div class="cms-slot practice-card" data-media-slot="slope-selection-screen"><img alt="그린 경사 위치 선택 화면"></div>
+        </div>
       </div>
     </section>
     <section class="design-section"><img src="./assets/smartball-page-05.png" alt="필드 그린 퍼팅 연습과 정밀 분석"></section>
-    <section class="design-section" data-editable-section="battle-practice">
-      <div class="editable-media-layout">
-        <img class="design-base" src="./assets/smartball-page-06.png" alt="온오프라인 퍼팅 대결 실전 연습">
-        <div class="media-slot" data-media-slot="battle-player-a" style="--slot-x:17%;--slot-y:33%;--slot-w:25%;--slot-h:31%;"><img alt="퍼팅 대결 플레이어 A 이미지"></div>
-        <div class="media-slot" data-media-slot="battle-player-b" style="--slot-x:58%;--slot-y:33%;--slot-w:25%;--slot-h:31%;"><img alt="퍼팅 대결 플레이어 B 이미지"></div>
+    <section class="design-section composed-section battle-section" data-editable-section="battle-practice">
+      <div class="section-shell">
+        <h2 class="section-heading">온·오프라인 대결 모드를 통한 실전 연습</h2>
+        <p class="section-lead">지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결</p>
+        <div class="cms-slot battle-panel" data-media-slot="battle-panel"><img alt="퍼팅 대결 실전 연습 패널 이미지"></div>
       </div>
     </section>
   </main>
