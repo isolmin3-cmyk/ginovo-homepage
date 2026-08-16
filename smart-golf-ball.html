@@ -26,15 +26,15 @@
     .smartball-hero-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:0 auto 72px;text-align:left}
     .smartball-hero-copy h1{max-width:850px;margin:0;color:#fff;font-size:clamp(52px,7vw,100px);font-weight:700;line-height:.98;letter-spacing:-.065em;animation:heroTitleUp .9s cubic-bezier(.2,.8,.2,1) .2s both}
     @keyframes heroTitleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-    .design-section{width:100%;margin:0;background:var(--bg)}
-    .design-section img{width:min(100%,1920px);height:auto;margin:0 auto;object-fit:contain;filter:none;transform:none}
+    .design-section{width:min(100%,1920px);margin:0 auto;padding-inline:clamp(24px,6.25vw,120px);background:var(--bg)}
+    .design-section>img{width:100%;height:auto;margin:0 auto;object-fit:contain;filter:none;transform:none}
     .editable-media-layout{position:relative;width:min(100%,1920px);margin:0 auto;overflow:hidden}
     .editable-media-layout>.design-base{width:100%;max-width:none;margin:0}
     .media-slot{position:absolute;left:var(--slot-x);top:var(--slot-y);width:var(--slot-w);height:var(--slot-h);overflow:hidden;border-radius:var(--slot-radius,18px);pointer-events:none}
     .media-slot img{width:100%;height:100%;margin:0;object-fit:cover;opacity:0}
     .media-slot img[src]:not([src=""]){opacity:1}
     .media-slot[data-fit="contain"] img{object-fit:contain}
-    .composed-section{position:relative;width:min(100%,1920px);margin:0 auto;overflow:hidden;padding:clamp(72px,7.8125vw,150px) 32px;background:#070c17}
+    .composed-section{position:relative;overflow:hidden;padding-top:clamp(72px,7.8125vw,150px);padding-bottom:clamp(72px,7.8125vw,150px);background:#070c17}
     .composed-section::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 65% 45%,rgba(45,71,99,.28),transparent 38%)}
     .section-shell{position:relative;z-index:1;width:min(100%,1660px);margin:0 auto}
     .section-heading{margin:0;color:#fff;font-size:clamp(32px,2.8125vw,54px);font-weight:700;line-height:1.2;letter-spacing:-.045em}
@@ -42,16 +42,17 @@
     .section-points{margin:32px 0 0;padding:0;list-style:none;color:#d6dbe3;font-size:clamp(18px,1.5625vw,30px);font-weight:400;line-height:1.75}.section-points li+li{margin-top:14px}.section-points li::before{content:"•";margin-right:18px;color:#fff}
     .cms-slot{overflow:hidden}.cms-slot img{width:100%;height:100%;margin:0;object-fit:contain;opacity:0}.cms-slot img[src]:not([src=""]){opacity:1}
     .spec-section{text-align:center}.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,52px);margin-top:clamp(54px,7vw,100px)}.spec-card{aspect-ratio:.97;padding:2px}
-    .system-section{min-height:100svh;padding-bottom:clamp(90px,9.8958vw,190px);background:url('./assets/smartball-section-03-bg.png') center/cover no-repeat}.system-section::before{display:none}.system-intro{max-width:900px;margin-left:auto}.system-intro .accent{color:var(--cyan);font-size:clamp(32px,2.8125vw,54px)}.system-subtitle{font-size:clamp(24px,2.0833vw,40px);font-weight:700}.system-description{font-size:clamp(18px,1.5625vw,30px);font-weight:400}.system-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6.25vw,120px);align-items:center;margin-top:clamp(30px,3.125vw,60px)}.system-card{min-width:0}.system-card img{max-height:720px}.system-copy h3{margin:0;color:var(--cyan);font-size:clamp(32px,2.8125vw,54px);font-weight:700}.system-copy p{margin:22px 0 0;color:#fff;font-size:clamp(24px,2.0833vw,40px);font-weight:700;line-height:1.6}.system-grid.secondary{margin-top:20px}.system-grid.secondary .system-card{order:2}.system-grid.secondary .system-copy{text-align:center}
+    .system-section{min-height:min(90.6771vw,1741px);padding-top:0;padding-bottom:0;background:url('./assets/smartball-section-03-bg.png') center/cover no-repeat}.system-section::before{display:none}.system-stage{position:relative;min-height:min(90.6771vw,1741px)}.system-intro{position:absolute;top:18%;right:0;width:50%;text-align:left}.system-intro .accent{color:var(--cyan);font-size:clamp(32px,2.8125vw,54px)}.system-subtitle{font-size:clamp(24px,2.0833vw,40px);font-weight:700}.system-description{font-size:clamp(18px,1.5625vw,30px);font-weight:400}.system-card{position:absolute;min-width:0}.system-card img{width:100%;height:100%;object-fit:contain}.system-card.primary{top:6%;left:0;width:47%;height:50%}.system-card.secondary{right:2%;bottom:2%;width:46%;height:55%}.system-copy{position:absolute;left:0;bottom:20%;width:45%;text-align:center}.system-copy h3{margin:0;color:var(--cyan);font-size:clamp(32px,2.8125vw,54px);font-weight:700}.system-copy p{margin:22px 0 0;color:#fff;font-size:clamp(24px,2.0833vw,40px);font-weight:700;line-height:1.6}
     .practice-section{background:#0a111d}.distance-section{min-height:100svh;background:url('./assets/smartball-section-04-bg.png') center/cover no-repeat}.distance-section::before{display:none}.practice-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:clamp(70px,9vw,135px)}.practice-card{aspect-ratio:1.655;border:2px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 16px 45px rgba(0,0,0,.26)}.practice-card img{object-fit:cover}
     .slope-section{background:#070c17}
+    .field-section{min-height:min(61.9792vw,1190px);padding-top:clamp(70px,5.7292vw,110px);padding-bottom:clamp(70px,5.7292vw,110px);background:url('./assets/smartball-section-06-bg.png') center/cover no-repeat}.field-section::before{display:none}.field-heading{max-width:1280px}.field-panel{position:relative;width:64%;max-width:1080px;min-height:720px;margin-top:clamp(52px,4.1667vw,80px);padding:clamp(38px,3.125vw,60px);display:flex;flex-direction:column;justify-content:center}.field-panel-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}.field-panel-content{position:relative;z-index:1}.field-kicker{margin:0;color:#fff;font-size:clamp(32px,2.8125vw,54px);font-weight:700;line-height:1.28}.field-kicker .accent{color:var(--cyan)}.field-summary{margin:24px 0 0;color:#e3e6eb;font-size:clamp(18px,1.5625vw,30px);font-weight:400;line-height:1.65}.field-features{display:grid;gap:28px;margin-top:46px}.field-feature{display:grid;grid-template-columns:52px 1fr;gap:24px;align-items:center;padding:26px 30px;border:1px solid rgba(255,255,255,.8);border-radius:20px;background:rgba(6,11,19,.26)}.field-feature img{width:46px;height:46px;object-fit:contain}.field-feature h3{margin:0;color:#fff;font-size:clamp(20px,1.3021vw,25px);font-weight:700}.field-feature p{margin:10px 0 0;color:#d9dde3;font-size:clamp(16px,1.1458vw,22px);font-weight:400;line-height:1.55}.field-badges{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}.field-badge{padding:20px;border:1px solid rgba(255,255,255,.8);border-radius:20px;text-align:center;background:rgba(6,11,19,.22)}.field-badge strong{display:block;color:var(--cyan);font-size:clamp(20px,1.3021vw,25px)}.field-badge span{display:block;margin-top:10px;color:#d9dde3;font-size:clamp(16px,1.1458vw,22px)}
     .battle-section{min-height:100svh;background:url('./assets/smartball-section-07-bg.png') center/cover no-repeat}.battle-section::before{display:none}.battle-section .section-heading,.battle-section .section-lead{text-align:center}.battle-panel{width:min(100%,1500px);aspect-ratio:1.645;margin:55px auto 0;border-radius:28px;box-shadow:0 20px 70px rgba(0,0,0,.4)}.battle-panel img{object-fit:cover}
     .design-section.reveal-ready{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);will-change:opacity,transform}
     .design-section.reveal-ready.is-visible{opacity:1;transform:translateY(0)}
     .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf.png') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:auto;padding:0;text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:clamp(16px,1.45vw,21px);font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:clamp(30px,4.2vw,41px);line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
     .site-footer{min-height:439px;padding:88px 32px 70px;background:#151718;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1063px);margin:0 auto;display:grid;grid-template-columns:.95fr 1fr 1.1fr;gap:86px;align-items:start}.site-footer h4{margin:0 0 26px;color:#fff;font-size:14px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:18px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.65}.footer-email{color:rgba(255,255,255,.72);font-size:18px;font-weight:600;white-space:nowrap}
-    @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:40px}.cta h2{white-space:normal}.spec-grid{grid-template-columns:repeat(2,1fr)}.system-grid,.practice-grid{grid-template-columns:1fr}.system-intro{margin-left:0}.system-grid.secondary .system-card{order:0}.system-copy{text-align:center}}
-    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}.composed-section{padding:68px 18px}.section-heading,.system-intro .accent,.system-copy h3{font-size:32px}.section-lead,.section-points,.system-description{font-size:18px}.system-subtitle,.system-copy p{font-size:24px}.spec-grid{grid-template-columns:1fr 1fr;gap:12px}.practice-grid{margin-top:48px}.practice-card{border-radius:14px}.battle-panel{margin-top:34px;border-radius:16px}}
+    @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:40px}.cta h2{white-space:normal}.spec-grid{grid-template-columns:repeat(2,1fr)}.practice-grid{grid-template-columns:1fr}.field-panel{width:72%;min-height:620px}}
+    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a{font-size:12px}.footer-email{white-space:normal}.design-section{padding-inline:18px}.composed-section{padding-top:68px;padding-bottom:68px}.section-heading,.system-intro .accent,.system-copy h3,.field-kicker{font-size:32px}.section-lead,.section-points,.system-description,.field-summary{font-size:18px}.system-subtitle,.system-copy p{font-size:24px}.spec-grid{grid-template-columns:1fr 1fr;gap:12px}.system-section,.system-stage{min-height:auto}.system-stage{display:grid;gap:28px}.system-intro,.system-card,.system-copy{position:relative;inset:auto;width:100%}.system-card.primary{height:360px;grid-row:1}.system-intro{grid-row:2}.system-copy{grid-row:3}.system-card.secondary{height:380px;grid-row:4}.practice-grid{margin-top:48px}.practice-card{border-radius:14px}.field-section{min-height:auto;background-position:62% center}.field-heading{max-width:none}.field-panel{width:100%;min-height:auto;padding:34px 24px}.field-panel-frame{opacity:.88}.field-feature{grid-template-columns:40px 1fr;padding:20px 18px}.field-feature img{width:36px;height:36px}.field-badges{grid-template-columns:1fr;gap:16px}.battle-panel{margin-top:34px;border-radius:16px}}
     @media(prefers-reduced-motion:reduce){.smartball-hero-copy h1{animation:none}.design-section.reveal-ready{opacity:1;transform:none;transition:none}}
   </style>
 </head>
@@ -87,20 +88,15 @@
       </div>
     </section>
     <section class="design-section composed-section system-section" data-editable-section="putting-system">
-      <div class="section-shell">
+      <div class="section-shell system-stage">
+        <div class="cms-slot system-card primary" data-media-slot="putting-system-set"><img alt="퍼팅 시스템 세트 이미지"></div>
         <div class="system-intro">
           <h2 class="section-heading accent">GINOVO 퍼팅 시스템</h2>
           <p class="section-lead system-subtitle">퍼팅 연습에 집중할 수 있는 스마트 골프의 완벽한 구성</p>
           <p class="section-lead system-description">스마트 골프공, 무선 충전기, 퍼팅매트, 반사판, 모바일 거치대 set 구성</p>
         </div>
-        <div class="system-grid">
-          <div class="cms-slot system-card" data-media-slot="putting-system-set"><img alt="퍼팅 시스템 세트 이미지"></div>
-          <div class="system-copy"><h3>자유로운 연습부터<br>실전 그린 정밀 분석까지</h3></div>
-        </div>
-        <div class="system-grid secondary">
-          <div class="cms-slot system-card" data-media-slot="wireless-charger"><img alt="스마트 골프공 무선 충전기 이미지"></div>
-          <div class="system-copy"><h3>스마트 무선 충전 시스템</h3><p>장소 제약 없는 휴대 가능한 무선 충전기</p></div>
-        </div>
+        <div class="system-copy"><h3>스마트 무선 충전 시스템</h3><p>장소 제약 없는 휴대 가능한 무선 충전기</p></div>
+        <div class="cms-slot system-card secondary" data-media-slot="wireless-charger"><img alt="스마트 골프공 무선 충전기 이미지"></div>
       </div>
     </section>
     <section class="design-section composed-section practice-section distance-section" data-editable-section="distance-practice">
@@ -123,7 +119,35 @@
         </div>
       </div>
     </section>
-    <section class="design-section"><img src="./assets/smartball-page-05.png" alt="필드 그린 퍼팅 연습과 정밀 분석"></section>
+    <section class="design-section composed-section field-section" data-editable-section="field-practice">
+      <div class="section-shell">
+        <div class="field-heading">
+          <h2 class="section-heading">필드 그린에서 거리 &amp; 경사 영향 퍼팅 연습을 자유롭게</h2>
+          <p class="section-lead">실제 그린 환경에서 퍼팅의 경사 영향 분석 및 그린 스피드 피드백</p>
+        </div>
+        <div class="field-panel">
+          <img class="field-panel-frame" src="./assets/smartball-section-06-panel.png" alt="">
+          <div class="field-panel-content">
+            <h3 class="field-kicker">자유로운 연습부터<br><span class="accent">실전 그린 정밀 분석</span>까지</h3>
+            <p class="field-summary">언제 어디서나 실제 필드의 그린 감각을 완벽하게 재현합니다.</p>
+            <div class="field-features">
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-anywhere.png" alt="">
+                <div><h3>장소 제한 없는 자유로운 퍼팅 연습</h3><p>실제 필드 그린은 물론 연습장, 가정용 연습 매트까지 어떤 공간에서든 제약 없이 자유롭게 연습할 수 있습니다.</p></div>
+              </article>
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-analysis.png" alt="">
+                <div><h3>경사 영향 분석 &amp; 그린 스피드 피드백</h3><p>실제 그린 환경에서의 경사도에 따른 공의 궤적 영향을 정밀 분석하고, 그린 스피드에 맞춘 최적의 거리감 피드백을 제공합니다.</p></div>
+              </article>
+            </div>
+            <div class="field-badges">
+              <div class="field-badge"><strong>ANYWHERE</strong><span>필드 &amp; 다양한 매트 지원</span></div>
+              <div class="field-badge"><strong>REAL - TIME</strong><span>경사도 및 스피드 실시간 데이터</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="design-section composed-section battle-section" data-editable-section="battle-practice">
       <div class="section-shell">
         <h2 class="section-heading">온·오프라인 대결 모드를 통한 실전 연습</h2>
