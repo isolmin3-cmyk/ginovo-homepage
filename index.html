@@ -78,7 +78,7 @@
   </header>
 
   <main>
-    <section class="hero" id="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="./assets/videos/hero-video.mp4" type="video/mp4"></video><div class="hero-copy"><span class="hero-badge">기술은 심플하게, 피드백은 확실하게</span><h1>Simple Play,<br>Smart Data</h1><p class="hero-sub">데이터로 여는 새로운 플레이</p></div></section>
+    <section class="hero" id="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./assets/videos/hero-video-poster.jpg"><source src="./assets/videos/hero-video.mp4" type="video/mp4"></video><div class="hero-copy"><span class="hero-badge">기술은 심플하게, 피드백은 확실하게</span><h1>Simple Play,<br>Smart Data</h1><p class="hero-sub">데이터로 여는 새로운 플레이</p></div></section>
 
     <section class="home-feature home-section-one" id="products" data-editable-section="home-section-1" data-background-slot="section1Background">
       <div class="home-feature-stage"><div class="home-copy"><p class="home-eyebrow" data-content-key="section1Eyebrow">지노버 스마트 골프공</p><h2 data-content-key="section1Title">골프공의 한계를 넘어,<br>골프 분석의 새로운 표준이 되다.</h2><p class="home-body" data-content-key="section1Body">독창성, 우수성, 신뢰성, 파급효과 -
@@ -93,7 +93,7 @@ NEP 신제품인증의 모든 기준을 완벽히 충족한
       <div class="home-feature-stage"><div class="home-centered-copy"><h2 data-content-key="section3Title">감에 의존하는 지루한 연습에서 데이터를 기반으로 한 체계적 연습</h2><p class="home-subtitle" data-content-key="section3Body">목표 거리 설정 - 통계분석 - 반복 연습 - 퍼팅 대결 실전 연습</p></div><img class="home-visual" data-media-slot="section3Visual" src="./assets/home/section-3-visual.png" alt="스마트 골프공 4단계 연습 시스템"></div>
     </section>
 
-    <section class="section video-only-section" id="smartball-film"><div class="container"><div class="video-frame"><video src="./assets/videos/smartball-home.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="지노버 스마트 골프공 영상"></video></div></div></section>
+    <section class="section video-only-section" id="smartball-film"><div class="container"><div class="video-frame"><video src="./assets/videos/smartball-home.mp4" muted loop playsinline controls preload="none" data-autoplay-on-view aria-label="지노버 스마트 골프공 영상"></video></div></div></section>
 
     <section class="section alt" id="putting" data-editable-section="home-section-4" data-background-slot="section4Background"><div class="container"><div class="heading"><h2 class="title" data-content-key="section4Title">지노버 경사 퍼팅매트</h2></div><div class="putting-grid">
       <article class="card image-card"><img data-media-slot="section4Image1" src="./assets/putting-slope.png" alt="경사판을 적용한 지노버 경사 퍼팅매트"></article>
@@ -101,7 +101,7 @@ NEP 신제품인증의 모든 기준을 완벽히 충족한
       <article class="card image-card"><img data-media-slot="section4Image3" src="./assets/home/putting-kit.jpg.png" alt="지노버 경사 퍼팅매트 구성품"></article>
     </div></div></section>
 
-    <section class="section video-only-section"><div class="container"><div class="video-frame"><video src="./assets/videos/putting-home.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="경사 퍼팅매트 시연 영상"></video></div></div></section>
+    <section class="section video-only-section"><div class="container"><div class="video-frame"><video src="./assets/videos/putting-home.mp4" muted loop playsinline controls preload="none" data-autoplay-on-view aria-label="경사 퍼팅매트 시연 영상"></video></div></div></section>
 
     <section class="section alt" id="history"><div class="container"><div class="heading"><p class="eyebrow">History</p><h2 class="title">그린토크 연혁</h2></div><div class="history">
       <div class="history-row"><div class="year">2025~현재</div><h3>Phase 3. 글로벌 인증 및 도약</h3><ul><li><span>·</span>25.04~06 스마트 골프 공 CE 및 FCC 해외 인증 동시 획득</li><li><span>·</span>25.05 GINOVO 스마트 골프 공 &amp; 롱 핏 매트 정식 출시</li><li><span>·</span>25.06 창업도약패키지 과제 선정</li><li><span>·</span>25.07 TIPS (R&amp;D일반)</li></ul></div>
@@ -152,6 +152,18 @@ NEP 신제품인증의 모든 기준을 완벽히 충족한
       document.querySelectorAll('[data-background-slot="'+key+'"]').forEach(function(node){node.style.backgroundImage='url("'+source.replace(/"/g,'\\"')+'")';});
     });
     document.querySelectorAll('video[autoplay]').forEach(function(video){video.muted=true;video.loop=true;video.addEventListener('ended',function(){video.currentTime=0;video.play().catch(function(){});});video.play().catch(function(){});});
+    document.querySelectorAll('video[data-autoplay-on-view]').forEach(function(video){
+      video.muted=true;
+      video.loop=true;
+      if(!('IntersectionObserver' in window)){video.load();return;}
+      var videoObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){video.play().catch(function(){});}
+          else{video.pause();}
+        });
+      },{rootMargin:'300px 0px',threshold:.05});
+      videoObserver.observe(video);
+    });
     var historyTimeline = document.querySelector('.history');
     var historyRows = document.querySelectorAll('.history-row');
     if ('IntersectionObserver' in window && historyTimeline && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
