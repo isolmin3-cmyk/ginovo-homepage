@@ -93,7 +93,10 @@
         .ginovo-nav-link { color: #FFFFFF; font-size: 18px; font-weight: 500; cursor: pointer; white-space: nowrap; }
         .ginovo-dropdown-wrap { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; background: transparent; z-index: 1001; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
         .ginovo-nav-item:hover .ginovo-dropdown-wrap,
+        .ginovo-nav-item:focus-within .ginovo-dropdown-wrap,
         .ginovo-lang:hover .ginovo-dropdown-wrap { opacity: 1; visibility: visible; }
+        .ginovo-about-trigger { padding: 0; border: 0; background: none; font-family: inherit; cursor: pointer; }
+        .ginovo-about-trigger::after { content: "⌄"; margin-left: 7px; font-size: 14px; }
         .ginovo-dropdown-panel { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); padding: 12px; min-width: 160px; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.22); display: flex; flex-direction: column; }
         .ginovo-dropdown-panel a { padding: 8px 16px; border-radius: 8px; display: block; color: #111111; font-size: 14px; font-weight: 500; white-space: nowrap; }
         .ginovo-dropdown-panel a:hover { background: rgba(0,0,0,0.05); }
@@ -185,7 +188,7 @@
         </a>
         <nav class="ginovo-nav" aria-label="Primary navigation">
             <ul class="ginovo-nav-list">
-                <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./index.html#about">About us</a></li>
+                <li class="ginovo-nav-item"><button class="ginovo-nav-link ginovo-about-trigger" type="button" aria-haspopup="true">About us</button><div class="ginovo-dropdown-wrap"><div class="ginovo-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./smart-golf-ball.html">스마트 골프공</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link is-active" href="./putting-mat.html" aria-current="page">경사 퍼팅매트</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer">Shop</a></li>
