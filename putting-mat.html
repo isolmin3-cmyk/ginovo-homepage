@@ -20,7 +20,7 @@
         *, *::before, *::after { box-sizing: border-box; }
         body { margin: 0; font-family: 'Pretendard', 'Inter', -apple-system, sans-serif; }
         html, body { background: #070C17; }
-        x-dc > div { --accent-cyan: #2BFFE5 !important; background: #070C17 !important; }
+        x-dc > div { --accent-cyan: #2BFFE5 !important; --pm-page-gutter: clamp(24px, 6.25vw, 120px); background: #070C17 !important; }
         main > section:not(.ginovo-common-cta) { background: #070C17 !important; }
         *[style*="#34D399"] { color: #2BFFE5 !important; border-color: #2BFFE5 !important; }
         .pm-reference-hidden,
@@ -30,7 +30,7 @@
         [data-screen-label="경기 방식"],
         [data-screen-label="득점"],
         [data-screen-label="게임 영상"] { display: none !important; }
-        .pm-review-section { padding: 64px clamp(24px, 6.25vw, 120px) 80px; background: #070C17; }
+        .pm-review-section { padding: 64px var(--pm-page-gutter) 80px; background: #070C17; }
         .pm-review-inner { width: 100%; max-width: 1680px; margin: 0 auto; }
         .pm-review-frame { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,.1); background: #000; }
         .pm-review-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
@@ -42,6 +42,23 @@
         [data-screen-label="대표 모델 90cm"],
         [data-screen-label="슬로핑 매트"] { padding-top: 96px !important; padding-bottom: 96px !important; }
         [data-screen-label="사이즈 비교"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+        [data-screen-label="대표 모델 90cm"],
+        [data-screen-label="슬로핑 매트"],
+        [data-screen-label="사이즈 비교"] {
+            padding-left: var(--pm-page-gutter) !important;
+            padding-right: var(--pm-page-gutter) !important;
+        }
+        [data-screen-label="대표 모델 90cm"] > div,
+        [data-screen-label="슬로핑 매트"] > div,
+        [data-screen-label="사이즈 비교"] > div {
+            width: 100% !important;
+            max-width: 1680px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        [data-screen-label="사이즈 비교"] > div > div {
+            max-width: 100% !important;
+        }
         /* Smart-golf-ball typography scale: 54 / 40 / 30 / 25 / 22px. */
         [data-screen-label="대표 모델 90cm"] h2,
         [data-screen-label="슬로핑 매트"] h2,
@@ -164,6 +181,7 @@
             .ginovo-footer-container { grid-template-columns: 1fr; gap: 40px; }
         }
         @media (max-width: 640px) {
+            x-dc > div { --pm-page-gutter: 18px; }
             .ginovo-header { top: 16px; overflow-x: auto; justify-content: flex-start; }
             .ginovo-footer-container { grid-template-columns: 1fr; }
             .ginovo-common-cta-content h2 { white-space: normal; }
