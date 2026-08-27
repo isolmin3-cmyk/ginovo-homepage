@@ -11,5 +11,10 @@ window.SMARTBALL_CONTENT = {
   anatomyShellTitle: '보호구 (Protective Shell)',
   anatomyShellDescription: '',
   anatomyCoverTitle: '외피 (Outer Cover)',
-  anatomyCoverDescription: '공기 저항을 최소화하는 딤플.\n공인구 직경 42.67mm 유지.'
+  anatomyCoverDescription: '공기 저항을 최소화하는 딤플.\n공인구 직경 42.67mm 유지.',
+  specTitle: '물리적 스펙 목표 100% 달성 현황',
+  specWeight: '무게 : 45.93g',
+  specSize: '외경 사이즈 : 42.67mm',
+  specRebound: '반발력 : 72.1',
+  specEccentricity: '편심도 : 0.095%'
 };
