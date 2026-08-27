@@ -9,7 +9,7 @@ window.SMARTBALL_MEDIA = {
   'spec-rebound': './assets/smartball-spec-3.png',
   'spec-eccentricity': './assets/smartball-spec-4.png',
   'putting-system-set': './assets/smartball-slot-putting-system.png',
-    'wireless-charger': './assets/smartball-slot-wireless-charger-no-arrow-v2.png',
+    'wireless-charger': './assets/smartball-slot-wireless-charger-labeled.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
   'distance-analysis-screen': './assets/smartball-slot-distance-analysis.png',
   'slope-practice-screen': './assets/smartball-slot-slope-practice.png',
