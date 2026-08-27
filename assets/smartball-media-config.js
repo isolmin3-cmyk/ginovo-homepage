@@ -4,10 +4,10 @@
  * 빈 값은 현재 합성 디자인 이미지를 그대로 보여줍니다.
  */
 window.SMARTBALL_MEDIA = {
-  'spec-weight': './assets/smartball-slot-spec-weight.png',
-  'spec-size': './assets/smartball-slot-spec-size.png',
-  'spec-rebound': './assets/smartball-slot-spec-rebound.png',
-  'spec-eccentricity': './assets/smartball-slot-spec-eccentricity.png',
+  'spec-weight': './assets/smartball-spec-1.png',
+  'spec-size': './assets/smartball-spec-2.png',
+  'spec-rebound': './assets/smartball-spec-3.png',
+  'spec-eccentricity': './assets/smartball-spec-4.png',
   'putting-system-set': './assets/smartball-slot-putting-system.png',
   'wireless-charger': './assets/smartball-slot-wireless-charger.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
