@@ -172,7 +172,7 @@
         .ginovo-common-cta-content p { font-size: clamp(16px, 1.45vw, 21px); font-weight: 700; margin: 0 0 26px; color: #d6dbe3; letter-spacing: .01em; text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.85); }
         .ginovo-common-cta-content h2 { font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: normal; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.75); }
         .ginovo-footer { position: relative; z-index: 1; min-height: auto; background: #070C17; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 64px 32px 44px; }
-        .ginovo-footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: .75fr .85fr 1.65fr; gap: 64px; }
+        .ginovo-footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, max-content); justify-content: space-between; gap: 40px; }
         .ginovo-footer h4 { font-size: 17px; font-weight: 600; color: #FFFFFF; margin: 0 0 20px; letter-spacing: 0; }
         .ginovo-footer p { margin: 0; }
         .ginovo-footer-phone { font-size: 21px; font-weight: 600; color: rgba(255,255,255,.72); margin-bottom: 22px !important; }
@@ -186,7 +186,7 @@
             .ginovo-nav-list { gap: 16px; }
             .ginovo-login { display: none; }
             .ginovo-footer { min-height: auto; }
-            .ginovo-footer-container { grid-template-columns: 1fr; gap: 40px; }
+            .ginovo-footer-container { grid-template-columns: 1fr; justify-content: stretch; gap: 40px; }
             .ginovo-footer-info { white-space: normal; }
         }
         @media (max-width: 640px) {
@@ -694,7 +694,9 @@
             <div>
                 <h4>고객센터</h4>
                 <p class="ginovo-footer-phone">062-716-0995</p>
-                <p class="ginovo-footer-muted">오전 9:00 - 오후 5:00 | 점심시간 12:00 - 13:00<br>주말 및 공휴일 휴무</p>
+                <p class="ginovo-footer-muted">오전 9:00 - 오후 5:00</p>
+                <p class="ginovo-footer-muted">점심시간 12:00 - 13:00</p>
+                <p class="ginovo-footer-muted">주말 및 공휴일 휴무</p>
             </div>
             <div>
                 <h4>E-mail</h4>
