@@ -172,12 +172,12 @@
         .ginovo-common-cta-content p { font-size: clamp(16px, 1.45vw, 21px); font-weight: 700; margin: 0 0 26px; color: #d6dbe3; letter-spacing: .01em; text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.85); }
         .ginovo-common-cta-content h2 { font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: normal; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.75); }
         .ginovo-footer { position: relative; z-index: 1; min-height: auto; background: #070C17; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 64px 32px 44px; }
-        .ginovo-footer-container { max-width: 1063px; margin: 0 auto; display: grid; grid-template-columns: .95fr 1fr 1.1fr; gap: 86px; }
+        .ginovo-footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: .75fr .85fr 1.65fr; gap: 64px; }
         .ginovo-footer h4 { font-size: 17px; font-weight: 600; color: #FFFFFF; margin: 0 0 20px; letter-spacing: 0; }
         .ginovo-footer p { margin: 0; }
         .ginovo-footer-phone { font-size: 21px; font-weight: 600; color: rgba(255,255,255,.72); margin-bottom: 22px !important; }
         .ginovo-footer-muted { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-        .ginovo-footer-info { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+        .ginovo-footer-info { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; white-space: nowrap; }
         .ginovo-footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0; }
         .ginovo-footer-links a { font-size: 16px; color: rgba(255,255,255,0.6); text-decoration: none; }
         .ginovo-footer-email { color: rgba(255,255,255,.72); font-size: 21px; font-weight: 600; white-space: nowrap; }
@@ -187,6 +187,7 @@
             .ginovo-login { display: none; }
             .ginovo-footer { min-height: auto; }
             .ginovo-footer-container { grid-template-columns: 1fr; gap: 40px; }
+            .ginovo-footer-info { white-space: normal; }
         }
         @media (max-width: 640px) {
             .ginovo-header { top: 16px; overflow-x: auto; justify-content: flex-start; }
@@ -701,7 +702,7 @@
             </div>
             <div>
                 <h4>사업자 정보</h4>
-                <p class="ginovo-footer-info">상호명 : (주) 그린토크　 대표 : 손영국<br>주소 : 전남광주통합특별시 광산구 손재로 236 그린토크<br>사업자등록번호 : 603-87-02720</p>
+                <p class="ginovo-footer-info">본사 : 전남광주통합특별시 북구 자미로6번길 45, 404호<br>공장 : 전남광주통합특별시 광산구 손재로 236, 세방산업</p>
             </div>
         </div>
     </footer>
