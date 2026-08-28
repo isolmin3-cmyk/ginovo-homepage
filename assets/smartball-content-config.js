@@ -24,7 +24,10 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   chargerTitle: '스마트 무선 충전 시스템',
   chargerSubtitle: '장소 제약 없는 휴대 가능한 무선 충전기',
   chargerNote1: 'On-chip thermal management를 통한 캡슐 내 발열 제어',
-  chargerNote2: '상태 가시성을 확보하는 3색 LED 인디케이터'
+  chargerNote2: '상태 가시성을 확보하는 3색 LED 인디케이터',
+  distanceTitle: '목표 거리 / 그린 스피드별 반복적이고 정량적인 퍼팅 연습',
+  distancePoint1: '거리 제약 없는 완벽한 퍼팅 연습 지원',
+  distancePoint2: '목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원'
 };
 try {
   window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}'));
