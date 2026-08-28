@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>경사 퍼팅매트 카드 관리 | GINOVO</title>
+  <script src="./assets/putting-mat-content-config.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 80px; }
+    h1 { margin: 0 0 12px; }
+    .notice { color: rgba(255,255,255,.62); line-height: 1.6; margin-bottom: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
+    .preview { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    label { display: block; color: #2bffe5; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
+    input[type="text"] { width: 100%; padding: 11px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: #101725; color: #fff; }
+    input[type="file"] { width: 100%; color: rgba(255,255,255,.7); }
+    .actions { display: flex; gap: 12px; margin-top: 28px; }
+    button, a { padding: 12px 18px; border: 0; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    button { background: #2bffe5; color: #071014; }
+    button.secondary, a { background: rgba(255,255,255,.1); color: #fff; }
+    #status { margin-top: 18px; color: #2bffe5; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>경사 퍼팅매트 제품 카드 관리</h1>
+  <p class="notice">각 카드의 사진과 글씨를 수정할 수 있습니다. 현재 정적 사이트 방식에서는 저장한 브라우저에만 적용됩니다.</p>
+  <form id="editor"><div class="grid" id="cards"></div>
+    <div class="actions">
+      <button type="submit">변경사항 저장</button>
+      <button class="secondary" type="button" id="reset">기본값으로 복원</button>
+      <a href="./putting-mat.html#comparison" target="_blank">페이지 확인</a>
+    </div>
+    <p id="status" role="status"></p>
+  </form>
+</main>
+<script>
+  const cardsRoot = document.getElementById('cards');
+  const current = window.getPuttingMatComparisonContent();
+  const pendingImages = {};
+
+  current.forEach((card, index) => {
+    const article = document.createElement('section');
+    article.className = 'card';
+    article.innerHTML = `
+      <img class="preview" src="${card.image}" alt="${card.title} 미리보기">
+      <label>사진 첨부</label><input type="file" accept="image/png,image/jpeg,image/webp" data-image="${index}">
+      <label>제목</label><input type="text" data-field="title" value="${card.title}">
+      <label>설명</label><input type="text" data-field="subtitle" value="${card.subtitle}">
+      ${card.items.map((item, itemIndex) => `<label>항목 ${itemIndex + 1}</label><input type="text" data-item="${itemIndex}" value="${item}">`).join('')}`;
+    article.querySelector('input[type="file"]').addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => { pendingImages[index] = reader.result; article.querySelector('.preview').src = reader.result; };
+      reader.readAsDataURL(file);
+    });
+    cardsRoot.appendChild(article);
+  });
+
+  document.getElementById('editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const result = [...document.querySelectorAll('.card')].map((card, index) => ({
+      image: pendingImages[index] || current[index].image,
+      title: card.querySelector('[data-field="title"]').value.trim(),
+      subtitle: card.querySelector('[data-field="subtitle"]').value.trim(),
+      items: [...card.querySelectorAll('[data-item]')].map(input => input.value.trim())
+    }));
+    try {
+      localStorage.setItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY, JSON.stringify(result));
+      document.getElementById('status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    localStorage.removeItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY);
+    location.reload();
+  });
+</script>
+</body>
+</html>
