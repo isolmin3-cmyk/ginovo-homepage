@@ -3,7 +3,8 @@
  * 업로드된 이미지 URL을 각 슬롯 ID의 값으로 저장하면 공개 페이지에 반영됩니다.
  * 빈 값은 현재 합성 디자인 이미지를 그대로 보여줍니다.
  */
-window.SMARTBALL_MEDIA = {
+window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
+window.SMARTBALL_MEDIA_DEFAULTS = {
   'spec-weight': './assets/smartball-spec-1.png',
   'spec-size': './assets/smartball-spec-2.png',
   'spec-rebound': './assets/smartball-spec-3.png',
@@ -18,3 +19,8 @@ window.SMARTBALL_MEDIA = {
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
   'battle-player-b': './assets/smartball-battle-player-b.jpg'
 };
+try {
+  window.SMARTBALL_MEDIA = Object.assign({}, window.SMARTBALL_MEDIA_DEFAULTS, JSON.parse(localStorage.getItem(window.SMARTBALL_MEDIA_STORAGE_KEY) || '{}'));
+} catch (_) {
+  window.SMARTBALL_MEDIA = Object.assign({}, window.SMARTBALL_MEDIA_DEFAULTS);
+}

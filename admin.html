@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>경사 퍼팅매트 카드 관리 | GINOVO</title>
+  <title>홈페이지 콘텐츠 관리 | GINOVO</title>
   <script src="./assets/putting-mat-content-config.js"></script>
+  <script src="./assets/smartball-content-config.js"></script>
+  <script src="./assets/smartball-media-config.js"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
@@ -15,14 +17,20 @@
     .card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
     .preview { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; background: #111827; margin-bottom: 14px; }
     label { display: block; color: #2bffe5; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
-    input[type="text"] { width: 100%; padding: 11px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: #101725; color: #fff; }
+    input[type="text"], textarea { width: 100%; padding: 11px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: #101725; color: #fff; font: inherit; }
+    textarea { min-height: 78px; resize: vertical; }
     input[type="file"] { width: 100%; color: rgba(255,255,255,.7); }
     .actions { display: flex; gap: 12px; margin-top: 28px; }
     button, a { padding: 12px 18px; border: 0; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; }
     button { background: #2bffe5; color: #071014; }
     button.secondary, a { background: rgba(255,255,255,.1); color: #fff; }
     #status { margin-top: 18px; color: #2bffe5; }
-    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .admin-section { margin-top: 72px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,.13); }
+    .smart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .smart-card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
+    .smart-card .preview { aspect-ratio: 4/3; object-fit: cover; }
+    #smart-status { margin-top: 18px; color: #2bffe5; }
+    @media (max-width: 800px) { .grid, .smart-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -37,6 +45,35 @@
     </div>
     <p id="status" role="status"></p>
   </form>
+  <section class="admin-section">
+    <h1>스마트 골프공 퍼팅 시스템 섹션 관리</h1>
+    <p class="notice">두 이미지와 각 문구를 따로 수정할 수 있습니다.</p>
+    <form id="smart-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="preview" id="system-preview" alt="퍼팅 시스템 이미지 미리보기">
+          <label>퍼팅 시스템 이미지</label><input id="system-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <label>제목</label><input type="text" data-smart-field="systemTitle">
+          <label>강조 문구</label><textarea data-smart-field="systemSubtitle"></textarea>
+          <label>구성 문구</label><textarea data-smart-field="systemDescription"></textarea>
+        </section>
+        <section class="smart-card">
+          <img class="preview" id="charger-preview" alt="무선 충전기 이미지 미리보기">
+          <label>무선 충전기 이미지</label><input id="charger-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <label>제목</label><input type="text" data-smart-field="chargerTitle">
+          <label>강조 문구</label><textarea data-smart-field="chargerSubtitle"></textarea>
+          <label>항목 1</label><textarea data-smart-field="chargerNote1"></textarea>
+          <label>항목 2</label><textarea data-smart-field="chargerNote2"></textarea>
+        </section>
+      </div>
+      <div class="actions">
+        <button type="submit">퍼팅 시스템 저장</button>
+        <button class="secondary" type="button" id="smart-reset">기본값으로 복원</button>
+        <a href="./smart-golf-ball.html" target="_blank">페이지 확인</a>
+      </div>
+      <p id="smart-status" role="status"></p>
+    </form>
+  </section>
 </main>
 <script>
   const cardsRoot = document.getElementById('cards');
@@ -64,7 +101,7 @@
 
   document.getElementById('editor').addEventListener('submit', event => {
     event.preventDefault();
-    const result = [...document.querySelectorAll('.card')].map((card, index) => ({
+    const result = [...document.querySelectorAll('#cards .card')].map((card, index) => ({
       image: pendingImages[index] || current[index].image,
       title: card.querySelector('[data-field="title"]').value.trim(),
       subtitle: card.querySelector('[data-field="subtitle"]').value.trim(),
@@ -79,6 +116,51 @@
   });
   document.getElementById('reset').addEventListener('click', () => {
     localStorage.removeItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY);
+    location.reload();
+  });
+
+  const smartContent = Object.assign({}, window.SMARTBALL_CONTENT);
+  const smartMedia = Object.assign({}, window.SMARTBALL_MEDIA);
+  const pendingSmartMedia = {};
+  document.querySelectorAll('[data-smart-field]').forEach(input => {
+    input.value = smartContent[input.dataset.smartField] || '';
+  });
+  document.getElementById('system-preview').src = smartMedia['putting-system-set'];
+  document.getElementById('charger-preview').src = smartMedia['wireless-charger'];
+
+  function bindSmartImage(inputId, previewId, slot) {
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        pendingSmartMedia[slot] = reader.result;
+        document.getElementById(previewId).src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  bindSmartImage('system-image', 'system-preview', 'putting-system-set');
+  bindSmartImage('charger-image', 'charger-preview', 'wireless-charger');
+
+  document.getElementById('smart-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-smart-field]').forEach(input => {
+      nextContent[input.dataset.smartField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('smart-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('smart-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('smart-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
     location.reload();
   });
 </script>
