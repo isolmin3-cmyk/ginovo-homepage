@@ -18,7 +18,7 @@ window.HOME_MEDIA = {
   section4Background: './assets/home/section-4-background.jpg',
   section4Image1: './assets/putting-slope.png',
   section4Image2: './assets/home/putting-course.jpg.png',
-  section4Image3: './assets/home/putting-kit.jpg.png',
+  section4Image3: './assets/home/putting-kit.jpg.png?v=20260828-2',
   esgImage: './assets/home/esg-visual.png',
   newsImage3: './assets/home/news-exhibition.png'
 };
