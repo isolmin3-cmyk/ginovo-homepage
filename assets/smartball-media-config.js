@@ -12,7 +12,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'putting-system-set': './assets/smartball-slot-putting-system.png',
     'wireless-charger': './assets/smartball-slot-wireless-charger-labeled.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
-  'distance-analysis-screen': './assets/smartball-slot-distance-analysis.png',
+  'distance-analysis-screen': './assets/smartball-slot-distance-analysis-v2.png',
   'slope-practice-screen': './assets/smartball-slot-slope-practice.png',
   'slope-selection-screen': './assets/smartball-slot-slope-selection.png',
   'battle-panel': './assets/smartball-slot-battle-panel.png',
