@@ -1,0 +1,40 @@
+:root {
+  --ginovo-content-max: 1600px;
+  --ginovo-page-gutter: clamp(24px, 6.25vw, 120px);
+}
+
+/* 공통 콘텐츠 기준선: 히어로·영상 배경은 풀블리드로 유지합니다. */
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) > div:first-child,
+.pm-review-inner,
+.anatomy-stage,
+.section-shell,
+.smartball-hero-copy,
+.ginovo-common-cta-content,
+.ginovo-footer-container,
+.cta-copy,
+.footer-grid,
+main > section.px-6 > .max-w-6xl {
+  width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important;
+  max-width: var(--ginovo-content-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.pm-review-section,
+main > section.px-6,
+.design-section,
+.site-footer,
+.ginovo-common-cta,
+.ginovo-footer {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (max-width: 700px) {
+  :root { --ginovo-page-gutter: 24px; }
+}
