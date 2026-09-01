@@ -58,7 +58,13 @@
     .unity-stage::before{content:"";position:absolute;z-index:2;left:6%;right:6%;top:33.5%;bottom:8%;border:1px solid rgba(255,255,255,.42);border-radius:22px;background:rgba(4,10,15,.48);box-shadow:inset 0 0 80px rgba(0,0,0,.18);backdrop-filter:blur(5px)}
     @media(min-width:1921px){.unity-section{height:1087px;min-height:1087px;background-size:100% 1087px}.unity-stage{width:1920px;height:1087px}.unity-heading h2{font-size:58px}.unity-heading p{font-size:30px}.unity-phone{width:520px;top:42%}.unity-metric{width:345px}}
     .unity-original-content{display:none}
-    @media(min-width:1280px){.unity-original-content{position:absolute;z-index:3;left:6.15%;top:33.5%;display:block;width:87.7%;height:auto}.unity-phone{width:27.1%;top:42%}.unity-stage>.unity-metric{visibility:hidden}.unity-stage::before{visibility:hidden}}
+    @media(min-width:1280px){
+      .unity-original-content{position:absolute;z-index:3;left:6.15%;top:33.5%;display:block;width:87.7%;height:auto}.unity-phone{width:27.1%;top:42%}.unity-stage::before{visibility:hidden}
+      .unity-stage>.unity-metric{visibility:visible;width:340px;min-height:112px;padding:0;grid-template-columns:1fr 82px;gap:4px;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none}
+      .unity-metric strong{font-size:25px;line-height:1.25}.unity-metric small{margin-top:7px;font-size:19px}.unity-metric-value{width:76px;height:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;font-size:17px;line-height:1.05}
+      .unity-metric:nth-of-type(1){left:17.7%;top:42.1%}.unity-metric:nth-of-type(2){left:11.2%;top:62.1%}.unity-metric:nth-of-type(3){left:20.5%;top:81%}.unity-metric:nth-of-type(4){right:8.6%;top:37.4%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(5){right:2.5%;top:53.1%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(6){right:8.1%;top:69.2%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(7){right:16.1%;top:85%;grid-template-columns:82px 1fr}
+      .unity-metric:nth-of-type(n+4) .unity-metric-value{order:-1}.unity-metric:nth-of-type(n+4) .unity-metric-copy{text-align:left}
+    }
 
     /* 스마트 골프공 페이지 기준 반응형 타이포그래피: 54 / 40 / 30 / 25 / 22px */
     .title,#putting .title,.home-feature h2{font-size:54px}
@@ -97,7 +103,7 @@
     </section>
     <section class="unity-section" id="unity-feature">
       <div class="unity-stage">
-        <img class="unity-original-content" src="./assets/home/unity-section-inner-panel.png?v=20260901-5" alt="스마트 골프공 7대 구질 정보 패널">
+        <img class="unity-original-content" src="./assets/home/unity-section-inner-panel-blank.png?v=20260901-6" alt="스마트 골프공 7대 구질 정보 그래픽">
         <div class="unity-heading"><h2 data-unity-field="title"></h2><p><span data-unity-field="subtitle1"></span><br><span data-unity-field="subtitle2"></span></p></div>
         <img class="unity-phone" data-unity-media="visual" alt="GINOVO 스마트 골프 애플리케이션 휴대폰 화면">
         <article class="unity-metric" data-unity-metric="0"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
@@ -183,7 +189,7 @@
         var metric=unityContent.metrics[Number(card.dataset.unityMetric)]||{};
         card.querySelector('strong').textContent=metric.label||'';
         card.querySelector('small').textContent=metric.english?'('+metric.english+')':'';
-        card.querySelector('.unity-metric-value').textContent=metric.value||'●';
+        card.querySelector('.unity-metric-value').textContent=metric.value?String(metric.value).replace(/\s+/, '\n'):'';
       });
       if(window.getHomeUnityImage){
         Promise.all([window.getHomeUnityImage('background'),window.getHomeUnityImage('visual')]).then(function(images){
