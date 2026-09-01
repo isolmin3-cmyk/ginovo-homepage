@@ -7,6 +7,7 @@
   <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-media-config.js?v=20260828-6"></script>
+  <script src="./assets/home-content-config.js?v=20260901-1"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
@@ -30,6 +31,8 @@
     .smart-card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
     .smart-card .preview { aspect-ratio: 4/3; object-fit: cover; }
     #smart-status { margin-top: 18px; color: #2bffe5; }
+    .unity-admin-preview { width: 100%; aspect-ratio: 16/9; object-fit: contain; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    .metric-editor { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
     @media (max-width: 800px) { .grid, .smart-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -99,6 +102,37 @@
         <a href="./smart-golf-ball.html" target="_blank">페이지 확인</a>
       </div>
       <p id="distance-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>메인 홈 Unity 골프혁신 섹션 관리</h1>
+    <p class="notice">배경, 휴대폰 PNG, 제목·설명과 7개 지표 문구를 각각 수정합니다. 대용량 이미지는 IndexedDB에 저장되어 이 브라우저에서만 적용됩니다.</p>
+    <form id="unity-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="unity-admin-preview" id="unity-background-preview" alt="Unity 섹션 배경 미리보기">
+          <label>전체 배경 이미지 (권장 7680 × 4348)</label><input id="unity-background-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+        <section class="smart-card">
+          <img class="unity-admin-preview" id="unity-visual-preview" alt="휴대폰 PNG 미리보기">
+          <label>상단 휴대폰 PNG (현재 2076 × 2076)</label><input id="unity-visual-image" type="file" accept="image/png,image/webp">
+        </section>
+      </div>
+      <div class="smart-card" style="margin-top:20px">
+        <label>제목</label><input type="text" data-unity-field="title">
+        <label>설명 1</label><input type="text" data-unity-field="subtitle1">
+        <label>설명 2</label><input type="text" data-unity-field="subtitle2">
+      </div>
+      <div class="smart-card" style="margin-top:20px">
+        <h2>지표 문구</h2>
+        <div id="unity-metrics"></div>
+      </div>
+      <div class="actions">
+        <button type="submit">Unity 섹션 저장</button>
+        <button class="secondary" type="button" id="unity-reset">기본값으로 복원</button>
+        <a href="./index.html#unity-feature" target="_blank">페이지 확인</a>
+      </div>
+      <p id="unity-status" role="status"></p>
     </form>
   </section>
 </main>
@@ -217,6 +251,59 @@
   document.getElementById('distance-reset').addEventListener('click', () => {
     localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
     localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  const unityContent = window.getHomeUnityContent();
+  const pendingUnityImages = {};
+  document.querySelectorAll('[data-unity-field]').forEach(input => { input.value = unityContent[input.dataset.unityField] || ''; });
+  document.getElementById('unity-background-preview').src = unityContent.background;
+  document.getElementById('unity-visual-preview').src = unityContent.visual;
+  Promise.all([window.getHomeUnityImage('background'), window.getHomeUnityImage('visual')]).then(images => {
+    if (images[0]) document.getElementById('unity-background-preview').src = URL.createObjectURL(images[0]);
+    if (images[1]) document.getElementById('unity-visual-preview').src = URL.createObjectURL(images[1]);
+  }).catch(() => {});
+
+  const unityMetricsRoot = document.getElementById('unity-metrics');
+  unityContent.metrics.forEach((metric, index) => {
+    const row = document.createElement('div');
+    row.className = 'metric-editor';
+    row.innerHTML = `<input type="text" data-unity-metric-label="${index}" aria-label="지표 ${index + 1} 한글" value="${metric.label}"><input type="text" data-unity-metric-english="${index}" aria-label="지표 ${index + 1} 영문" value="${metric.english}"><input type="text" data-unity-metric-value="${index}" aria-label="지표 ${index + 1} 값" value="${metric.value}">`;
+    unityMetricsRoot.appendChild(row);
+  });
+
+  function bindUnityImage(inputId, previewId, key) {
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      pendingUnityImages[key] = file;
+      document.getElementById(previewId).src = URL.createObjectURL(file);
+    });
+  }
+  bindUnityImage('unity-background-image', 'unity-background-preview', 'background');
+  bindUnityImage('unity-visual-image', 'unity-visual-preview', 'visual');
+
+  document.getElementById('unity-editor').addEventListener('submit', async event => {
+    event.preventDefault();
+    const next = Object.assign({}, unityContent);
+    document.querySelectorAll('[data-unity-field]').forEach(input => { next[input.dataset.unityField] = input.value.trim(); });
+    next.metrics = unityContent.metrics.map((metric, index) => ({
+      label: document.querySelector(`[data-unity-metric-label="${index}"]`).value.trim(),
+      english: document.querySelector(`[data-unity-metric-english="${index}"]`).value.trim(),
+      value: document.querySelector(`[data-unity-metric-value="${index}"]`).value.trim()
+    }));
+    try {
+      localStorage.setItem(window.HOME_UNITY_STORAGE_KEY, JSON.stringify(next));
+      if (pendingUnityImages.background) await window.setHomeUnityImage('background', pendingUnityImages.background);
+      if (pendingUnityImages.visual) await window.setHomeUnityImage('visual', pendingUnityImages.visual);
+      document.getElementById('unity-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('unity-status').textContent = '저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.';
+    }
+  });
+  document.getElementById('unity-reset').addEventListener('click', async () => {
+    localStorage.removeItem(window.HOME_UNITY_STORAGE_KEY);
+    await window.clearHomeUnityImages().catch(() => {});
     location.reload();
   });
 </script>
