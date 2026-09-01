@@ -1,6 +1,23 @@
 :root {
   --ginovo-content-max: 1600px;
   --ginovo-page-gutter: clamp(24px, 6.25vw, 120px);
+  --ginovo-section-title-size: clamp(34px, 3vw, 58px);
+}
+
+/* 히어로·CTA·카드 제목을 제외한 페이지 대표 제목 규격 */
+.home-feature h2,
+.unity-heading h2,
+.practice-four-heading h2,
+.section .heading > .title,
+#certificates .ip-layout > div:first-child > .title,
+.anatomy-title,
+.section-heading,
+.system-intro .accent,
+.system-copy > h3,
+.field-kicker,
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) h2:not([style*="border-radius"]) {
+  font-size: var(--ginovo-section-title-size) !important;
+  line-height: 1.2 !important;
 }
 
 /* 공통 콘텐츠 기준선: 히어로·영상 배경은 풀블리드로 유지합니다. */
@@ -36,5 +53,8 @@ main > section.px-6,
 }
 
 @media (max-width: 700px) {
-  :root { --ginovo-page-gutter: 24px; }
+  :root {
+    --ginovo-page-gutter: 24px;
+    --ginovo-section-title-size: clamp(28px, 8vw, 34px);
+  }
 }
