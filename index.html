@@ -291,13 +291,18 @@
         historyObserver.observe(row);
       });
     }
-    var revealTargets = document.querySelectorAll('.home-feature .home-copy,.unity-heading,.unity-phone,.unity-metric,.practice-four-heading,.practice-four-title,.practice-four-center,.practice-point,.section .heading,.putting-grid .card,.video-frame,.esg-layout > *,.esg-certs .cert,.exhibit-grid .card,.news-grid .card,.ip-layout > *,.ip-item,.ip-cert-grid img,.contact-grid .card,.map,.cta-copy,.footer-grid > div');
+    var revealTargets = document.querySelectorAll('.home-feature .home-copy,.unity-phone,.unity-metric,.practice-four-heading,.practice-four-title,.practice-four-center,.practice-point,.section .heading,.putting-grid .card,.video-frame,.esg-layout > *,.esg-certs .cert,.exhibit-grid .card,.news-grid .card,.ip-layout > *,.ip-item,.ip-cert-grid img,.contact-grid .card,.map,.cta-copy,.footer-grid > div');
     document.querySelectorAll('.unity-phone,.practice-four-center,.video-frame,.esg-layout > :first-child,.putting-grid .card,.exhibit-grid .card,.news-grid .card,.ip-cert-grid img,.map').forEach(function(item){item.classList.add('reveal-media');});
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       revealTargets.forEach(function(item,index){
         item.classList.add('reveal-card');
         item.style.transitionDelay=((index % 4)*110)+'ms';
       });
+      var unityPhoneReveal=document.querySelector('.unity-phone');
+      var unityMetricReveals=document.querySelectorAll('.unity-metric');
+      if(unityPhoneReveal) unityPhoneReveal.style.transitionDelay='0ms';
+      unityMetricReveals.forEach(function(item,index){item.style.transitionDelay=(180+(index*110))+'ms';});
+      document.querySelectorAll('#putting .putting-grid .card').forEach(function(item,index){item.style.transitionDelay=(120+(index*150))+'ms';});
       var cardObserver = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
