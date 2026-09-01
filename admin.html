@@ -7,7 +7,7 @@
   <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-media-config.js?v=20260828-6"></script>
-  <script src="./assets/home-content-config.js?v=20260901-3"></script>
+  <script src="./assets/home-content-config.js?v=20260901-4"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
@@ -139,6 +139,22 @@
         <a href="./index.html#unity-feature" target="_blank">페이지 확인</a>
       </div>
       <p id="unity-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="practice-four-admin">
+    <h1>메인 홈 스마트 골프 4포인트 섹션 관리</h1>
+    <p class="notice">배경·상자·중앙 이미지는 분리되어 있으며, 아래 제목과 Point 문구는 HTML로 개별 수정됩니다.</p>
+    <form id="practice-four-editor">
+      <div class="smart-card">
+        <label>섹션 제목</label><input type="text" data-practice-admin-title>
+      </div>
+      <div class="smart-grid" id="practice-four-points-admin" style="margin-top:20px"></div>
+      <div class="actions">
+        <button type="submit">4포인트 섹션 저장</button>
+        <button class="secondary" type="button" id="practice-four-reset">기본값으로 복원</button>
+        <a href="./index.html#practice-four-points" target="_blank">페이지 확인</a>
+      </div>
+      <p id="practice-four-status" role="status"></p>
     </form>
   </section>
 </main>
@@ -310,6 +326,32 @@
   document.getElementById('unity-reset').addEventListener('click', async () => {
     localStorage.removeItem(window.HOME_UNITY_STORAGE_KEY);
     await window.clearHomeUnityImages().catch(() => {});
+    location.reload();
+  });
+
+  const practiceContent = window.getHomePracticeContent();
+  document.querySelector('[data-practice-admin-title]').value = practiceContent.title;
+  const practiceAdminRoot = document.getElementById('practice-four-points-admin');
+  practiceContent.points.forEach((point, index) => {
+    const card = document.createElement('section');
+    card.className = 'smart-card';
+    card.innerHTML = `<label>Point 이름</label><input type="text" data-practice-label="${index}" value="${point.label}"><label>설명</label><textarea data-practice-body="${index}">${point.body}</textarea>`;
+    practiceAdminRoot.appendChild(card);
+  });
+  document.getElementById('practice-four-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const next = {
+      title: document.querySelector('[data-practice-admin-title]').value.trim(),
+      points: practiceContent.points.map((point, index) => ({
+        label: document.querySelector(`[data-practice-label="${index}"]`).value.trim(),
+        body: document.querySelector(`[data-practice-body="${index}"]`).value.trim()
+      }))
+    };
+    localStorage.setItem(window.HOME_PRACTICE_STORAGE_KEY, JSON.stringify(next));
+    document.getElementById('practice-four-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+  });
+  document.getElementById('practice-four-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.HOME_PRACTICE_STORAGE_KEY);
     location.reload();
   });
 </script>
