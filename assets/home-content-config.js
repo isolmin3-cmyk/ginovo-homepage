@@ -25,7 +25,7 @@ window.HOME_MEDIA = {
 
 window.HOME_UNITY_STORAGE_KEY = 'ginovo-home-unity-section-v3';
 window.HOME_UNITY_DEFAULTS = {
-  background: './assets/home/unity-section-background.jpg?v=20260901-3',
+  background: './assets/home/unity-section-background.jpg?v=20260901-4',
   visual: './assets/home/unity-section-phone.png',
   title: 'Unity 기반의 물리엔진을 통한 골프혁신',
   subtitle1: '퍼팅 샷에 대한 7대 구질 정보 가시화',
@@ -112,6 +112,7 @@ window.getHomeUnityContent = function () {
     var saved = JSON.parse(localStorage.getItem(window.HOME_UNITY_STORAGE_KEY) || 'null');
     if (!saved || typeof saved !== 'object') return JSON.parse(JSON.stringify(window.HOME_UNITY_DEFAULTS));
     return Object.assign({}, window.HOME_UNITY_DEFAULTS, saved, {
+      background: window.HOME_UNITY_DEFAULTS.background,
       metrics: window.HOME_UNITY_DEFAULTS.metrics.map(function (metric, index) {
         return Object.assign({}, metric, Array.isArray(saved.metrics) ? saved.metrics[index] : null);
       })
