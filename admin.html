@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>홈페이지 콘텐츠 관리 | GINOVO</title>
   <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
-  <script src="./assets/smartball-content-config.js?v=20260828-6"></script>
-  <script src="./assets/smartball-media-config.js?v=20260828-6"></script>
+  <script src="./assets/smartball-content-config.js?v=20260901-7"></script>
+  <script src="./assets/smartball-media-config.js?v=20260901-7"></script>
   <script src="./assets/home-content-config.js?v=20260901-4"></script>
   <style>
     * { box-sizing: border-box; }
@@ -81,6 +81,27 @@
         <a href="./smart-golf-ball.html" target="_blank">페이지 확인</a>
       </div>
       <p id="smart-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="smartball-spec-admin">
+    <h1>스마트 골프공 물리적 스펙 섹션 관리</h1>
+    <p class="notice">대표 제목과 네 개의 스펙 문구·게이지 이미지를 각각 수정할 수 있습니다.</p>
+    <form id="spec-editor">
+      <div class="smart-card">
+        <label>대표 제목</label><input type="text" data-spec-field="specTitle">
+      </div>
+      <div class="smart-grid" id="spec-items" style="margin-top:20px">
+        <section class="smart-card"><img class="preview" id="spec-weight-preview" alt="무게 게이지 미리보기"><label>무게 게이지 이미지</label><input id="spec-weight-image" type="file" accept="image/png,image/jpeg,image/webp"><label>무게 문구</label><input type="text" data-spec-field="specWeight"></section>
+        <section class="smart-card"><img class="preview" id="spec-size-preview" alt="외경 게이지 미리보기"><label>외경 게이지 이미지</label><input id="spec-size-image" type="file" accept="image/png,image/jpeg,image/webp"><label>외경 문구</label><input type="text" data-spec-field="specSize"></section>
+        <section class="smart-card"><img class="preview" id="spec-rebound-preview" alt="반발력 게이지 미리보기"><label>반발력 게이지 이미지</label><input id="spec-rebound-image" type="file" accept="image/png,image/jpeg,image/webp"><label>반발력 문구</label><input type="text" data-spec-field="specRebound"></section>
+        <section class="smart-card"><img class="preview" id="spec-eccentricity-preview" alt="편심도 게이지 미리보기"><label>편심도 게이지 이미지</label><input id="spec-eccentricity-image" type="file" accept="image/png,image/jpeg,image/webp"><label>편심도 문구</label><input type="text" data-spec-field="specEccentricity"></section>
+      </div>
+      <div class="actions">
+        <button type="submit">물리적 스펙 저장</button>
+        <button class="secondary" type="button" id="spec-reset">기본값으로 복원</button>
+        <a href="./smart-golf-ball.html#spec-status" target="_blank">페이지 확인</a>
+      </div>
+      <p id="spec-status" role="status"></p>
     </form>
   </section>
   <section class="admin-section">
@@ -232,6 +253,52 @@
   }
   bindSmartImage('system-image', 'system-preview', 'putting-system-set');
   bindSmartImage('charger-image', 'charger-preview', 'wireless-charger');
+
+  document.querySelectorAll('[data-spec-field]').forEach(input => {
+    input.value = smartContent[input.dataset.specField] || '';
+  });
+  const specMediaSlots = [
+    ['spec-weight-image', 'spec-weight-preview', 'spec-weight'],
+    ['spec-size-image', 'spec-size-preview', 'spec-size'],
+    ['spec-rebound-image', 'spec-rebound-preview', 'spec-rebound'],
+    ['spec-eccentricity-image', 'spec-eccentricity-preview', 'spec-eccentricity']
+  ];
+  specMediaSlots.forEach(([inputId, previewId, slot]) => {
+    document.getElementById(previewId).src = smartMedia[slot];
+    bindSmartImage(inputId, previewId, slot);
+  });
+
+  document.getElementById('spec-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-spec-field]').forEach(input => {
+      nextContent[input.dataset.specField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('spec-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('spec-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('spec-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      specTitle: window.SMARTBALL_CONTENT_DEFAULTS.specTitle,
+      specWeight: window.SMARTBALL_CONTENT_DEFAULTS.specWeight,
+      specSize: window.SMARTBALL_CONTENT_DEFAULTS.specSize,
+      specRebound: window.SMARTBALL_CONTENT_DEFAULTS.specRebound,
+      specEccentricity: window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity
+    });
+    const nextMedia = Object.assign({}, smartMedia);
+    ['spec-weight', 'spec-size', 'spec-rebound', 'spec-eccentricity'].forEach(slot => {
+      nextMedia[slot] = window.SMARTBALL_MEDIA_DEFAULTS[slot];
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+    location.reload();
+  });
 
   document.getElementById('smart-editor').addEventListener('submit', event => {
     event.preventDefault();

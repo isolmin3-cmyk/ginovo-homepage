@@ -17,7 +17,7 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   specWeight: '무게 : 45.93g',
   specSize: '외경 사이즈 : 42.67mm',
   specRebound: '반발력 : 72.1',
-  specEccentricity: '편심도 : 0.095%',
+  specEccentricity: '편심도 : 0.1%',
   systemTitle: 'GINOVO 퍼팅 시스템',
   systemSubtitle: '퍼팅 연습에 집중할 수 있는 스마트 골프의 완벽한 구성',
   systemDescription: '스마트 골프공, 무선 충전기, 퍼팅매트, 반사판, 모바일 거치대 set 구성',
@@ -30,7 +30,12 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   distancePoint2: '목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원'
 };
 try {
-  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}'));
+  var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');
+  if (savedSmartballContent.specEccentricity === '편심도 : 0.095%') {
+    savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(savedSmartballContent));
+  }
+  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, savedSmartballContent);
 } catch (_) {
   window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);
 }
