@@ -143,10 +143,17 @@
   </section>
   <section class="admin-section" id="practice-four-admin">
     <h1>메인 홈 스마트 골프 4포인트 섹션 관리</h1>
-    <p class="notice">배경·상자·중앙 이미지는 분리되어 있으며, 아래 제목과 Point 문구는 HTML로 개별 수정됩니다.</p>
+    <p class="notice">큰 패널·소형 박스·중앙 이미지를 각각 교체할 수 있으며, 모든 제목과 Point 문구는 HTML로 개별 수정됩니다.</p>
     <form id="practice-four-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-panel-preview" alt="4포인트 큰 패널 미리보기"><label>큰 패널 PNG</label><input id="practice-panel-image" type="file" accept="image/png,image/webp"></section>
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-card-preview" alt="Point 소형 박스 미리보기"><label>Point 소형 박스 PNG</label><input id="practice-card-image" type="file" accept="image/png,image/webp"></section>
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-center-preview" alt="중앙 이미지 미리보기"><label>중앙 골프공 PNG</label><input id="practice-center-image" type="file" accept="image/png,image/webp"></section>
+      </div>
       <div class="smart-card">
-        <label>섹션 제목</label><input type="text" data-practice-admin-title>
+        <label>상단 제목</label><input type="text" data-practice-admin-heading>
+        <label>상단 설명</label><input type="text" data-practice-admin-subtitle>
+        <label>패널 내부 제목</label><input type="text" data-practice-admin-title>
       </div>
       <div class="smart-grid" id="practice-four-points-admin" style="margin-top:20px"></div>
       <div class="actions">
@@ -330,7 +337,27 @@
   });
 
   const practiceContent = window.getHomePracticeContent();
+  const pendingPracticeImages = {};
+  document.querySelector('[data-practice-admin-heading]').value = practiceContent.heading;
+  document.querySelector('[data-practice-admin-subtitle]').value = practiceContent.subtitle;
   document.querySelector('[data-practice-admin-title]').value = practiceContent.title;
+  const practiceImageDefaults = {
+    panel: './assets/home/practice-four-panel.png?v=20260901-1',
+    card: './assets/home/practice-four-card.png?v=20260901-1',
+    center: './assets/home/practice-four-center-editable.png?v=20260901-1'
+  };
+  Object.entries(practiceImageDefaults).forEach(([key, src]) => { document.getElementById(`practice-${key}-preview`).src = src; });
+  Promise.all(['panel','card','center'].map(key => window.getHomePracticeImage(key))).then(images => {
+    ['panel','card','center'].forEach((key,index) => { if(images[index]) document.getElementById(`practice-${key}-preview`).src=URL.createObjectURL(images[index]); });
+  }).catch(() => {});
+  ['panel','card','center'].forEach(key => {
+    document.getElementById(`practice-${key}-image`).addEventListener('change', event => {
+      const file=event.target.files[0];
+      if(!file) return;
+      pendingPracticeImages[key]=file;
+      document.getElementById(`practice-${key}-preview`).src=URL.createObjectURL(file);
+    });
+  });
   const practiceAdminRoot = document.getElementById('practice-four-points-admin');
   practiceContent.points.forEach((point, index) => {
     const card = document.createElement('section');
@@ -338,20 +365,28 @@
     card.innerHTML = `<label>Point 이름</label><input type="text" data-practice-label="${index}" value="${point.label}"><label>설명</label><textarea data-practice-body="${index}">${point.body}</textarea>`;
     practiceAdminRoot.appendChild(card);
   });
-  document.getElementById('practice-four-editor').addEventListener('submit', event => {
+  document.getElementById('practice-four-editor').addEventListener('submit', async event => {
     event.preventDefault();
     const next = {
+      heading: document.querySelector('[data-practice-admin-heading]').value.trim(),
+      subtitle: document.querySelector('[data-practice-admin-subtitle]').value.trim(),
       title: document.querySelector('[data-practice-admin-title]').value.trim(),
       points: practiceContent.points.map((point, index) => ({
         label: document.querySelector(`[data-practice-label="${index}"]`).value.trim(),
         body: document.querySelector(`[data-practice-body="${index}"]`).value.trim()
       }))
     };
-    localStorage.setItem(window.HOME_PRACTICE_STORAGE_KEY, JSON.stringify(next));
-    document.getElementById('practice-four-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    try {
+      localStorage.setItem(window.HOME_PRACTICE_STORAGE_KEY, JSON.stringify(next));
+      await Promise.all(Object.entries(pendingPracticeImages).map(([key,file]) => window.setHomePracticeImage(key,file)));
+      document.getElementById('practice-four-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('practice-four-status').textContent = '저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.';
+    }
   });
-  document.getElementById('practice-four-reset').addEventListener('click', () => {
+  document.getElementById('practice-four-reset').addEventListener('click', async () => {
     localStorage.removeItem(window.HOME_PRACTICE_STORAGE_KEY);
+    await window.clearHomePracticeImages().catch(() => {});
     location.reload();
   });
 </script>

@@ -43,6 +43,8 @@ window.HOME_UNITY_DEFAULTS = {
 
 window.HOME_PRACTICE_STORAGE_KEY = 'ginovo-home-practice-four-points-v1';
 window.HOME_PRACTICE_DEFAULTS = {
+  heading: '감에 의존하는 지루한 연습에서 데이터를 기반으로 한 체계적 연습',
+  subtitle: '목표 거리 설정 - 통계분석 - 반복 연습 - 퍼팅 대결 실전 연습',
   title: '퍼팅 연습에 집중할 수 있는 스마트 골프의 완벽한 구성',
   points: [
     { label: 'Point 1', body: '실시간 데이터 저장 (분석)' },
@@ -57,6 +59,8 @@ window.getHomePracticeContent = function () {
     var saved = JSON.parse(localStorage.getItem(window.HOME_PRACTICE_STORAGE_KEY) || 'null');
     if (!saved || typeof saved !== 'object') return JSON.parse(JSON.stringify(window.HOME_PRACTICE_DEFAULTS));
     return {
+      heading: saved.heading || window.HOME_PRACTICE_DEFAULTS.heading,
+      subtitle: saved.subtitle || window.HOME_PRACTICE_DEFAULTS.subtitle,
       title: saved.title || window.HOME_PRACTICE_DEFAULTS.title,
       points: window.HOME_PRACTICE_DEFAULTS.points.map(function (point, index) {
         return Object.assign({}, point, saved.points && saved.points[index]);
@@ -65,6 +69,42 @@ window.getHomePracticeContent = function () {
   } catch (_) {
     return JSON.parse(JSON.stringify(window.HOME_PRACTICE_DEFAULTS));
   }
+};
+
+window.HOME_PRACTICE_IMAGE_DB = 'ginovo-home-practice-images-v1';
+window.openHomePracticeImageDB = function () {
+  return new Promise(function (resolve, reject) {
+    var request = indexedDB.open(window.HOME_PRACTICE_IMAGE_DB, 1);
+    request.onupgradeneeded = function () { request.result.createObjectStore('images'); };
+    request.onsuccess = function () { resolve(request.result); };
+    request.onerror = function () { reject(request.error); };
+  });
+};
+window.getHomePracticeImage = async function (key) {
+  var db = await window.openHomePracticeImageDB();
+  return new Promise(function (resolve, reject) {
+    var request = db.transaction('images').objectStore('images').get(key);
+    request.onsuccess = function () { resolve(request.result || null); };
+    request.onerror = function () { reject(request.error); };
+  });
+};
+window.setHomePracticeImage = async function (key, file) {
+  var db = await window.openHomePracticeImageDB();
+  return new Promise(function (resolve, reject) {
+    var transaction = db.transaction('images', 'readwrite');
+    transaction.objectStore('images').put(file, key);
+    transaction.oncomplete = function () { resolve(); };
+    transaction.onerror = function () { reject(transaction.error); };
+  });
+};
+window.clearHomePracticeImages = async function () {
+  var db = await window.openHomePracticeImageDB();
+  return new Promise(function (resolve, reject) {
+    var transaction = db.transaction('images', 'readwrite');
+    transaction.objectStore('images').clear();
+    transaction.oncomplete = function () { resolve(); };
+    transaction.onerror = function () { reject(transaction.error); };
+  });
 };
 
 window.getHomeUnityContent = function () {
