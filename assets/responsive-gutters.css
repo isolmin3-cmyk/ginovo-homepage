@@ -59,9 +59,52 @@ main > section.px-6,
   padding-right: 0 !important;
 }
 
+/* 모든 페이지의 마무리 CTA 문구를 화면 너비에 맞춰 동일하게 축소·줄바꿈합니다. */
+.cta-copy,
+.ginovo-common-cta-content {
+  box-sizing: border-box;
+  padding-inline: clamp(4px, 1.4vw, 22px) !important;
+}
+
+.cta h2,
+.ginovo-common-cta-content h2 {
+  max-width: 1120px;
+  margin-inline: auto !important;
+  font-size: clamp(26px, 3vw, 41px) !important;
+  line-height: 1.38 !important;
+  letter-spacing: -0.025em !important;
+  white-space: normal !important;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.cta p,
+.ginovo-common-cta-content p {
+  max-width: 920px;
+  margin-inline: auto !important;
+  margin-bottom: clamp(16px, 2vw, 26px) !important;
+  font-size: clamp(15px, 1.55vw, 21px) !important;
+  line-height: 1.55 !important;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
 @media (max-width: 700px) {
   :root {
     --ginovo-page-gutter: 24px;
     --ginovo-section-title-size: clamp(28px, 8vw, 34px);
+  }
+
+  .cta h2,
+  .ginovo-common-cta-content h2 {
+    font-size: clamp(24px, 6.2vw, 26px) !important;
+    line-height: 1.42 !important;
+  }
+
+  .cta p,
+  .ginovo-common-cta-content p {
+    font-size: clamp(14px, 3.8vw, 15px) !important;
   }
 }
