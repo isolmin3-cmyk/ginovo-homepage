@@ -7,7 +7,7 @@
   <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-content-config.js?v=20260828-6"></script>
   <script src="./assets/smartball-media-config.js?v=20260828-6"></script>
-  <script src="./assets/home-content-config.js?v=20260901-1"></script>
+  <script src="./assets/home-content-config.js?v=20260901-2"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
@@ -31,13 +31,19 @@
     .smart-card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
     .smart-card .preview { aspect-ratio: 4/3; object-fit: cover; }
     #smart-status { margin-top: 18px; color: #2bffe5; }
-    .unity-admin-preview { width: 100%; aspect-ratio: 16/9; object-fit: contain; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    .unity-admin-preview { width: 100%; aspect-ratio: 24/9; object-fit: contain; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    #unity-visual-preview { aspect-ratio: 1; }
     .metric-editor { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .admin-quick { position: sticky; top: 12px; z-index: 20; margin-bottom: 32px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border: 1px solid rgba(43,255,229,.45); border-radius: 16px; background: rgba(10,20,32,.94); box-shadow: 0 14px 34px rgba(0,0,0,.35); backdrop-filter: blur(14px); }
+    .admin-quick strong { font-size: 16px; }
+    .admin-quick a { background: #2bffe5; color: #071014; }
+    #unity-admin { scroll-margin-top: 96px; border-top-color: rgba(43,255,229,.55); }
     @media (max-width: 800px) { .grid, .smart-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <main>
+  <aside class="admin-quick"><strong>Unity 골프혁신 섹션을 수정하시나요?</strong><a href="#unity-admin">Unity 섹션 편집 바로가기</a></aside>
   <h1>경사 퍼팅매트 제품 카드 관리</h1>
   <p class="notice">각 카드의 사진과 글씨를 수정할 수 있습니다. 현재 정적 사이트 방식에서는 저장한 브라우저에만 적용됩니다.</p>
   <form id="editor"><div class="grid" id="cards"></div>
@@ -104,14 +110,14 @@
       <p id="distance-status" role="status"></p>
     </form>
   </section>
-  <section class="admin-section">
+  <section class="admin-section" id="unity-admin">
     <h1>메인 홈 Unity 골프혁신 섹션 관리</h1>
     <p class="notice">배경, 휴대폰 PNG, 제목·설명과 7개 지표 문구를 각각 수정합니다. 대용량 이미지는 IndexedDB에 저장되어 이 브라우저에서만 적용됩니다.</p>
     <form id="unity-editor">
       <div class="smart-grid">
         <section class="smart-card">
           <img class="unity-admin-preview" id="unity-background-preview" alt="Unity 섹션 배경 미리보기">
-          <label>전체 배경 이미지 (권장 7680 × 4348)</label><input id="unity-background-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <label>초대형 화면용 전체 배경 (권장 7680 × 2880, 24:9)</label><input id="unity-background-image" type="file" accept="image/png,image/jpeg,image/webp">
         </section>
         <section class="smart-card">
           <img class="unity-admin-preview" id="unity-visual-preview" alt="휴대폰 PNG 미리보기">

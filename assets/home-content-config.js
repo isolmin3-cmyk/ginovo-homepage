@@ -23,9 +23,9 @@ window.HOME_MEDIA = {
   newsImage3: './assets/home/news-exhibition.png'
 };
 
-window.HOME_UNITY_STORAGE_KEY = 'ginovo-home-unity-section-v1';
+window.HOME_UNITY_STORAGE_KEY = 'ginovo-home-unity-section-v2';
 window.HOME_UNITY_DEFAULTS = {
-  background: './assets/home/unity-section-background.jpg',
+  background: './assets/home/unity-section-background-wide.png?v=20260901-2',
   visual: './assets/home/unity-section-phone.png',
   title: 'Unity 기반의 물리엔진을 통한 골프혁신',
   subtitle1: '퍼팅 샷에 대한 7대 구질 정보 가시화',
@@ -55,7 +55,7 @@ window.getHomeUnityContent = function () {
   }
 };
 
-window.HOME_UNITY_IMAGE_DB = 'ginovo-home-unity-images-v1';
+window.HOME_UNITY_IMAGE_DB = 'ginovo-home-unity-images-v2';
 window.openHomeUnityImageDB = function () {
   return new Promise(function (resolve, reject) {
     var request = indexedDB.open(window.HOME_UNITY_IMAGE_DB, 1);
