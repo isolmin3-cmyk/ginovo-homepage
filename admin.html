@@ -33,7 +33,7 @@
     #smart-status { margin-top: 18px; color: #2bffe5; }
     .unity-admin-preview { width: 100%; aspect-ratio: 24/9; object-fit: contain; border-radius: 10px; background: #111827; margin-bottom: 14px; }
     #unity-visual-preview { aspect-ratio: 1; }
-    .metric-editor { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .metric-editor { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
     .admin-quick { position: sticky; top: 12px; z-index: 20; margin-bottom: 32px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border: 1px solid rgba(43,255,229,.45); border-radius: 16px; background: rgba(10,20,32,.94); box-shadow: 0 14px 34px rgba(0,0,0,.35); backdrop-filter: blur(14px); }
     .admin-quick strong { font-size: 16px; }
     .admin-quick a { background: #2bffe5; color: #071014; }
@@ -112,7 +112,7 @@
   </section>
   <section class="admin-section" id="unity-admin">
     <h1>메인 홈 Unity 골프혁신 섹션 관리</h1>
-    <p class="notice">배경, 휴대폰 PNG, 제목·설명과 7개 지표 문구를 각각 수정합니다. 대용량 이미지는 IndexedDB에 저장되어 이 브라우저에서만 적용됩니다.</p>
+    <p class="notice">배경, 휴대폰 PNG, 제목·설명과 7개 지표의 한글·영문 문구를 수정합니다. 아이콘 안의 수치는 PNG에 포함되어 수정 대상이 아닙니다.</p>
     <form id="unity-editor">
       <div class="smart-grid">
         <section class="smart-card">
@@ -290,7 +290,7 @@
   unityContent.metrics.forEach((metric, index) => {
     const row = document.createElement('div');
     row.className = 'metric-editor';
-    row.innerHTML = `<input type="text" data-unity-metric-label="${index}" aria-label="지표 ${index + 1} 한글" value="${metric.label}"><input type="text" data-unity-metric-english="${index}" aria-label="지표 ${index + 1} 영문" value="${metric.english}"><input type="text" data-unity-metric-value="${index}" aria-label="지표 ${index + 1} 값" value="${metric.value}">`;
+    row.innerHTML = `<input type="text" data-unity-metric-label="${index}" aria-label="지표 ${index + 1} 한글" value="${metric.label}"><input type="text" data-unity-metric-english="${index}" aria-label="지표 ${index + 1} 영문" value="${metric.english}">`;
     unityMetricsRoot.appendChild(row);
   });
 
@@ -312,7 +312,7 @@
     next.metrics = unityContent.metrics.map((metric, index) => ({
       label: document.querySelector(`[data-unity-metric-label="${index}"]`).value.trim(),
       english: document.querySelector(`[data-unity-metric-english="${index}"]`).value.trim(),
-      value: document.querySelector(`[data-unity-metric-value="${index}"]`).value.trim()
+      value: metric.value
     }));
     try {
       localStorage.setItem(window.HOME_UNITY_STORAGE_KEY, JSON.stringify(next));

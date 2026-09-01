@@ -57,15 +57,15 @@
     /* 1920px를 넘는 화면에서는 내부 콘텐츠를 확대하지 않고 배경 너비만 확장 */
     .unity-stage::before{content:"";position:absolute;z-index:2;left:6%;right:6%;top:33.5%;bottom:8%;border:1px solid rgba(255,255,255,.42);border-radius:22px;background:rgba(4,10,15,.48);box-shadow:inset 0 0 80px rgba(0,0,0,.18);backdrop-filter:blur(5px)}
     @media(min-width:1921px){.unity-section{height:1087px;min-height:1087px;background-size:100% 1087px}.unity-stage{width:1920px;height:1087px}.unity-heading h2{font-size:58px}.unity-heading p{font-size:30px}.unity-phone{width:461px;top:42.2%}.unity-metric{width:342px}}
-    .unity-original-content{display:none}
+    .unity-original-content{display:none}.unity-metric-icon{display:block;width:110px;height:75px;object-fit:contain}
     @media(min-width:1280px){
       .unity-original-content{position:absolute;z-index:3;left:6.15%;top:33.5%;display:block;width:87.7%;height:auto}.unity-phone{width:24%;top:42.2%}.unity-stage::before{visibility:hidden}
-      .unity-stage>.unity-metric{visibility:visible;width:342px;min-height:112px;padding:0;grid-template-columns:1fr 82px;gap:4px;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none}
-      .unity-metric strong{font-size:25px;line-height:1.25}.unity-metric small{margin-top:7px;font-size:19px}.unity-metric-value{width:76px;height:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;font-size:17px;line-height:1.05}
-      .unity-metric-copy{position:relative;z-index:0;padding:8px 4px}.unity-metric-copy::before{content:"";position:absolute;z-index:-1;inset:0;border-radius:10px;background:linear-gradient(145deg,#242424,#1a1a1a)}.unity-metric-value{position:relative;z-index:0}.unity-metric-value::before{content:"";position:absolute;z-index:-1;width:54px;height:54px;border-radius:50%;background:#202323}.unity-metric-value:empty::before{display:none}
-      .unity-metric:nth-of-type(1){left:19.1%;top:42.3%}.unity-metric:nth-of-type(2){left:13.7%;top:58.9%}.unity-metric:nth-of-type(3){left:21.8%;top:74.4%}.unity-metric:nth-of-type(4){right:16.1%;top:38.8%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(5){right:10.4%;top:51.3%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(6){right:15.1%;top:64.6%;grid-template-columns:82px 1fr}.unity-metric:nth-of-type(7){right:21.5%;top:77.7%;grid-template-columns:82px 1fr}
-      .unity-metric:nth-of-type(n+4) .unity-metric-value{order:-1}.unity-metric:nth-of-type(n+4) .unity-metric-copy{text-align:left}
+      .unity-stage>.unity-metric{visibility:visible;width:300px;height:116px;min-height:0;padding:4px 8px;grid-template-columns:1fr 140px;gap:0;border:1px solid rgba(255,255,255,.52);border-radius:18px;background:linear-gradient(145deg,#242424,#191919);box-shadow:none;backdrop-filter:none;overflow:hidden}
+      .unity-metric-copy{min-width:0;text-align:center}.unity-metric strong{font-family:Pretendard,Arial,sans-serif;font-size:25px;font-weight:700;line-height:1.2;white-space:nowrap}.unity-metric small{margin-top:7px;font-family:Pretendard,Arial,sans-serif;font-size:22px;font-weight:400;line-height:1.15;white-space:nowrap}.unity-metric-icon{display:block;width:140px;height:108px;object-fit:contain}.unity-metric-value{display:none}
+      .unity-metric:nth-of-type(1){left:18.9%;top:42.1%}.unity-metric:nth-of-type(2){left:13.6%;top:58.5%}.unity-metric:nth-of-type(3){left:21.7%;top:74.1%}.unity-metric:nth-of-type(4){right:18.4%;top:38.3%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(5){right:12.7%;top:51%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(6){right:17.5%;top:64.2%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(7){right:23.7%;top:77.4%;grid-template-columns:140px 1fr}
+      .unity-metric:nth-of-type(n+4) .unity-metric-icon{order:-1}.unity-metric:nth-of-type(n+4) .unity-metric-copy{text-align:left}
     }
+    @media(max-width:700px){.unity-metric-icon{width:70px;height:48px;margin:6px auto 0}}
     .practice-four-points{position:relative;width:100%;height:clamp(760px,58.54vw,1124px);overflow:hidden;background:url('./assets/home/practice-four-points-background.jpg?v=20260901-1') center/100% 100% no-repeat}.practice-four-stage{position:relative;width:min(100%,1920px);height:100%;margin:auto}.practice-four-panel{position:absolute;z-index:2;left:6.15%;top:27%;width:87.7%;height:auto}.practice-four-center{position:absolute;z-index:4;left:50%;top:43%;width:29%;height:auto;transform:translateX(-50%);filter:drop-shadow(0 18px 32px rgba(0,0,0,.38))}.practice-four-title{position:absolute;z-index:5;top:30.5%;left:14%;right:14%;margin:0;color:#2fe8dc;font-size:clamp(25px,2.2vw,43px);line-height:1.25;text-align:center}.practice-point{position:absolute;z-index:5;width:22%;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center}.practice-point strong{color:#2fe8dc;font-size:clamp(21px,1.7vw,33px)}.practice-point span{margin-top:14px;color:#fff;font-size:clamp(17px,1.35vw,26px);line-height:1.45;white-space:pre-line}.practice-point:nth-of-type(1){right:9%;top:43%}.practice-point:nth-of-type(2){left:9%;top:41%}.practice-point:nth-of-type(3){right:9%;top:72%}.practice-point:nth-of-type(4){left:9%;top:72%}
     @media(min-width:1921px){.practice-four-points{height:1124px}.practice-four-stage{width:1920px}.practice-four-title{font-size:43px}.practice-point strong{font-size:33px}.practice-point span{font-size:26px}}
     @media(max-width:700px){.practice-four-points{height:880px;background-size:cover}.practice-four-panel{left:2%;top:20%;width:96%;height:72%;object-fit:fill}.practice-four-title{top:23%;left:8%;right:8%;font-size:24px}.practice-four-center{top:42%;width:52%}.practice-point{width:44%;min-height:120px;padding:10px}.practice-point strong{font-size:18px}.practice-point span{font-size:13px}.practice-point:nth-of-type(1){right:4%;top:36%}.practice-point:nth-of-type(2){left:4%;top:36%}.practice-point:nth-of-type(3){right:4%;top:69%}.practice-point:nth-of-type(4){left:4%;top:69%}}
@@ -110,13 +110,13 @@
         <img class="unity-original-content" src="./assets/home/unity-section-inner-panel.png?v=20260901-7" alt="스마트 골프공 7대 구질 정보 그래픽">
         <div class="unity-heading"><h2 data-unity-field="title"></h2><p><span data-unity-field="subtitle1"></span><br><span data-unity-field="subtitle2"></span></p></div>
         <img class="unity-phone" data-unity-media="visual" alt="GINOVO 스마트 골프 애플리케이션 휴대폰 화면">
-        <article class="unity-metric" data-unity-metric="0"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="1"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="2"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="3"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="4"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="5"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
-        <article class="unity-metric" data-unity-metric="6"><div class="unity-metric-copy"><strong></strong><small></small></div><span class="unity-metric-value"></span></article>
+        <article class="unity-metric" data-unity-metric="0"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-trajectory.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="1"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-distance.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="2"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-angle.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="3"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-impact.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="4"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-speed.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="5"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-skid.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="6"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-spin.png" alt=""></article>
       </div>
     </section>
     <section class="practice-four-points" id="practice-four-points">
@@ -201,7 +201,8 @@
         var metric=unityContent.metrics[Number(card.dataset.unityMetric)]||{};
         card.querySelector('strong').textContent=metric.label||'';
         card.querySelector('small').textContent=metric.english?'('+metric.english+')':'';
-        card.querySelector('.unity-metric-value').textContent=metric.value?String(metric.value).replace(/\s+/, '\n'):'';
+        var metricValueNode=card.querySelector('.unity-metric-value');
+        if(metricValueNode) metricValueNode.textContent=metric.value?String(metric.value).replace(/\s+/, '\n'):'';
       });
       if(window.getHomeUnityImage){
         Promise.all([window.getHomeUnityImage('background'),window.getHomeUnityImage('visual')]).then(function(images){
