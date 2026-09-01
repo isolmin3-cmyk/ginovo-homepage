@@ -54,6 +54,10 @@
     .contact-card{padding:26px}.contact-card span{color:var(--cyan);font-size:12px;font-weight:700}.contact-card h3{margin:24px 0 0;font-size:17px;line-height:1.7}.map{margin-top:24px;aspect-ratio:16/7;overflow:hidden;border-radius:18px;border:1px solid var(--line)}.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) brightness(.8)}
     .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf-2026.jpg') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(100%,var(--max));margin:auto;padding-inline:var(--page-gutter);text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:21px;font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:41px;line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
 
+    /* 1920px를 넘는 화면에서는 내부 콘텐츠를 확대하지 않고 배경 너비만 확장 */
+    .unity-stage::before{content:"";position:absolute;z-index:2;left:6%;right:6%;top:33.5%;bottom:8%;border:1px solid rgba(255,255,255,.42);border-radius:22px;background:rgba(4,10,15,.48);box-shadow:inset 0 0 80px rgba(0,0,0,.18);backdrop-filter:blur(5px)}
+    @media(min-width:1921px){.unity-section{height:1087px;min-height:1087px;background-size:100% 1087px}.unity-stage{width:1920px;height:1087px}.unity-heading h2{font-size:58px}.unity-heading p{font-size:30px}.unity-phone{width:900px}.unity-metric{width:345px}}
+
     /* 스마트 골프공 페이지 기준 반응형 타이포그래피: 54 / 40 / 30 / 25 / 22px */
     .title,#putting .title,.home-feature h2{font-size:54px}
     .home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:22px}
@@ -151,7 +155,7 @@
   </main>
 
   <footer class="site-footer"><div class="footer-grid"><div><h4>고객센터</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">오전 9:00 ~ 오후 5:00</p><p class="footer-muted">점심시간 12:00 ~ 13:00</p><p class="footer-muted">주말 및 공휴일 휴무</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>사업자 정보</h4><p>본사 : 전남광주통합특별시 북구 자미로6번길 45, 404호</p><p>공장 : 전남광주통합특별시 광산구 손재로 236, 세방산업</p></div></div></footer>
-  <script src="./assets/home-content-config.js?v=20260901-2"></script>
+  <script src="./assets/home-content-config.js?v=20260901-3"></script>
   <script>
     Object.keys(window.HOME_CONTENT || {}).forEach(function(key){
       document.querySelectorAll('[data-content-key="'+key+'"]').forEach(function(node){
