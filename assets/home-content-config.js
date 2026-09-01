@@ -1,7 +1,7 @@
 window.HOME_CONTENT = {
   section1Eyebrow: '지노버 스마트 골프공',
   section1Title: '골프공의 한계를 넘어,\n골프 분석의 새로운 표준이 되다.',
-  section1Body: '독창성, 우수성, 신뢰성, 파급효과 새로운 골프 분석의 기준을 제시하는 혁신적인 스마트 골프 솔루션',
+  section1Body: '독창성, 우수성, 신뢰성, 파급효과\n새로운 골프 분석의 기준을 제시하는\n혁신적인 스마트 골프 솔루션',
   section2Title: 'Unity 기반의 물리엔진을 통한 골프혁신',
   section2Body: '퍼팅 샷에 대한 7대 구질 정보 가시화\n블루투스 통신을 통한 샷 정보 실시간 전송',
   section3Title: '감에 의존하는 지루한 연습에서 데이터를 기반으로 한 체계적 연습',
