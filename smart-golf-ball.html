@@ -29,7 +29,7 @@
     @keyframes heroTitleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
     .design-section{width:min(100%,1920px);margin:0 auto;padding-inline:clamp(24px,6.25vw,120px);background:var(--bg)}
     .design-section>img{width:100%;height:auto;margin:0 auto;object-fit:contain;filter:none;transform:none}
-    .anatomy-stage{position:relative;width:100%;aspect-ratio:8/5;overflow:hidden}.anatomy-stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.anatomy-title{position:absolute;z-index:1;top:7.2%;left:2%;right:2%;margin:0;color:#fff;font-size:clamp(18px,2.8vw,54px);font-weight:700;line-height:1.2;letter-spacing:-.035em;text-align:center;white-space:nowrap}.anatomy-copy{position:absolute;z-index:1}.anatomy-copy h3{margin:0;color:#31e6df;font-size:clamp(12px,1.35vw,26px);font-weight:700;line-height:1.3}.anatomy-copy p{margin:10px 0 0;color:#d6d9df;font-size:clamp(10px,1.05vw,20px);line-height:1.55;white-space:pre-line}.anatomy-copy p:empty{display:none}.anatomy-layer{top:39.5%;left:24.6%}.anatomy-elastomer{top:26.3%;left:52%}.anatomy-shell{top:80.2%;left:44%}.anatomy-cover{top:87.8%;left:20.7%}
+    .anatomy-stage{position:relative;width:100%;aspect-ratio:8/5;overflow:hidden}.anatomy-stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.anatomy-heading{position:absolute;z-index:1;top:5.8%;left:2%;right:2%;text-align:center}.anatomy-title{margin:0;color:#fff;font-size:clamp(18px,2.8vw,54px);font-weight:700;line-height:1.2;letter-spacing:-.035em;white-space:normal;word-break:keep-all;text-wrap:balance}.anatomy-subtitle{margin:clamp(8px,1vw,18px) 0 0;color:#d6d9df;font-size:clamp(11px,1.35vw,26px);font-weight:400;line-height:1.45;word-break:keep-all;text-wrap:balance}.anatomy-copy{position:absolute;z-index:1}.anatomy-copy h3{margin:0;color:#31e6df;font-size:clamp(12px,1.35vw,26px);font-weight:700;line-height:1.3}.anatomy-copy p{margin:10px 0 0;color:#d6d9df;font-size:clamp(10px,1.05vw,20px);line-height:1.55;white-space:pre-line}.anatomy-copy p:empty{display:none}.anatomy-layer{top:39.5%;left:24.6%}.anatomy-elastomer{top:26.3%;left:52%}.anatomy-shell{top:80.2%;left:44%}.anatomy-cover{top:87.8%;left:20.7%}
     .editable-media-layout{position:relative;width:min(100%,1920px);margin:0 auto;overflow:hidden}
     .editable-media-layout>.design-base{width:100%;max-width:none;margin:0}
     .media-slot{position:absolute;left:var(--slot-x);top:var(--slot-y);width:var(--slot-w);height:var(--slot-h);overflow:hidden;border-radius:var(--slot-radius,18px);pointer-events:none}
@@ -77,7 +77,7 @@
         <source src="./assets/videos/smartball-cover.mp4" type="video/mp4">
       </video>
     </section>
-    <section class="design-section anatomy-section" data-editable-section="smartball-anatomy"><div class="anatomy-stage"><img src="./assets/smartball-page-01-bg.png" alt="스마트 골프공 내부 구조"><h2 class="anatomy-title" data-smartball-content="anatomyTitle">일반 골프공의 타구감과 성능을 구현한 스마트 골프공</h2><div class="anatomy-copy anatomy-layer"><h3 data-smartball-content="anatomyLayerTitle">레이어 (Layer)</h3><p data-smartball-content="anatomyLayerDescription">아이오노머 충격 흡수 구조 내구성 확보</p></div><div class="anatomy-copy anatomy-elastomer"><h3 data-smartball-content="anatomyElastomerTitle">탄성체 (Elastomer)</h3><p data-smartball-content="anatomyElastomerDescription">반발력 확보 및 코어 편심량.\n완벽 제어 기술 적용.</p></div><div class="anatomy-copy anatomy-shell"><h3 data-smartball-content="anatomyShellTitle">보호구 (Protective Shell)</h3><p data-smartball-content="anatomyShellDescription"></p></div><div class="anatomy-copy anatomy-cover"><h3 data-smartball-content="anatomyCoverTitle">외피 (Outer Cover)</h3><p data-smartball-content="anatomyCoverDescription">공기 저항을 최소화하는 딤플.\n공인구 직경 42.67mm 유지.</p></div></div></section>
+    <section class="design-section anatomy-section" data-editable-section="smartball-anatomy"><div class="anatomy-stage"><img src="./assets/smartball-page-01-bg.png" data-media-image="anatomy-background" alt="스마트 골프공 내부 구조"><div class="anatomy-heading"><h2 class="anatomy-title" data-smartball-content="anatomyTitle">스마트 골프공 안에 시뮬레이터 구현</h2><p class="anatomy-subtitle" data-smartball-content="anatomySubtitle">일반 골프공의 타구감과 성능을 구현한 스마트 골프공</p></div><div class="anatomy-copy anatomy-layer"><h3 data-smartball-content="anatomyLayerTitle">레이어 (Layer)</h3><p data-smartball-content="anatomyLayerDescription">아이오노머 충격 흡수 구조 내구성 확보</p></div><div class="anatomy-copy anatomy-elastomer"><h3 data-smartball-content="anatomyElastomerTitle">탄성체 (Elastomer)</h3><p data-smartball-content="anatomyElastomerDescription">반발력 확보 및 코어 편심량.\n완벽 제어 기술 적용.</p></div><div class="anatomy-copy anatomy-shell"><h3 data-smartball-content="anatomyShellTitle">보호구 (Protective Shell)</h3><p data-smartball-content="anatomyShellDescription"></p></div><div class="anatomy-copy anatomy-cover"><h3 data-smartball-content="anatomyCoverTitle">외피 (Outer Cover)</h3><p data-smartball-content="anatomyCoverDescription">공기 저항을 최소화하는 딤플.\n공인구 직경 42.67mm 유지.</p></div></div></section>
     <section class="design-section composed-section spec-section" id="spec-status" data-editable-section="spec-status">
       <div class="section-shell">
         <h2 class="section-heading" data-smartball-content="specTitle">물리적 스펙 목표 100% 달성 현황</h2>
@@ -161,8 +161,8 @@
 
   <section class="cta"><div class="cta-copy"><p>Beyond Tech, Into Culture: The New Standard Powered by Data</p><h2>데이터로 기술의 한계를 넘어 새로운 골프 문화를 만듭니다.</h2></div></section>
   <footer class="site-footer"><div class="footer-grid"><div><h4>고객센터</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">오전 9:00 ~ 오후 5:00</p><p class="footer-muted">점심시간 12:00 ~ 13:00</p><p class="footer-muted">주말 및 공휴일 휴무</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>사업자 정보</h4><p>본사 : 전남광주통합특별시 북구 자미로6번길 45, 404호</p><p>공장 : 전남광주통합특별시 광산구 손재로 236, 세방산업</p></div></div></footer>
-  <script src="./assets/smartball-content-config.js?v=20260901-7"></script>
-  <script src="./assets/smartball-media-config.js?v=20260901-7"></script>
+  <script src="./assets/smartball-content-config.js?v=20260901-8"></script>
+  <script src="./assets/smartball-media-config.js?v=20260901-8"></script>
   <script>
     (function () {
       var content = window.SMARTBALL_CONTENT || {};
@@ -175,6 +175,10 @@
         var source = media[slot.getAttribute('data-media-slot')];
         var image = slot.querySelector('img');
         if (source && image) image.src = source;
+      });
+      document.querySelectorAll('[data-media-image]').forEach(function (image) {
+        var source = media[image.getAttribute('data-media-image')];
+        if (source) image.src = source;
       });
       var sections = document.querySelectorAll('.design-section');
       if (!sections.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

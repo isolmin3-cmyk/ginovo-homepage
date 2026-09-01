@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>홈페이지 콘텐츠 관리 | GINOVO</title>
   <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
-  <script src="./assets/smartball-content-config.js?v=20260901-7"></script>
-  <script src="./assets/smartball-media-config.js?v=20260901-7"></script>
+  <script src="./assets/smartball-content-config.js?v=20260901-8"></script>
+  <script src="./assets/smartball-media-config.js?v=20260901-8"></script>
   <script src="./assets/home-content-config.js?v=20260901-4"></script>
   <style>
     * { box-sizing: border-box; }
@@ -54,6 +54,18 @@
     </div>
     <p id="status" role="status"></p>
   </form>
+  <section class="admin-section" id="smartball-anatomy-admin">
+    <h1>스마트 골프공 내부 구조 섹션 관리</h1>
+    <p class="notice">배경 이미지와 대표 제목·부제목을 각각 수정할 수 있습니다.</p>
+    <form id="anatomy-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="preview" id="anatomy-background-preview" alt="내부 구조 이미지 미리보기"><label>내부 구조 이미지</label><input id="anatomy-background-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card"><label>대표 제목</label><textarea data-anatomy-field="anatomyTitle"></textarea><label>부제목</label><textarea data-anatomy-field="anatomySubtitle"></textarea></section>
+      </div>
+      <div class="actions"><button type="submit">내부 구조 섹션 저장</button><button class="secondary" type="button" id="anatomy-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="anatomy-status" role="status"></p>
+    </form>
+  </section>
   <section class="admin-section">
     <h1>스마트 골프공 퍼팅 시스템 섹션 관리</h1>
     <p class="notice">두 이미지와 각 문구를 따로 수정할 수 있습니다.</p>
@@ -253,6 +265,39 @@
   }
   bindSmartImage('system-image', 'system-preview', 'putting-system-set');
   bindSmartImage('charger-image', 'charger-preview', 'wireless-charger');
+
+  document.querySelectorAll('[data-anatomy-field]').forEach(input => {
+    input.value = smartContent[input.dataset.anatomyField] || '';
+  });
+  document.getElementById('anatomy-background-preview').src = smartMedia['anatomy-background'];
+  bindSmartImage('anatomy-background-image', 'anatomy-background-preview', 'anatomy-background');
+  document.getElementById('anatomy-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-anatomy-field]').forEach(input => {
+      nextContent[input.dataset.anatomyField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('anatomy-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('anatomy-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('anatomy-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      anatomyTitle: window.SMARTBALL_CONTENT_DEFAULTS.anatomyTitle,
+      anatomySubtitle: window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle
+    });
+    const nextMedia = Object.assign({}, smartMedia, {
+      'anatomy-background': window.SMARTBALL_MEDIA_DEFAULTS['anatomy-background']
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+    location.reload();
+  });
 
   document.querySelectorAll('[data-spec-field]').forEach(input => {
     input.value = smartContent[input.dataset.specField] || '';

@@ -5,6 +5,7 @@
  */
 window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
 window.SMARTBALL_MEDIA_DEFAULTS = {
+  'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
   'spec-size': './assets/smartball-spec-2.png',
   'spec-rebound': './assets/smartball-spec-3.png',

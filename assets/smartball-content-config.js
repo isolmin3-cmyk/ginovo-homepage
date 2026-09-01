@@ -4,7 +4,8 @@
  */
 window.SMARTBALL_CONTENT_STORAGE_KEY = 'ginovo-smartball-content';
 window.SMARTBALL_CONTENT_DEFAULTS = {
-  anatomyTitle: '일반 골프공의 타구감과 성능을 구현한 스마트 골프공',
+  anatomyTitle: '스마트 골프공 안에 시뮬레이터 구현',
+  anatomySubtitle: '일반 골프공의 타구감과 성능을 구현한 스마트 골프공',
   anatomyLayerTitle: '레이어 (Layer)',
   anatomyLayerDescription: '아이오노머 충격 흡수 구조 내구성 확보',
   anatomyElastomerTitle: '탄성체 (Elastomer)',
@@ -31,10 +32,17 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
 };
 try {
   var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');
+  var smartballContentMigrated = false;
+  if (savedSmartballContent.anatomyTitle === '일반 골프공의 타구감과 성능을 구현한 스마트 골프공') {
+    savedSmartballContent.anatomyTitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomyTitle;
+    savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
+    smartballContentMigrated = true;
+  }
   if (savedSmartballContent.specEccentricity === '편심도 : 0.095%') {
     savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
-    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(savedSmartballContent));
+    smartballContentMigrated = true;
   }
+  if (smartballContentMigrated) localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(savedSmartballContent));
   window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, savedSmartballContent);
 } catch (_) {
   window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);
