@@ -57,10 +57,10 @@
     /* 1920px를 넘는 화면에서는 내부 콘텐츠를 확대하지 않고 배경 너비만 확장 */
     .unity-stage::before{content:"";position:absolute;z-index:2;left:6%;right:6%;top:33.5%;bottom:8%;border:1px solid rgba(255,255,255,.42);border-radius:22px;background:rgba(4,10,15,.48);box-shadow:inset 0 0 80px rgba(0,0,0,.18);backdrop-filter:blur(5px)}
     @media(min-width:1921px){.unity-section{height:1087px;min-height:1087px;background-size:100% 1087px}.unity-stage{width:1920px;height:1087px}.unity-heading h2{font-size:58px}.unity-heading p{font-size:30px}.unity-phone{width:461px;top:42.2%}.unity-metric{width:342px}}
-    .unity-original-content{display:none}.unity-metric-icon{display:block;width:110px;height:75px;object-fit:contain}
+    .unity-original-content,.unity-connectors{display:none}.unity-metric-icon{display:block;width:110px;height:75px;object-fit:contain}
     @media(min-width:1280px){
-      .unity-original-content{position:absolute;z-index:3;left:6.15%;top:33.5%;display:block;width:87.7%;height:auto}.unity-phone{width:24%;top:42.2%}.unity-stage::before{visibility:hidden}
-      .unity-stage>.unity-metric{visibility:visible;width:300px;height:116px;min-height:0;padding:4px 8px;grid-template-columns:1fr 140px;gap:0;border:1px solid rgba(255,255,255,.52);border-radius:18px;background:linear-gradient(145deg,#242424,#191919);box-shadow:none;backdrop-filter:none;overflow:hidden}
+      .unity-original-content{display:none}.unity-connectors{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;pointer-events:none}.unity-connectors line{fill:none;stroke:rgba(255,255,255,.86);stroke-width:2;stroke-dasharray:8 8}.unity-phone{z-index:6;width:24%;top:42.2%}.unity-heading{z-index:7}.unity-stage::before{visibility:visible}
+      .unity-stage>.unity-metric{z-index:5;visibility:visible;width:300px;height:116px;min-height:0;padding:4px 8px;grid-template-columns:1fr 140px;gap:0;border:1px solid rgba(255,255,255,.52);border-radius:18px;background:linear-gradient(145deg,#242424,#191919);box-shadow:0 12px 28px rgba(0,0,0,.22);backdrop-filter:none;overflow:hidden}
       .unity-metric-copy{min-width:0;text-align:center}.unity-metric strong{font-family:Pretendard,Arial,sans-serif;font-size:25px;font-weight:700;line-height:1.2;white-space:nowrap}.unity-metric small{margin-top:7px;font-family:Pretendard,Arial,sans-serif;font-size:22px;font-weight:400;line-height:1.15;white-space:nowrap}.unity-metric-icon{display:block;width:140px;height:108px;object-fit:contain}.unity-metric-value{display:none}
       .unity-metric:nth-of-type(1){left:18.9%;top:42.1%}.unity-metric:nth-of-type(2){left:13.6%;top:58.5%}.unity-metric:nth-of-type(3){left:21.7%;top:74.1%}.unity-metric:nth-of-type(4){right:18.4%;top:38.3%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(5){right:12.7%;top:51%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(6){right:17.5%;top:64.2%;grid-template-columns:140px 1fr}.unity-metric:nth-of-type(7){right:23.7%;top:77.4%;grid-template-columns:140px 1fr}
       .unity-metric:nth-of-type(n+4) .unity-metric-icon{order:-1}.unity-metric:nth-of-type(n+4) .unity-metric-copy{text-align:left}
@@ -108,6 +108,7 @@
     <section class="unity-section" id="unity-feature">
       <div class="unity-stage">
         <img class="unity-original-content" src="./assets/home/unity-section-inner-panel.png?v=20260901-7" alt="스마트 골프공 7대 구질 정보 그래픽">
+        <svg class="unity-connectors" viewBox="0 0 1920 1087" preserveAspectRatio="none" aria-hidden="true"><line x1="660" y1="515" x2="790" y2="600"/><line x1="560" y1="694" x2="785" y2="720"/><line x1="716" y1="863" x2="825" y2="790"/><line x1="1268" y1="474" x2="1145" y2="560"/><line x1="1376" y1="612" x2="1160" y2="612"/><line x1="1284" y1="756" x2="1135" y2="700"/><line x1="1163" y1="899" x2="1085" y2="800"/></svg>
         <div class="unity-heading"><h2 data-unity-field="title"></h2><p><span data-unity-field="subtitle1"></span><br><span data-unity-field="subtitle2"></span></p></div>
         <img class="unity-phone" data-unity-media="visual" alt="GINOVO 스마트 골프 애플리케이션 휴대폰 화면">
         <article class="unity-metric" data-unity-metric="0"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-trajectory.png" alt=""></article>
