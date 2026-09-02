@@ -11,7 +11,7 @@ window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260902-distance-v4';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-slope-media-schema';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
-window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v2';
+window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v3';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -24,7 +24,8 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'distance-analysis-screen': './assets/smartball-distance-analysis-final-v2.png',
   'slope-practice-screen': './assets/smartball-slope-practice-1.png',
   'slope-selection-screen': './assets/smartball-slope-practice-2-v2.png',
-  'field-background': './assets/smartball-field-green-final.jpg',
+  'field-background': './assets/smartball-field-green-final-v2.jpg',
+  'field-panel': './assets/smartball-field-panel-v2.png',
   'battle-panel': './assets/smartball-slot-battle-panel.png',
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
   'battle-player-b': './assets/smartball-battle-player-b.jpg'
@@ -49,6 +50,7 @@ try {
   }
   if (localStorage.getItem(window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY) !== window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION) {
     delete savedSmartballMedia['field-background'];
+    delete savedSmartballMedia['field-panel'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
     localStorage.setItem(window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY, window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION);
   }
