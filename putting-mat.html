@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260903-3">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="./image-slot.js"></script>
-    <script src="./assets/putting-mat-content-config.js?v=20260903-8"></script>
+    <script src="./assets/putting-mat-content-config.js?v=20260903-9"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         body { margin: 0; font-family: 'Pretendard', 'Inter', -apple-system, sans-serif; }
@@ -54,6 +54,10 @@
             padding-left: clamp(24px, 6.25vw, 120px) !important;
             padding-right: clamp(24px, 6.25vw, 120px) !important;
         }
+        [data-screen-label="사이즈 비교"] {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
         main > section[data-screen-label="대표 모델 90cm"] > div:first-child,
         main > section[data-screen-label="슬로핑 매트"] > div:first-child {
             width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important;
@@ -62,8 +66,8 @@
             margin-right: auto !important;
         }
         [data-screen-label="사이즈 비교"] > div {
-            width: 100% !important;
-            max-width: 1680px !important;
+            width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important;
+            max-width: var(--ginovo-content-max) !important;
             margin-left: auto !important;
             margin-right: auto !important;
         }
@@ -111,7 +115,7 @@
             inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            object-fit: cover !important;
+            object-fit: contain !important;
             object-position: center !important;
         }
     </style>
@@ -632,7 +636,7 @@
                     <p style="font-size: 18px; color: var(--comparison-body); line-height: 1.7; margin: 0; padding-top: 12px">지노버 경사 퍼팅매트는 사용 공간과 훈련 목적에 맞게 선택할 수 있습니다.</p>
                 </div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1160px; margin: 0 auto; padding-top: 26px" data-reveal="true">
                     <div style="position: relative; border-radius: 16px; overflow: hidden; min-height: 420px" data-om-label="섹션1" data-comparison-card="0">
-                        <img data-card-image src="./assets/img-016.png" alt="90cm 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.79">
+                        <img data-card-image src="./assets/putting-comparison-90-v2.png" alt="90cm 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0.79">
                         
                         <div style="position: absolute; inset: 0; background: linear-gradient(0deg, #000000EB, transparent);"><div style="position: absolute; inset: 0; z-index: 1; padding: 32px 32px 76px; display: flex; flex-direction: column; justify-content: flex-end;">
                             <div style="display: var(--comparison-badge-display); position: absolute; top: 16px; right: 16px">
@@ -662,13 +666,13 @@
                     </div>
                     
                     <div style="position: relative; border-radius: 16px; overflow: hidden; min-height: 420px" data-om-label="섹션 2" data-comparison-card="1">
-                        <img data-card-image src="./assets/img-014.png" alt="슬로핑 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8">
+                        <img data-card-image src="./assets/putting-comparison-70-v2.png" alt="슬로핑 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0.8">
                         <div style="position: absolute; inset: 0; background: linear-gradient(0deg, #000000EB, transparent)"></div>
                         <div style="position: absolute; inset: 0; z-index: 1; padding: 32px 32px 76px; display: flex; flex-direction: column; justify-content: flex-end;">
                             <div>
                                 <div style="text-align: center; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 24px;">
                                     <h3 data-card-title style="font-size: 28px; font-weight: 700; color: var(--comparison-heading); margin: 0 0 8px; text-align: left">70cm</h3>
-                                    <p data-card-subtitle style="font-size: 14px; color: #34D399; font-weight: 500; margin: 0; text-align: left">슬로핑 퍼팅매트 / 게임형 훈련 / 경사+게임 결합</p>
+                                    <p data-card-subtitle style="font-size: 14px; color: #34D399; font-weight: 500; margin: 0; text-align: left">슬로핑 퍼팅매트 / 게임형 훈련 / 경사</p>
                                 </div>
                                 <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
                                     <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px;">
@@ -688,7 +692,7 @@
                         </div>
                         <a href="https://smartstore.naver.com/ginovo/products/10393702258" style="position: absolute; bottom: 16px; right: 16px; z-index: 2; padding: 6px 14px; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.25); border-radius: 100px; color: #FFFFFF; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap;">상품 자세히 보기</a>
                     </div><div style="position: relative; border-radius: 16px; overflow: hidden; min-height: 420px" data-om-label="섹션 3" data-comparison-card="2">
-                        <img data-card-image src="./assets/img-015.png" alt="60cm 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8">
+                        <img data-card-image src="./assets/putting-comparison-60-v2.png" alt="60cm 매트" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0.8">
                         <div style="position: absolute; inset: 0; background: linear-gradient(0deg, #000000E5, #FFFFFF00)"></div>
                         <div style="position: absolute; inset: 0; z-index: 1; padding: 32px 32px 76px; display: flex; flex-direction: column; justify-content: flex-end;">
                             <div>
