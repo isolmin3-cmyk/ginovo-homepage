@@ -1008,5 +1008,28 @@ class Component extends DCLogic {
   }
 }
 </script>
+<script>
+(function () {
+  function playHeroVideo() {
+    var video = document.querySelector('.pm-hero-video');
+    if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    var playback = video.play();
+    if (playback && typeof playback.catch === 'function') playback.catch(function () {});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', playHeroVideo, { once: true });
+  } else {
+    playHeroVideo();
+  }
+  window.addEventListener('pageshow', playHeroVideo);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) playHeroVideo();
+  });
+}());
+</script>
 </body>
 </html>
