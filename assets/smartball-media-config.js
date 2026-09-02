@@ -13,7 +13,7 @@ window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v5';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema';
-window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260902-battle-v4';
+window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260903-battle-v5';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -28,7 +28,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'slope-selection-screen': './assets/smartball-slope-practice-2-v2.png',
   'field-background': './assets/smartball-field-green-final-v2.jpg',
   'field-panel': './assets/smartball-field-panel-v2.png',
-  'battle-composite': './assets/smartball-battle-composite-final.jpg',
+  'battle-composite': './assets/smartball-battle-overlay-v2.webp',
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
   'battle-player-b': './assets/smartball-battle-player-b.jpg'
 };
