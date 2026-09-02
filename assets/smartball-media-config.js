@@ -6,6 +6,8 @@
 window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
 window.SMARTBALL_MEDIA_SCHEMA_KEY = 'ginovo-smartball-media-schema';
 window.SMARTBALL_MEDIA_SCHEMA_VERSION = '20260902-wireless-v2';
+window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-distance-media-schema';
+window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260902-distance-v3';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -15,7 +17,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'putting-system-set': './assets/smartball-slot-putting-system.png',
   'wireless-charger': './assets/smartball-wireless-charger-final.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
-  'distance-analysis-screen': './assets/smartball-slot-distance-analysis-v2.png',
+  'distance-analysis-screen': './assets/smartball-distance-analysis-final.png',
   'slope-practice-screen': './assets/smartball-slot-slope-practice.png',
   'slope-selection-screen': './assets/smartball-slot-slope-selection.png',
   'battle-panel': './assets/smartball-slot-battle-panel.png',
@@ -28,6 +30,11 @@ try {
     delete savedSmartballMedia['wireless-charger'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
     localStorage.setItem(window.SMARTBALL_MEDIA_SCHEMA_KEY, window.SMARTBALL_MEDIA_SCHEMA_VERSION);
+  }
+  if (localStorage.getItem(window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY) !== window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION) {
+    delete savedSmartballMedia['distance-analysis-screen'];
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
+    localStorage.setItem(window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY, window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION);
   }
   if (savedSmartballMedia['distance-analysis-screen'] === './assets/smartball-slot-distance-analysis.png') {
     savedSmartballMedia['distance-analysis-screen'] = window.SMARTBALL_MEDIA_DEFAULTS['distance-analysis-screen'];
