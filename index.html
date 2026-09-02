@@ -298,8 +298,8 @@
 
       document.querySelectorAll('.video-only-section').forEach(function(section){addRevealGroup(section,pick(section,'.video-frame'),120);});
 
-      var history=document.getElementById('history');
-      addRevealGroup(history,pick(history,'.heading .eyebrow, .heading .title').concat(pick(history,'.history-row')),110);
+      var historySection=document.getElementById('history');
+      addRevealGroup(historySection,pick(historySection,'.heading .eyebrow, .heading .title').concat(pick(historySection,'.history-row')),110);
 
       var about=document.getElementById('about');
       addRevealGroup(about,pick(about,'.esg-image, .esg-layout .eyebrow, .esg-layout .title, .esg-layout .desc').concat(pick(about,'.esg-certs .cert')),105);
