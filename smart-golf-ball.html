@@ -67,9 +67,6 @@
     .field-kicker{font-size:var(--ginovo-section-title-size)!important}.field-features{margin-top:16px}.field-feature,.field-badge{border-color:transparent;background:transparent}.field-feature{min-height:124px;padding-block:12px;align-content:center}.field-feature>div{align-self:center;display:flex;flex-direction:column;justify-content:center;min-width:0}.field-feature h3{font-size:25px;line-height:1.3}.field-feature p{margin-top:6px;font-size:16px;line-height:1.4}.field-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}.field-badge strong,.field-badge span{width:100%;margin:0;text-align:center;line-height:1.3}.field-badge strong{font-size:25px}.field-badge span{font-size:16px}
     @media(min-width:701px){.field-section{min-height:0;aspect-ratio:7680/4760;padding:0}.field-section>.section-shell{position:absolute;inset:0;width:100%!important;max-width:none!important;margin:0!important}.field-heading{position:absolute;top:10.8%;left:6.25%;width:66%;max-width:none}.field-panel{position:absolute;top:28.7%;left:6.25%;width:53.45%;max-width:none;height:62%;min-height:0;margin:0;padding:3.1%;justify-content:center}.field-summary{margin-top:clamp(10px,1.25vw,24px);font-size:clamp(15px,1.45vw,28px)}.field-features{gap:clamp(10px,1.45vw,28px)}.field-feature{min-height:clamp(82px,6.45vw,124px);padding:clamp(8px,.75vw,14px) clamp(16px,1.55vw,30px)}.field-badges{gap:clamp(12px,1.45vw,28px);margin-top:clamp(12px,1.55vw,30px)}.field-badge{min-height:clamp(62px,5vw,96px);padding:clamp(8px,1.05vw,20px)}}
     @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.72),rgba(7,12,23,.24))}.field-feature{grid-template-columns:36px minmax(0,1fr);gap:14px}.field-badge{min-height:92px}}
-    .field-panel{display:block;aspect-ratio:4108/2952;padding:0!important;overflow:hidden}.field-panel-frame{position:relative;inset:auto;width:100%;height:100%;object-fit:contain}
-    @media(min-width:701px){.field-panel{height:auto}}
-    @media(max-width:700px){.field-panel{min-height:0;padding:0!important}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260902-1">
 </head>
@@ -152,6 +149,24 @@
         </div>
         <div class="field-panel">
           <img class="field-panel-frame" data-media-image="field-panel" alt="필드 그린 콘텐츠 패널">
+          <div class="field-panel-content">
+            <h3 class="field-kicker"><span data-smartball-content="fieldKickerLine1">자유로운 연습부터</span><br><span class="accent" data-smartball-content="fieldKickerAccent">실전 그린 정밀 분석</span>까지</h3>
+            <p class="field-summary" data-smartball-content="fieldSummary">언제 어디서나 실제 필드의 그린 감각을 완벽하게 재현합니다.</p>
+            <div class="field-features">
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-anywhere.png" alt="">
+                <div><h3 data-smartball-content="fieldFeature1Title">장소 제한 없는 자유로운 퍼팅 연습</h3><p data-smartball-content="fieldFeature1Description">실제 필드 그린은 물론 연습장, 가정용 연습 매트까지 어떤 공간에서든 제약 없이 자유롭게 연습할 수 있습니다.</p></div>
+              </article>
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-analysis.png" alt="">
+                <div><h3 data-smartball-content="fieldFeature2Title">경사 영향 분석 &amp; 그린 스피드 피드백</h3><p data-smartball-content="fieldFeature2Description">실제 그린 환경에서의 경사도에 따른 공의 궤적 영향을 정밀 분석하고, 그린 스피드에 맞춘 최적의 거리감 피드백을 제공합니다.</p></div>
+              </article>
+            </div>
+            <div class="field-badges">
+              <div class="field-badge"><strong data-smartball-content="fieldBadge1Title">ANYWHERE</strong><span data-smartball-content="fieldBadge1Description">필드 &amp; 다양한 매트 지원</span></div>
+              <div class="field-badge"><strong data-smartball-content="fieldBadge2Title">REAL - TIME</strong><span data-smartball-content="fieldBadge2Description">경사도 및 스피드 실시간 데이터</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
