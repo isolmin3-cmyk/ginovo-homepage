@@ -97,20 +97,6 @@
         .feature70-title { margin: 0 0 24px !important; }
         .feature70-subtitle { margin: 9px 0 40px !important; }
         .feature90-image { display: block; width: 100%; height: 100%; object-fit: cover; }
-        .feature90-row { align-items: stretch !important; }
-        .feature90-grid { width: 100%; }
-        .feature90-copy { display: flex; flex-direction: column; }
-        .feature90-copy > ul { flex: 1; }
-        .feature90-copy > ul > li { flex: 1; align-items: center !important; }
-        @media (min-width: 1600px) {
-            main > section[data-screen-label="대표 모델 90cm"] {
-                width: 100% !important;
-                max-width: none !important;
-            }
-            main > section[data-screen-label="대표 모델 90cm"] > div:first-child {
-                max-width: 1920px !important;
-            }
-        }
         [data-screen-label="사이즈 비교"] h3 { font-size: clamp(24px, 2.0833vw, 40px) !important; }
         [data-screen-label="사이즈 비교"] h3 + p { font-size: clamp(20px, 1.3021vw, 25px) !important; }
         [data-screen-label="사이즈 비교"] li { font-size: clamp(16px, 1.1458vw, 22px) !important; }
@@ -243,9 +229,6 @@
             .pm-review-section { padding: 48px 18px 64px; }
             .ginovo-footer-email { white-space: normal; }
             .feature90-column { min-width: 0 !important; flex-basis: 100% !important; }
-            .feature90-copy { display: block; }
-            .feature90-copy > ul > li { min-height: 0; }
-            .feature90-grid { height: auto; }
             .feature90-description,
             .feature70-description { margin-top: -8px !important; margin-bottom: 24px !important; text-align: left; }
             main [data-screen-label="대표 모델 90cm"] .feature90-description,
@@ -296,25 +279,25 @@
         </section>
 
         <section id="features" data-screen-label="대표 모델 90cm" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--f90-bg); color: var(--f90-heading);">
-            <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
-                <div class="feature90-row" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
-                    <div class="feature90-column feature90-media" style="flex: 1 1 480px; min-width: 320px;">
-                        <div class="feature90-grid" style="display: grid; grid-template-columns: var(--f90-grid-cols); gap: 16px;">
-                            <div class="feature90-grid-main" style="grid-column: 1 / -1; background: var(--f90-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 16/10; position: relative;" data-reveal="true" data-reveal-dir="ltr">
+            <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), 1200px) !important; max-width: 1200px !important; margin: 0 auto;">
+                <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
+                    <div class="feature90-column" style="flex: 1 1 480px; min-width: 320px;">
+                        <div style="display: grid; grid-template-columns: var(--f90-grid-cols); gap: 16px;">
+                            <div style="grid-column: 1 / -1; background: var(--f90-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 16/10; position: relative;" data-reveal="true" data-reveal-dir="ltr">
                                 <img class="feature90-image" data-feature90-image="main" src="./assets/06-mrhrqr9k.jpg" alt="90cm 매트 전체컷">
                                 
                             </div>
-                            <div class="feature90-grid-thumb" style="display: var(--f90-thumb-display); background: var(--f90-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; position: relative;" data-reveal="true" data-reveal-dir="ltr" data-reveal-delay="0.15">
+                            <div style="display: var(--f90-thumb-display); background: var(--f90-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; position: relative;" data-reveal="true" data-reveal-dir="ltr" data-reveal-delay="0.15">
                                 <img class="feature90-image" data-feature90-image="angle" src="./assets/107389421193421728_1893345465-mrhu6uuy.jpg" alt="매트 앵글컷">
                                 <div style="position: absolute; inset: 0; background-color: #00000000"></div>
                             </div>
-                            <div class="feature90-grid-thumb" style="display: var(--f90-thumb-display); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1;" data-reveal="true" data-reveal-dir="ltr" data-reveal-delay="0.3">
+                            <div style="display: var(--f90-thumb-display); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1;" data-reveal="true" data-reveal-dir="ltr" data-reveal-delay="0.3">
                                 <img class="feature90-image" data-feature90-image="detail" src="./assets/img-029.jpg" alt="퍼팅매트 경사 디테일">
                             </div>
                         </div>
                     </div>
 
-                    <div class="feature90-column feature90-copy" style="flex: 1 1 480px; min-width: 320px;">
+                    <div class="feature90-column" style="flex: 1 1 480px; min-width: 320px;">
                         <div data-feature90-field="badge" style="display: var(--f90-badge-display); padding: 6px 16px; border-radius: 100px; background: var(--f90-box-bg); border: 1px solid #2BFFE5; font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; color: #2BFFE5;" data-reveal="true">Flagship Model</div>
                         <h2 data-feature90-field="title" style="font-size: clamp(30px, 4vw, 36px); font-weight: 700; margin: 0 0 24px; line-height: 1.45; white-space: nowrap" data-reveal="true" data-reveal-delay="0.1">폭 90cm 경사 퍼팅매트</h2>
                         <h3 data-feature90-field="subtitle" style="font-size: 20px; color: #34D399; font-weight: 500; margin: 9px 0 40px" data-reveal="true" data-reveal-delay="0.2">필드 퍼팅 환경을 구현한 경사퍼팅매트</h3>
