@@ -47,7 +47,9 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   fieldBadge2Title: 'REAL - TIME',
   fieldBadge2Description: '경사도 및 스피드 실시간 데이터',
   battleTitle: '온·오프라인 대결 모드를 통한 실전 연습',
-  battleSubtitle: '지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결'
+  battleSubtitle: '지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결',
+  ctaEyebrow: 'Beyond Tech, Into Culture: The New Standard Powered by Data',
+  ctaTitle: '데이터로 기술의 한계를 넘어 새로운 골프 문화를 만듭니다.'
 };
 try {
   var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');

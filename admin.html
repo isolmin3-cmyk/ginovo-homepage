@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>홈페이지 콘텐츠 관리 | GINOVO</title>
   <script src="./assets/putting-mat-content-config.js?v=20260902-7"></script>
-  <script src="./assets/smartball-content-config.js?v=20260902-11"></script>
-  <script src="./assets/smartball-media-config.js?v=20260902-11"></script>
+  <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
+  <script src="./assets/smartball-media-config.js?v=20260903-13"></script>
   <script src="./assets/home-content-config.js?v=20260901-4"></script>
   <style>
     * { box-sizing: border-box; }
@@ -221,6 +221,18 @@
       <div class="smart-grid"><section class="smart-card"><img class="preview" id="battle-composite-preview" alt="온·오프라인 완성 이미지 미리보기"><label>온·오프라인 전체 이미지</label><input id="battle-composite-image" type="file" accept="image/png,image/jpeg,image/webp"><label>대표 제목</label><textarea data-battle-field="battleTitle"></textarea><label>부제목</label><textarea data-battle-field="battleSubtitle"></textarea></section><section class="smart-card"><img class="preview" id="battle-player-a-preview" alt="Player A 얼굴 미리보기"><label>Player A 얼굴</label><input id="battle-player-a-image" type="file" accept="image/png,image/jpeg,image/webp"><img class="preview" id="battle-player-b-preview" alt="Player B 얼굴 미리보기"><label>Player B 얼굴</label><input id="battle-player-b-image" type="file" accept="image/png,image/jpeg,image/webp"></section></div>
       <div class="actions"><button type="submit">온·오프라인 섹션 저장</button><button class="secondary" type="button" id="battle-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
       <p id="battle-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="smartball-cta-admin">
+    <h1>스마트 골프공 CTA 섹션 관리</h1>
+    <p class="notice">CTA 배경 이미지와 화면 위의 두 문구를 각각 수정할 수 있습니다.</p>
+    <form id="cta-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="preview" id="cta-background-preview" alt="CTA 배경 미리보기"><label>CTA 배경 이미지</label><input id="cta-background-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card"><label>영문 문구</label><textarea data-cta-field="ctaEyebrow"></textarea><label>대표 문구</label><textarea data-cta-field="ctaTitle"></textarea></section>
+      </div>
+      <div class="actions"><button type="submit">CTA 섹션 저장</button><button class="secondary" type="button" id="cta-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="cta-status" role="status"></p>
     </form>
   </section>
   <section class="admin-section" id="unity-admin">
@@ -591,6 +603,35 @@
   document.getElementById('battle-reset').addEventListener('click', () => {
     localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
     localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.getElementById('cta-background-preview').src = smartMedia['cta-background'];
+  document.querySelectorAll('[data-cta-field]').forEach(input => { input.value = smartContent[input.dataset.ctaField] || ''; });
+  bindSmartImage('cta-background-image', 'cta-background-preview', 'cta-background');
+  document.getElementById('cta-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-cta-field]').forEach(input => { nextContent[input.dataset.ctaField] = input.value.trim(); });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('cta-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('cta-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('cta-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      ctaEyebrow: window.SMARTBALL_CONTENT_DEFAULTS.ctaEyebrow,
+      ctaTitle: window.SMARTBALL_CONTENT_DEFAULTS.ctaTitle
+    });
+    const nextMedia = Object.assign({}, smartMedia, {
+      'cta-background': window.SMARTBALL_MEDIA_DEFAULTS['cta-background']
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
     location.reload();
   });
 

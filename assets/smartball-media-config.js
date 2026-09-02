@@ -14,6 +14,8 @@ window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v5';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260903-battle-v5';
+window.SMARTBALL_CTA_MEDIA_SCHEMA_KEY = 'ginovo-smartball-cta-media-schema';
+window.SMARTBALL_CTA_MEDIA_SCHEMA_VERSION = '20260903-cta-v1';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -30,7 +32,8 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'field-panel': './assets/smartball-field-panel-v2.png',
   'battle-composite': './assets/smartball-battle-overlay-v2.webp',
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
-  'battle-player-b': './assets/smartball-battle-player-b.jpg'
+  'battle-player-b': './assets/smartball-battle-player-b.jpg',
+  'cta-background': './assets/smartball-cta-bg-v2.jpg'
 };
 try {
   var savedSmartballMedia = JSON.parse(localStorage.getItem(window.SMARTBALL_MEDIA_STORAGE_KEY) || '{}');
@@ -64,6 +67,11 @@ try {
     delete savedSmartballMedia['battle-player-b'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
     localStorage.setItem(window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY, window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION);
+  }
+  if (localStorage.getItem(window.SMARTBALL_CTA_MEDIA_SCHEMA_KEY) !== window.SMARTBALL_CTA_MEDIA_SCHEMA_VERSION) {
+    delete savedSmartballMedia['cta-background'];
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
+    localStorage.setItem(window.SMARTBALL_CTA_MEDIA_SCHEMA_KEY, window.SMARTBALL_CTA_MEDIA_SCHEMA_VERSION);
   }
   if (savedSmartballMedia['distance-analysis-screen'] === './assets/smartball-slot-distance-analysis.png') {
     savedSmartballMedia['distance-analysis-screen'] = window.SMARTBALL_MEDIA_DEFAULTS['distance-analysis-screen'];
