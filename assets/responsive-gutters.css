@@ -152,6 +152,17 @@ main > section.px-6,
   font-size: clamp(12px, .9vw, 15px) !important;
 }
 
+/* 모든 공개 페이지의 마무리 CTA는 같은 편집 가능 배경을 공유합니다. */
+.cta,
+.ginovo-common-cta {
+  min-height: clamp(360px, 27.0833vw, 520px) !important;
+  background: #070c17 url("./smartball-cta-bg-v2.jpg") center / cover no-repeat !important;
+}
+
+.ginovo-common-cta-bg {
+  display: none !important;
+}
+
 @media (max-width: 700px) {
   :root {
     --ginovo-page-gutter: 24px;
