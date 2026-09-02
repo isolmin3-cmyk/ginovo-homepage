@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', window.applyPuttingMatComparisonCo
 window.PUTTING_MAT_FEATURE90_DEFAULTS = {
   badge: 'Flagship Model',
   title: '폭 90cm 경사 퍼팅매트',
-  subtitle: '필드 퍼팅 환경을 구현한 경사퍼팅매트',
+  subtitle: '필드 퍼팅 환경을 구현한 경사 퍼팅매트',
   description: '폭 90cm 경사 퍼팅매트는 퍼팅 매트 내부에 경사판을 삽입하여 실제 필드 그린과 유사한 퍼팅 환경을 실내에 구현합니다. 다양한 경사 구간과 공략 라인을 통해 반복 연습만으로도 거리감, 방향성, 라인 읽기 감각을 향상할 수 있습니다.',
   item1Title: '양쪽 경사 적용',
   item1Description: '오르막, 내리막, 슬라이스, 훅 연습 가능',
@@ -78,6 +78,10 @@ window.getPuttingMatFeature90Content = function () {
   try {
     const saved = JSON.parse(localStorage.getItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY) || 'null');
     if (!saved || typeof saved !== 'object') return defaults;
+    if (saved.subtitle === '필드 퍼팅 환경을 구현한 경사퍼팅매트') {
+      saved.subtitle = defaults.subtitle;
+      localStorage.setItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY, JSON.stringify(saved));
+    }
     return { ...defaults, ...saved, images: { ...defaults.images, ...(saved.images || {}) } };
   } catch (_) {
     return defaults;
