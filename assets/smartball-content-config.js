@@ -32,7 +32,20 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   distancePoint1: '거리 제약 없는 완벽한 퍼팅 연습 지원',
   distancePoint2: '목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원',
   slopeTitle: '그린 분석을 통한 경사별 유연한 퍼팅 연습 지원',
-  slopePoint1: '나만의 경사 설계로 반복 연습을 통한 정량적 스트로크 지원'
+  slopePoint1: '나만의 경사 설계로 반복 연습을 통한 정량적 스트로크 지원',
+  fieldTitle: '필드 그린에서 거리 & 경사 영향 퍼팅 연습을 자유롭게',
+  fieldSubtitle: '실제 그린 환경에서 퍼팅의 경사 영향 분석 및 그린 스피드 피드백',
+  fieldKickerLine1: '자유로운 연습부터',
+  fieldKickerAccent: '실전 그린 정밀 분석',
+  fieldSummary: '언제 어디서나 실제 필드의 그린 감각을 완벽하게 재현합니다.',
+  fieldFeature1Title: '장소 제한 없는 자유로운 퍼팅 연습',
+  fieldFeature1Description: '실제 필드 그린은 물론 연습장, 가정용 연습 매트까지 어떤 공간에서든 제약 없이 자유롭게 연습할 수 있습니다.',
+  fieldFeature2Title: '경사 영향 분석 & 그린 스피드 피드백',
+  fieldFeature2Description: '실제 그린 환경에서의 경사도에 따른 공의 궤적 영향을 정밀 분석하고, 그린 스피드에 맞춘 최적의 거리감 피드백을 제공합니다.',
+  fieldBadge1Title: 'ANYWHERE',
+  fieldBadge1Description: '필드 & 다양한 매트 지원',
+  fieldBadge2Title: 'REAL - TIME',
+  fieldBadge2Description: '경사도 및 스피드 실시간 데이터'
 };
 try {
   var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');

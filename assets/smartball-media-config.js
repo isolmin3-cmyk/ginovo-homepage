@@ -10,6 +10,8 @@ window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-distance-media-sc
 window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260902-distance-v4';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-slope-media-schema';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
+window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
+window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v2';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -22,6 +24,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'distance-analysis-screen': './assets/smartball-distance-analysis-final-v2.png',
   'slope-practice-screen': './assets/smartball-slope-practice-1.png',
   'slope-selection-screen': './assets/smartball-slope-practice-2-v2.png',
+  'field-background': './assets/smartball-field-green-final.jpg',
   'battle-panel': './assets/smartball-slot-battle-panel.png',
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
   'battle-player-b': './assets/smartball-battle-player-b.jpg'
@@ -43,6 +46,11 @@ try {
     delete savedSmartballMedia['slope-selection-screen'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
     localStorage.setItem(window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY, window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION);
+  }
+  if (localStorage.getItem(window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY) !== window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION) {
+    delete savedSmartballMedia['field-background'];
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
+    localStorage.setItem(window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY, window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION);
   }
   if (savedSmartballMedia['distance-analysis-screen'] === './assets/smartball-slot-distance-analysis.png') {
     savedSmartballMedia['distance-analysis-screen'] = window.SMARTBALL_MEDIA_DEFAULTS['distance-analysis-screen'];

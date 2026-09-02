@@ -61,6 +61,10 @@
     .system-image-label.device::after{right:100%;top:72%;width:clamp(60px,7vw,115px);transform:rotate(-45deg);transform-origin:right center}
     .system-image-label.ball::after{left:100%;top:72%;width:clamp(55px,6vw,100px);transform:rotate(45deg);transform-origin:left center}
     @media(max-width:700px){.system-stage{aspect-ratio:auto}.system-image-label.device::after{width:clamp(44px,13vw,62px)}.system-image-label.ball::after{width:clamp(42px,12vw,58px)}}
+    .field-section{position:relative;isolation:isolate;background:#070c17;overflow:hidden}
+    .design-section>img.field-background{position:absolute;z-index:-2;inset:0;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:center}
+    .field-section::before{display:block;z-index:-1;background:linear-gradient(90deg,rgba(7,12,23,.99) 0%,rgba(7,12,23,.97) 50%,rgba(7,12,23,.82) 61%,rgba(7,12,23,.12) 80%,transparent 100%)}
+    @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.96) 0%,rgba(7,12,23,.92) 56%,rgba(7,12,23,.48) 100%)}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260902-1">
 </head>
@@ -135,29 +139,30 @@
       </div>
     </section>
     <section class="design-section composed-section field-section" data-editable-section="field-practice">
+      <img class="field-background" data-media-image="field-background" alt="필드 그린에서 퍼팅하는 골퍼">
       <div class="section-shell">
         <div class="field-heading">
-          <h2 class="section-heading">필드 그린에서 거리 &amp; 경사 영향 퍼팅 연습을 자유롭게</h2>
-          <p class="section-lead">실제 그린 환경에서 퍼팅의 경사 영향 분석 및 그린 스피드 피드백</p>
+          <h2 class="section-heading" data-smartball-content="fieldTitle">필드 그린에서 거리 &amp; 경사 영향 퍼팅 연습을 자유롭게</h2>
+          <p class="section-lead" data-smartball-content="fieldSubtitle">실제 그린 환경에서 퍼팅의 경사 영향 분석 및 그린 스피드 피드백</p>
         </div>
         <div class="field-panel">
           <img class="field-panel-frame" src="./assets/smartball-section-06-panel.png" alt="">
           <div class="field-panel-content">
-            <h3 class="field-kicker">자유로운 연습부터<br><span class="accent">실전 그린 정밀 분석</span>까지</h3>
-            <p class="field-summary">언제 어디서나 실제 필드의 그린 감각을 완벽하게 재현합니다.</p>
+            <h3 class="field-kicker"><span data-smartball-content="fieldKickerLine1">자유로운 연습부터</span><br><span class="accent" data-smartball-content="fieldKickerAccent">실전 그린 정밀 분석</span>까지</h3>
+            <p class="field-summary" data-smartball-content="fieldSummary">언제 어디서나 실제 필드의 그린 감각을 완벽하게 재현합니다.</p>
             <div class="field-features">
               <article class="field-feature">
                 <img src="./assets/smartball-section-06-icon-anywhere.png" alt="">
-                <div><h3>장소 제한 없는 자유로운 퍼팅 연습</h3><p>실제 필드 그린은 물론 연습장, 가정용 연습 매트까지 어떤 공간에서든 제약 없이 자유롭게 연습할 수 있습니다.</p></div>
+                <div><h3 data-smartball-content="fieldFeature1Title">장소 제한 없는 자유로운 퍼팅 연습</h3><p data-smartball-content="fieldFeature1Description">실제 필드 그린은 물론 연습장, 가정용 연습 매트까지 어떤 공간에서든 제약 없이 자유롭게 연습할 수 있습니다.</p></div>
               </article>
               <article class="field-feature">
                 <img src="./assets/smartball-section-06-icon-analysis.png" alt="">
-                <div><h3>경사 영향 분석 &amp; 그린 스피드 피드백</h3><p>실제 그린 환경에서의 경사도에 따른 공의 궤적 영향을 정밀 분석하고, 그린 스피드에 맞춘 최적의 거리감 피드백을 제공합니다.</p></div>
+                <div><h3 data-smartball-content="fieldFeature2Title">경사 영향 분석 &amp; 그린 스피드 피드백</h3><p data-smartball-content="fieldFeature2Description">실제 그린 환경에서의 경사도에 따른 공의 궤적 영향을 정밀 분석하고, 그린 스피드에 맞춘 최적의 거리감 피드백을 제공합니다.</p></div>
               </article>
             </div>
             <div class="field-badges">
-              <div class="field-badge"><strong>ANYWHERE</strong><span>필드 &amp; 다양한 매트 지원</span></div>
-              <div class="field-badge"><strong>REAL - TIME</strong><span>경사도 및 스피드 실시간 데이터</span></div>
+              <div class="field-badge"><strong data-smartball-content="fieldBadge1Title">ANYWHERE</strong><span data-smartball-content="fieldBadge1Description">필드 &amp; 다양한 매트 지원</span></div>
+              <div class="field-badge"><strong data-smartball-content="fieldBadge2Title">REAL - TIME</strong><span data-smartball-content="fieldBadge2Description">경사도 및 스피드 실시간 데이터</span></div>
             </div>
           </div>
         </div>
@@ -170,8 +175,8 @@
 
   <section class="cta"><div class="cta-copy"><p>Beyond Tech, Into Culture: The New Standard Powered by Data</p><h2>데이터로 기술의 한계를 넘어 새로운 골프 문화를 만듭니다.</h2></div></section>
   <footer class="site-footer"><div class="footer-grid"><div><h4>고객센터</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">오전 9:00 ~ 오후 5:00</p><p class="footer-muted">점심시간 12:00 ~ 13:00</p><p class="footer-muted">주말 및 공휴일 휴무</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>사업자 정보</h4><p>본사 : 전남광주통합특별시 북구 자미로6번길 45, 404호</p><p>공장 : 전남광주통합특별시 광산구 손재로 236, 세방산업</p></div></div></footer>
-  <script src="./assets/smartball-content-config.js?v=20260902-4"></script>
-  <script src="./assets/smartball-media-config.js?v=20260902-6"></script>
+  <script src="./assets/smartball-content-config.js?v=20260902-7"></script>
+  <script src="./assets/smartball-media-config.js?v=20260902-7"></script>
   <script>
     (function () {
       var content = window.SMARTBALL_CONTENT || {};
