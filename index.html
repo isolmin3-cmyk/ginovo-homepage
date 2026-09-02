@@ -315,8 +315,6 @@
 
       var cta=document.querySelector('.cta');
       addRevealGroup(cta,pick(cta,'.cta-copy p, .cta-copy h2'),135);
-      var footer=document.querySelector('.site-footer');
-      addRevealGroup(footer,pick(footer,'.footer-grid > div'),125);
 
       var sectionObserver=new IntersectionObserver(function(entries){
         entries.forEach(function(entry){

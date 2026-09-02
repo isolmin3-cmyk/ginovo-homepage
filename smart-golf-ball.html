@@ -226,7 +226,10 @@
       addRevealSection(spec,pick(spec,'.section-heading').concat(pick(spec,'.spec-card')),150);
 
       var system=document.querySelector('[data-editable-section="putting-system"]');
-      addRevealSection(system,pick(system,'.system-card.primary, .system-intro .section-heading, .system-intro .system-subtitle, .system-intro .system-description, .system-copy, .system-charger-visual'),140);
+      addRevealSection(system,pick(system,'.system-card.primary, .system-intro .section-heading, .system-intro .system-subtitle, .system-intro .system-description'),140);
+      var systemChargingCopy=system ? system.querySelector('.system-copy') : null;
+      var systemChargingVisual=system ? system.querySelector('.system-charger-visual') : null;
+      addRevealSection(systemChargingCopy,[systemChargingCopy,systemChargingVisual],180);
 
       var distance=document.querySelector('[data-editable-section="distance-practice"]');
       addRevealSection(distance,pick(distance,'.section-heading').concat(pick(distance,'.section-points li'),pick(distance,'.practice-card')),145);
@@ -235,15 +238,13 @@
       addRevealSection(slope,pick(slope,'.section-heading').concat(pick(slope,'.section-points li'),pick(slope,'.practice-card')),145);
 
       var field=document.querySelector('[data-editable-section="field-practice"]');
-      addRevealSection(field,pick(field,'.field-heading .section-heading, .field-heading .section-lead, .field-kicker, .field-summary').concat(pick(field,'.field-feature'),pick(field,'.field-badge')),125);
+      addRevealSection(field,pick(field,'.field-heading .section-heading, .field-heading .section-lead'),140);
 
       var battle=document.querySelector('[data-editable-section="battle-practice"]');
-      addRevealSection(battle,pick(battle,'.battle-composite, .battle-face.player-a, .battle-face.player-b'),150);
+      addRevealSection(battle,pick(battle,'.battle-composite'),150);
 
       var cta=document.getElementById('smartball-cta');
       addRevealSection(cta,pick(cta,'.cta-copy p, .cta-copy h2'),150);
-      var footer=document.querySelector('.site-footer');
-      addRevealSection(footer,pick(footer,'.footer-grid>div'),150);
 
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
