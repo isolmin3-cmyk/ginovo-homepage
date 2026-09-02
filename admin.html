@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>홈페이지 콘텐츠 관리 | GINOVO</title>
-  <script src="./assets/putting-mat-content-config.js?v=20260828-6"></script>
+  <script src="./assets/putting-mat-content-config.js?v=20260902-7"></script>
   <script src="./assets/smartball-content-config.js?v=20260902-11"></script>
   <script src="./assets/smartball-media-config.js?v=20260902-11"></script>
   <script src="./assets/home-content-config.js?v=20260901-4"></script>
@@ -54,6 +54,33 @@
     </div>
     <p id="status" role="status"></p>
   </form>
+  <section class="admin-section" id="putting-mat-90-admin">
+    <h1>폭 90cm 경사 퍼팅매트 섹션 관리</h1>
+    <p class="notice">대표 영역의 모든 문구와 세 이미지를 수정할 수 있습니다. 글자 크기와 굵기는 기존 디자인 그대로 유지됩니다.</p>
+    <form id="feature90-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="preview" id="feature90-main-preview" alt="90cm 매트 전체컷 미리보기"><label>메인 이미지</label><input id="feature90-main-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <img class="preview" id="feature90-angle-preview" alt="90cm 매트 앵글컷 미리보기"><label>앵글 이미지</label><input id="feature90-angle-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <img class="preview" id="feature90-detail-preview" alt="90cm 매트 상세컷 미리보기"><label>상세 이미지</label><input id="feature90-detail-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+        <section class="smart-card">
+          <label>배지</label><input type="text" data-feature90-admin-field="badge">
+          <label>대표 제목</label><input type="text" data-feature90-admin-field="title">
+          <label>부제목</label><input type="text" data-feature90-admin-field="subtitle">
+          <label>본문</label><textarea data-feature90-admin-field="description"></textarea>
+          <label>첫 번째 항목 제목</label><input type="text" data-feature90-admin-field="item1Title">
+          <label>첫 번째 항목 설명</label><input type="text" data-feature90-admin-field="item1Description">
+          <label>두 번째 항목 제목</label><input type="text" data-feature90-admin-field="item2Title">
+          <label>두 번째 항목 설명</label><input type="text" data-feature90-admin-field="item2Description">
+          <label>세 번째 항목 제목</label><input type="text" data-feature90-admin-field="item3Title">
+          <label>세 번째 항목 설명</label><textarea data-feature90-admin-field="item3Description"></textarea>
+        </section>
+      </div>
+      <div class="actions"><button type="submit">90cm 섹션 저장</button><button class="secondary" type="button" id="feature90-reset">기본값으로 복원</button><a href="./putting-mat.html#features" target="_blank">페이지 확인</a></div>
+      <p id="feature90-status" role="status"></p>
+    </form>
+  </section>
   <section class="admin-section" id="smartball-anatomy-admin">
     <h1>스마트 골프공 내부 구조 섹션 관리</h1>
     <p class="notice">배경 이미지와 대표 제목·부제목을 각각 수정할 수 있습니다.</p>
@@ -292,6 +319,43 @@
   });
   document.getElementById('reset').addEventListener('click', () => {
     localStorage.removeItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY);
+    location.reload();
+  });
+
+  const feature90Content = window.getPuttingMatFeature90Content();
+  const pendingFeature90Images = {};
+  document.querySelectorAll('[data-feature90-admin-field]').forEach(input => {
+    input.value = feature90Content[input.dataset.feature90AdminField] || '';
+  });
+  [['main', 'feature90-main-image', 'feature90-main-preview'], ['angle', 'feature90-angle-image', 'feature90-angle-preview'], ['detail', 'feature90-detail-image', 'feature90-detail-preview']].forEach(([key, inputId, previewId]) => {
+    const preview = document.getElementById(previewId);
+    preview.src = feature90Content.images[key];
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        pendingFeature90Images[key] = reader.result;
+        preview.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  document.getElementById('feature90-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const next = { ...feature90Content, images: { ...feature90Content.images, ...pendingFeature90Images } };
+    document.querySelectorAll('[data-feature90-admin-field]').forEach(input => {
+      next[input.dataset.feature90AdminField] = input.value.trim();
+    });
+    try {
+      localStorage.setItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY, JSON.stringify(next));
+      document.getElementById('feature90-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('feature90-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('feature90-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY);
     location.reload();
   });
 
