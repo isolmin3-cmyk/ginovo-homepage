@@ -195,10 +195,10 @@
         .pm-hero-copy { position: relative; z-index: 2; width: min(calc(100% - 64px), 1280px); margin: 0 auto 72px; text-align: left; }
         .pm-hero-copy h1 { max-width: 850px; margin: 0; color: #fff; font-size: clamp(52px, 7vw, 100px); font-weight: 700; line-height: .98; letter-spacing: -.065em; }
         .pm-hero-copy p { margin: 24px 0 0; color: rgba(255,255,255,.72); font-size: clamp(18px, 2vw, 25px); font-weight: 500; }
-        .ginovo-common-cta { position: relative; z-index: 1; min-height: 520px; overflow: hidden; padding: 0; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000 url("./assets/cta-putting-final.jpg") center / cover no-repeat !important; }
+        .ginovo-common-cta { position: relative; z-index: 1; min-height: clamp(360px, 27.0833vw, 520px); overflow: hidden; padding: 0; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); background: #070c17 url("./assets/smartball-cta-bg-v2.jpg") center / cover no-repeat !important; }
         .ginovo-common-cta-bg { display: none; }
         .ginovo-common-cta::after { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(0,0,0,.18); }
-        .ginovo-common-cta-content { width: min(calc(100% - 64px), 1200px); margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+        .ginovo-common-cta-content { width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)); max-width: var(--ginovo-content-max); margin: 0 auto; text-align: center; position: relative; z-index: 1; }
         .ginovo-common-cta-content p { font-size: clamp(16px, 1.45vw, 21px); font-weight: 700; margin: 0 0 26px; color: #d6dbe3; letter-spacing: .01em; text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.85); }
         .ginovo-common-cta-content h2 { font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: normal; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.75); }
         .ginovo-footer { position: relative; z-index: 1; min-height: auto; background: #070C17; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 64px 32px 44px; }
@@ -1008,6 +1008,6 @@ class Component extends DCLogic {
 </script>
 <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
 <script src="./assets/smartball-media-config.js?v=20260903-13"></script>
-<script src="./assets/common-cta.js?v=20260903-1"></script>
+<script src="./assets/common-cta.js?v=20260903-2"></script>
 </body>
 </html>
