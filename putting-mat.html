@@ -97,6 +97,13 @@
         .feature70-title { margin: 0 0 24px !important; }
         .feature70-subtitle { margin: 9px 0 40px !important; }
         .feature90-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .feature70-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .feature70-grid-main { aspect-ratio: 16 / 10 !important; }
+        .feature70-grid-thumb { aspect-ratio: 1 / 1 !important; }
+        @media (min-width: 1280px) {
+            .feature70-row { width: 1200px; max-width: 100%; }
+            .feature70-column { flex: 0 0 568px !important; width: 568px; }
+        }
         [data-screen-label="사이즈 비교"] h3 { font-size: clamp(24px, 2.0833vw, 40px) !important; }
         [data-screen-label="사이즈 비교"] h3 + p { font-size: clamp(20px, 1.3021vw, 25px) !important; }
         [data-screen-label="사이즈 비교"] li { font-size: clamp(16px, 1.1458vw, 22px) !important; }
@@ -229,6 +236,7 @@
             .pm-review-section { padding: 48px 18px 64px; }
             .ginovo-footer-email { white-space: normal; }
             .feature90-column { min-width: 0 !important; flex-basis: 100% !important; }
+            .feature70-column { min-width: 0 !important; flex-basis: 100% !important; width: 100%; }
             .feature90-description,
             .feature70-description { margin-top: -8px !important; margin-bottom: 24px !important; text-align: left; }
             main [data-screen-label="대표 모델 90cm"] .feature90-description,
@@ -402,19 +410,19 @@
 
 <section data-screen-label="슬로핑 매트" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--sloping-bg); color: var(--sloping-heading);">
             <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), 1200px) !important; max-width: 1200px !important; margin: 0 auto;">
-                <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
-                    <div style="flex: 1 1 480px; min-width: 320px;">
-                        <div style="display: grid; grid-template-columns: repeat(2,1fr); gap: 16px;">
-                            <div style="grid-column: 1 / -1; background: var(--sloping-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 16/10; position: relative;" data-reveal="true">
-                                <img src="./assets/-2026-07-12-10-32-55-mrhv84de.jpg" alt="슬로핑 퍼팅매트" style="width: 100%; height: 100%; object-fit: cover; opacity: 1">
+                <div class="feature70-row" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
+                    <div class="feature70-column" style="flex: 1 1 480px; min-width: 320px;">
+                        <div class="feature70-grid" style="display: grid; grid-template-columns: repeat(2,1fr); gap: 16px;">
+                            <div class="feature70-grid-main" style="grid-column: 1 / -1; background: var(--sloping-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 16/10; position: relative;" data-reveal="true">
+                                <img class="feature70-image" src="./assets/-2026-07-12-10-32-55-mrhv84de.jpg" alt="슬로핑 퍼팅매트" style="width: 100%; height: 100%; object-fit: cover; opacity: 1">
                                 
                                 
                             </div>
-                            <div style="background: var(--sloping-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; position: relative;" data-reveal="true" data-reveal-delay="0.15">
-                                <img src="./assets/img-013.jpg" alt="매트 디테일" style="width: 100%; height: 100%; object-fit: cover; opacity: 1">
+                            <div class="feature70-grid-thumb" style="background: var(--sloping-box-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; position: relative;" data-reveal="true" data-reveal-delay="0.15">
+                                <img class="feature70-image" src="./assets/img-013.jpg" alt="매트 디테일" style="width: 100%; height: 100%; object-fit: cover; opacity: 1">
                                 
                             </div>
-                            <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; background: url(&quot;./assets/img-012.jpg&quot;) center / cover no-repeat" data-reveal="true" data-reveal-delay="0.3">
+                            <div class="feature70-grid-thumb" style="border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; background: url(&quot;./assets/img-012.jpg&quot;) center / cover no-repeat" data-reveal="true" data-reveal-delay="0.3">
                                 <div>
                                     
                                     
@@ -422,7 +430,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div><div style="flex: 1 1 480px; min-width: 320px; overflow: visible;">
+                    </div><div class="feature70-column" style="flex: 1 1 480px; min-width: 320px; overflow: visible;">
                         <div style="display: inline-block; padding: 6px 16px; border-radius: 100px; background: var(--sloping-box-bg); border: 1px solid #2BFFE5; font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; color: #2BFFE5" data-reveal="true">Training &amp; Game</div>
                         
                         <h2 class="feature70-title" style="font-size: clamp(30px, 4vw, 36px); font-weight: 700; margin: 0 0 24px; line-height: 1.3; opacity: 1; white-space: nowrap" data-reveal="true" data-reveal-delay="0.1"><span style="font-weight: normal; opacity: 1; line-height: 50.65px"><b>폭 70cm 슬로핑 퍼팅매트</b></span></h2>
