@@ -24,6 +24,8 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   systemDescription: '스마트 골프공, 무선 충전기, 퍼팅매트, 반사판, 모바일 거치대 set 구성',
   chargerTitle: '스마트 무선 충전 시스템',
   chargerSubtitle: '장소 제약 없는 휴대 가능한 무선 충전기',
+  chargerDeviceLabel: '무선 충전기',
+  chargerBallLabel: '스마트 골프공(1구)',
   chargerNote1: 'On-chip thermal management를 통한 캡슐 내 발열 제어',
   chargerNote2: '상태 가시성을 확보하는 3색 LED 인디케이터',
   distanceTitle: '목표 거리 / 그린 스피드별 반복적이고 정량적인 퍼팅 연습',

@@ -11,7 +11,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'spec-rebound': './assets/smartball-spec-3.png',
   'spec-eccentricity': './assets/smartball-spec-4.png',
   'putting-system-set': './assets/smartball-slot-putting-system.png',
-    'wireless-charger': './assets/smartball-slot-wireless-charger-labeled.png',
+  'wireless-charger': './assets/smartball-wireless-charger-final.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
   'distance-analysis-screen': './assets/smartball-slot-distance-analysis-v2.png',
   'slope-practice-screen': './assets/smartball-slot-slope-practice.png',
@@ -22,6 +22,10 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
 };
 try {
   var savedSmartballMedia = JSON.parse(localStorage.getItem(window.SMARTBALL_MEDIA_STORAGE_KEY) || '{}');
+  if (savedSmartballMedia['wireless-charger'] === './assets/smartball-slot-wireless-charger-labeled.png') {
+    savedSmartballMedia['wireless-charger'] = window.SMARTBALL_MEDIA_DEFAULTS['wireless-charger'];
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
+  }
   if (savedSmartballMedia['distance-analysis-screen'] === './assets/smartball-slot-distance-analysis.png') {
     savedSmartballMedia['distance-analysis-screen'] = window.SMARTBALL_MEDIA_DEFAULTS['distance-analysis-screen'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
