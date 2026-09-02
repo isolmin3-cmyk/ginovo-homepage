@@ -94,7 +94,7 @@
     @media(max-width:700px){.container,.hero-copy,.home-feature-stage,.cta-copy{width:calc(100% - (var(--page-gutter) * 2));padding-inline:0}.footer-grid{width:calc(100% - (var(--page-gutter) * 2))}.unity-stage::before{left:var(--page-gutter);right:var(--page-gutter)}.practice-four-panel{left:var(--page-gutter);right:auto;width:calc(100% - (var(--page-gutter) * 2));max-width:none}.unity-heading,.practice-four-heading{left:var(--page-gutter);right:var(--page-gutter)}}
     .hero-badge,.hero h1,.hero-sub{animation:homeHeroUp .86s cubic-bezier(.2,.8,.2,1) both}.hero h1{animation-delay:.12s}.hero-sub{animation-delay:.24s}@keyframes homeHeroUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
     .reveal-card{opacity:0;translate:0 42px;transition:opacity .72s cubic-bezier(.2,.8,.2,1),translate .72s cubic-bezier(.2,.8,.2,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease;will-change:opacity,translate}.reveal-card.is-visible{opacity:1;translate:0 0}
-    #putting .image-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;transform-origin:center;will-change:transform}#putting .image-card:hover{position:relative;z-index:3;transform:translateY(-8px) scale(1.035);border-color:rgba(49,230,223,.46);box-shadow:0 22px 48px rgba(0,0,0,.46)}
+    #putting .image-card{transition:opacity .82s cubic-bezier(.2,.8,.2,1),translate .82s cubic-bezier(.2,.8,.2,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease;transform-origin:center;will-change:opacity,translate,transform}#putting .image-card.reveal-card{translate:0 64px}#putting .image-card.reveal-card.is-visible{translate:0 0}#putting .image-card:hover{position:relative;z-index:3;transform:translateY(-8px) scale(1.035);border-color:rgba(49,230,223,.46);box-shadow:0 22px 48px rgba(0,0,0,.46)}
     .history{max-width:min(100%,1400px)}.history-row ul{font-size:clamp(13px,1.1vw,18px)}.history-row li{display:block;white-space:nowrap}.history-row h3{white-space:nowrap}
     @media(max-width:700px){.history-row,.history-row:nth-child(even),.history-row:nth-child(odd){overflow-x:auto;overscroll-behavior-inline:contain;text-align:left}.history-row:nth-child(even) li{justify-content:flex-start}.history-row::-webkit-scrollbar{height:3px}.history-row::-webkit-scrollbar-thumb{background:rgba(49,230,223,.35);border-radius:99px}}
     @media(min-width:701px) and (max-width:1000px){.hero h1{font-size:clamp(38px,5.2vw,52px)}}
@@ -294,7 +294,7 @@
       ]),125);
 
       var putting=document.getElementById('putting');
-      addRevealGroup(putting,pick(putting,'.heading .title').concat(pick(putting,'.putting-grid .card')),140);
+      addRevealGroup(putting,pick(putting,'.putting-grid .card'),150);
 
       document.querySelectorAll('.video-only-section').forEach(function(section){addRevealGroup(section,pick(section,'.video-frame'),120);});
 
@@ -326,6 +326,28 @@
         });
       },{threshold:.01,rootMargin:'0px 0px -50% 0px'});
       revealGroups.forEach(function(section){sectionObserver.observe(section);});
+
+      var historyTimeline=document.querySelector('#history .history');
+      var historyRows=historyTimeline ? pick(historyTimeline,'.history-row') : [];
+      if(historyTimeline){
+        historyTimeline.classList.add('history-reveal-ready');
+        var historyLineObserver=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting) return;
+            historyTimeline.classList.add('is-visible');
+            historyLineObserver.disconnect();
+          });
+        },{threshold:.01,rootMargin:'0px 0px -50% 0px'});
+        historyLineObserver.observe(historyTimeline);
+        var historyRowObserver=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            historyRowObserver.unobserve(entry.target);
+          });
+        },{threshold:.18,rootMargin:'0px 0px -12% 0px'});
+        historyRows.forEach(function(row){historyRowObserver.observe(row);});
+      }
     }
   </script>
   <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
