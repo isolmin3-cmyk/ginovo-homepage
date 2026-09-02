@@ -298,9 +298,6 @@
 
       document.querySelectorAll('.video-only-section').forEach(function(section){addRevealGroup(section,pick(section,'.video-frame'),120);});
 
-      var historySection=document.getElementById('history');
-      addRevealGroup(historySection,pick(historySection,'.heading .eyebrow, .heading .title').concat(pick(historySection,'.history-row')),110);
-
       var about=document.getElementById('about');
       addRevealGroup(about,pick(about,'.esg-image, .esg-layout .eyebrow, .esg-layout .title, .esg-layout .desc').concat(pick(about,'.esg-certs .cert')),105);
 
@@ -327,7 +324,7 @@
           (entry.target.__revealItems||[]).forEach(function(item){item.classList.add('is-visible');});
           sectionObserver.unobserve(entry.target);
         });
-      },{threshold:.1,rootMargin:'0px 0px -18% 0px'});
+      },{threshold:.01,rootMargin:'0px 0px -50% 0px'});
       revealGroups.forEach(function(section){sectionObserver.observe(section);});
     }
   </script>
