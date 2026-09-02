@@ -26,6 +26,5 @@
   } else {
     applyCommonCta();
   }
-
-  new MutationObserver(applyCommonCta).observe(document.documentElement, { childList: true, subtree: true });
+  window.addEventListener('load', applyCommonCta, { once: true });
 }());
