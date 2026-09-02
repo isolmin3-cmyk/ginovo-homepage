@@ -30,7 +30,9 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   chargerNote2: '상태 가시성을 확보하는 3색 LED 인디케이터',
   distanceTitle: '목표 거리 / 그린 스피드별 반복적이고 정량적인 퍼팅 연습',
   distancePoint1: '거리 제약 없는 완벽한 퍼팅 연습 지원',
-  distancePoint2: '목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원'
+  distancePoint2: '목표거리 달성을 위한 반복 연습을 통한 정량적 스트로크 지원',
+  slopeTitle: '그린 분석을 통한 경사별 유연한 퍼팅 연습 지원',
+  slopePoint1: '나만의 경사 설계로 반복 연습을 통한 정량적 스트로크 지원'
 };
 try {
   var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');
