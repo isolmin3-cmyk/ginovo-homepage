@@ -56,8 +56,8 @@
         }
         main > section[data-screen-label="대표 모델 90cm"] > div:first-child,
         main > section[data-screen-label="슬로핑 매트"] > div:first-child {
-            width: 100% !important;
-            max-width: 1200px !important;
+            width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important;
+            max-width: var(--ginovo-content-max) !important;
             margin-left: auto !important;
             margin-right: auto !important;
         }
@@ -101,8 +101,8 @@
         .feature70-grid-main { aspect-ratio: 16 / 10 !important; }
         .feature70-grid-thumb { aspect-ratio: 1 / 1 !important; }
         @media (min-width: 1280px) {
-            .feature70-row { width: 1200px; max-width: 100%; }
-            .feature70-column { flex: 0 0 568px !important; width: 568px; }
+            .feature70-row { width: 100%; }
+            .feature70-column { flex: 1 1 0 !important; width: auto; }
         }
         [data-screen-label="사이즈 비교"] h3 { font-size: clamp(24px, 2.0833vw, 40px) !important; }
         [data-screen-label="사이즈 비교"] h3 + p { font-size: clamp(20px, 1.3021vw, 25px) !important; }
@@ -287,7 +287,7 @@
         </section>
 
         <section id="features" data-screen-label="대표 모델 90cm" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--f90-bg); color: var(--f90-heading);">
-            <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), 1200px) !important; max-width: 1200px !important; margin: 0 auto;">
+            <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important; max-width: var(--ginovo-content-max) !important; margin: 0 auto;">
                 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
                     <div class="feature90-column" style="flex: 1 1 480px; min-width: 320px;">
                         <div style="display: grid; grid-template-columns: var(--f90-grid-cols); gap: 16px;">
@@ -409,7 +409,7 @@
         
 
 <section data-screen-label="슬로핑 매트" style="padding: 240px 24px; position: relative; z-index: 1; background: var(--sloping-bg); color: var(--sloping-heading);">
-            <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), 1200px) !important; max-width: 1200px !important; margin: 0 auto;">
+            <div style="width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important; max-width: var(--ginovo-content-max) !important; margin: 0 auto;">
                 <div class="feature70-row" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 64px;">
                     <div class="feature70-column" style="flex: 1 1 480px; min-width: 320px;">
                         <div class="feature70-grid" style="display: grid; grid-template-columns: repeat(2,1fr); gap: 16px;">
