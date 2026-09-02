@@ -196,6 +196,7 @@
         .pm-hero-copy h1 { max-width: 850px; margin: 0; color: #fff; font-size: clamp(52px, 7vw, 100px); font-weight: 700; line-height: .98; letter-spacing: -.065em; }
         .pm-hero-copy p { margin: 24px 0 0; color: rgba(255,255,255,.72); font-size: clamp(18px, 2vw, 25px); font-weight: 500; }
         .ginovo-common-cta { position: relative; z-index: 1; min-height: clamp(360px, 27.0833vw, 520px); overflow: hidden; padding: 0; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); background: #070c17 url("./assets/smartball-cta-bg-v2.jpg") center / cover no-repeat !important; }
+        .ginovo-common-cta-image { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; pointer-events: none; }
         .ginovo-common-cta-bg { display: none; }
         .ginovo-common-cta::after { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(0,0,0,.18); }
         .ginovo-common-cta-content { width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)); max-width: var(--ginovo-content-max); margin: 0 auto; text-align: center; position: relative; z-index: 1; }
@@ -717,6 +718,7 @@
             </div></section>
 
         <section id="gt-sec-cta" class="ginovo-common-cta" data-screen-label="마무리 CTA">
+            <img class="ginovo-common-cta-image" src="./assets/smartball-cta-bg-v2.jpg?v=20260903-2" alt="골프공을 티에 올리는 골퍼">
             <div class="ginovo-common-cta-bg"></div>
             <div class="ginovo-common-cta-content">
                 <p>Beyond Tech, Into Culture: The New Standard Powered by Data</p>
@@ -1008,6 +1010,6 @@ class Component extends DCLogic {
 </script>
 <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
 <script src="./assets/smartball-media-config.js?v=20260903-13"></script>
-<script src="./assets/common-cta.js?v=20260903-2"></script>
+<script src="./assets/common-cta.js?v=20260903-3"></script>
 </body>
 </html>

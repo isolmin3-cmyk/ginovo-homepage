@@ -10,6 +10,8 @@
 
       if (media['cta-background'] && cta.dataset.commonCtaBackground !== media['cta-background']) {
         cta.style.setProperty('background-image', 'url("' + media['cta-background'].replace(/"/g, '\\"') + '")', 'important');
+        var backgroundImage = cta.querySelector('.ginovo-common-cta-image');
+        if (backgroundImage) backgroundImage.src = media['cta-background'];
         cta.dataset.commonCtaBackground = media['cta-background'];
       }
     });
