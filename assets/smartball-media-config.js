@@ -4,6 +4,8 @@
  * 빈 값은 현재 합성 디자인 이미지를 그대로 보여줍니다.
  */
 window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
+window.SMARTBALL_MEDIA_SCHEMA_KEY = 'ginovo-smartball-media-schema';
+window.SMARTBALL_MEDIA_SCHEMA_VERSION = '20260902-wireless-v2';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -22,9 +24,10 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
 };
 try {
   var savedSmartballMedia = JSON.parse(localStorage.getItem(window.SMARTBALL_MEDIA_STORAGE_KEY) || '{}');
-  if (savedSmartballMedia['wireless-charger'] === './assets/smartball-slot-wireless-charger-labeled.png') {
-    savedSmartballMedia['wireless-charger'] = window.SMARTBALL_MEDIA_DEFAULTS['wireless-charger'];
+  if (localStorage.getItem(window.SMARTBALL_MEDIA_SCHEMA_KEY) !== window.SMARTBALL_MEDIA_SCHEMA_VERSION) {
+    delete savedSmartballMedia['wireless-charger'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
+    localStorage.setItem(window.SMARTBALL_MEDIA_SCHEMA_KEY, window.SMARTBALL_MEDIA_SCHEMA_VERSION);
   }
   if (savedSmartballMedia['distance-analysis-screen'] === './assets/smartball-slot-distance-analysis.png') {
     savedSmartballMedia['distance-analysis-screen'] = window.SMARTBALL_MEDIA_DEFAULTS['distance-analysis-screen'];
