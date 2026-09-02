@@ -13,7 +13,7 @@ window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v3';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema';
-window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260902-battle-v3';
+window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260902-battle-v4';
 window.SMARTBALL_MEDIA_DEFAULTS = {
   'anatomy-background': './assets/smartball-page-01-bg.png',
   'spec-weight': './assets/smartball-spec-1.png',
@@ -60,6 +60,8 @@ try {
     delete savedSmartballMedia['battle-background'];
     delete savedSmartballMedia['battle-panel'];
     delete savedSmartballMedia['battle-composite'];
+    delete savedSmartballMedia['battle-player-a'];
+    delete savedSmartballMedia['battle-player-b'];
     localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(savedSmartballMedia));
     localStorage.setItem(window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY, window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION);
   }
