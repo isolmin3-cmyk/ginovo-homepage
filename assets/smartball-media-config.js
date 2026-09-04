@@ -11,7 +11,7 @@ window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260904-distance-v5';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-slope-media-schema';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
-window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260902-field-v5';
+window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260904-field-v6';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema';
 window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260903-battle-v5';
 window.SMARTBALL_CTA_MEDIA_SCHEMA_KEY = 'ginovo-smartball-cta-media-schema';
@@ -28,7 +28,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'distance-analysis-screen': './assets/smartball-distance-analysis-final-v3.png',
   'slope-practice-screen': './assets/smartball-slope-practice-1.png',
   'slope-selection-screen': './assets/smartball-slope-practice-2-v2.png',
-  'field-background': './assets/smartball-field-green-final-v2.jpg',
+  'field-background': './assets/smartball-field-green-final-v3.png',
   'field-panel': './assets/smartball-field-panel-v2.png',
   'battle-composite': './assets/smartball-battle-overlay-v2.webp',
   'battle-player-a': './assets/smartball-battle-player-a.jpg',
