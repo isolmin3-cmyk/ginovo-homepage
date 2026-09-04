@@ -7,7 +7,7 @@ window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
 window.SMARTBALL_MEDIA_SCHEMA_KEY = 'ginovo-smartball-media-schema';
 window.SMARTBALL_MEDIA_SCHEMA_VERSION = '20260902-wireless-v2';
 window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-distance-media-schema';
-window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260902-distance-v4';
+window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260904-distance-v5';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-slope-media-schema';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260902-slope-v3';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
@@ -25,7 +25,7 @@ window.SMARTBALL_MEDIA_DEFAULTS = {
   'putting-system-set': './assets/smartball-slot-putting-system.png',
   'wireless-charger': './assets/smartball-wireless-charger-final.png',
   'distance-practice-screen': './assets/smartball-slot-distance-practice.png',
-  'distance-analysis-screen': './assets/smartball-distance-analysis-final-v2.png',
+  'distance-analysis-screen': './assets/smartball-distance-analysis-final-v3.png',
   'slope-practice-screen': './assets/smartball-slope-practice-1.png',
   'slope-selection-screen': './assets/smartball-slope-practice-2-v2.png',
   'field-background': './assets/smartball-field-green-final-v2.jpg',
