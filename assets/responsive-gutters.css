@@ -1,7 +1,10 @@
 :root {
   --ginovo-content-max: 1600px;
-  --ginovo-page-gutter: clamp(24px, 6.25vw, 120px);
-  --ginovo-section-title-size: clamp(34px, 3vw, 58px);
+  --ginovo-page-gutter: clamp(18px, 5vw, 96px);
+  --ginovo-container-width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max));
+  --ginovo-section-title-size: clamp(32px, calc(23px + 1.65vw), 54px);
+  --ginovo-lead-size: clamp(18px, calc(15px + .45vw), 22px);
+  --ginovo-body-size: clamp(16px, calc(14px + .3vw), 18px);
   --ginovo-focus-ring: #31e6df;
   --ginovo-motion-fast: 180ms;
   --ginovo-motion-standard: 320ms;
@@ -80,7 +83,7 @@ main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.gino
 .cta-copy,
 .footer-grid,
 main > section.px-6 > .max-w-6xl {
-  width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)) !important;
+  width: var(--ginovo-container-width) !important;
   max-width: var(--ginovo-content-max) !important;
   margin-left: auto !important;
   margin-right: auto !important;
