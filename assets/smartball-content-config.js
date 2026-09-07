@@ -18,7 +18,7 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   specWeight: '무게 : 45.93g',
   specSize: '외경 사이즈 : 42.67mm',
   specRebound: '반발력 : 72.1',
-  specEccentricity: '편심도 : 0.1%',
+  specEccentricity: '편심도 : 0.01mm',
   systemTitle: 'GINOVO 퍼팅 시스템',
   systemSubtitle: '퍼팅 연습에 집중할 수 있는 스마트 골프의 완벽한 구성',
   systemDescription: '스마트 골프공, 무선 충전기, 퍼팅매트, 반사판, 모바일 거치대 set 구성',
@@ -59,7 +59,7 @@ try {
     savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
     smartballContentMigrated = true;
   }
-  if (savedSmartballContent.specEccentricity === '편심도 : 0.095%') {
+  if (savedSmartballContent.specEccentricity === '편심도 : 0.095%' || savedSmartballContent.specEccentricity === '편심도 : 0.1%') {
     savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
     smartballContentMigrated = true;
   }
