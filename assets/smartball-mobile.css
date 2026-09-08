@@ -250,12 +250,14 @@
   }
 
   .anatomy-title {
-    font-size: clamp(18px, 5.6vw, 32px) !important;
+    font-family: inherit;
+    font-size: var(--smartball-type-title) !important;
   }
 
   .anatomy-subtitle {
     margin-top: clamp(4px, 1.6vw, 8px);
-    font-size: clamp(10px, 3vw, 17px);
+    font-family: inherit;
+    font-size: var(--smartball-type-lead);
     line-height: 1.45;
   }
 
