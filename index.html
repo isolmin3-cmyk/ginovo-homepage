@@ -33,7 +33,7 @@
     /* 기준 홈페이지의 세로·글꼴 크기를 유지하고 가로만 확장 */
     .site-header{position:fixed;top:32px;left:50%;z-index:1000;transform:translateX(-50%);width:min(calc(100% - 48px),1063px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;gap:36px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);border-radius:100px;box-shadow:0 20px 40px rgba(0,0,0,.4);backdrop-filter:blur(24px);line-height:normal}
     .logo{display:flex;align-items:center;flex-shrink:0}.logo img{width:auto;height:34px}
-    .main-nav{margin-left:0;flex-shrink:0}.main-nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}.main-nav a,.about-trigger{font-size:18px;font-weight:500;white-space:nowrap}.main-nav a:hover,.about-trigger:hover{color:var(--cyan)}.about-menu{position:relative}.about-trigger{display:flex;align-items:center;gap:7px;padding:0;border:0;background:none;color:inherit;font-family:inherit;cursor:pointer}.about-trigger::after{content:"⌄";font-size:14px;transition:transform .2s ease}.about-menu:hover .about-trigger::after,.about-menu:focus-within .about-trigger::after{transform:rotate(180deg)}.about-dropdown{position:absolute;top:100%;left:50%;z-index:1200;width:210px;padding-top:18px;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.about-menu:hover .about-dropdown,.about-menu:focus-within .about-dropdown{opacity:1;visibility:visible}.about-dropdown-panel{padding:10px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(16,22,34,.97);box-shadow:0 18px 44px rgba(0,0,0,.38);backdrop-filter:blur(16px)}.about-dropdown-panel a{display:block;padding:11px 13px;border-radius:10px;color:#d9d9d9;font-size:15px;font-weight:600}.about-dropdown-panel a:hover,.about-dropdown-panel a:focus{background:rgba(42,232,215,.1);color:var(--cyan)}
+    .main-nav{margin-left:0;flex-shrink:0}.main-nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}.main-nav a,.about-trigger{font-size:18px;font-weight:500;white-space:nowrap}.main-nav a:hover,.about-trigger:hover{color:var(--cyan)}.about-menu{position:relative}.about-trigger{display:flex;align-items:center;gap:7px;padding:0;border:0;background:none;color:inherit;font-family:inherit;cursor:pointer}.about-trigger::after{content:"⌄";font-size:14px;transition:transform .2s ease}.about-menu.is-about-open .about-trigger::after{transform:rotate(180deg)}.about-dropdown{position:absolute;top:100%;left:50%;z-index:1200;width:210px;padding-top:18px;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.about-menu.is-about-open .about-dropdown{opacity:1;visibility:visible}.about-dropdown-panel{padding:10px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(16,22,34,.97);box-shadow:0 18px 44px rgba(0,0,0,.38);backdrop-filter:blur(16px)}.about-dropdown-panel a{display:block;padding:11px 13px;border-radius:10px;color:#d9d9d9;font-size:15px;font-weight:600}.about-dropdown-panel a:hover,.about-dropdown-panel a:focus{background:rgba(42,232,215,.1);color:var(--cyan)}
     .header-tools{display:flex;align-items:center;gap:20px;flex-shrink:0}.login{padding:9px 22px;background:#210bbd;border-radius:100px;font-size:17px;font-weight:600}.language{position:relative;opacity:.78}.language-button{display:flex;align-items:center;gap:6px;padding:4px;border:0;background:none;color:#fff;font-size:18px;cursor:pointer}.language-button img{width:20px;height:20px;object-fit:contain}.language-caret{font-size:15px;line-height:1}.language-menu{position:absolute;top:38px;right:0;min-width:120px;padding:8px;display:none;background:#fff;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.28)}.language:hover .language-menu{display:grid}.language-menu a{padding:9px 12px;color:#111;border-radius:8px;font-size:16px}.language-menu a:hover{background:#f0f2f4}
     .menu-toggle{width:44px;height:44px;padding:10px;display:none;place-items:center;gap:4px;border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}.menu-toggle-line{display:block;width:22px;height:2px;border-radius:999px;background:currentColor;transition:transform .25s ease,opacity .2s ease}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1){transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
@@ -100,7 +100,7 @@
     .site-footer{padding-inline:0}.footer-grid{width:var(--container-width);max-width:none}
     .history{max-width:100%}
     @media(min-width:701px){.unity-stage::before{left:var(--content-edge);right:var(--content-edge)}.unity-heading,.practice-four-heading{left:var(--content-edge);right:var(--content-edge)}.practice-four-panel{left:var(--content-edge);width:calc(100% - (var(--content-edge) * 2))}}
-    @media(max-width:700px){.container,.hero-copy,.home-feature-stage,.cta-copy{width:var(--container-width);padding-inline:0}.footer-grid{width:var(--container-width)}.site-header{top:12px;padding:9px 10px 9px 14px;display:flex;gap:10px;overflow:visible;border-radius:22px}.logo img{height:24px}.header-tools{margin-left:auto;gap:6px}.menu-toggle{display:grid}.main-nav{position:absolute;top:calc(100% + 8px);left:0;width:100%;padding:10px;overflow:visible;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(12,19,31,.97);box-shadow:0 20px 40px rgba(0,0,0,.42);backdrop-filter:blur(24px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease}.site-header.is-menu-open .main-nav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}.main-nav ul{width:100%;display:grid;gap:2px}.main-nav li{width:100%}.main-nav a,.about-trigger{width:100%;min-height:44px;padding:11px 12px;display:flex;align-items:center;border-radius:10px;font-size:15px}.main-nav a:hover,.main-nav a:focus-visible,.about-trigger:hover,.about-trigger:focus-visible{background:rgba(49,230,223,.1)}.about-dropdown{position:static;width:100%;padding-top:4px;display:none;transform:none}.about-menu:focus-within .about-dropdown{display:block}.about-dropdown-panel{box-shadow:none}.about-dropdown-panel a{font-size:14px}.hero-copy{margin-top:80px}.hero h1 span{white-space:normal}.unity-stage::before{left:var(--page-gutter);right:var(--page-gutter)}.practice-four-panel{left:var(--page-gutter);right:auto;width:var(--container-width);max-width:none}.unity-heading,.practice-four-heading{left:var(--page-gutter);right:var(--page-gutter)}}
+    @media(max-width:700px){.container,.hero-copy,.home-feature-stage,.cta-copy{width:var(--container-width);padding-inline:0}.footer-grid{width:var(--container-width)}.site-header{top:12px;padding:9px 10px 9px 14px;display:flex;gap:10px;overflow:visible;border-radius:22px}.logo img{height:24px}.header-tools{margin-left:auto;gap:6px}.menu-toggle{display:grid}.main-nav{position:absolute;top:calc(100% + 8px);left:0;width:100%;padding:10px;overflow:visible;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(12,19,31,.97);box-shadow:0 20px 40px rgba(0,0,0,.42);backdrop-filter:blur(24px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease}.site-header.is-menu-open .main-nav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}.main-nav ul{width:100%;display:grid;gap:2px}.main-nav li{width:100%}.main-nav a,.about-trigger{width:100%;min-height:44px;padding:11px 12px;display:flex;align-items:center;border-radius:10px;font-size:15px}.main-nav a:hover,.main-nav a:focus-visible,.about-trigger:hover,.about-trigger:focus-visible{background:rgba(49,230,223,.1)}.about-dropdown{position:static;width:100%;padding-top:4px;display:none;transform:none}.about-menu.is-about-open .about-dropdown{display:block}.about-dropdown-panel{box-shadow:none}.about-dropdown-panel a{font-size:14px}.hero-copy{margin-top:80px}.hero h1 span{white-space:normal}.unity-stage::before{left:var(--page-gutter);right:var(--page-gutter)}.practice-four-panel{left:var(--page-gutter);right:auto;width:var(--container-width);max-width:none}.unity-heading,.practice-four-heading{left:var(--page-gutter);right:var(--page-gutter)}}
     /* 인증서: 대표 6개 */
     .certificate-featured{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.3vw,22px);margin-top:clamp(42px,5vw,72px)}
     .certificate-card{min-width:0;display:flex;flex-direction:column;gap:12px;color:#fff}
@@ -124,7 +124,7 @@
   <header class="site-header">
     <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
     <nav class="main-nav" id="main-navigation" aria-label="주 메뉴"><ul>
-      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true">About us</button><div class="about-dropdown"><div class="about-dropdown-panel"><a href="#products">생산·개발 제품</a><a href="#history">연혁</a><a href="#about">ESG</a><a href="#exhibition">글로벌 하이라이트</a><a href="#news">뉴스 기사</a></div></div></li><li><a href="./smart-golf-ball.html">스마트 골프공</a></li><li><a href="./putting-mat.html">경사 퍼팅매트</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="#products">생산·개발 제품</a><a href="#history">연혁</a><a href="#about">ESG</a><a href="#exhibition">글로벌 하이라이트</a><a href="#news">뉴스 기사</a></div></div></li><li><a href="./smart-golf-ball.html">스마트 골프공</a></li><li><a href="./putting-mat.html">경사 퍼팅매트</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
     </ul></nav>
     <div class="header-tools"><a class="login" href="#">로그인</a><div class="language"><button class="language-button" type="button" aria-label="언어 선택"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="./index.html" aria-current="page">한국어</a><a href="./index-en.html">English</a></div></div><button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
   </header>
@@ -297,12 +297,20 @@
     var siteHeader=document.querySelector('.site-header');
     var menuToggle=document.querySelector('[data-menu-toggle]');
     var mainNavigation=document.getElementById('main-navigation');
+    var aboutMenu=document.querySelector('.about-menu');
+    var aboutToggle=document.querySelector('[data-about-toggle]');
     var mobileHeaderQuery=window.matchMedia('(max-width:700px)');
+    function setAboutMenu(open){
+      if(!aboutMenu||!aboutToggle) return;
+      aboutMenu.classList.toggle('is-about-open',open);
+      aboutToggle.setAttribute('aria-expanded',String(open));
+    }
     function setMobileMenu(open){
       if(!siteHeader||!menuToggle) return;
       siteHeader.classList.toggle('is-menu-open',open);
       menuToggle.setAttribute('aria-expanded',String(open));
       menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');
+      if(!open) setAboutMenu(false);
     }
     if(siteHeader&&menuToggle&&mainNavigation){
       menuToggle.addEventListener('click',function(){
@@ -312,6 +320,7 @@
         link.addEventListener('click',function(){setMobileMenu(false);});
       });
       document.addEventListener('click',function(event){
+        if(aboutMenu&&!aboutMenu.contains(event.target)) setAboutMenu(false);
         if(mobileHeaderQuery.matches&&!siteHeader.contains(event.target)) setMobileMenu(false);
       });
       document.addEventListener('keydown',function(event){
@@ -321,6 +330,11 @@
         }
       });
       mobileHeaderQuery.addEventListener('change',function(){setMobileMenu(false);});
+    }
+    if(aboutMenu&&aboutToggle){
+      aboutToggle.addEventListener('click',function(){
+        setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
+      });
     }
     /* 섹션이 충분히 화면에 들어오면 내부 항목을 지정된 순서로 한 번만 재생한다. */
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
