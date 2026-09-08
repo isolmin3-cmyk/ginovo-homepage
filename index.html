@@ -189,18 +189,16 @@
       .unity-stage::before{top:25%;bottom:4%}
       .unity-phone{top:27%;width:min(82%,300px);height:260px;max-width:100%;object-fit:contain;object-position:center}
 
-      /* 섹션 3: 제목 여백, 패널 높이, 4개 카드의 공통 중앙축 */
-      .practice-four-points,.practice-four-stage{height:700px}
+      /* 섹션 3: 콘텐츠 길이에 따라 늘어나는 모바일 세로 흐름 */
+      .practice-four-points{height:auto;min-height:0}
+      .practice-four-stage{height:auto;min-height:0;padding:270px 28px 48px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
       .practice-four-heading{top:4.5%}
       .practice-four-heading p{margin-top:16px;line-height:1.55}
-      .practice-four-panel{top:35%;height:60%;object-fit:fill}
-      .practice-four-title{top:39%;left:8%;right:8%;font-size:clamp(19px,5.5vw,22px);line-height:1.35}
-      .practice-point{width:40%;padding:2%}
-      .practice-point:nth-of-type(1){right:8%;top:52%}
-      .practice-point:nth-of-type(2){left:8%;top:52%}
-      .practice-point:nth-of-type(3){right:8%;top:82%}
-      .practice-point:nth-of-type(4){left:8%;top:82%}
-      .practice-four-center{left:50%;top:71.3%;width:min(50%,210px);height:130px;max-width:100%;transform:translate(-50%,-50%);object-fit:contain;object-position:center}
+      .practice-four-panel{left:20px;top:235px;width:calc(100% - 40px);height:calc(100% - 259px);object-fit:fill}
+      .practice-four-title{position:relative;inset:auto;width:100%;margin:0 0 24px;font-size:clamp(19px,5.5vw,22px);line-height:1.35}
+      .practice-four-center{position:relative;inset:auto;width:min(58%,210px);height:150px;max-width:100%;margin:0 0 24px;transform:none;object-fit:contain;object-position:center}
+      .practice-point,.practice-point:nth-of-type(n){position:relative;inset:auto;width:100%;min-height:86px;height:auto;aspect-ratio:auto;margin:0 0 12px;padding:16px 20px;border:1px solid rgba(49,230,223,.5);border-radius:22px;background-color:rgba(8,18,29,.72);background-size:100% 100%;overflow:visible}
+      .practice-point:last-of-type{margin-bottom:0}
     }
     @media(prefers-reduced-motion:reduce){.hero-badge,.hero h1,.hero-sub{animation:none}.cert,.certificate-card img,#putting .image-card,.history-row,.history-row li,.history::before,.reveal-card{transition:none!important}.reveal-card{opacity:1!important;transform:none!important;translate:none!important}#putting .image-card:hover{transform:none}}
   </style>
