@@ -223,6 +223,10 @@
 
   .anatomy-stage {
     position: relative;
+    width: calc(100% + 56px) !important;
+    max-width: none !important;
+    margin-left: -28px !important;
+    margin-right: -28px !important;
     aspect-ratio: 8 / 5;
     display: block;
     overflow: hidden;
@@ -559,7 +563,7 @@
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, .3);
     border-radius: 22px;
-    background: linear-gradient(145deg, rgba(8, 18, 29, .9), rgba(19, 37, 48, .7));
+    background: rgba(9, 20, 30, .3);
     box-shadow: 0 20px 46px rgba(0, 0, 0, .3);
   }
 
@@ -590,7 +594,7 @@
     padding: 16px;
     border: 1px solid rgba(255, 255, 255, .16);
     border-radius: 16px;
-    background: rgba(255, 255, 255, .045);
+    background: rgba(9, 20, 30, .3);
   }
 
   .field-feature img {
@@ -622,7 +626,7 @@
     padding: 14px 8px;
     border: 1px solid rgba(255, 255, 255, .16);
     border-radius: 14px;
-    background: rgba(255, 255, 255, .04);
+    background: rgba(9, 20, 30, .3);
   }
 
   /* 섹션 7: 합성 이미지의 텍스트와 박스를 모바일 요소로 교체합니다. */
@@ -663,7 +667,7 @@
     padding: 16px;
     border: 1px solid rgba(255, 255, 255, .24);
     border-radius: 22px;
-    background: rgba(9, 16, 22, .82);
+    background: rgba(9, 16, 22, .3);
     box-shadow: 0 18px 44px rgba(0, 0, 0, .32);
     backdrop-filter: blur(12px);
   }
@@ -691,7 +695,7 @@
     border: 1px solid rgba(255, 255, 255, .5);
     border-radius: 14px;
     text-align: center;
-    background: rgba(0, 0, 0, .32);
+    background: rgba(0, 0, 0, .3);
   }
 
   .battle-mobile-players img {
@@ -765,7 +769,7 @@
   .battle-mobile-head {
     color: var(--cyan);
     font-weight: 700;
-    background: rgba(255, 255, 255, .04);
+    background: rgba(9, 16, 22, .3);
   }
 
   .battle-mobile-row em {
