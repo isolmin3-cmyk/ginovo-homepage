@@ -125,7 +125,6 @@
             object-position: center !important;
         }
     </style>
-
     <style id="ginovo-common-layout">
         .ginovo-header {
             position: fixed;
@@ -256,6 +255,7 @@
             [data-screen-label="슬로핑 매트"] h2 { white-space: normal !important; }
         }
     </style>
+    <link rel="stylesheet" href="./assets/putting-mat-mobile.css?v=20260908-1">
 
 </helmet>
 
@@ -265,9 +265,9 @@
         <a href="./index.html" class="ginovo-logo" aria-label="GREEN TALK Home">
             <img src="./assets/logo.png" alt="GREEN TALK">
         </a>
-        <nav class="ginovo-nav" aria-label="Primary navigation">
+        <nav class="ginovo-nav" id="putting-main-navigation" aria-label="주 메뉴">
             <ul class="ginovo-nav-list">
-                <li class="ginovo-nav-item"><button class="ginovo-nav-link ginovo-about-trigger" type="button" aria-haspopup="true">About us</button><div class="ginovo-dropdown-wrap"><div class="ginovo-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li>
+                <li class="ginovo-nav-item"><button class="ginovo-nav-link ginovo-about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="putting-about-navigation" data-putting-about-toggle>About us</button><div class="ginovo-dropdown-wrap" id="putting-about-navigation"><div class="ginovo-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="./smart-golf-ball.html">스마트 골프공</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link is-active" href="./putting-mat.html" aria-current="page">경사 퍼팅매트</a></li>
                 <li class="ginovo-nav-item"><a class="ginovo-nav-link" href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener noreferrer">Shop</a></li>
@@ -284,6 +284,7 @@
                     </div>
                 </div>
             </div>
+            <button class="ginovo-menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="putting-main-navigation" data-putting-menu-toggle><span class="ginovo-menu-toggle-line" aria-hidden="true"></span><span class="ginovo-menu-toggle-line" aria-hidden="true"></span><span class="ginovo-menu-toggle-line" aria-hidden="true"></span></button>
         </div>
     </header>
 
@@ -1020,6 +1021,41 @@ class Component extends DCLogic {
 </script>
 <script>
 (function () {
+  var header=document.querySelector('.ginovo-header');
+  var menuToggle=document.querySelector('[data-putting-menu-toggle]');
+  var navigation=document.getElementById('putting-main-navigation');
+  var aboutToggle=document.querySelector('[data-putting-about-toggle]');
+  var aboutItem=aboutToggle&&aboutToggle.closest('.ginovo-nav-item');
+  var mobileQuery=window.matchMedia('(max-width:700px)');
+  function setAbout(open){
+    if(!aboutItem||!aboutToggle) return;
+    aboutItem.classList.toggle('is-about-open',open);
+    aboutToggle.setAttribute('aria-expanded',String(open));
+  }
+  function setMenu(open){
+    if(!header||!menuToggle) return;
+    header.classList.toggle('is-menu-open',open);
+    menuToggle.setAttribute('aria-expanded',String(open));
+    menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');
+    if(!open) setAbout(false);
+  }
+  if(header&&menuToggle&&navigation){
+    menuToggle.addEventListener('click',function(){setMenu(menuToggle.getAttribute('aria-expanded')!=='true');});
+    navigation.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){setMenu(false);});});
+    document.addEventListener('click',function(event){
+      if(aboutItem&&!aboutItem.contains(event.target)) setAbout(false);
+      if(mobileQuery.matches&&!header.contains(event.target)) setMenu(false);
+    });
+    document.addEventListener('keydown',function(event){
+      if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){
+        setMenu(false);
+        menuToggle.focus();
+      }
+    });
+    mobileQuery.addEventListener('change',function(){setMenu(false);});
+  }
+  if(aboutToggle){aboutToggle.addEventListener('click',function(){setAbout(aboutToggle.getAttribute('aria-expanded')!=='true');});}
+
   function playHeroVideo() {
     var video = document.querySelector('.pm-hero-video');
     if (!video) return;
