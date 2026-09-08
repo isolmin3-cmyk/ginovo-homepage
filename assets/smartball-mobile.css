@@ -505,3 +505,281 @@
     gap: 34px;
   }
 }
+
+/* 모바일 전용 대결 구성은 데스크톱에서 숨깁니다. */
+.battle-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* 섹션 2: 원본 이미지의 하단 문구는 잘라내고 편집 가능한 HTML 문구를 사용합니다. */
+  .spec-value {
+    display: block;
+    left: 6px;
+    right: 6px;
+    font-size: clamp(12px, 3.5vw, 15px);
+  }
+
+  .spec-card-media img {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  /* 섹션 3: 설명, 큰 제품 이미지, 충전 시스템 순으로 정렬합니다. */
+  .system-card.primary {
+    width: min(calc(100% + 32px), 520px);
+    margin-inline: auto;
+    justify-self: center;
+  }
+
+  .system-notes {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  /* 섹션 4·5: 시작점을 없애고 세부 문장 간격을 조입니다. */
+  .section-points li + li {
+    margin-top: 6px;
+  }
+
+  .section-points li::before {
+    display: none;
+  }
+
+  /* 섹션 6: PC 합성 패널 대신 내용에 맞춰 늘어나는 모바일 패널을 사용합니다. */
+  .field-panel {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    margin-top: 38px;
+    padding: 24px 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(8, 18, 29, .9), rgba(19, 37, 48, .7));
+    box-shadow: 0 20px 46px rgba(0, 0, 0, .3);
+  }
+
+  .field-panel-frame {
+    display: none;
+  }
+
+  .field-summary {
+    margin-top: 12px;
+    font-size: var(--smartball-type-body) !important;
+  }
+
+  .field-kicker {
+    font-size: clamp(22px, 6.4vw, 28px) !important;
+  }
+
+  .field-features {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .field-feature,
+  .field-feature:nth-child(2) {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .045);
+  }
+
+  .field-feature img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .field-feature h3,
+  .field-badge strong {
+    font-size: clamp(15px, 4.2vw, 18px);
+  }
+
+  .field-feature p,
+  .field-badge span {
+    margin-top: 6px;
+    font-size: clamp(13px, 3.6vw, 15px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .field-badges {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .field-badge {
+    min-height: 0;
+    padding: 14px 8px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .04);
+  }
+
+  /* 섹션 7: 합성 이미지의 텍스트와 박스를 모바일 요소로 교체합니다. */
+  .battle-section {
+    padding: var(--smartball-section-space) 0;
+  }
+
+  .battle-canvas {
+    display: none;
+  }
+
+  .battle-mobile {
+    width: var(--smartball-container);
+    margin-inline: auto;
+    display: block;
+  }
+
+  .battle-mobile-copy {
+    text-align: center;
+  }
+
+  .battle-mobile-copy h2 {
+    margin: 0;
+    font-size: var(--smartball-type-title);
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .battle-mobile-copy p {
+    margin: 14px 0 0;
+    color: #d6dbe3;
+    font-size: var(--smartball-type-body);
+    line-height: 1.55;
+  }
+
+  .battle-mobile-panel {
+    margin-top: 34px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 22px;
+    background: rgba(9, 16, 22, .82);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .32);
+    backdrop-filter: blur(12px);
+  }
+
+  .battle-mobile-panel > h3 {
+    margin: 0 0 16px;
+    padding: 13px 10px;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 13px;
+    color: var(--cyan);
+    font-size: clamp(18px, 5vw, 22px);
+    text-align: center;
+  }
+
+  .battle-mobile-players {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+  }
+
+  .battle-mobile-players article {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 14px;
+    text-align: center;
+    background: rgba(0, 0, 0, .32);
+  }
+
+  .battle-mobile-players img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .battle-mobile-players strong,
+  .battle-mobile-players article span {
+    display: block;
+    padding-inline: 4px;
+  }
+
+  .battle-mobile-players strong {
+    padding-block: 8px 6px;
+    border-bottom: 2px solid var(--cyan);
+    font-size: 14px;
+  }
+
+  .battle-mobile-players article span {
+    color: #d9dde3;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .battle-mobile-players article span:last-child {
+    padding-bottom: 8px;
+  }
+
+  .battle-mobile-versus {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .battle-mobile-ranking {
+    margin-top: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 14px;
+  }
+
+  .battle-mobile-row {
+    display: grid;
+    grid-template-columns: .65fr 1.45fr .8fr 1.1fr;
+    min-height: 42px;
+    align-items: stretch;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+  }
+
+  .battle-mobile-row:first-child {
+    border-top: 0;
+  }
+
+  .battle-mobile-row > * {
+    min-width: 0;
+    display: grid;
+    place-items: center;
+    padding: 7px 3px;
+    border-left: 1px solid rgba(255, 255, 255, .2);
+    font-size: clamp(10px, 3vw, 13px);
+    font-style: normal;
+    text-align: center;
+  }
+
+  .battle-mobile-row > :first-child {
+    border-left: 0;
+  }
+
+  .battle-mobile-head {
+    color: var(--cyan);
+    font-weight: 700;
+    background: rgba(255, 255, 255, .04);
+  }
+
+  .battle-mobile-row em {
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  .mobile-copy-break {
+    display: block;
+  }
+}
+
+@media (min-width: 701px) {
+  .mobile-copy-break {
+    display: none;
+  }
+}

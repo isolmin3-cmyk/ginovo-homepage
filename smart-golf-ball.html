@@ -72,7 +72,7 @@
     @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.72),rgba(7,12,23,.24))}.field-feature{grid-template-columns:36px minmax(0,1fr);gap:14px}.field-badge{min-height:92px}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260903-3">
-  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260908-2">
+  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260908-3">
 </head>
 <body>
   <header class="site-header">
@@ -181,6 +181,25 @@
         <div class="battle-face player-a"><img data-media-image="battle-player-a" alt="Player A 얼굴"></div>
         <div class="battle-face player-b"><img data-media-image="battle-player-b" alt="Player B 얼굴"></div>
       </div>
+      <div class="battle-mobile" aria-label="퍼팅 대결 순위">
+        <div class="battle-mobile-copy"><h2 data-smartball-content="battleTitle">온·오프라인 대결 모드를 통한 실전 연습</h2><p data-smartball-content="battleSubtitle">지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결</p></div>
+        <div class="battle-mobile-panel">
+          <h3>퍼팅대결을 통한 실전연습</h3>
+          <div class="battle-mobile-players">
+            <article><img data-media-image="battle-player-a" alt="Player A"><strong>Player A</strong><span>SCORE : 8/10</span><span>CURRENT : 3m PUTT</span></article>
+            <span class="battle-mobile-versus" aria-hidden="true">v/s</span>
+            <article><img data-media-image="battle-player-b" alt="Player B"><strong>Player B</strong><span>SCORE : 7/10</span><span>CURRENT : 3m PUTT</span></article>
+          </div>
+          <div class="battle-mobile-ranking" role="table" aria-label="플레이어 순위">
+            <div class="battle-mobile-row battle-mobile-head" role="row"><span role="columnheader">Rank</span><span role="columnheader">Player</span><span role="columnheader">Score</span><span role="columnheader">Difference</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">1</span><strong role="cell">Player A</strong><em role="cell">8</em><span role="cell">(+1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">2</span><strong role="cell">Player B</strong><em role="cell">7</em><span role="cell">(E)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">3</span><strong role="cell">Player C</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">4</span><strong role="cell">Player D</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">5</span><strong role="cell">Player E</strong><em role="cell">5</em><span role="cell">(-2)</span></div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -239,6 +258,21 @@
         var key = element.getAttribute('data-smartball-content');
         if (Object.prototype.hasOwnProperty.call(content, key)) element.textContent = content[key];
       });
+      var addMobileBreak=function(selector,needle){
+        var element=document.querySelector(selector);
+        if(!element||!element.textContent.includes(needle)) return;
+        var parts=element.textContent.split(needle);
+        element.textContent='';
+        element.append(document.createTextNode(parts.shift()+needle));
+        var lineBreak=document.createElement('br');
+        lineBreak.className='mobile-copy-break';
+        element.append(lineBreak,document.createTextNode(parts.join(needle).replace(/^\s+/,'')));
+      };
+      addMobileBreak('[data-smartball-content="systemDescription"]','퍼팅매트,');
+      addMobileBreak('[data-smartball-content="chargerNote1"]','management를 통한');
+      addMobileBreak('[data-smartball-content="distancePoint2"]','반복 연습을');
+      addMobileBreak('[data-smartball-content="slopePoint1"]','반복 연습을');
+      addMobileBreak('[data-smartball-content="fieldSubtitle"]','경사 영향');
       var media = window.SMARTBALL_MEDIA || {};
       document.querySelectorAll('[data-media-slot]').forEach(function (slot) {
         var source = media[slot.getAttribute('data-media-slot')];
