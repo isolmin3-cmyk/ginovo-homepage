@@ -72,17 +72,18 @@
     @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.72),rgba(7,12,23,.24))}.field-feature{grid-template-columns:36px minmax(0,1fr);gap:14px}.field-badge{min-height:92px}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260903-3">
+  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260908-1">
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
-    <nav class="main-nav" aria-label="주 메뉴"><ul>
-      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true">About us</button><div class="about-dropdown"><div class="about-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li>
+    <nav class="main-nav" id="main-navigation" aria-label="주 메뉴"><ul>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li>
                 <li><a href="./smart-golf-ball.html" aria-current="page">스마트 골프공</a></li>
       <li><a href="./putting-mat.html">경사 퍼팅매트</a></li>
       <li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
     </ul></nav>
-    <div class="header-tools"><a class="login" href="#">로그인</a><div class="language"><button class="language-button" type="button" aria-label="언어 선택"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="./smart-golf-ball.html" aria-current="page">한국어</a><a href="./smart-golf-ball-en.html">English</a></div></div></div>
+    <div class="header-tools"><a class="login" href="#">로그인</a><div class="language"><button class="language-button" type="button" aria-label="언어 선택"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="./smart-golf-ball.html" aria-current="page">한국어</a><a href="./smart-golf-ball-en.html">English</a></div></div><button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
   </header>
 
   <main class="smartball-page">
@@ -188,6 +189,50 @@
   <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
   <script src="./assets/smartball-media-config.js?v=20260904-15"></script>
   <script>
+    (function () {
+      var siteHeader=document.querySelector('.site-header');
+      var menuToggle=document.querySelector('[data-menu-toggle]');
+      var mainNavigation=document.getElementById('main-navigation');
+      var aboutMenu=document.querySelector('.about-menu');
+      var aboutToggle=document.querySelector('[data-about-toggle]');
+      var mobileHeaderQuery=window.matchMedia('(max-width:700px)');
+      function setAboutMenu(open){
+        if(!aboutMenu||!aboutToggle) return;
+        aboutMenu.classList.toggle('is-about-open',open);
+        aboutToggle.setAttribute('aria-expanded',String(open));
+      }
+      function setMobileMenu(open){
+        if(!siteHeader||!menuToggle) return;
+        siteHeader.classList.toggle('is-menu-open',open);
+        menuToggle.setAttribute('aria-expanded',String(open));
+        menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');
+        if(!open) setAboutMenu(false);
+      }
+      if(siteHeader&&menuToggle&&mainNavigation){
+        menuToggle.addEventListener('click',function(){
+          setMobileMenu(menuToggle.getAttribute('aria-expanded')!=='true');
+        });
+        mainNavigation.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click',function(){setMobileMenu(false);});
+        });
+        document.addEventListener('click',function(event){
+          if(aboutMenu&&!aboutMenu.contains(event.target)) setAboutMenu(false);
+          if(mobileHeaderQuery.matches&&!siteHeader.contains(event.target)) setMobileMenu(false);
+        });
+        document.addEventListener('keydown',function(event){
+          if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){
+            setMobileMenu(false);
+            menuToggle.focus();
+          }
+        });
+        mobileHeaderQuery.addEventListener('change',function(){setMobileMenu(false);});
+      }
+      if(aboutMenu&&aboutToggle){
+        aboutToggle.addEventListener('click',function(){
+          setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
+        });
+      }
+    }());
     (function () {
       var content = window.SMARTBALL_CONTENT || {};
       document.querySelectorAll('[data-smartball-content]').forEach(function (element) {
