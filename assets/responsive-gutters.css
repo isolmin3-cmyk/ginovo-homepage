@@ -1,6 +1,6 @@
 :root {
-  --ginovo-content-max: 1200px;
-  --ginovo-page-gutter: clamp(20px, 4vw, 48px);
+  --ginovo-content-max: 1600px;
+  --ginovo-page-gutter: clamp(18px, 5vw, 96px);
   --ginovo-container-width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max));
   --ginovo-section-title-size: clamp(32px, calc(23px + 1.65vw), 54px);
   --ginovo-lead-size: clamp(18px, calc(15px + .45vw), 22px);
