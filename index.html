@@ -117,7 +117,8 @@
       .home-section-one .home-feature-stage{min-height:700px;padding-block:96px 64px}
       .home-section-one .home-copy{width:min(82%,300px);transform:none}
       .home-section-one .home-eyebrow{font-size:17px}
-      .home-section-one .reveal-card{opacity:1;translate:0 0;transition:none}
+      .home-section-one .reveal-card{translate:0 30px;filter:blur(7px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),translate .75s cubic-bezier(.2,.8,.2,1),filter .75s ease}
+      .home-section-one .reveal-card.is-visible{translate:0 0;filter:blur(0)}
       .unity-section,.unity-stage{height:1040px;min-height:1040px}
       .unity-stage::before{left:0;right:0;top:33.5%;bottom:4%;border-radius:22px}
       .unity-heading{left:0;right:0}
