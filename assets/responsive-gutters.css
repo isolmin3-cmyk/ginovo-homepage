@@ -212,17 +212,12 @@ main > section.px-6,
   }
 }
 
-.language.is-open .language-menu,
-.language:focus-within .language-menu {
-  display: grid;
-}
+.language:not(.is-open) .language-menu { display:none!important; }
+.language.is-open .language-menu { display:grid!important; }
 
 .site-header .language-menu {
   top: 100%;
 }
 
-.ginovo-lang.is-open .ginovo-dropdown-wrap,
-.ginovo-lang:focus-within .ginovo-dropdown-wrap {
-  opacity: 1;
-  visibility: visible;
-}
+.ginovo-lang:not(.is-open) .ginovo-dropdown-wrap { opacity:0!important; visibility:hidden!important; }
+.ginovo-lang.is-open .ginovo-dropdown-wrap { opacity:1!important; visibility:visible!important; }

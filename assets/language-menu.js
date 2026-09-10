@@ -31,9 +31,6 @@
     menu.addEventListener('pointerdown', function (event) {
       event.stopPropagation();
     });
-    document.addEventListener('click', function (event) {
-      if (!language.contains(event.target)) setOpen(false);
-    });
     language.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         setOpen(false);
