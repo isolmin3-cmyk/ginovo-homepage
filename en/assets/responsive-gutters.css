@@ -220,3 +220,10 @@ main > section.px-6,
 
 .ginovo-lang:not(.is-open) .ginovo-dropdown-wrap { opacity:0!important; visibility:hidden!important; }
 .ginovo-lang.is-open .ginovo-dropdown-wrap { opacity:1!important; visibility:visible!important; }
+
+/* PC 연혁 섹션의 영문 라벨과 대표 제목을 가운데 정렬합니다. */
+@media (min-width: 701px) {
+  #history > .container > .heading {
+    text-align: center;
+  }
+}
