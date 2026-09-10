@@ -246,3 +246,15 @@ html[lang="en"] .smartball-page :where(h1,h2,h3,p,li) {
     max-width:1180px;
   }
 }
+/* 한국어 페이지와 마지막 두 섹션의 PC 배치 통일 */
+@media (min-width: 1001px) {
+  html[lang="en"] .field-panel {
+    top: 28.7%;
+  }
+}
+
+@media (min-width: 701px) {
+  html[lang="en"] .battle-face {
+    display: block;
+  }
+}
