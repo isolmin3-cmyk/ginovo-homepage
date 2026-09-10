@@ -211,3 +211,18 @@ main > section.px-6,
     transition-duration: 0.01ms !important;
   }
 }
+
+.language.is-open .language-menu,
+.language:focus-within .language-menu {
+  display: grid;
+}
+
+.site-header .language-menu {
+  top: 100%;
+}
+
+.ginovo-lang.is-open .ginovo-dropdown-wrap,
+.ginovo-lang:focus-within .ginovo-dropdown-wrap {
+  opacity: 1;
+  visibility: visible;
+}
