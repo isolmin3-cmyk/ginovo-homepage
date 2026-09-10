@@ -221,3 +221,111 @@ main > section.px-6,
 
 .ginovo-lang:not(.is-open) .ginovo-dropdown-wrap { opacity:0!important; visibility:hidden!important; }
 .ginovo-lang.is-open .ginovo-dropdown-wrap { opacity:1!important; visibility:visible!important; }
+
+/* 한국어 메인 Unity 섹션: 영문 모바일 페이지와 동일한 세로 흐름 */
+.unity-title-mobile { display: none; }
+
+@media (max-width: 700px) {
+  html[lang="ko"] #unity-feature,
+  html[lang="ko"] #unity-feature .unity-stage {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-stage {
+    padding: 530px 30px 42px !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  html[lang="ko"] #unity-feature .unity-stage::before {
+    left: 18px !important;
+    right: 18px !important;
+    top: 300px !important;
+    bottom: 18px !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-heading {
+    top: 38px !important;
+    left: 22px !important;
+    right: 22px !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-heading h2 {
+    font-size: clamp(21px, 6.15vw, 24px) !important;
+    line-height: 1.25 !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-title-desktop { display: none; }
+  html[lang="ko"] #unity-feature .unity-title-mobile {
+    display: block;
+    white-space: nowrap;
+  }
+
+  html[lang="ko"] #unity-feature .unity-heading p {
+    max-width: 34ch;
+    margin: 18px auto 0 !important;
+    font-size: 14px !important;
+    line-height: 1.42 !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-phone {
+    top: 316px !important;
+    width: min(74%, 285px) !important;
+    height: 195px !important;
+    object-fit: contain;
+  }
+
+  html[lang="ko"] #unity-feature .unity-stage > .unity-metric,
+  html[lang="ko"] #unity-feature .unity-stage > .unity-metric:nth-of-type(n) {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 auto;
+    width: 100% !important;
+    height: 78px !important;
+    min-height: 0 !important;
+    margin: 0;
+    padding: 5px 18px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 66px !important;
+    align-items: center;
+    column-gap: 10px;
+    border: 0 !important;
+    border-radius: 18px !important;
+    background: url('./home/unity-metric-box.png?v=20260901-1') center / 100% 100% no-repeat !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    overflow: hidden;
+  }
+
+  html[lang="ko"] #unity-feature .unity-metric-copy {
+    min-width: 0;
+    overflow: visible;
+    text-align: center !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-metric strong {
+    font-size: 15.5px !important;
+    line-height: 1.18 !important;
+    letter-spacing: -.02em;
+    white-space: normal !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-metric small {
+    margin-top: 4px !important;
+    font-size: 12.5px !important;
+    line-height: 1.18 !important;
+    white-space: normal !important;
+  }
+
+  html[lang="ko"] #unity-feature .unity-metric-icon {
+    order: initial !important;
+    width: 66px !important;
+    height: 62px !important;
+    margin: 0 !important;
+    transform: none !important;
+    object-fit: contain;
+  }
+}

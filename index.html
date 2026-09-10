@@ -206,7 +206,7 @@
     }
     @media(prefers-reduced-motion:reduce){.hero-badge,.hero h1,.hero-sub{animation:none}.cert,.certificate-card img,#putting .image-card,.history-row,.history-row li,.history::before,.reveal-card{transition:none!important}.reveal-card{opacity:1!important;transform:none!important;translate:none!important}#putting .image-card:hover{transform:none}}
   </style>
-  <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
+  <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-6">
 </head>
 <body>
   <header class="site-header">
@@ -331,6 +331,10 @@
       var unityVisual=unitySection.querySelector('[data-unity-media="visual"]');
       if(unityVisual) unityVisual.src=unityContent.visual;
       unitySection.querySelectorAll('[data-unity-field]').forEach(function(node){node.textContent=unityContent[node.dataset.unityField]||'';});
+      var unityTitle=unitySection.querySelector('[data-unity-field="title"]');
+      if(unityTitle&&unityContent.title==='Unity 기반의 물리엔진을 통한 골프혁신'){
+        unityTitle.innerHTML='<span class="unity-title-desktop">Unity 기반의 물리엔진을 통한 골프혁신</span><span class="unity-title-mobile">Unity 기반의 물리엔진을 통한<br>골프혁신</span>';
+      }
       unitySection.querySelectorAll('[data-unity-metric]').forEach(function(card){
         var metric=unityContent.metrics[Number(card.dataset.unityMetric)]||{};
         card.querySelector('strong').textContent=metric.label||'';
