@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>홈페이지 콘텐츠 관리 | GINOVO</title>
+  <script src="./assets/putting-mat-content-config.js?v=20260903-11"></script>
+  <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
+  <script src="./assets/smartball-media-config.js?v=20260904-15"></script>
+  <script src="./assets/home-content-config.js?v=20260901-4"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #070c17; color: #fff; font-family: Pretendard, Arial, sans-serif; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 80px; }
+    h1 { margin: 0 0 12px; }
+    .notice { color: rgba(255,255,255,.62); line-height: 1.6; margin-bottom: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
+    .preview { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    label { display: block; color: #2bffe5; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
+    input[type="text"], textarea { width: 100%; padding: 11px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: #101725; color: #fff; font: inherit; }
+    textarea { min-height: 78px; resize: vertical; }
+    input[type="file"] { width: 100%; color: rgba(255,255,255,.7); }
+    .actions { display: flex; gap: 12px; margin-top: 28px; }
+    button, a { padding: 12px 18px; border: 0; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    button { background: #2bffe5; color: #071014; }
+    button.secondary, a { background: rgba(255,255,255,.1); color: #fff; }
+    #status { margin-top: 18px; color: #2bffe5; }
+    .admin-section { margin-top: 72px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,.13); }
+    .smart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .smart-card { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.04); }
+    .smart-card .preview { aspect-ratio: 4/3; object-fit: cover; }
+    #smart-status { margin-top: 18px; color: #2bffe5; }
+    .unity-admin-preview { width: 100%; aspect-ratio: 24/9; object-fit: contain; border-radius: 10px; background: #111827; margin-bottom: 14px; }
+    #unity-visual-preview { aspect-ratio: 1; }
+    .metric-editor { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .admin-quick { position: sticky; top: 12px; z-index: 20; margin-bottom: 32px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border: 1px solid rgba(43,255,229,.45); border-radius: 16px; background: rgba(10,20,32,.94); box-shadow: 0 14px 34px rgba(0,0,0,.35); backdrop-filter: blur(14px); }
+    .admin-quick strong { font-size: 16px; }
+    .admin-quick a { background: #2bffe5; color: #071014; }
+    #unity-admin { scroll-margin-top: 96px; border-top-color: rgba(43,255,229,.55); }
+    @media (max-width: 800px) { .grid, .smart-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <aside class="admin-quick"><strong>Unity 골프혁신 섹션을 수정하시나요?</strong><a href="#unity-admin">Unity 섹션 편집 바로가기</a></aside>
+  <h1>경사 퍼팅매트 제품 카드 관리</h1>
+  <p class="notice">각 카드의 사진과 글씨를 수정할 수 있습니다. 현재 정적 사이트 방식에서는 저장한 브라우저에만 적용됩니다.</p>
+  <form id="editor"><div class="grid" id="cards"></div>
+    <div class="actions">
+      <button type="submit">변경사항 저장</button>
+      <button class="secondary" type="button" id="reset">기본값으로 복원</button>
+      <a href="./putting-mat.html#comparison" target="_blank">페이지 확인</a>
+    </div>
+    <p id="status" role="status"></p>
+  </form>
+  <section class="admin-section" id="putting-mat-90-admin">
+    <h1>폭 90cm 경사 퍼팅매트 섹션 관리</h1>
+    <p class="notice">대표 영역의 모든 문구와 세 이미지를 수정할 수 있습니다. 글자 크기와 굵기는 기존 디자인 그대로 유지됩니다.</p>
+    <form id="feature90-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="preview" id="feature90-main-preview" alt="90cm 매트 전체컷 미리보기"><label>메인 이미지</label><input id="feature90-main-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <img class="preview" id="feature90-angle-preview" alt="90cm 매트 앵글컷 미리보기"><label>앵글 이미지</label><input id="feature90-angle-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <img class="preview" id="feature90-detail-preview" alt="90cm 매트 상세컷 미리보기"><label>상세 이미지</label><input id="feature90-detail-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+        <section class="smart-card">
+          <label>배지</label><input type="text" data-feature90-admin-field="badge">
+          <label>대표 제목</label><input type="text" data-feature90-admin-field="title">
+          <label>부제목</label><input type="text" data-feature90-admin-field="subtitle">
+          <label>본문</label><textarea data-feature90-admin-field="description"></textarea>
+          <label>첫 번째 항목 제목</label><input type="text" data-feature90-admin-field="item1Title">
+          <label>첫 번째 항목 설명</label><input type="text" data-feature90-admin-field="item1Description">
+          <label>두 번째 항목 제목</label><input type="text" data-feature90-admin-field="item2Title">
+          <label>두 번째 항목 설명</label><input type="text" data-feature90-admin-field="item2Description">
+          <label>세 번째 항목 제목</label><input type="text" data-feature90-admin-field="item3Title">
+          <label>세 번째 항목 설명</label><textarea data-feature90-admin-field="item3Description"></textarea>
+        </section>
+      </div>
+      <div class="actions"><button type="submit">90cm 섹션 저장</button><button class="secondary" type="button" id="feature90-reset">기본값으로 복원</button><a href="./putting-mat.html#features" target="_blank">페이지 확인</a></div>
+      <p id="feature90-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="smartball-anatomy-admin">
+    <h1>스마트 골프공 내부 구조 섹션 관리</h1>
+    <p class="notice">배경 이미지와 대표 제목·부제목을 각각 수정할 수 있습니다.</p>
+    <form id="anatomy-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="preview" id="anatomy-background-preview" alt="내부 구조 이미지 미리보기"><label>내부 구조 이미지</label><input id="anatomy-background-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card"><label>대표 제목</label><textarea data-anatomy-field="anatomyTitle"></textarea><label>부제목</label><textarea data-anatomy-field="anatomySubtitle"></textarea></section>
+      </div>
+      <div class="actions"><button type="submit">내부 구조 섹션 저장</button><button class="secondary" type="button" id="anatomy-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="anatomy-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>스마트 골프공 퍼팅 시스템 섹션 관리</h1>
+    <p class="notice">두 이미지와 각 문구를 따로 수정할 수 있습니다.</p>
+    <form id="smart-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="preview" id="system-preview" alt="퍼팅 시스템 이미지 미리보기">
+          <label>퍼팅 시스템 이미지</label><input id="system-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <label>제목</label><input type="text" data-smart-field="systemTitle">
+          <label>강조 문구</label><textarea data-smart-field="systemSubtitle"></textarea>
+          <label>구성 문구</label><textarea data-smart-field="systemDescription"></textarea>
+        </section>
+        <section class="smart-card">
+          <img class="preview" id="charger-preview" alt="무선 충전기 이미지 미리보기">
+          <label>무선 충전기 이미지</label><input id="charger-image" type="file" accept="image/png,image/jpeg,image/webp">
+          <label>제목</label><input type="text" data-smart-field="chargerTitle">
+          <label>강조 문구</label><textarea data-smart-field="chargerSubtitle"></textarea>
+          <label>이미지 라벨 1</label><input type="text" data-smart-field="chargerDeviceLabel">
+          <label>이미지 라벨 2</label><input type="text" data-smart-field="chargerBallLabel">
+          <label>항목 1</label><textarea data-smart-field="chargerNote1"></textarea>
+          <label>항목 2</label><textarea data-smart-field="chargerNote2"></textarea>
+        </section>
+      </div>
+      <div class="actions">
+        <button type="submit">퍼팅 시스템 저장</button>
+        <button class="secondary" type="button" id="smart-reset">기본값으로 복원</button>
+        <a href="./smart-golf-ball.html" target="_blank">페이지 확인</a>
+      </div>
+      <p id="smart-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="smartball-spec-admin">
+    <h1>스마트 골프공 물리적 스펙 섹션 관리</h1>
+    <p class="notice">대표 제목과 네 개의 스펙 문구·게이지 이미지를 각각 수정할 수 있습니다.</p>
+    <form id="spec-editor">
+      <div class="smart-card">
+        <label>대표 제목</label><input type="text" data-spec-field="specTitle">
+      </div>
+      <div class="smart-grid" id="spec-items" style="margin-top:20px">
+        <section class="smart-card"><img class="preview" id="spec-weight-preview" alt="무게 게이지 미리보기"><label>무게 게이지 이미지</label><input id="spec-weight-image" type="file" accept="image/png,image/jpeg,image/webp"><label>무게 문구</label><input type="text" data-spec-field="specWeight"></section>
+        <section class="smart-card"><img class="preview" id="spec-size-preview" alt="외경 게이지 미리보기"><label>외경 게이지 이미지</label><input id="spec-size-image" type="file" accept="image/png,image/jpeg,image/webp"><label>외경 문구</label><input type="text" data-spec-field="specSize"></section>
+        <section class="smart-card"><img class="preview" id="spec-rebound-preview" alt="반발력 게이지 미리보기"><label>반발력 게이지 이미지</label><input id="spec-rebound-image" type="file" accept="image/png,image/jpeg,image/webp"><label>반발력 문구</label><input type="text" data-spec-field="specRebound"></section>
+        <section class="smart-card"><img class="preview" id="spec-eccentricity-preview" alt="편심도 게이지 미리보기"><label>편심도 게이지 이미지</label><input id="spec-eccentricity-image" type="file" accept="image/png,image/jpeg,image/webp"><label>편심도 문구</label><input type="text" data-spec-field="specEccentricity"></section>
+      </div>
+      <div class="actions">
+        <button type="submit">물리적 스펙 저장</button>
+        <button class="secondary" type="button" id="spec-reset">기본값으로 복원</button>
+        <a href="./smart-golf-ball.html#spec-status" target="_blank">페이지 확인</a>
+      </div>
+      <p id="spec-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>목표 거리 / 그린 스피드 연습 섹션 관리</h1>
+    <p class="notice">섹션 제목과 설명, 하단의 연습·분석 이미지를 각각 수정할 수 있습니다.</p>
+    <form id="distance-editor">
+      <div class="smart-card">
+        <label>대표 문구</label><textarea data-distance-field="distanceTitle"></textarea>
+        <label>설명 1</label><textarea data-distance-field="distancePoint1"></textarea>
+        <label>설명 2</label><textarea data-distance-field="distancePoint2"></textarea>
+      </div>
+      <div class="smart-grid" style="margin-top:20px">
+        <section class="smart-card">
+          <img class="preview" id="distance-practice-preview" alt="거리 연습 이미지 미리보기">
+          <label>거리 연습 이미지</label><input id="distance-practice-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+        <section class="smart-card">
+          <img class="preview" id="distance-analysis-preview" alt="분석 이미지 미리보기">
+          <label>정량성·타점 분석 이미지</label><input id="distance-analysis-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+      </div>
+      <div class="actions">
+        <button type="submit">거리 연습 섹션 저장</button>
+        <button class="secondary" type="button" id="distance-reset">기본값으로 복원</button>
+        <a href="./smart-golf-ball.html" target="_blank">페이지 확인</a>
+      </div>
+      <p id="distance-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>경사 연습 섹션 관리</h1>
+    <p class="notice">섹션 제목과 설명, 왼쪽·오른쪽 경사 연습 이미지를 각각 수정할 수 있습니다.</p>
+    <form id="slope-editor">
+      <div class="smart-card">
+        <label>대표 문구</label><textarea data-slope-field="slopeTitle"></textarea>
+        <label>설명</label><textarea data-slope-field="slopePoint1"></textarea>
+      </div>
+      <div class="smart-grid" style="margin-top:20px">
+        <section class="smart-card"><img class="preview" id="slope-practice-preview" alt="왼쪽 경사 연습 이미지 미리보기"><label>왼쪽 경사 연습 이미지</label><input id="slope-practice-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card"><img class="preview" id="slope-selection-preview" alt="오른쪽 경사 연습 이미지 미리보기"><label>오른쪽 경사 연습 이미지</label><input id="slope-selection-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+      </div>
+      <div class="actions"><button type="submit">경사 연습 섹션 저장</button><button class="secondary" type="button" id="slope-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="slope-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>필드 그린 섹션 관리</h1>
+    <p class="notice">필드 그린 배경 이미지, 패널 이미지와 화면 위에 표시되는 모든 문구를 수정할 수 있습니다.</p>
+    <form id="field-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="preview" id="field-background-preview" alt="필드 그린 배경 미리보기"><label>필드 그린 배경 이미지</label><input id="field-background-image" type="file" accept="image/png,image/jpeg,image/webp"><img class="preview" id="field-panel-preview" alt="필드 그린 패널 미리보기"><label>무문자 패널 이미지</label><input id="field-panel-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card">
+          <label>대표 제목</label><textarea data-field-practice-field="fieldTitle"></textarea>
+          <label>부제목</label><textarea data-field-practice-field="fieldSubtitle"></textarea>
+          <label>패널 제목 첫 줄</label><input data-field-practice-field="fieldKickerLine1">
+          <label>패널 강조 제목</label><input data-field-practice-field="fieldKickerAccent">
+          <label>패널 설명</label><textarea data-field-practice-field="fieldSummary"></textarea>
+          <label>첫 번째 기능 제목</label><input data-field-practice-field="fieldFeature1Title">
+          <label>첫 번째 기능 설명</label><textarea data-field-practice-field="fieldFeature1Description"></textarea>
+          <label>두 번째 기능 제목</label><input data-field-practice-field="fieldFeature2Title">
+          <label>두 번째 기능 설명</label><textarea data-field-practice-field="fieldFeature2Description"></textarea>
+          <label>왼쪽 배지 제목</label><input data-field-practice-field="fieldBadge1Title">
+          <label>왼쪽 배지 설명</label><input data-field-practice-field="fieldBadge1Description">
+          <label>오른쪽 배지 제목</label><input data-field-practice-field="fieldBadge2Title">
+          <label>오른쪽 배지 설명</label><input data-field-practice-field="fieldBadge2Description">
+        </section>
+      </div>
+      <div class="actions"><button type="submit">필드 그린 섹션 저장</button><button class="secondary" type="button" id="field-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="field-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section">
+    <h1>온·오프라인 대결 섹션 관리</h1>
+    <p class="notice">전체 이미지와 상단 제목·부제목, Player A·B 얼굴 이미지를 각각 수정할 수 있습니다.</p>
+    <form id="battle-editor">
+      <div class="smart-grid"><section class="smart-card"><img class="preview" id="battle-composite-preview" alt="온·오프라인 완성 이미지 미리보기"><label>온·오프라인 전체 이미지</label><input id="battle-composite-image" type="file" accept="image/png,image/jpeg,image/webp"><label>대표 제목</label><textarea data-battle-field="battleTitle"></textarea><label>부제목</label><textarea data-battle-field="battleSubtitle"></textarea></section><section class="smart-card"><img class="preview" id="battle-player-a-preview" alt="Player A 얼굴 미리보기"><label>Player A 얼굴</label><input id="battle-player-a-image" type="file" accept="image/png,image/jpeg,image/webp"><img class="preview" id="battle-player-b-preview" alt="Player B 얼굴 미리보기"><label>Player B 얼굴</label><input id="battle-player-b-image" type="file" accept="image/png,image/jpeg,image/webp"></section></div>
+      <div class="actions"><button type="submit">온·오프라인 섹션 저장</button><button class="secondary" type="button" id="battle-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="battle-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="smartball-cta-admin">
+    <h1>스마트 골프공 CTA 섹션 관리</h1>
+    <p class="notice">CTA 배경 이미지와 화면 위의 두 문구를 각각 수정할 수 있습니다.</p>
+    <form id="cta-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="preview" id="cta-background-preview" alt="CTA 배경 미리보기"><label>CTA 배경 이미지</label><input id="cta-background-image" type="file" accept="image/png,image/jpeg,image/webp"></section>
+        <section class="smart-card"><label>영문 문구</label><textarea data-cta-field="ctaEyebrow"></textarea><label>대표 문구</label><textarea data-cta-field="ctaTitle"></textarea></section>
+      </div>
+      <div class="actions"><button type="submit">CTA 섹션 저장</button><button class="secondary" type="button" id="cta-reset">기본값으로 복원</button><a href="./smart-golf-ball.html" target="_blank">페이지 확인</a></div>
+      <p id="cta-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="unity-admin">
+    <h1>메인 홈 Unity 골프혁신 섹션 관리</h1>
+    <p class="notice">배경, 휴대폰 PNG, 제목·설명과 7개 지표의 한글·영문 문구를 수정합니다. 아이콘 안의 수치는 PNG에 포함되어 수정 대상이 아닙니다.</p>
+    <form id="unity-editor">
+      <div class="smart-grid">
+        <section class="smart-card">
+          <img class="unity-admin-preview" id="unity-background-preview" alt="Unity 섹션 배경 미리보기">
+          <label>전체 배경 (기존 7680 × 4348 비율 · 대형 화면에서는 너비만 확장)</label><input id="unity-background-image" type="file" accept="image/png,image/jpeg,image/webp">
+        </section>
+        <section class="smart-card">
+          <img class="unity-admin-preview" id="unity-visual-preview" alt="휴대폰 PNG 미리보기">
+          <label>상단 휴대폰 PNG (현재 2076 × 2076)</label><input id="unity-visual-image" type="file" accept="image/png,image/webp">
+        </section>
+      </div>
+      <div class="smart-card" style="margin-top:20px">
+        <label>제목</label><input type="text" data-unity-field="title">
+        <label>설명 1</label><input type="text" data-unity-field="subtitle1">
+        <label>설명 2</label><input type="text" data-unity-field="subtitle2">
+      </div>
+      <div class="smart-card" style="margin-top:20px">
+        <h2>지표 문구</h2>
+        <div id="unity-metrics"></div>
+      </div>
+      <div class="actions">
+        <button type="submit">Unity 섹션 저장</button>
+        <button class="secondary" type="button" id="unity-reset">기본값으로 복원</button>
+        <a href="./index.html#unity-feature" target="_blank">페이지 확인</a>
+      </div>
+      <p id="unity-status" role="status"></p>
+    </form>
+  </section>
+  <section class="admin-section" id="practice-four-admin">
+    <h1>메인 홈 스마트 골프 4포인트 섹션 관리</h1>
+    <p class="notice">큰 패널·소형 박스·중앙 이미지를 각각 교체할 수 있으며, 모든 제목과 Point 문구는 HTML로 개별 수정됩니다.</p>
+    <form id="practice-four-editor">
+      <div class="smart-grid">
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-panel-preview" alt="4포인트 큰 패널 미리보기"><label>큰 패널 PNG</label><input id="practice-panel-image" type="file" accept="image/png,image/webp"></section>
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-card-preview" alt="Point 소형 박스 미리보기"><label>Point 소형 박스 PNG</label><input id="practice-card-image" type="file" accept="image/png,image/webp"></section>
+        <section class="smart-card"><img class="unity-admin-preview" id="practice-center-preview" alt="중앙 이미지 미리보기"><label>중앙 골프공 PNG</label><input id="practice-center-image" type="file" accept="image/png,image/webp"></section>
+      </div>
+      <div class="smart-card">
+        <label>상단 제목</label><input type="text" data-practice-admin-heading>
+        <label>상단 설명</label><input type="text" data-practice-admin-subtitle>
+        <label>패널 내부 제목</label><input type="text" data-practice-admin-title>
+      </div>
+      <div class="smart-grid" id="practice-four-points-admin" style="margin-top:20px"></div>
+      <div class="actions">
+        <button type="submit">4포인트 섹션 저장</button>
+        <button class="secondary" type="button" id="practice-four-reset">기본값으로 복원</button>
+        <a href="./index.html#practice-four-points" target="_blank">페이지 확인</a>
+      </div>
+      <p id="practice-four-status" role="status"></p>
+    </form>
+  </section>
+</main>
+<script>
+  const cardsRoot = document.getElementById('cards');
+  const current = window.getPuttingMatComparisonContent();
+  const pendingImages = {};
+
+  current.forEach((card, index) => {
+    const article = document.createElement('section');
+    article.className = 'card';
+    article.innerHTML = `
+      <img class="preview" src="${card.image}" alt="${card.title} 미리보기">
+      <label>사진 첨부</label><input type="file" accept="image/png,image/jpeg,image/webp" data-image="${index}">
+      <label>제목</label><input type="text" data-field="title" value="${card.title}">
+      <label>설명</label><input type="text" data-field="subtitle" value="${card.subtitle}">
+      ${card.items.map((item, itemIndex) => `<label>항목 ${itemIndex + 1}</label><input type="text" data-item="${itemIndex}" value="${item}">`).join('')}`;
+    article.querySelector('input[type="file"]').addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => { pendingImages[index] = reader.result; article.querySelector('.preview').src = reader.result; };
+      reader.readAsDataURL(file);
+    });
+    cardsRoot.appendChild(article);
+  });
+
+  document.getElementById('editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const result = [...document.querySelectorAll('#cards .card')].map((card, index) => ({
+      image: pendingImages[index] || current[index].image,
+      title: card.querySelector('[data-field="title"]').value.trim(),
+      subtitle: card.querySelector('[data-field="subtitle"]').value.trim(),
+      items: [...card.querySelectorAll('[data-item]')].map(input => input.value.trim())
+    }));
+    try {
+      localStorage.setItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY, JSON.stringify(result));
+      document.getElementById('status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    localStorage.removeItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY);
+    location.reload();
+  });
+
+  const feature90Content = window.getPuttingMatFeature90Content();
+  const pendingFeature90Images = {};
+  document.querySelectorAll('[data-feature90-admin-field]').forEach(input => {
+    input.value = feature90Content[input.dataset.feature90AdminField] || '';
+  });
+  [['main', 'feature90-main-image', 'feature90-main-preview'], ['angle', 'feature90-angle-image', 'feature90-angle-preview'], ['detail', 'feature90-detail-image', 'feature90-detail-preview']].forEach(([key, inputId, previewId]) => {
+    const preview = document.getElementById(previewId);
+    preview.src = feature90Content.images[key];
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        pendingFeature90Images[key] = reader.result;
+        preview.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  document.getElementById('feature90-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const next = { ...feature90Content, images: { ...feature90Content.images, ...pendingFeature90Images } };
+    document.querySelectorAll('[data-feature90-admin-field]').forEach(input => {
+      next[input.dataset.feature90AdminField] = input.value.trim();
+    });
+    try {
+      localStorage.setItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY, JSON.stringify(next));
+      document.getElementById('feature90-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('feature90-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('feature90-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY);
+    location.reload();
+  });
+
+  const smartContent = Object.assign({}, window.SMARTBALL_CONTENT);
+  const smartMedia = Object.assign({}, window.SMARTBALL_MEDIA);
+  const pendingSmartMedia = {};
+  document.querySelectorAll('[data-smart-field]').forEach(input => {
+    input.value = smartContent[input.dataset.smartField] || '';
+  });
+  document.getElementById('system-preview').src = smartMedia['putting-system-set'];
+  document.getElementById('charger-preview').src = smartMedia['wireless-charger'];
+
+  function bindSmartImage(inputId, previewId, slot) {
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        pendingSmartMedia[slot] = reader.result;
+        document.getElementById(previewId).src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  bindSmartImage('system-image', 'system-preview', 'putting-system-set');
+  bindSmartImage('charger-image', 'charger-preview', 'wireless-charger');
+
+  document.querySelectorAll('[data-anatomy-field]').forEach(input => {
+    input.value = smartContent[input.dataset.anatomyField] || '';
+  });
+  document.getElementById('anatomy-background-preview').src = smartMedia['anatomy-background'];
+  bindSmartImage('anatomy-background-image', 'anatomy-background-preview', 'anatomy-background');
+  document.getElementById('anatomy-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-anatomy-field]').forEach(input => {
+      nextContent[input.dataset.anatomyField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('anatomy-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('anatomy-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('anatomy-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      anatomyTitle: window.SMARTBALL_CONTENT_DEFAULTS.anatomyTitle,
+      anatomySubtitle: window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle
+    });
+    const nextMedia = Object.assign({}, smartMedia, {
+      'anatomy-background': window.SMARTBALL_MEDIA_DEFAULTS['anatomy-background']
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+    location.reload();
+  });
+
+  document.querySelectorAll('[data-spec-field]').forEach(input => {
+    input.value = smartContent[input.dataset.specField] || '';
+  });
+  const specMediaSlots = [
+    ['spec-weight-image', 'spec-weight-preview', 'spec-weight'],
+    ['spec-size-image', 'spec-size-preview', 'spec-size'],
+    ['spec-rebound-image', 'spec-rebound-preview', 'spec-rebound'],
+    ['spec-eccentricity-image', 'spec-eccentricity-preview', 'spec-eccentricity']
+  ];
+  specMediaSlots.forEach(([inputId, previewId, slot]) => {
+    document.getElementById(previewId).src = smartMedia[slot];
+    bindSmartImage(inputId, previewId, slot);
+  });
+
+  document.getElementById('spec-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-spec-field]').forEach(input => {
+      nextContent[input.dataset.specField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('spec-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('spec-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('spec-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      specTitle: window.SMARTBALL_CONTENT_DEFAULTS.specTitle,
+      specWeight: window.SMARTBALL_CONTENT_DEFAULTS.specWeight,
+      specSize: window.SMARTBALL_CONTENT_DEFAULTS.specSize,
+      specRebound: window.SMARTBALL_CONTENT_DEFAULTS.specRebound,
+      specEccentricity: window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity
+    });
+    const nextMedia = Object.assign({}, smartMedia);
+    ['spec-weight', 'spec-size', 'spec-rebound', 'spec-eccentricity'].forEach(slot => {
+      nextMedia[slot] = window.SMARTBALL_MEDIA_DEFAULTS[slot];
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+    location.reload();
+  });
+
+  document.getElementById('smart-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-smart-field]').forEach(input => {
+      nextContent[input.dataset.smartField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('smart-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('smart-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('smart-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.querySelectorAll('[data-distance-field]').forEach(input => {
+    input.value = smartContent[input.dataset.distanceField] || '';
+  });
+  document.getElementById('distance-practice-preview').src = smartMedia['distance-practice-screen'];
+  document.getElementById('distance-analysis-preview').src = smartMedia['distance-analysis-screen'];
+  bindSmartImage('distance-practice-image', 'distance-practice-preview', 'distance-practice-screen');
+  bindSmartImage('distance-analysis-image', 'distance-analysis-preview', 'distance-analysis-screen');
+
+  document.getElementById('distance-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-distance-field]').forEach(input => {
+      nextContent[input.dataset.distanceField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('distance-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('distance-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('distance-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.querySelectorAll('[data-slope-field]').forEach(input => {
+    input.value = smartContent[input.dataset.slopeField] || '';
+  });
+  document.getElementById('slope-practice-preview').src = smartMedia['slope-practice-screen'];
+  document.getElementById('slope-selection-preview').src = smartMedia['slope-selection-screen'];
+  bindSmartImage('slope-practice-image', 'slope-practice-preview', 'slope-practice-screen');
+  bindSmartImage('slope-selection-image', 'slope-selection-preview', 'slope-selection-screen');
+  document.getElementById('slope-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-slope-field]').forEach(input => {
+      nextContent[input.dataset.slopeField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('slope-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('slope-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('slope-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.querySelectorAll('[data-field-practice-field]').forEach(input => {
+    input.value = smartContent[input.dataset.fieldPracticeField] || '';
+  });
+  document.getElementById('field-background-preview').src = smartMedia['field-background'];
+  document.getElementById('field-panel-preview').src = smartMedia['field-panel'];
+  bindSmartImage('field-background-image', 'field-background-preview', 'field-background');
+  bindSmartImage('field-panel-image', 'field-panel-preview', 'field-panel');
+  document.getElementById('field-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-field-practice-field]').forEach(input => {
+      nextContent[input.dataset.fieldPracticeField] = input.value.trim();
+    });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('field-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('field-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('field-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.getElementById('battle-composite-preview').src = smartMedia['battle-composite'];
+  document.getElementById('battle-player-a-preview').src = smartMedia['battle-player-a'];
+  document.getElementById('battle-player-b-preview').src = smartMedia['battle-player-b'];
+  document.querySelectorAll('[data-battle-field]').forEach(input => { input.value = smartContent[input.dataset.battleField] || ''; });
+  bindSmartImage('battle-composite-image', 'battle-composite-preview', 'battle-composite');
+  bindSmartImage('battle-player-a-image', 'battle-player-a-preview', 'battle-player-a');
+  bindSmartImage('battle-player-b-image', 'battle-player-b-preview', 'battle-player-b');
+  document.getElementById('battle-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-battle-field]').forEach(input => { nextContent[input.dataset.battleField] = input.value.trim(); });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('battle-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('battle-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('battle-reset').addEventListener('click', () => {
+    localStorage.removeItem(window.SMARTBALL_CONTENT_STORAGE_KEY);
+    localStorage.removeItem(window.SMARTBALL_MEDIA_STORAGE_KEY);
+    location.reload();
+  });
+
+  document.getElementById('cta-background-preview').src = smartMedia['cta-background'];
+  document.querySelectorAll('[data-cta-field]').forEach(input => { input.value = smartContent[input.dataset.ctaField] || ''; });
+  bindSmartImage('cta-background-image', 'cta-background-preview', 'cta-background');
+  document.getElementById('cta-editor').addEventListener('submit', event => {
+    event.preventDefault();
+    const nextContent = Object.assign({}, smartContent);
+    document.querySelectorAll('[data-cta-field]').forEach(input => { nextContent[input.dataset.ctaField] = input.value.trim(); });
+    const nextMedia = Object.assign({}, smartMedia, pendingSmartMedia);
+    try {
+      localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+      localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+      document.getElementById('cta-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('cta-status').textContent = '이미지 용량이 너무 큽니다. 더 작은 이미지로 다시 시도하세요.';
+    }
+  });
+  document.getElementById('cta-reset').addEventListener('click', () => {
+    const nextContent = Object.assign({}, smartContent, {
+      ctaEyebrow: window.SMARTBALL_CONTENT_DEFAULTS.ctaEyebrow,
+      ctaTitle: window.SMARTBALL_CONTENT_DEFAULTS.ctaTitle
+    });
+    const nextMedia = Object.assign({}, smartMedia, {
+      'cta-background': window.SMARTBALL_MEDIA_DEFAULTS['cta-background']
+    });
+    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(nextContent));
+    localStorage.setItem(window.SMARTBALL_MEDIA_STORAGE_KEY, JSON.stringify(nextMedia));
+    location.reload();
+  });
+
+  const unityContent = window.getHomeUnityContent();
+  const pendingUnityImages = {};
+  document.querySelectorAll('[data-unity-field]').forEach(input => { input.value = unityContent[input.dataset.unityField] || ''; });
+  document.getElementById('unity-background-preview').src = unityContent.background;
+  document.getElementById('unity-visual-preview').src = unityContent.visual;
+  Promise.all([window.getHomeUnityImage('background'), window.getHomeUnityImage('visual')]).then(images => {
+    if (images[0]) document.getElementById('unity-background-preview').src = URL.createObjectURL(images[0]);
+    if (images[1]) document.getElementById('unity-visual-preview').src = URL.createObjectURL(images[1]);
+  }).catch(() => {});
+
+  const unityMetricsRoot = document.getElementById('unity-metrics');
+  unityContent.metrics.forEach((metric, index) => {
+    const row = document.createElement('div');
+    row.className = 'metric-editor';
+    row.innerHTML = `<input type="text" data-unity-metric-label="${index}" aria-label="지표 ${index + 1} 한글" value="${metric.label}"><input type="text" data-unity-metric-english="${index}" aria-label="지표 ${index + 1} 영문" value="${metric.english}">`;
+    unityMetricsRoot.appendChild(row);
+  });
+
+  function bindUnityImage(inputId, previewId, key) {
+    document.getElementById(inputId).addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      pendingUnityImages[key] = file;
+      document.getElementById(previewId).src = URL.createObjectURL(file);
+    });
+  }
+  bindUnityImage('unity-background-image', 'unity-background-preview', 'background');
+  bindUnityImage('unity-visual-image', 'unity-visual-preview', 'visual');
+
+  document.getElementById('unity-editor').addEventListener('submit', async event => {
+    event.preventDefault();
+    const next = Object.assign({}, unityContent);
+    document.querySelectorAll('[data-unity-field]').forEach(input => { next[input.dataset.unityField] = input.value.trim(); });
+    next.metrics = unityContent.metrics.map((metric, index) => ({
+      label: document.querySelector(`[data-unity-metric-label="${index}"]`).value.trim(),
+      english: document.querySelector(`[data-unity-metric-english="${index}"]`).value.trim(),
+      value: metric.value
+    }));
+    try {
+      localStorage.setItem(window.HOME_UNITY_STORAGE_KEY, JSON.stringify(next));
+      if (pendingUnityImages.background) await window.setHomeUnityImage('background', pendingUnityImages.background);
+      if (pendingUnityImages.visual) await window.setHomeUnityImage('visual', pendingUnityImages.visual);
+      document.getElementById('unity-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('unity-status').textContent = '저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.';
+    }
+  });
+  document.getElementById('unity-reset').addEventListener('click', async () => {
+    localStorage.removeItem(window.HOME_UNITY_STORAGE_KEY);
+    await window.clearHomeUnityImages().catch(() => {});
+    location.reload();
+  });
+
+  const practiceContent = window.getHomePracticeContent();
+  const pendingPracticeImages = {};
+  document.querySelector('[data-practice-admin-heading]').value = practiceContent.heading;
+  document.querySelector('[data-practice-admin-subtitle]').value = practiceContent.subtitle;
+  document.querySelector('[data-practice-admin-title]').value = practiceContent.title;
+  const practiceImageDefaults = {
+    panel: './assets/home/practice-four-panel.png?v=20260901-5',
+    card: './assets/home/practice-four-card.png?v=20260901-3',
+    center: './assets/home/practice-four-center-editable.png?v=20260901-1'
+  };
+  Object.entries(practiceImageDefaults).forEach(([key, src]) => { document.getElementById(`practice-${key}-preview`).src = src; });
+  Promise.all(['panel','card','center'].map(key => window.getHomePracticeImage(key))).then(images => {
+    ['panel','card','center'].forEach((key,index) => { if(images[index]) document.getElementById(`practice-${key}-preview`).src=URL.createObjectURL(images[index]); });
+  }).catch(() => {});
+  ['panel','card','center'].forEach(key => {
+    document.getElementById(`practice-${key}-image`).addEventListener('change', event => {
+      const file=event.target.files[0];
+      if(!file) return;
+      pendingPracticeImages[key]=file;
+      document.getElementById(`practice-${key}-preview`).src=URL.createObjectURL(file);
+    });
+  });
+  const practiceAdminRoot = document.getElementById('practice-four-points-admin');
+  practiceContent.points.forEach((point, index) => {
+    const card = document.createElement('section');
+    card.className = 'smart-card';
+    card.innerHTML = `<label>Point 이름</label><input type="text" data-practice-label="${index}" value="${point.label}"><label>설명</label><textarea data-practice-body="${index}">${point.body}</textarea>`;
+    practiceAdminRoot.appendChild(card);
+  });
+  document.getElementById('practice-four-editor').addEventListener('submit', async event => {
+    event.preventDefault();
+    const next = {
+      heading: document.querySelector('[data-practice-admin-heading]').value.trim(),
+      subtitle: document.querySelector('[data-practice-admin-subtitle]').value.trim(),
+      title: document.querySelector('[data-practice-admin-title]').value.trim(),
+      points: practiceContent.points.map((point, index) => ({
+        label: document.querySelector(`[data-practice-label="${index}"]`).value.trim(),
+        body: document.querySelector(`[data-practice-body="${index}"]`).value.trim()
+      }))
+    };
+    try {
+      localStorage.setItem(window.HOME_PRACTICE_STORAGE_KEY, JSON.stringify(next));
+      await Promise.all(Object.entries(pendingPracticeImages).map(([key,file]) => window.setHomePracticeImage(key,file)));
+      document.getElementById('practice-four-status').textContent = '저장했습니다. 페이지 확인 버튼을 눌러 확인하세요.';
+    } catch (_) {
+      document.getElementById('practice-four-status').textContent = '저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.';
+    }
+  });
+  document.getElementById('practice-four-reset').addEventListener('click', async () => {
+    localStorage.removeItem(window.HOME_PRACTICE_STORAGE_KEY);
+    await window.clearHomePracticeImages().catch(() => {});
+    location.reload();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Golf Ball | GREEN TALK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
+  <style>
+    :root{--bg:#070c17;--text:#fff;--cyan:#31e6df;--line:rgba(255,255,255,.11);--max:1280px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:Pretendard,Inter,-apple-system,sans-serif;word-break:keep-all}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .site-header{position:fixed;top:32px;left:50%;z-index:1000;transform:translateX(-50%);width:min(calc(100% - 48px),1063px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;gap:36px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);border-radius:100px;box-shadow:0 20px 40px rgba(0,0,0,.4);backdrop-filter:blur(24px);line-height:normal}
+    .logo{display:flex;align-items:center;flex-shrink:0}.logo img{width:auto;height:34px}
+    .main-nav{margin-left:0;flex-shrink:0}.main-nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}.main-nav a,.about-trigger{font-size:18px;font-weight:500;white-space:nowrap}.main-nav a:hover,.about-trigger:hover{color:var(--cyan)}.about-menu{position:relative}.about-trigger{display:flex;align-items:center;gap:7px;padding:0;border:0;background:none;color:inherit;font-family:inherit;cursor:pointer}.about-trigger::after{content:"⌄";font-size:14px;transition:transform .2s ease}.about-menu.is-about-open .about-trigger::after{transform:rotate(180deg)}.about-dropdown{position:absolute;top:100%;left:50%;z-index:1200;width:210px;padding-top:18px;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.about-menu.is-about-open .about-dropdown{opacity:1;visibility:visible}.about-dropdown-panel{padding:10px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(16,22,34,.97);box-shadow:0 18px 44px rgba(0,0,0,.38);backdrop-filter:blur(16px)}.about-dropdown-panel a{display:block;padding:11px 13px;border-radius:10px;color:#d9d9d9;font-size:15px;font-weight:600}.about-dropdown-panel a:hover,.about-dropdown-panel a:focus{background:rgba(42,232,215,.1);color:var(--cyan)}
+    .header-tools{display:flex;align-items:center;gap:20px;flex-shrink:0}.login{padding:9px 22px;background:#210bbd;border-radius:100px;font-size:17px;font-weight:600}.language{position:relative;opacity:.78}.language-button{display:flex;align-items:center;gap:6px;padding:4px;border:0;background:none;color:#fff;font-size:18px;cursor:pointer}.language-button img{width:20px;height:20px;object-fit:contain}.language-caret{font-size:15px;line-height:1}.language-menu{position:absolute;top:38px;right:0;min-width:120px;padding:8px;display:none;background:#fff;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.28)}.language:hover .language-menu{display:grid}.language-menu a{padding:9px 12px;color:#111;border-radius:8px;font-size:16px}.language-menu a:hover{background:#f0f2f4}
+    .menu-toggle{width:44px;height:44px;padding:10px;display:none;place-items:center;gap:4px;border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}.menu-toggle-line{display:block;width:22px;height:2px;border-radius:999px;background:currentColor;transition:transform .25s ease,opacity .2s ease}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1){transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .smartball-page{padding-top:0;background:var(--bg)}
+    .smartball-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#070c17}
+    .smartball-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .smartball-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,12,23,.68),rgba(7,12,23,.20) 55%,rgba(7,12,23,.05))}
+    .smartball-hero-copy{position:relative;z-index:1;width:min(calc(100% - 64px),var(--max));margin:0 auto 72px;text-align:left}
+    .smartball-hero-copy h1{max-width:850px;margin:0;color:#fff;font-size:clamp(52px,7vw,100px);font-weight:700;line-height:.98;letter-spacing:-.065em;animation:heroTitleUp .9s cubic-bezier(.2,.8,.2,1) .2s both}
+    @keyframes heroTitleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    .design-section{width:min(100%,1920px);margin:0 auto;padding-inline:clamp(24px,6.25vw,120px);background:var(--bg)}
+    .design-section>img{width:100%;height:auto;margin:0 auto;object-fit:contain;filter:none;transform:none}
+    .anatomy-stage{position:relative;width:100%;aspect-ratio:8/5;overflow:hidden}.anatomy-stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.anatomy-heading{position:absolute;z-index:1;top:5.8%;left:2%;right:2%;text-align:center}.anatomy-title{margin:0;color:#fff;font-size:clamp(36px,5vw,72px);font-weight:700;line-height:1.08;letter-spacing:-.035em;white-space:pre-line;word-break:keep-all}.anatomy-subtitle{margin:clamp(8px,1vw,18px) 0 0;color:#d6d9df;font-size:clamp(11px,1.35vw,26px);font-weight:400;line-height:1.45;word-break:keep-all;text-wrap:balance}.anatomy-copy{position:absolute;z-index:1}.anatomy-copy h3{margin:0;color:#31e6df;font-size:clamp(12px,1.35vw,26px);font-weight:700;line-height:1.3}.anatomy-copy p{margin:10px 0 0;color:#d6d9df;font-size:clamp(10px,1.05vw,20px);line-height:1.55;white-space:pre-line}.anatomy-copy p:empty{display:none}.anatomy-layer{top:39.5%;left:24.6%}.anatomy-elastomer{top:26.3%;left:52%}.anatomy-shell{top:80.2%;left:44%}.anatomy-cover{top:87.8%;left:20.7%}
+    .anatomy-section.anatomy-motion-ready .anatomy-stage>img{opacity:0;transform:translateY(20px) scale(.975);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}.anatomy-section.anatomy-motion-ready .anatomy-title,.anatomy-section.anatomy-motion-ready .anatomy-subtitle,.anatomy-section.anatomy-motion-ready .anatomy-copy{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1)}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-stage>img,.anatomy-section.anatomy-motion-ready.is-visible .anatomy-title,.anatomy-section.anatomy-motion-ready.is-visible .anatomy-subtitle,.anatomy-section.anatomy-motion-ready.is-visible .anatomy-copy{opacity:1;transform:none}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-title{transition-delay:.32s}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-subtitle{transition-delay:.44s}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-copy:nth-of-type(2){transition-delay:.58s}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-copy:nth-of-type(3){transition-delay:.70s}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-copy:nth-of-type(4){transition-delay:.82s}.anatomy-section.anatomy-motion-ready.is-visible .anatomy-copy:nth-of-type(5){transition-delay:.94s}
+    .editable-media-layout{position:relative;width:min(100%,1920px);margin:0 auto;overflow:hidden}
+    .editable-media-layout>.design-base{width:100%;max-width:none;margin:0}
+    .media-slot{position:absolute;left:var(--slot-x);top:var(--slot-y);width:var(--slot-w);height:var(--slot-h);overflow:hidden;border-radius:var(--slot-radius,18px);pointer-events:none}
+    .media-slot img{width:100%;height:100%;margin:0;object-fit:cover;opacity:0}
+    .media-slot img[src]:not([src=""]){opacity:1}
+    .media-slot[data-fit="contain"] img{object-fit:contain}
+    .composed-section{position:relative;overflow:hidden;padding-top:clamp(72px,7.8125vw,150px);padding-bottom:clamp(72px,7.8125vw,150px);background:#070c17}
+    .composed-section::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 65% 45%,rgba(45,71,99,.28),transparent 38%)}
+    .section-shell{position:relative;z-index:1;width:min(100%,1660px);margin:0 auto}
+    .section-heading{margin:0;color:#fff;font-size:clamp(32px,2.8125vw,54px);font-weight:700;line-height:1.2;letter-spacing:-.045em}
+    .section-lead{margin:28px 0 0;color:#d6dbe3;font-size:clamp(18px,1.5625vw,30px);font-weight:400;line-height:1.7}
+    .section-points{margin:32px 0 0;padding:0;list-style:none;color:#d6dbe3;font-size:clamp(18px,1.5625vw,30px);font-weight:400;line-height:1.75}.section-points li+li{margin-top:14px}.section-points li::before{content:"•";margin-right:18px;color:#fff}
+    [data-media-slot]{border-radius:10px;overflow:hidden}.cms-slot{overflow:hidden}.cms-slot img{width:100%;height:100%;margin:0;object-fit:contain;opacity:0}.cms-slot img[src]:not([src=""]){opacity:1}
+    .spec-section{text-align:center}.spec-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,3vw,52px);margin-top:clamp(54px,7vw,100px)}.spec-card{position:relative;aspect-ratio:1;padding:clamp(10px,1.2vw,22px);overflow:hidden;border:1px solid rgba(255,255,255,.24);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.spec-card-media{position:relative;width:100%;height:74%;overflow:hidden}.spec-card-media img{position:absolute;top:-7%;left:0;width:100%;height:auto;max-width:none;margin:0;object-fit:initial;transform:none}.spec-value{position:absolute;z-index:1;left:12px;right:12px;bottom:10%;margin:0;color:#fff;font-size:clamp(15px,1.45vw,28px);font-weight:700;line-height:1.25;white-space:nowrap;text-align:center}
+    .system-section{min-height:min(90.6771vw,1741px);padding-top:0;padding-bottom:0;background:#070c17 url('./assets/smartball-section-03-bg.png') center top/100% auto no-repeat}.system-section::before{display:none}.system-stage{position:relative;min-height:min(90.6771vw,1741px)}.system-intro{position:absolute;top:30%;right:0;width:46%;transform:translateY(-50%);text-align:left}.system-intro .accent{color:var(--cyan);font-size:clamp(32px,2.8125vw,54px);white-space:nowrap}.system-subtitle{font-size:clamp(11px,2.05vw,37px);font-weight:700;letter-spacing:-.045em;white-space:nowrap}.system-description{font-size:clamp(10px,1.45vw,27px);font-weight:400;letter-spacing:-.035em;white-space:nowrap}.system-card{position:absolute;min-width:0}.system-card img{width:100%;height:100%;object-fit:contain}.system-card.primary{top:5%;left:0;width:46%;height:40%;border:0!important;outline:0;box-shadow:none}.system-card.primary img{object-fit:cover;object-position:center}.system-charger-visual{position:absolute;right:0;bottom:2%;width:47%;aspect-ratio:3416/3032}.system-charger-image{position:absolute;inset:0;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}.system-charger-image img{width:100%;height:100%;object-fit:contain;object-position:center}.system-image-label{position:absolute;z-index:2;margin:0;color:#fff;font-size:clamp(14px,1.45vw,27px);font-weight:600;line-height:1.2;white-space:nowrap;text-shadow:0 2px 12px rgba(0,0,0,.85)}.system-image-label::after{content:"";position:absolute;border-top:2px dashed rgba(255,255,255,.82);transform-origin:left center}.system-image-label.device{top:2%;right:0}.system-image-label.device::after{width:clamp(38px,5vw,96px);right:78%;top:145%;transform:rotate(132deg)}.system-image-label.ball{top:35%;left:0}.system-image-label.ball::after{width:clamp(34px,4vw,78px);left:78%;top:145%;transform:rotate(46deg)}.system-copy{position:absolute;left:0;bottom:14%;width:48%;text-align:left}.system-copy h3{margin:0;color:var(--cyan);font-size:clamp(32px,2.8125vw,54px);font-weight:700}.system-copy>p{margin:22px 0 0;color:#fff;font-size:clamp(21px,calc(2.0833vw - 3px),37px);font-weight:700;line-height:1.6}.system-notes{margin:24px 0 0;width:max-content;max-width:100%;padding-left:1.2em;color:#d9d9d9;font-size:clamp(15px,calc(1.5625vw - 3px),27px);font-weight:400;line-height:1.75;text-align:left}
+    .practice-section{background:#0a111d}.distance-section{min-height:100svh;background:#070c17 url('./assets/smartball-section-04-bg-clean.png') center top/100% auto no-repeat}.distance-section::before,.distance-section::after{display:none}.practice-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:clamp(70px,9vw,135px)}.practice-card{aspect-ratio:1.655;border:2px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 16px 45px rgba(0,0,0,.26)}.practice-card img{object-fit:cover}.distance-section [data-media-slot="distance-analysis-screen"] img{width:100%;height:100%;object-fit:cover;transform:scale(1.035);transform-origin:center}
+    .slope-section{background:#070c17}.slope-section .practice-card{aspect-ratio:2608/1600}.slope-section .practice-card img{width:100%;height:100%;object-fit:cover}
+    .field-section{min-height:min(61.9792vw,1190px);padding-top:clamp(70px,5.7292vw,110px);padding-bottom:clamp(70px,5.7292vw,110px);background:url('./assets/smartball-section-06-bg.png') center/cover no-repeat}.field-section::before{display:none}.field-heading{max-width:1280px}.field-panel{position:relative;width:64%;max-width:1080px;min-height:720px;margin-top:clamp(52px,4.1667vw,80px);padding:clamp(38px,3.125vw,60px);display:flex;flex-direction:column;justify-content:center}.field-panel-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}.field-panel-content{position:relative;z-index:1}.field-kicker{margin:0;color:#fff;font-size:clamp(32px,2.8125vw,54px);font-weight:700;line-height:1.28}.field-kicker .accent{color:var(--cyan)}.field-summary{margin:24px 0 0;color:#e3e6eb;font-size:clamp(18px,1.5625vw,30px);font-weight:400;line-height:1.65}.field-features{display:grid;gap:28px;margin-top:46px}.field-feature{display:grid;grid-template-columns:52px 1fr;gap:24px;align-items:center;padding:26px 30px;border:1px solid rgba(255,255,255,.8);border-radius:20px;background:rgba(6,11,19,.26)}.field-feature img{width:46px;height:46px;object-fit:contain}.field-feature h3{margin:0;color:#fff;font-size:clamp(20px,1.3021vw,25px);font-weight:700}.field-feature p{margin:10px 0 0;color:#d9dde3;font-size:clamp(16px,1.1458vw,22px);font-weight:400;line-height:1.55}.field-badges{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}.field-badge{padding:20px;border:1px solid rgba(255,255,255,.8);border-radius:20px;text-align:center;background:rgba(6,11,19,.22)}.field-badge strong{display:block;color:var(--cyan);font-size:clamp(20px,1.3021vw,25px)}.field-badge span{display:block;margin-top:10px;color:#d9dde3;font-size:clamp(16px,1.1458vw,22px)}
+    .battle-section{position:relative;width:100%!important;max-width:none!important;min-height:0;margin-inline:auto;padding:0;overflow:hidden;background:#070c17 url('./assets/smartball-section-07-bg-v2.png') center/cover no-repeat}.battle-section::before{display:none}.battle-canvas{position:relative;width:min(calc((100% - (var(--ginovo-page-gutter) * 2)) * 1.136364),1818.182px);margin-inline:auto}.battle-canvas>img.battle-composite{display:block;width:100%;height:auto;max-width:none;margin:0;object-fit:contain}.battle-copy-mask{display:none}.battle-face{position:absolute;z-index:2;left:16.45%;width:15.45%;height:11.3%;overflow:hidden;border-radius:clamp(3px,1vw,18px) clamp(3px,1vw,18px) 0 0}.battle-face.player-a{top:35.25%}.battle-face.player-b{top:65.1%}.battle-face img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+    .smart-reveal{opacity:0;translate:0 64px;transition:opacity .82s cubic-bezier(.2,.8,.2,1),translate .82s cubic-bezier(.2,.8,.2,1);will-change:opacity,translate}.smart-reveal.is-visible{opacity:1;translate:0 0}
+    .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:#070c17}.cta-background{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}.cta::after{content:"";position:absolute;z-index:1;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:2;width:min(calc(100% - (var(--ginovo-page-gutter) * 2)),var(--ginovo-content-max));max-width:var(--ginovo-content-max);margin:auto;padding:0;text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:clamp(16px,1.45vw,21px);font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:clamp(30px,4.2vw,41px);line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
+    .site-footer{min-height:auto;padding:64px 32px 44px;background:#070C17;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1280px);margin:0 auto;display:grid;grid-template-columns:repeat(3,max-content);justify-content:space-between;gap:40px;align-items:start}.footer-grid>div{text-align:center}.site-footer h4{margin:0 0 26px;color:#fff;font-size:17px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:21px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:16px;line-height:1.65}.business p{white-space:nowrap}.footer-email{color:rgba(255,255,255,.72);font-size:21px;font-weight:600;white-space:nowrap}
+    @media(max-width:1000px){.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.smartball-page{padding-top:0}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;justify-content:stretch;gap:40px}.business p{white-space:normal}.cta h2{white-space:normal}.spec-grid{grid-template-columns:repeat(2,1fr)}.practice-grid{grid-template-columns:1fr}.field-panel{width:72%;min-height:620px}}
+    @media(max-width:700px){.cta-copy,.smartball-hero-copy{width:calc(100% - 36px)}.smartball-hero-copy{margin-bottom:48px}.smartball-hero-copy h1{font-size:48px}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a,.about-trigger{font-size:12px}.about-dropdown{left:0;transform:none}.footer-email{white-space:normal}.design-section{padding-inline:18px}.composed-section{padding-top:68px;padding-bottom:68px}.section-heading,.system-intro .accent,.system-copy h3,.field-kicker{font-size:32px}.section-lead,.section-points,.field-summary{font-size:18px}.system-intro .system-subtitle{font-size:clamp(11px,3.25vw,14px)}.system-intro .system-description{font-size:clamp(9px,2.65vw,12px)}.system-copy>p{font-size:21px}.system-notes{font-size:15px}.spec-grid{grid-template-columns:1fr 1fr;gap:12px}.system-section,.system-stage{min-height:auto}.system-stage{display:grid;gap:28px}.system-intro,.system-card,.system-copy{position:relative;inset:auto;width:100%;transform:none}.system-card.primary{height:auto;aspect-ratio:4716/3536;grid-row:1}.system-intro{grid-row:2}.system-copy{grid-row:3}.system-charger-visual{position:relative;inset:auto;width:100%;aspect-ratio:3416/3032;grid-row:4}.system-image-label{font-size:clamp(12px,4vw,18px)}.practice-grid{margin-top:48px}.practice-card{border-radius:14px}.field-section{min-height:auto;background-position:62% center}.field-panel{width:100%;min-height:auto;padding:34px 24px}.field-panel-frame{opacity:1}.field-feature{grid-template-columns:40px 1fr;padding:12px 18px}.field-feature img{width:36px;height:36px}.field-badges{grid-template-columns:1fr;gap:16px}}
+
+    /* PC image-localization overlays preserve the original Korean page geometry. */
+    .pc-media-copy{display:none}
+    @media(min-width:701px){
+      .cms-slot,.battle-canvas{position:relative}
+      .pc-media-copy{position:absolute;z-index:4;display:flex;align-items:center;justify-content:center;box-sizing:border-box;color:#fff;font-family:Arial,"Noto Sans",sans-serif;font-weight:600;line-height:1.15;pointer-events:none}
+      .pc-media-copy.system-mat{left:25%;top:36%;width:25%;height:11%;background:#000;font-size:clamp(10px,1.15vw,22px)}
+      .pc-media-copy.system-stand{left:54%;top:25%;width:26%;height:11%;background:#000;font-size:clamp(10px,1.15vw,22px)}
+      .battle-face{display:none}
+    }
+    @media(max-width:700px){.smart-reveal{translate:0 36px}}
+    @media(prefers-reduced-motion:reduce){.smartball-hero-copy h1{animation:none}.smart-reveal{opacity:1!important;translate:none!important;transition:none!important}}
+    .system-section{min-height:0;background-size:100% 100%}.system-stage{min-height:0;aspect-ratio:1660/1741}.distance-section{margin-top:-1px}.distance-section .section-shell{container-type:inline-size}.distance-section .practice-grid{gap:clamp(20px,3.125cqw,52px)}.distance-section .practice-card{width:100%;aspect-ratio:3172/1916}.distance-section [data-media-slot="distance-analysis-screen"] img{min-width:100%;min-height:100%;object-fit:cover;transform:scale(1.035);transform-origin:center}
+    .system-image-label.device::after{right:100%;top:72%;width:clamp(60px,7vw,115px);transform:rotate(-45deg);transform-origin:right center}
+    .system-image-label.ball::after{left:100%;top:72%;width:clamp(55px,6vw,100px);transform:rotate(45deg);transform-origin:left center}
+    @media(max-width:700px){.system-stage{aspect-ratio:auto}.system-image-label.device::after{width:clamp(44px,13vw,62px)}.system-image-label.ball::after{width:clamp(42px,12vw,58px)}}
+    .field-section{position:relative;isolation:isolate;background:#070c17;overflow:hidden}
+    .design-section>img.field-background{position:absolute;z-index:-2;inset:0;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:center}
+    .field-section::before{display:block;z-index:-1;background:linear-gradient(90deg,rgba(7,12,23,.18),transparent 72%)}
+    .field-kicker{font-size:clamp(26px,2.8125vw,54px)!important}.field-features{margin-top:16px}.field-feature,.field-badge{border-color:transparent;background:transparent}.field-feature{min-height:124px;padding-block:12px;align-content:center}.field-feature>div{align-self:center;display:flex;flex-direction:column;justify-content:center;min-width:0}.field-feature h3{font-size:clamp(14px,1.3021vw,25px);line-height:1.3}.field-feature p{margin-top:6px;font-size:clamp(12px,.8333vw,16px);line-height:1.4}.field-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}.field-badge strong,.field-badge span{width:100%;margin:0;text-align:center;line-height:1.3}.field-badge strong{font-size:clamp(14px,1.3021vw,25px)}.field-badge span{font-size:clamp(12px,.8333vw,16px)}
+    .field-feature:nth-child(2){display:flex;align-items:center}.field-badges .field-badge{justify-content:center!important}
+    @media(min-width:701px){.field-feature:nth-child(2)>*,.field-badge>*{transform:translateY(clamp(8px,.7vw,14px))}}
+    @media(min-width:701px){.field-section{min-height:0;aspect-ratio:7680/4760;padding:0}.field-section>.section-shell{position:absolute;inset-block:0;left:50%;width:min(calc(100% - (var(--ginovo-page-gutter) * 2)),var(--ginovo-content-max))!important;max-width:var(--ginovo-content-max)!important;margin:0!important;transform:translateX(-50%)}.field-heading{position:absolute;top:10.8%;left:0;width:80%;max-width:none}.field-panel{position:absolute;top:28.7%;left:0;width:64.15%;max-width:none;height:62%;min-height:0;margin:0;padding:3.1%;justify-content:center}.field-summary{margin-top:clamp(10px,1.25vw,24px);font-size:clamp(15px,1.45vw,28px)}.field-features{gap:clamp(10px,1.45vw,28px)}.field-feature{grid-template-columns:clamp(34px,2.7083vw,52px) minmax(0,1fr);gap:clamp(14px,1.25vw,24px);min-height:clamp(62px,6.45vw,124px);padding:clamp(8px,.75vw,14px) clamp(14px,1.55vw,30px)}.field-feature img{width:clamp(32px,2.3958vw,46px);height:clamp(32px,2.3958vw,46px)}.field-badges{gap:clamp(12px,1.45vw,28px);margin-top:clamp(12px,1.55vw,30px)}.field-badge{min-height:clamp(58px,5vw,96px);padding:clamp(8px,1.05vw,20px)}}
+    @media(min-width:701px) and (max-width:1279px){.field-section{aspect-ratio:auto;min-height:clamp(760px,calc(10.3125vw + 661px),793px)}}
+    .anatomy-visual{position:absolute;inset:0}.anatomy-image-frame{position:absolute;inset:0}.anatomy-image-frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.anatomy-markers,.anatomy-copy-number{display:none}
+    .anatomy-section.anatomy-motion-ready .anatomy-image-frame>img{opacity:0;transform:translateY(20px) scale(.975);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+    .anatomy-section.anatomy-motion-ready.is-visible .anatomy-image-frame>img{opacity:1;transform:none}
+    @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.72),rgba(7,12,23,.24))}.field-feature{grid-template-columns:36px minmax(0,1fr);gap:14px}.field-badge{min-height:92px}}
+  </style>
+  <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
+  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260908-10">
+  <link rel="stylesheet" href="./assets/english-responsive.css?v=20260910-9">
+  <link rel="stylesheet" href="./assets/smartball-responsive-v2.css?v=20260910-1">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
+    <nav class="main-nav" id="main-navigation" aria-label="Main navigation"><ul>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="./index.html#products">Products & Development</a><a href="./index.html#history">History</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">Global Highlights</a><a href="./index.html#news">News</a></div></div></li>
+                <li><a href="./smart-golf-ball.html" aria-current="page">Smart Golf Ball</a></li>
+      <li><a href="./putting-mat.html">Slope Putting Mat</a></li>
+      <li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
+    </ul></nav>
+    <div class="header-tools"><div class="language"><button class="language-button" type="button" aria-label="Select language"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="../smart-golf-ball.html">한국어</a><a href="./smart-golf-ball.html" aria-current="page">English</a></div></div><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
+  </header>
+
+  <main class="smartball-page">
+    <section class="smartball-hero" aria-label="Smart Golf Ball">
+      <video autoplay muted loop playsinline preload="auto" poster="./assets/videos/smartball-cover-poster.jpg" aria-label="Smart Golf Ball cover video">
+        <source src="./assets/videos/smartball-cover.mp4" type="video/mp4">
+      </video>
+    </section>
+    <section class="design-section anatomy-section" data-editable-section="smartball-anatomy">
+      <div class="anatomy-stage">
+        <div class="anatomy-heading"><h2 class="anatomy-title" data-smartball-content="anatomyTitle">A Simulator Built Inside<br>A Smart Golf Ball</h2><p class="anatomy-subtitle" data-smartball-content="anatomySubtitle">A Smart Golf Ball Engineered to Feel and Perform Like a Standard Golf Ball</p></div>
+        <div class="anatomy-visual">
+          <div class="anatomy-image-frame">
+            <img src="./assets/smartball-page-01-bg.png" data-media-image="anatomy-background" alt="Smart Golf Ball internal structure">
+            <div class="anatomy-markers" aria-hidden="true"><span class="marker-cover">1</span><span class="marker-layer">2</span><span class="marker-shell">3</span><span class="marker-elastomer">4</span></div>
+          </div>
+          <div class="anatomy-copy anatomy-layer"><h3><span class="anatomy-copy-number" aria-hidden="true">2</span><span data-smartball-content="anatomyLayerTitle">Layer</span></h3><p data-smartball-content="anatomyLayerDescription">Ionomer shock-absorbing structure for enhanced durability</p></div>
+          <div class="anatomy-copy anatomy-elastomer"><h3><span class="anatomy-copy-number" aria-hidden="true">4</span><span data-smartball-content="anatomyElastomerTitle">Elastomer</span></h3><p data-smartball-content="anatomyElastomerDescription">Optimized rebound and precision control of core eccentricity.</p></div>
+          <div class="anatomy-copy anatomy-shell"><h3><span class="anatomy-copy-number" aria-hidden="true">3</span><span data-smartball-content="anatomyShellTitle">Protective Shell</span></h3><p data-smartball-content="anatomyShellDescription"></p></div>
+          <div class="anatomy-copy anatomy-cover"><h3><span class="anatomy-copy-number" aria-hidden="true">1</span><span data-smartball-content="anatomyCoverTitle">Outer Cover</span></h3><p data-smartball-content="anatomyCoverDescription">Dimples minimize drag while maintaining the official 42.67 mm ball diameter.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="design-section composed-section spec-section" id="spec-status" data-editable-section="spec-status">
+      <div class="section-shell">
+        <h2 class="section-heading" data-smartball-content="specTitle">100% Achievement of Physical Specification Targets</h2>
+        <div class="spec-grid">
+          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-weight"><img alt="Weight gauge"></div><p class="spec-value" data-smartball-content="specWeight">Weight: 45.93g</p></article>
+          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-size"><img alt="Diameter gauge"></div><p class="spec-value" data-smartball-content="specSize">Diameter: 42.67mm</p></article>
+          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-rebound"><img alt="Rebound gauge"></div><p class="spec-value" data-smartball-content="specRebound">Rebound: 72.1</p></article>
+          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-eccentricity"><img alt="Eccentricity gauge"></div><p class="spec-value" data-smartball-content="specEccentricity">Eccentricity: 0.01mm</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="design-section composed-section system-section" data-editable-section="putting-system">
+      <div class="section-shell system-stage">
+          <div class="cms-slot system-card primary" data-media-slot="putting-system-set"><img alt="GINOVO Putting System set"></div>
+        <div class="system-intro">
+          <h2 class="section-heading accent" data-smartball-content="systemTitle">GINOVO Putting System</h2>
+          <p class="section-lead system-subtitle" data-smartball-content="systemSubtitle">A Complete Smart-Golf System Built for Focused Putting Practice</p>
+          <p class="section-lead system-description" data-smartball-content="systemDescription">Includes a Smart Golf Ball, wireless charger, putting mat, reflector and mobile stand.</p>
+        </div>
+        <div class="system-copy">
+          <h3 data-smartball-content="chargerTitle">Smart Wireless Charging System</h3>
+          <p data-smartball-content="chargerSubtitle">A portable wireless charger you can use anywhere</p>
+          <ul class="system-notes"><li data-smartball-content="chargerNote1">On-chip thermal management controls heat inside the capsule</li><li data-smartball-content="chargerNote2">Three-color LED indicator provides clear charging status</li></ul>
+        </div>
+        <div class="system-charger-visual">
+          <p class="system-image-label device" data-smartball-content="chargerDeviceLabel">Wireless Charger</p>
+          <p class="system-image-label ball" data-smartball-content="chargerBallLabel">Smart Golf Ball (1 ball)</p>
+          <div class="cms-slot system-charger-image" data-media-slot="wireless-charger"><img alt="Smart Golf Ball wireless charger"></div>
+        </div>
+      </div>
+    </section>
+    <section class="design-section composed-section practice-section distance-section" data-editable-section="distance-practice">
+      <div class="section-shell">
+        <h2 class="section-heading" data-smartball-content="distanceTitle">Repeatable, Quantitative Putting Practice by Target Distance and Green Speed</h2>
+        <ul class="section-points"><li data-smartball-content="distancePoint1">Complete Putting Practice Without Distance Limits</li><li data-smartball-content="distancePoint2">Build a measurable stroke through repetition toward your target distance</li></ul>
+        <div class="practice-grid">
+          <div class="cms-slot practice-card smart-reveal" data-media-slot="distance-practice-screen"><img alt="Target-distance putting practice screen"></div>
+          <div class="cms-slot practice-card smart-reveal" data-media-slot="distance-analysis-screen"><img alt="Putting metrics and impact analysis screen"></div>
+        </div>
+      </div>
+    </section>
+    <section class="design-section composed-section practice-section slope-section" data-editable-section="slope-practice">
+      <div class="section-shell">
+        <h2 class="section-heading" data-smartball-content="slopeTitle">Flexible Slope-Based Putting Practice Through Green Analysis</h2>
+        <ul class="section-points"><li data-smartball-content="slopePoint1">Design your own slopes and build a measurable stroke through repetition</li></ul>
+        <div class="practice-grid">
+          <div class="cms-slot practice-card" data-media-slot="slope-practice-screen"><img alt="Slope putting practice screen"></div>
+          <div class="cms-slot practice-card" data-media-slot="slope-selection-screen"><img alt="Green slope position selection screen"></div>
+        </div>
+      </div>
+    </section>
+    <section class="design-section composed-section field-section" data-editable-section="field-practice">
+      <img class="field-background" data-media-image="field-background" alt="Golfer putting on a field green">
+      <div class="section-shell">
+        <div class="field-heading">
+          <h2 class="section-heading" data-smartball-content="fieldTitle">Practice Distance and Slope Effects Freely on the Green</h2>
+          <p class="section-lead" data-smartball-content="fieldSubtitle">Analyze slope effects and receive green-speed feedback in real green conditions</p>
+        </div>
+        <div class="field-panel">
+          <img class="field-panel-frame" data-media-image="field-panel" alt="Field green information panel">
+          <div class="field-panel-content">
+            <h3 class="field-kicker"><span data-smartball-content="fieldKickerLine1">From Flexible Practice</span><br><span class="accent" data-smartball-content="fieldKickerAccent">to Precise On-Green Analysis</span></h3>
+            <p class="field-summary" data-smartball-content="fieldSummary">Recreate the feel of a real green anytime, anywhere.</p>
+            <div class="field-features">
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-anywhere.png" alt="">
+                <div><h3 data-smartball-content="fieldFeature1Title">Putting Practice Without Location Limits</h3><p data-smartball-content="fieldFeature1Description">Practice freely on real greens, at training facilities or on a home putting mat.</p></div>
+              </article>
+              <article class="field-feature">
+                <img src="./assets/smartball-section-06-icon-analysis.png" alt="">
+                <div><h3 data-smartball-content="fieldFeature2Title">Slope-Effect Analysis &amp; Green-Speed Feedback</h3><p data-smartball-content="fieldFeature2Description">Precisely analyze how slope changes the ball trajectory and receive distance feedback calibrated to green speed.</p></div>
+              </article>
+            </div>
+            <div class="field-badges">
+              <div class="field-badge"><strong data-smartball-content="fieldBadge1Title">ANYWHERE</strong><span data-smartball-content="fieldBadge1Description">Supports Field Greens &amp; Multiple Mat Types</span></div>
+              <div class="field-badge"><strong data-smartball-content="fieldBadge2Title">REAL - TIME</strong><span data-smartball-content="fieldBadge2Description">Real-Time Slope and Speed Data</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="design-section battle-section" data-editable-section="battle-practice">
+      <div class="battle-canvas">
+        <img class="battle-composite" data-media-image="battle-composite" alt="Competitive Practice Through Online & Offline Match Modes">
+        <div class="battle-copy-mask"><h2 class="section-heading" data-smartball-content="battleTitle">Competitive Practice Through Online & Offline Match Modes</h2><p class="section-lead" data-smartball-content="battleSubtitle">Use one GINOVO Smart Golf Ball for putting matches with family and friends or online opponents.</p></div>
+        <div class="battle-face player-a"><img data-media-image="battle-player-a" alt="Player A portrait"></div>
+        <div class="battle-face player-b"><img data-media-image="battle-player-b" alt="Player B portrait"></div>
+      </div>
+      <div class="battle-mobile" aria-label="Putting match rankings">
+        <div class="battle-mobile-copy"><h2 data-smartball-content="battleTitle">Competitive Practice Through Online & Offline Match Modes</h2><p data-smartball-content="battleSubtitle">Use one GINOVO Smart Golf Ball for putting matches with family and friends or online opponents.</p></div>
+        <div class="battle-mobile-panel">
+          <h3>Competition-Ready Practice Through Putting Matches</h3>
+          <div class="battle-mobile-players">
+            <article><img data-media-image="battle-player-a" alt="Player A"><strong>Player A</strong><span>SCORE : 8/10</span><span>CURRENT : 3m PUTT</span></article>
+            <span class="battle-mobile-versus" aria-hidden="true">v/s</span>
+            <article><img data-media-image="battle-player-b" alt="Player B"><strong>Player B</strong><span>SCORE : 7/10</span><span>CURRENT : 3m PUTT</span></article>
+          </div>
+          <div class="battle-mobile-ranking" role="table" aria-label="Player rankings">
+            <div class="battle-mobile-row battle-mobile-head" role="row"><span role="columnheader">Rank</span><span role="columnheader">Player</span><span role="columnheader">Score</span><span role="columnheader">Difference</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">1</span><strong role="cell">Player A</strong><em role="cell">8</em><span role="cell">(+1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">2</span><strong role="cell">Player B</strong><em role="cell">7</em><span role="cell">(E)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">3</span><strong role="cell">Player C</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">4</span><strong role="cell">Player D</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">5</span><strong role="cell">Player E</strong><em role="cell">5</em><span role="cell">(-2)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta" id="smartball-cta" data-editable-section="smartball-cta"><img class="cta-background" data-media-image="cta-background" alt="Golfer placing a ball on a tee"><div class="cta-copy"><p data-smartball-content="ctaEyebrow">Beyond Tech, Into Culture: The New Standard Powered by Data</p><h2 data-smartball-content="ctaTitle">Beyond the Limits of Technology, We Build a New Golf Culture with Data.</h2></div></section>
+  <footer class="site-footer"><div class="footer-grid"><div><h4>Customer Center</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">9:00 AM – 5:00 PM</p><p class="footer-muted">Lunch 12:00 PM – 1:00 PM</p><p class="footer-muted">Closed weekends and public holidays</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>Business Information</h4><p>Head Office: Room 404, 45 Jamiro 6beon-gil, Buk-gu, Gwangju, Republic of Korea</p><p>Factory: Sebang Industry, 236 Sonjae-ro, Gwangsan-gu, Gwangju, Republic of Korea</p></div></div></footer>
+  <script src="./assets/smartball-content-config.js?v=20260910-en7"></script>
+  <script src="./assets/smartball-media-config.js?v=20260910-en6"></script>
+  <script>
+    (function () {
+      var siteHeader=document.querySelector('.site-header');
+      var menuToggle=document.querySelector('[data-menu-toggle]');
+      var mainNavigation=document.getElementById('main-navigation');
+      var aboutMenu=document.querySelector('.about-menu');
+      var aboutToggle=document.querySelector('[data-about-toggle]');
+      var mobileHeaderQuery=window.matchMedia('(max-width:700px)');
+      function setAboutMenu(open){
+        if(!aboutMenu||!aboutToggle) return;
+        aboutMenu.classList.toggle('is-about-open',open);
+        aboutToggle.setAttribute('aria-expanded',String(open));
+      }
+      function setMobileMenu(open){
+        if(!siteHeader||!menuToggle) return;
+        siteHeader.classList.toggle('is-menu-open',open);
+        menuToggle.setAttribute('aria-expanded',String(open));
+        menuToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+        if(!open) setAboutMenu(false);
+      }
+      if(siteHeader&&menuToggle&&mainNavigation){
+        menuToggle.addEventListener('click',function(){
+          setMobileMenu(menuToggle.getAttribute('aria-expanded')!=='true');
+        });
+        mainNavigation.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click',function(){setMobileMenu(false);});
+        });
+        document.addEventListener('click',function(event){
+          if(aboutMenu&&!aboutMenu.contains(event.target)) setAboutMenu(false);
+          if(mobileHeaderQuery.matches&&!siteHeader.contains(event.target)) setMobileMenu(false);
+        });
+        document.addEventListener('keydown',function(event){
+          if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){
+            setMobileMenu(false);
+            menuToggle.focus();
+          }
+        });
+        mobileHeaderQuery.addEventListener('change',function(){setMobileMenu(false);});
+      }
+      if(aboutMenu&&aboutToggle){
+        aboutToggle.addEventListener('click',function(){
+          setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
+        });
+      }
+    }());
+    (function () {
+      var content = window.SMARTBALL_CONTENT || {};
+      document.querySelectorAll('[data-smartball-content]').forEach(function (element) {
+        var key = element.getAttribute('data-smartball-content');
+        if (Object.prototype.hasOwnProperty.call(content, key)) element.textContent = content[key];
+      });
+      var addMobileBreak=function(selector,needle){
+        var element=document.querySelector(selector);
+        if(!element||!element.textContent.includes(needle)) return;
+        var parts=element.textContent.split(needle);
+        element.textContent='';
+        element.append(document.createTextNode(parts.shift()+needle));
+        var lineBreak=document.createElement('br');
+        lineBreak.className='mobile-copy-break';
+        element.append(lineBreak,document.createTextNode(' '+parts.join(needle).replace(/^\s+/,'')));
+      };
+      addMobileBreak('[data-smartball-content="systemDescription"]','putting mat,');
+      addMobileBreak('[data-smartball-content="chargerNote1"]','management controls');
+      addMobileBreak('[data-smartball-content="distancePoint2"]','through repetition');
+      addMobileBreak('[data-smartball-content="slopePoint1"]','through repetition');
+      addMobileBreak('[data-smartball-content="fieldSubtitle"]','slope effects');
+      var media = window.SMARTBALL_MEDIA || {};
+      document.querySelectorAll('[data-media-slot]').forEach(function (slot) {
+        var source = media[slot.getAttribute('data-media-slot')];
+        var image = slot.querySelector('img');
+        if (source && image) image.src = source;
+      });
+      document.querySelectorAll('[data-media-image]').forEach(function (image) {
+        var source = media[image.getAttribute('data-media-image')];
+        if (source) image.src = source;
+      });
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var revealSections=[];
+      var toArray=function(nodes){return Array.prototype.slice.call(nodes||[]);};
+      var pick=function(root,selector){return root ? toArray(root.querySelectorAll(selector)) : [];};
+      var addRevealSection=function(root,items,step){
+        if(!root) return;
+        items=items.filter(function(item,index,list){return item&&list.indexOf(item)===index;});
+        items.forEach(function(item,index){
+          item.classList.add('smart-reveal');
+          item.style.transitionDelay=(index*(step||150))+'ms';
+        });
+        root.__smartRevealItems=items;
+        revealSections.push(root);
+      };
+
+      var anatomy=document.querySelector('.anatomy-section');
+      addRevealSection(anatomy,pick(anatomy,'.anatomy-image-frame > img, .anatomy-title, .anatomy-subtitle, .anatomy-copy'),130);
+
+      var spec=document.getElementById('spec-status');
+      addRevealSection(spec,pick(spec,'.section-heading').concat(pick(spec,'.spec-card')),150);
+
+      var system=document.querySelector('[data-editable-section="putting-system"]');
+      addRevealSection(system,pick(system,'.system-card.primary, .system-intro .section-heading, .system-intro .system-subtitle, .system-intro .system-description'),140);
+      var systemChargingCopy=system ? system.querySelector('.system-copy') : null;
+      var systemChargingVisual=system ? system.querySelector('.system-charger-visual') : null;
+      addRevealSection(systemChargingCopy,[systemChargingCopy,systemChargingVisual],180);
+
+      var distance=document.querySelector('[data-editable-section="distance-practice"]');
+      addRevealSection(distance,pick(distance,'.section-heading').concat(pick(distance,'.section-points li'),pick(distance,'.practice-card')),145);
+
+      var slope=document.querySelector('[data-editable-section="slope-practice"]');
+      addRevealSection(slope,pick(slope,'.section-heading').concat(pick(slope,'.section-points li'),pick(slope,'.practice-card')),145);
+
+      var field=document.querySelector('[data-editable-section="field-practice"]');
+      addRevealSection(field,pick(field,'.field-heading .section-heading, .field-heading .section-lead'),140);
+
+      var cta=document.getElementById('smartball-cta');
+      addRevealSection(cta,pick(cta,'.cta-copy p, .cta-copy h2'),150);
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          (entry.target.__smartRevealItems||[]).forEach(function(item){item.classList.add('is-visible');});
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -50% 0px' });
+      revealSections.forEach(function(section){observer.observe(section);});
+    }());
+  </script>
+  <script src="./assets/mobile-copy-balance.js?v=20260910-1"></script>
+  <script src="./assets/language-menu.js?v=20260910-4"></script>
+</body>
+</html>

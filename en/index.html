@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="description" content="GREEN TALK and GINOVO smart golf technology">
+  <title>GREEN TALK | GINOVO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <style>
+    :root{--bg:#070c17;--surface:#101827;--surface2:#162133;--text:#fff;--muted:#aeb4bf;--cyan:#31e6df;--blue:#268cff;--line:rgba(255,255,255,.11);--max:1200px;--page-gutter:48px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    section[id]{scroll-margin-top:118px}
+    body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:Pretendard,Inter,-apple-system,sans-serif;word-break:keep-all}
+    img,video{display:block;max-width:100%}
+    [data-media-slot]{border-radius:10px;overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(100%,var(--max));margin:auto;padding-inline:var(--page-gutter)}
+    .section{padding:120px 0;border-top:1px solid var(--line);background:var(--bg)}
+    .section.alt{background:var(--bg)}
+    .eyebrow{margin:0 0 16px;color:var(--cyan);font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .title{margin:0;font-size:clamp(30px,3vw,40px);line-height:1.2;letter-spacing:-.035em}
+    .desc{max-width:680px;margin:20px 0 0;color:var(--muted);font-size:16px;line-height:1.75}
+    .heading{margin-bottom:58px}.heading.center{text-align:center}.heading.center .desc{margin-left:auto;margin-right:auto}
+    .card{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px;overflow:hidden}
+
+    /* 기준 홈페이지의 세로·글꼴 크기를 유지하고 가로만 확장 */
+    .site-header{position:fixed;top:32px;left:50%;z-index:1000;transform:translateX(-50%);width:min(calc(100% - 48px),1063px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;gap:36px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);border-radius:100px;box-shadow:0 20px 40px rgba(0,0,0,.4);backdrop-filter:blur(24px);line-height:normal}
+    .logo{display:flex;align-items:center;flex-shrink:0}.logo img{width:auto;height:34px}
+    .main-nav{margin-left:0;flex-shrink:0}.main-nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}.main-nav a,.about-trigger{font-size:18px;font-weight:500;white-space:nowrap}.main-nav a:hover,.about-trigger:hover{color:var(--cyan)}.about-menu{position:relative}.about-trigger{display:flex;align-items:center;gap:7px;padding:0;border:0;background:none;color:inherit;font-family:inherit;cursor:pointer}.about-trigger::after{content:"⌄";font-size:14px;transition:transform .2s ease}.about-menu.is-about-open .about-trigger::after{transform:rotate(180deg)}.about-dropdown{position:absolute;top:100%;left:50%;z-index:1200;width:210px;padding-top:18px;transform:translateX(-50%);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.about-menu.is-about-open .about-dropdown{opacity:1;visibility:visible}.about-dropdown-panel{padding:10px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(16,22,34,.97);box-shadow:0 18px 44px rgba(0,0,0,.38);backdrop-filter:blur(16px)}.about-dropdown-panel a{display:block;padding:11px 13px;border-radius:10px;color:#d9d9d9;font-size:15px;font-weight:600}.about-dropdown-panel a:hover,.about-dropdown-panel a:focus{background:rgba(42,232,215,.1);color:var(--cyan)}
+    .header-tools{display:flex;align-items:center;gap:20px;flex-shrink:0}.login{padding:9px 22px;background:#210bbd;border-radius:100px;font-size:17px;font-weight:600}.language{position:relative;opacity:.78}.language-button{display:flex;align-items:center;gap:6px;padding:4px;border:0;background:none;color:#fff;font-size:18px;cursor:pointer}.language-button img{width:20px;height:20px;object-fit:contain}.language-caret{font-size:15px;line-height:1}.language-menu{position:absolute;top:38px;right:0;min-width:120px;padding:8px;display:none;background:#fff;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.28)}.language:hover .language-menu{display:grid}.language-menu a{padding:9px 12px;color:#111;border-radius:8px;font-size:16px}.language-menu a:hover{background:#f0f2f4}
+    .menu-toggle{width:44px;height:44px;padding:10px;display:none;place-items:center;gap:4px;border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}.menu-toggle-line{display:block;width:22px;height:2px;border-radius:999px;background:currentColor;transition:transform .25s ease,opacity .2s ease}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1){transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    /* 동video 히어로 */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,7,15,.62) 0%,rgba(2,7,15,.34) 43%,rgba(2,7,15,.05) 78%),linear-gradient(0deg,rgba(2,7,15,.24),transparent 38%)}
+    .hero-copy{position:relative;z-index:2;width:min(100%,var(--max));margin:80px auto 0;padding-inline:var(--page-gutter);text-align:left}.hero-badge{display:inline-block;margin-bottom:24px;padding:9px 17px;color:var(--cyan);background:rgba(10,18,30,.58);border:1px solid rgba(49,230,223,.32);border-radius:999px;font-size:18px;font-weight:700;letter-spacing:.08em}.hero h1{max-width:min(100%,calc(var(--content-max) * .75));margin:0;font-size:clamp(38px,5.2vw,90px);line-height:1.15;letter-spacing:-.065em}.hero h1 span{display:block;white-space:nowrap}.hero-sub{margin:24px 0 0;color:rgba(255,255,255,.72);font-size:25px}
+
+    /* 관리자 페이지 연동을 고려한 메인 홈 편집형 섹션 */
+    .home-feature{position:relative;overflow:hidden;border-top:1px solid var(--line);background-color:var(--bg);background-position:center;background-size:cover;background-repeat:no-repeat}.home-section-one{aspect-ratio:7680/3288}.home-feature-stage{position:relative;width:min(100%,var(--max));height:100%;margin:auto;padding:96px var(--page-gutter);display:flex;flex-direction:column}.home-feature h2{margin:0;color:#fff;font-size:54px;line-height:1.18;letter-spacing:-.045em}.home-feature p{margin:0;white-space:pre-line}.home-section-one .home-feature-stage{justify-content:center}.home-section-one .home-copy{width:min(44%,740px);transform:translateY(4%)}.home-section-one .home-eyebrow{margin-bottom:44px;color:var(--cyan);font-size:25px;font-weight:700}.home-section-one .home-body{margin-top:62px;color:#d9d9d9;font-size:24px;line-height:1.65}.home-static-section{margin:0;padding:0;background:#070c17;overflow:hidden}.home-static-section img{display:block;width:100%;max-width:var(--max);height:auto;margin:0 auto;border-radius:0;object-fit:contain}
+    .unity-section{position:relative;width:100%;min-height:clamp(720px,56.62vw,1087px);overflow:hidden;border-top:1px solid var(--line);background-position:center;background-size:cover;background-repeat:no-repeat}.unity-section::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,20,.08),rgba(4,10,20,.14));pointer-events:none}.unity-stage{position:relative;z-index:1;width:min(100%,1920px);height:clamp(720px,56.62vw,1087px);margin:auto}.unity-heading{position:absolute;z-index:5;top:7%;left:8%;right:8%;text-align:center;text-shadow:0 2px 18px rgba(0,0,0,.6)}.unity-heading h2{margin:0;font-size:clamp(34px,3vw,58px);line-height:1.2}.unity-heading p{margin:28px 0 0;color:#e1e5eb;font-size:clamp(18px,1.55vw,30px);line-height:1.8;white-space:pre-line}.unity-phone{position:absolute;z-index:4;left:50%;top:31%;width:min(47%,900px);height:auto;transform:translateX(-50%);filter:drop-shadow(0 24px 34px rgba(0,0,0,.38));pointer-events:none}.unity-metric{position:absolute;z-index:3;width:clamp(210px,18vw,345px);min-height:100px;padding:20px 24px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.4);border-radius:22px;background:linear-gradient(145deg,rgba(20,32,45,.75),rgba(5,10,17,.8));box-shadow:0 16px 34px rgba(0,0,0,.34);backdrop-filter:blur(12px)}.unity-metric-copy{text-align:center}.unity-metric strong{display:block;color:#fff;font-size:clamp(20px,1.35vw,28px);line-height:1.25}.unity-metric small{display:block;margin-top:6px;color:#d4d8df;font-size:clamp(15px,1.05vw,21px)}.unity-metric-value{width:68px;height:68px;display:grid;place-items:center;padding:8px;border:3px solid #31e6df;border-radius:50%;color:#fff;font-size:15px;font-weight:700;text-align:center;white-space:pre-line;box-shadow:inset 0 0 0 5px rgba(49,230,223,.12)}.unity-metric:nth-of-type(1){left:8%;top:34%}.unity-metric:nth-of-type(2){left:3%;top:55%}.unity-metric:nth-of-type(3){left:11%;top:75%}.unity-metric:nth-of-type(4){right:7%;top:30%}.unity-metric:nth-of-type(5){right:2%;top:48%}.unity-metric:nth-of-type(6){right:6%;top:65%}.unity-metric:nth-of-type(7){right:13%;top:81%}
+
+    .video-only-section{padding:0;min-height:100svh}.video-only-section .container{width:100%;max-width:none;padding:0}.video-frame{width:100%;min-height:100svh;margin:0;background:#000;overflow:hidden}.video-frame video{width:100%;height:100svh;object-fit:cover}
+    .putting-grid,.exhibit-grid,.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3.8vw,74px)}.image-card img{width:100%;height:270px;object-fit:cover}#putting{position:relative;aspect-ratio:7680/4388;padding:clamp(60px,5.8vw,110px) 0;background-position:center;background-size:cover;background-repeat:no-repeat}#putting .container{position:relative}#putting .heading{text-align:center;margin-bottom:clamp(42px,6vh,72px)}#putting .title{font-size:clamp(38px,3vw,58px)}#putting .putting-grid{align-items:stretch}#putting .image-card{width:100%;aspect-ratio:548/756;background:#070c17;border-radius:24px;overflow:hidden}#putting .image-card img{width:100%;height:100%;object-fit:cover;object-position:center}#putting .image-card:first-child img{object-fit:cover;object-position:center top}#putting .putting-kit-card{padding:clamp(18px,1.8vw,34px)}#putting .putting-kit-card img{object-fit:contain!important}.image-card .body{padding:24px}.image-card h3{margin:0 0 12px;font-size:20px}.image-card p{margin:0;color:var(--muted);line-height:1.7}
+    .history{position:relative;max-width:1024px;margin:auto}.history::before{content:"";position:absolute;top:8px;bottom:8px;left:50%;width:1px;background:rgba(49,230,223,.38);transform-origin:top;transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}.history.history-reveal-ready::before{transform:scaleY(0)}.history.history-reveal-ready.is-visible::before{transform:scaleY(1)}.history-row{position:relative;width:50%;padding:30px 48px;opacity:1}.history.history-reveal-ready .history-row{opacity:0;transform:translateY(54px);transition:opacity .82s cubic-bezier(.2,.8,.2,1),transform .82s cubic-bezier(.2,.8,.2,1)}.history.history-reveal-ready .history-row.is-visible{opacity:1;transform:translateY(0)}.history-row:nth-child(odd){margin-left:50%}.history-row:nth-child(even){text-align:right}.history-row::before{content:"";position:absolute;top:38px;width:16px;height:16px;border:2px solid #070c17;border-radius:50%;background:#fff;transition:background .45s ease,box-shadow .45s ease,transform .45s ease}.history-row.is-visible::before{background:var(--cyan);box-shadow:0 0 0 7px rgba(49,230,223,.12);transform:scale(1.08)}.history-row:nth-child(odd)::before{left:-8px}.history-row:nth-child(even)::before{right:-8px}.year{color:var(--cyan);font-family:Inter,monospace;font-size:14px;font-weight:600}.history-row h3{margin:9px 0 16px;font-size:20px}.history-row ul{margin:0;padding:0;display:grid;gap:10px;list-style:none;color:var(--muted);font-size:14px;line-height:1.7}.history-row li{display:flex;gap:8px}.history-row .history-list-right{width:100%;justify-items:end;text-align:right}.history-row .history-list-right li{position:relative;right:calc(8px + .36em);width:max-content;white-space:nowrap}.history.history-reveal-ready .history-row li{opacity:0;transform:translateY(12px);transition:opacity .48s ease,transform .48s ease}.history.history-reveal-ready .history-row.is-visible li{opacity:1;transform:translateY(0)}.history-row.is-visible li:nth-child(1){transition-delay:.12s}.history-row.is-visible li:nth-child(2){transition-delay:.21s}.history-row.is-visible li:nth-child(3){transition-delay:.30s}.history-row.is-visible li:nth-child(4){transition-delay:.39s}.history-row:nth-child(even) li{justify-content:flex-end}.history-row li>span:first-child{color:inherit}
+    .esg-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}.esg-image img{width:100%;height:430px;object-fit:cover}.esg-certs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-top:50px}.cert{min-width:0;padding:8px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;transform-origin:center}.cert:hover{position:relative;z-index:3;transform:scale(1.06);border-color:rgba(49,230,223,.46);box-shadow:0 18px 42px rgba(0,0,0,.36)}.cert img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#fff;border-radius:8px}
+    .exhibition-subtitle{margin:10px 0 0;color:var(--muted);font-size:15px}.exhibit-card{overflow:hidden;background:#0d1421}.exhibit-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.exhibit-content{padding:20px}.exhibit-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#1bd8a3;font-size:13px;font-weight:700}.exhibit-badge{padding:4px 9px;border:1px solid rgba(231,193,45,.55);border-radius:999px;color:#e7c12d;font-size:10px}.exhibit-card h3{margin:0 0 10px;font-size:21px}.exhibit-description,.exhibit-location{margin:0;color:var(--muted);font-size:13px;line-height:1.65}.exhibit-location{margin-top:16px}
+    .news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(22px,2vw,38px);width:100%;margin:0 auto}.news-card{display:block;background:var(--surface)}.news-card img{width:100%;height:clamp(240px,20vw,360px);object-fit:cover}.news-card-body{padding:20px 22px}.category{margin:0 0 8px;color:var(--cyan);font-size:11px;font-weight:700;letter-spacing:.12em}.news-card h3{margin:0 0 10px;font-size:18px}.news-card .summary{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+    .ip-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:stretch}.ip-list{display:grid;gap:22px;margin-top:36px}.ip-item{display:grid;grid-template-columns:24px 1fr;gap:13px}.ip-dot{width:22px;height:22px;border:1px solid rgba(49,230,223,.3);border-radius:50%;display:grid;place-items:center;color:var(--cyan)}.ip-item h3{margin:0 0 6px;font-size:16px}.ip-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.ip-visual{min-height:320px;background:transparent}#certificates{overflow-x:clip}
+    .contact-card{padding:26px}.contact-card span{color:var(--cyan);font-size:12px;font-weight:700}.contact-card h3{margin:24px 0 0;font-size:17px;line-height:1.7}.map{margin-top:24px;aspect-ratio:16/7;overflow:hidden;border-radius:18px;border:1px solid var(--line)}.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) brightness(.8)}
+    .cta{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;background:url('./assets/cta-golf-2026.jpg') center/cover no-repeat}.cta::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}.cta-copy{position:relative;z-index:1;width:min(100%,var(--max));margin:auto;padding-inline:var(--page-gutter);text-align:center}.cta p{margin:0 0 26px;color:#d6dbe3;font-size:21px;font-weight:700;letter-spacing:.01em;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85)}.cta h2{margin:0;font-size:41px;line-height:1.4;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.75)}
+
+    /* 1920px를 넘는 화면에서는 내부 콘텐츠를 확대하지 않고 배경 너비만 확장 */
+    .unity-stage::before{content:"";position:absolute;z-index:2;left:6%;right:6%;top:33.5%;bottom:8%;border:1px solid rgba(255,255,255,.42);border-radius:22px;background:rgba(4,10,15,.48);box-shadow:inset 0 0 80px rgba(0,0,0,.18);backdrop-filter:blur(5px)}
+    @media(min-width:1921px){.unity-section{height:1087px;min-height:1087px;background-size:100% 1087px}.unity-stage{width:1920px;height:1087px}.unity-heading h2{font-size:58px}.unity-heading p{font-size:30px}.unity-phone{width:461px;top:42.2%}.unity-metric{width:342px}}
+    .unity-stage{container-type:inline-size}.unity-original-content,.unity-connectors{display:none}.unity-metric-icon{display:block;width:110px;height:75px;object-fit:contain}
+    @media(min-width:701px){
+      .unity-original-content{display:none}.unity-connectors{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;pointer-events:none}.unity-connectors line{fill:none;stroke:rgba(255,255,255,.86);stroke-width:2;stroke-dasharray:8 8}.unity-phone{z-index:6;width:24%;top:42.2%}.unity-heading{z-index:7}.unity-stage::before{visibility:visible}
+      .unity-stage>.unity-metric{z-index:5;visibility:visible;width:15.625cqw;height:6.042cqw;min-height:0;padding:.208cqw .625cqw;grid-template-columns:1fr 6.65cqw;gap:0;border:0;border-radius:0;background:url('./assets/home/unity-metric-box.png?v=20260901-1') center/100% 100% no-repeat;box-shadow:none;backdrop-filter:none;overflow:hidden}
+      .unity-metric-copy,.unity-metric-icon{position:relative;z-index:1}.unity-metric-copy{min-width:0}.unity-metric strong{font-family:Pretendard,Arial,sans-serif;font-size:min(1.302cqw,25px);font-weight:700;line-height:1.2;white-space:nowrap}.unity-metric small{margin-top:.365cqw;font-family:Pretendard,Arial,sans-serif;font-size:min(1.146cqw,22px);font-weight:400;line-height:1.15;white-space:nowrap}.unity-metric-icon{display:block;width:6.875cqw;height:5.417cqw;object-fit:contain}.unity-metric-value{display:none}
+      .unity-metric:nth-of-type(1){left:18.9%;top:42.1%}.unity-metric:nth-of-type(2){left:13.6%;top:58.5%}.unity-metric:nth-of-type(3){left:21.7%;top:74.1%}.unity-metric:nth-of-type(4){right:18.4%;top:38.3%;grid-template-columns:6.65cqw 1fr}.unity-metric:nth-of-type(5){right:12.7%;top:51%;grid-template-columns:6.65cqw 1fr}.unity-metric:nth-of-type(6){right:17.5%;top:64.2%;grid-template-columns:6.65cqw 1fr}.unity-metric:nth-of-type(7){right:23.7%;top:77.4%;grid-template-columns:6.65cqw 1fr}
+      .unity-metric:nth-of-type(-n+3) .unity-metric-copy{text-align:right}.unity-metric:nth-of-type(-n+3) .unity-metric-icon{transform:translateX(-.26cqw)}.unity-metric:nth-of-type(n+4) .unity-metric-icon{order:-1;transform:translateX(.26cqw)}.unity-metric:nth-of-type(n+4) .unity-metric-copy{text-align:left}
+    }
+    @media(max-width:700px){.unity-metric-icon{width:70px;height:48px;margin:6px auto 0}}
+    .practice-four-points{position:relative;width:100%;height:clamp(760px,58.54vw,1124px);overflow:hidden;background:url('./assets/home/practice-four-points-background.jpg?v=20260901-5') center/100% 100% no-repeat}.practice-four-stage{position:relative;width:min(100%,1920px);height:100%;margin:auto}.practice-four-heading{position:absolute;z-index:5;top:6.8%;left:8%;right:8%;text-align:center}.practice-four-heading h2{margin:0;color:#fff;font-size:clamp(34px,3vw,58px);line-height:1.2}.practice-four-heading p{margin:2.2% 0 0;color:rgba(255,255,255,.78);font-size:clamp(20px,1.55vw,30px);line-height:1.4}.practice-four-panel{position:absolute;z-index:2;left:6.15%;top:27%;width:87.7%;height:auto}.practice-four-center{position:absolute;z-index:4;left:50%;top:43%;width:24%;height:auto;transform:translateX(-50%);filter:drop-shadow(0 18px 32px rgba(0,0,0,.38))}.practice-four-title{position:absolute;z-index:5;top:30.5%;left:14%;right:14%;margin:0;color:#2fe8dc;font-size:clamp(25px,2.2vw,43px);line-height:1.25;text-align:center}.practice-point{position:absolute;z-index:5;width:22%;aspect-ratio:1514/682;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.2%;text-align:center;background:url('./assets/home/practice-four-card.png?v=20260901-3') center/100% 100% no-repeat}.practice-point strong{color:#2fe8dc;font-size:clamp(21px,1.7vw,33px)}.practice-point span{margin-top:3%;color:#fff;font-size:clamp(17px,1.35vw,26px);line-height:1.45;white-space:pre-line}.practice-point:nth-of-type(1){right:12.5%;top:42.5%}.practice-point:nth-of-type(2){left:12.5%;top:42.5%}.practice-point:nth-of-type(3){right:12.5%;top:65%}.practice-point:nth-of-type(4){left:12.5%;top:65%}
+    @media(min-width:1921px){.practice-four-points{height:1124px}.practice-four-stage{width:1920px}.practice-four-heading h2{font-size:58px}.practice-four-heading p{font-size:30px}.practice-four-title{font-size:43px}.practice-point strong{font-size:33px}.practice-point span{font-size:26px}}
+    @media(max-width:700px){.practice-four-points{height:880px;background-size:cover}.practice-four-heading{top:5%;left:5%;right:5%}.practice-four-heading h2{font-size:28px}.practice-four-heading p{margin-top:14px;font-size:17px}.practice-four-panel{left:2%;top:23%;width:96%;height:70%;object-fit:fill}.practice-four-title{top:27%;left:8%;right:8%;font-size:22px}.practice-four-center{top:43%;width:44%}.practice-point{width:42%;padding:2%}.practice-point strong{font-size:18px}.practice-point span{font-size:12px}.practice-point:nth-of-type(1){right:6%;top:38%}.practice-point:nth-of-type(2){left:6%;top:38%}.practice-point:nth-of-type(3){right:6%;top:65%}.practice-point:nth-of-type(4){left:6%;top:65%}}
+
+    /* Smart Golf Ball 페이지 기준 반응형 타이포그래피: 54 / 40 / 30 / 25 / 22px */
+    .title,#putting .title,.home-feature h2{font-size:54px}
+    .home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:22px}
+    .eyebrow,.home-section-one .home-eyebrow,.category,.contact-card span,.exhibit-card h3,.news-card h3,.history-row h3,.ip-item h3{font-size:22px}
+    .exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:18px}
+    #news .heading,#certificates .ip-layout>div:first-child{text-align:center}#news .news-card-body{text-align:center}#certificates .ip-layout{grid-template-columns:1fr}#certificates .ip-visual{display:none}#certificates .desc{margin-left:auto;margin-right:auto}#certificates .ip-list{max-width:none;margin:48px auto 0;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}#certificates .ip-item{min-height:185px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px}#certificates .ip-dot{display:none}#certificates .ip-item h3{margin-bottom:12px;color:var(--cyan)}
+
+    /* 첨부 기준: 1063 × 439px 푸터와 작은 글자 */
+    .site-footer{min-height:auto;padding:64px 32px 44px;background:#070C17;border-top:1px solid var(--line);display:flex;align-items:flex-start}.footer-grid{width:min(100%,1280px);margin:0 auto;display:grid;grid-template-columns:repeat(3,max-content);justify-content:space-between;gap:40px;align-items:start}.footer-grid>div{text-align:center}.site-footer h4{margin:0 0 26px;color:#fff;font-size:17px;font-weight:600}.footer-phone{margin:0 0 22px;color:rgba(255,255,255,.72);font-size:21px;font-weight:600}.footer-muted,.business p{margin:7px 0;color:rgba(255,255,255,.62);font-size:16px;line-height:1.65}.business p{white-space:nowrap}.footer-email{color:rgba(255,255,255,.72);font-size:21px;font-weight:600;white-space:nowrap}
+
+    @media(min-width:1001px) and (max-width:1280px){:root{--page-gutter:40px}.home-feature-stage{padding-block:80px}.title,#putting .title,.home-feature h2{font-size:46px}.home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:20px}.eyebrow,.home-section-one .home-eyebrow,.category,.contact-card span,.exhibit-card h3,.news-card h3,.history-row h3,.ip-item h3{font-size:20px}.exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:17px}}
+    @media(max-width:1000px){:root{--page-gutter:24px}.site-header{width:calc(100% - 32px);top:16px;padding:12px 18px;gap:18px;overflow-x:auto;justify-content:flex-start}.main-nav ul{gap:16px}.login{display:none}.home-feature{min-height:auto}.home-feature-stage{min-height:auto;aspect-ratio:16/11;padding:64px var(--page-gutter)}.home-section-one .home-copy{width:52%}.putting-grid,.exhibit-grid{grid-template-columns:repeat(2,1fr)}#putting .image-card img{height:100%}.esg-layout,.ip-layout{grid-template-columns:1fr}.esg-certs{grid-template-columns:repeat(3,1fr)}.ip-cert-grid{grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}.ip-cert-grid img{width:100%;max-width:150px}.site-footer{min-height:auto}.footer-grid{grid-template-columns:1fr;justify-content:stretch;gap:40px}.business p{white-space:normal}.hero h1{max-width:700px}.cta h2{white-space:normal}.title,#putting .title,.home-feature h2{font-size:clamp(32px,5vw,46px)}.home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:clamp(18px,2.4vw,20px)}.eyebrow,.home-section-one .home-eyebrow,.category,.contact-card span,.exhibit-card h3,.news-card h3,.history-row h3,.ip-item h3{font-size:clamp(18px,2.4vw,20px)}.exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:clamp(16px,2vw,17px)}}
+    @media(max-width:1000px){#certificates .ip-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:700px){:root{--page-gutter:18px}.container,.hero-copy,.cta-copy{width:100%;padding-inline:var(--page-gutter)}.section{padding:82px 0}.site-header{border-radius:26px;padding:10px 14px}.logo img{height:21px}.main-nav a,.about-trigger{font-size:12px}.about-dropdown{left:0;transform:none}.login{padding:9px 14px;font-size:12px}.hero h1{font-size:48px}.home-feature-stage{aspect-ratio:auto;min-height:720px;padding-top:92px}.home-section-one .home-copy{width:68%}.home-section-one .home-body{margin-top:30px}.home-section-two .home-visual,.home-section-three .home-visual{bottom:7%;max-height:54%}.unity-section,.unity-stage{min-height:1040px;height:1040px}.unity-heading{top:7%;left:20px;right:20px}.unity-heading p{margin-top:18px}.unity-phone{top:27%;width:86%}.unity-metric{width:44%;min-height:82px;padding:12px 10px;display:block;border-radius:14px}.unity-metric strong{font-size:16px}.unity-metric small{font-size:12px}.unity-metric-value{width:auto;height:auto;margin-top:6px;border:0;box-shadow:none;color:#31e6df;font-size:12px}.unity-metric:nth-of-type(1){left:3%;top:54%}.unity-metric:nth-of-type(2){left:3%;top:65%}.unity-metric:nth-of-type(3){left:3%;top:76%}.unity-metric:nth-of-type(4){right:3%;top:54%}.unity-metric:nth-of-type(5){right:3%;top:65%}.unity-metric:nth-of-type(6){right:3%;top:76%}.unity-metric:nth-of-type(7){right:28%;top:87%}.putting-grid,.exhibit-grid,.news-grid,.contact-grid{grid-template-columns:1fr}#putting .image-card img{height:100%}.news-card img{height:auto;aspect-ratio:16/9}.history::before{left:7px}.history-row,.history-row:nth-child(odd){width:100%;margin-left:0;padding:25px 0 25px 40px;text-align:left}.history-row:nth-child(odd)::before,.history-row:nth-child(even)::before{left:1px;right:auto}.esg-certs{grid-template-columns:repeat(2,1fr)}.ip-cert-grid{grid-template-columns:repeat(2,1fr)}.map{aspect-ratio:4/5}.footer-email{white-space:normal}.cta-copy{padding-left:var(--page-gutter);text-align:center}}
+    @media(max-width:700px){#certificates .ip-list{grid-template-columns:1fr}#certificates .ip-item{min-height:170px}}
+    /* 메인 홈 공통 반응형 컨테이너·타이포그래피: 최대 1200px */
+    :root{--content-max:1200px;--page-gutter:clamp(20px,4vw,48px);--container-width:min(calc(100% - (var(--page-gutter) * 2)),var(--content-max));--content-edge:max(var(--page-gutter),calc((100% - var(--content-max))/2));--type-display:clamp(36px,5vw,72px);--type-title:clamp(30px,calc(22px + 1.65vw),50px);--type-lead:clamp(17px,calc(14px + .5vw),21px);--type-body:clamp(16px,calc(14px + .25vw),18px);--type-nav:clamp(14px,1.2vw,17px)}
+    .container,.hero-copy,.home-feature-stage,.cta-copy{width:var(--container-width);max-width:none;margin-inline:auto;padding-inline:0}
+    .site-header{width:var(--container-width);max-width:var(--content-max);padding-inline:clamp(18px,2.4vw,30px);gap:clamp(16px,2vw,28px)}
+    .logo img{height:clamp(26px,2.4vw,34px)}
+    .main-nav{min-width:0}.main-nav ul{gap:clamp(14px,1.6vw,24px)}.main-nav a,.about-trigger{font-size:var(--type-nav)}
+    .header-tools{gap:clamp(12px,1.5vw,20px)}.login{padding:9px clamp(15px,1.6vw,22px);font-size:clamp(14px,1.15vw,17px)}.language-button{font-size:var(--type-nav)}
+    .hero h1{max-width:min(100%,900px);font-size:var(--type-display);text-wrap:balance}.hero-sub{font-size:var(--type-lead)}
+    .title,#putting .title,.home-feature h2{font-size:var(--type-title)}
+    .home-section-one .home-body,.home-centered-copy .home-subtitle,.desc,.exhibition-subtitle{font-size:var(--type-lead)}
+    .exhibit-description,.exhibit-location,.news-card .summary,.history-row ul,.year,.ip-item p,.contact-card h3{font-size:var(--type-body)}
+    .site-footer{padding-inline:0}.footer-grid{width:var(--container-width);max-width:none}
+    .history{max-width:100%}
+    @media(min-width:1001px){.home-section-one .home-copy{width:min(62%,740px)}.home-section-one h2{white-space:nowrap}}
+    /* 히어로 + 홈 1~3 섹션: 1200px 공통 스테이지와 고정 모서리 */
+    .hero-copy,.home-feature-stage,.unity-stage,.practice-four-stage{width:var(--container-width);max-width:var(--content-max);margin-inline:auto}
+    .home-section-one .home-eyebrow{margin-bottom:clamp(20px,3vw,44px);font-size:clamp(17px,1.5vw,22px)}
+    .home-section-one .home-body{margin-top:clamp(28px,4vw,54px);font-size:var(--type-lead)}
+    .unity-section{min-height:clamp(720px,56.62vw,820px)}
+    .unity-stage{height:clamp(720px,56.62vw,820px);overflow:hidden}
+    .practice-four-points{height:clamp(740px,58.54vw,860px)}
+    .practice-four-stage{height:100%;overflow:hidden}
+    .unity-stage::before,.unity-stage>.unity-metric,.practice-four-panel,.practice-point{border-radius:22px}
+    .unity-stage>.unity-metric,.practice-point{overflow:hidden}
+    @media(min-width:701px){.unity-stage::before{left:0;right:0}.unity-heading,.practice-four-heading{left:0;right:0}.practice-four-panel{left:0;width:100%}}
+    @media(max-width:1000px){.home-section-one{min-height:clamp(620px,92vw,760px);aspect-ratio:auto}.home-section-one .home-feature-stage{height:auto;min-height:inherit}.home-section-one h2{white-space:normal}}
+    @media(max-width:700px){
+      .home-section-one{min-height:700px;background-position:58% center}
+      .home-section-one .home-feature-stage{min-height:700px;padding-block:96px 64px}
+      .home-section-one .home-copy{width:min(82%,300px);transform:none}
+      .home-section-one .home-eyebrow{font-size:17px}
+      .home-section-one .reveal-card{translate:0 30px;filter:blur(7px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),translate .75s cubic-bezier(.2,.8,.2,1),filter .75s ease}
+      .home-section-one .reveal-card.is-visible{translate:0 0;filter:blur(0)}
+      .unity-section,.unity-stage{height:1040px;min-height:1040px}
+      .unity-stage::before{left:0;right:0;top:33.5%;bottom:4%;border-radius:22px}
+      .unity-heading{left:0;right:0}
+      .unity-stage>.unity-metric{width:40%;height:84px;min-height:0;padding:4px 8px;display:grid;grid-template-columns:1fr 52px;gap:2px;border:0;border-radius:22px;background:url('./assets/home/unity-metric-box.png?v=20260901-1') center/100% 100% no-repeat;box-shadow:none;backdrop-filter:none;overflow:hidden}
+      .unity-stage>.unity-metric .unity-metric-copy{min-width:0;text-align:center}
+      .unity-stage>.unity-metric strong{font-size:14px;white-space:nowrap}
+      .unity-stage>.unity-metric small{margin-top:3px;font-size:10px;white-space:nowrap}
+      .unity-stage>.unity-metric .unity-metric-icon{width:52px;height:44px;margin:0;object-fit:contain}
+      .unity-stage>.unity-metric:nth-of-type(-n+3){left:7%;right:auto}
+      .unity-stage>.unity-metric:nth-of-type(n+4){left:auto;right:7%;grid-template-columns:52px 1fr}
+      .unity-stage>.unity-metric:nth-of-type(n+4) .unity-metric-icon{order:-1}
+      .unity-stage>.unity-metric:nth-of-type(1),.unity-stage>.unity-metric:nth-of-type(4){top:54%}
+      .unity-stage>.unity-metric:nth-of-type(2),.unity-stage>.unity-metric:nth-of-type(5){top:65%}
+      .unity-stage>.unity-metric:nth-of-type(3),.unity-stage>.unity-metric:nth-of-type(6){top:76%}
+      .unity-stage>.unity-metric:nth-of-type(7){left:30%;right:auto;top:85%}
+      .practice-four-points,.practice-four-stage{height:880px}
+      .practice-four-stage{overflow:hidden}
+      .practice-four-panel{left:0;width:100%;border-radius:22px}
+      .practice-point{border-radius:22px;overflow:hidden}
+    }
+    @media(min-width:701px){.unity-stage::before{left:var(--content-edge);right:var(--content-edge)}.unity-heading,.practice-four-heading{left:var(--content-edge);right:var(--content-edge)}.practice-four-panel{left:var(--content-edge);width:calc(100% - (var(--content-edge) * 2))}}
+    @media(max-width:700px){.container,.hero-copy,.home-feature-stage,.cta-copy{width:var(--container-width);padding-inline:0}.footer-grid{width:var(--container-width)}.site-header{top:12px;padding:9px 10px 9px 14px;display:flex;gap:10px;overflow:visible;border-radius:22px}.logo img{height:24px}.header-tools{margin-left:auto;gap:6px}.menu-toggle{display:grid}.main-nav{position:absolute;top:calc(100% + 8px);left:0;width:100%;padding:10px;overflow:visible;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(12,19,31,.97);box-shadow:0 20px 40px rgba(0,0,0,.42);backdrop-filter:blur(24px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease}.site-header.is-menu-open .main-nav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}.main-nav ul{width:100%;display:grid;gap:2px}.main-nav li{width:100%}.main-nav a,.about-trigger{width:100%;min-height:44px;padding:11px 12px;display:flex;align-items:center;border-radius:10px;font-size:15px}.main-nav a:hover,.main-nav a:focus-visible,.about-trigger:hover,.about-trigger:focus-visible{background:rgba(49,230,223,.1)}.about-dropdown{position:static;width:100%;padding-top:4px;display:none;transform:none}.about-menu.is-about-open .about-dropdown{display:block}.about-dropdown-panel{box-shadow:none}.about-dropdown-panel a{font-size:14px}.hero-copy{margin-top:80px}.hero h1 span{white-space:normal}.unity-stage::before{left:var(--page-gutter);right:var(--page-gutter)}.practice-four-panel{left:var(--page-gutter);right:auto;width:var(--container-width);max-width:none}.unity-heading,.practice-four-heading{left:var(--page-gutter);right:var(--page-gutter)}}
+    @media(max-width:700px){.about-dropdown-panel{padding:0 0 4px 12px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}.about-dropdown-panel a{padding-left:18px;color:rgba(255,255,255,.72)}}
+    /* 인증서: 대표 6개 */
+    .certificate-featured{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.3vw,22px);margin-top:clamp(42px,5vw,72px)}
+    .certificate-card{min-width:0;display:flex;flex-direction:column;gap:12px;color:#fff}
+    .certificate-card img{width:100%;aspect-ratio:210/297;object-fit:cover;object-position:top;background:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.35);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+    .certificate-card:hover img,.certificate-card:focus-visible img{transform:translateY(-7px);border-color:rgba(49,230,223,.65);box-shadow:0 22px 46px rgba(0,0,0,.5)}
+    .certificate-card:focus-visible{outline:2px solid var(--cyan);outline-offset:6px;border-radius:12px}
+    @media(max-width:1000px){.certificate-featured{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:700px){.certificate-featured{grid-template-columns:repeat(2,minmax(0,1fr))}.certificate-card{gap:8px}}
+    .hero-badge,.hero h1,.hero-sub{animation:homeHeroUp .86s cubic-bezier(.2,.8,.2,1) both}.hero h1{animation-delay:.12s}.hero-sub{animation-delay:.24s}@keyframes homeHeroUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+    .reveal-card{opacity:0;translate:0 42px;transition:opacity .72s cubic-bezier(.2,.8,.2,1),translate .72s cubic-bezier(.2,.8,.2,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease;will-change:opacity,translate}.reveal-card.is-visible{opacity:1;translate:0 0}
+    #putting .image-card{transition:opacity .82s cubic-bezier(.2,.8,.2,1),translate .82s cubic-bezier(.2,.8,.2,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease;transform-origin:center;will-change:opacity,translate,transform}#putting .image-card.reveal-card{translate:0 64px}#putting .image-card.reveal-card.is-visible{translate:0 0}#putting .image-card:hover{position:relative;z-index:3;transform:translateY(-8px) scale(1.035);border-color:rgba(49,230,223,.46);box-shadow:0 22px 48px rgba(0,0,0,.46)}
+    .history{max-width:min(100%,1400px)}.history-row ul{font-size:clamp(13px,1.1vw,18px)}.history-row li{display:block;white-space:nowrap}.history-row h3{white-space:nowrap}
+    @media(max-width:700px){.history-row,.history-row:nth-child(even),.history-row:nth-child(odd){overflow-x:auto;overscroll-behavior-inline:contain;text-align:left}.history-row:nth-child(even) li{justify-content:flex-start}.history-row::-webkit-scrollbar{height:3px}.history-row::-webkit-scrollbar-thumb{background:rgba(49,230,223,.35);border-radius:99px}}
+    @media(min-width:701px) and (max-width:1000px){.hero h1{font-size:clamp(38px,5.2vw,52px)}}
+    @media(max-width:700px){.hero h1{font-size:var(--type-display)}.reveal-card{translate:0 24px}}
+    /* 홈 핵심 섹션 정렬 보정 */
+    .hero-line-mobile{display:none!important}
+    @media(min-width:701px){
+      :root{--max:1440px;--content-max:1600px;--page-gutter:clamp(18px,5vw,96px);--container-width:min(calc(100% - (var(--page-gutter) * 2)),var(--content-max));--content-edge:max(var(--page-gutter),calc((100% - var(--content-max))/2));--type-title:clamp(32px,calc(23px + 1.65vw),54px);--type-lead:clamp(18px,calc(15px + .45vw),22px);--type-body:clamp(16px,calc(14px + .3vw),18px)}
+      .site-header{width:min(calc(100% - 48px),1063px);max-width:none;padding:12px 32px;gap:36px}
+      .logo img{height:34px}
+      .main-nav ul{gap:28px}.main-nav a,.about-trigger{font-size:18px}
+      .header-tools{gap:20px}.login{padding:9px 22px;font-size:17px}.language-button{font-size:18px}
+      .hero h1{max-width:min(100%,calc(var(--content-max) * .75));font-size:clamp(38px,5.2vw,90px);text-wrap:wrap}
+      .hero-line-desktop{display:block!important;white-space:nowrap}
+      .home-section-one .home-copy{width:min(44%,740px)}
+      .home-section-one h2{white-space:normal}
+      .home-section-one .home-eyebrow{margin-bottom:44px;font-size:25px}
+      .home-section-one .home-body{margin-top:62px;font-size:24px}
+      .unity-section{min-height:clamp(720px,56.62vw,1087px)}
+      .unity-stage{width:min(100%,1920px);max-width:none;height:clamp(720px,56.62vw,1087px);overflow:visible}
+      .unity-stage::before{left:6%;right:6%;top:33.5%;bottom:8%}
+      .unity-heading{left:8%;right:8%}
+      .practice-four-points{height:clamp(760px,58.54vw,1124px)}
+      .practice-four-stage{width:min(100%,1920px);max-width:none;overflow:visible}
+      .practice-four-heading{left:8%;right:8%}
+      .practice-four-panel{left:6.15%;width:87.7%;border-radius:0}
+      .practice-point{border-radius:0;overflow:visible}
+    }
+    @media(max-width:700px){
+      .hero h1{font-size:clamp(36px,11.2vw,48px);line-height:1.08}
+      .hero-line-desktop{display:none!important}
+      .hero-line-mobile{display:block!important;white-space:nowrap}
+
+      /* 섹션 2: 모든 시각 요소를 외곽 패널 안에 유지 */
+      .unity-stage::before{top:25%;bottom:4%}
+      .unity-phone{top:27%;width:min(82%,300px);height:260px;max-width:100%;object-fit:contain;object-position:center}
+
+      /* 섹션 3: 콘텐츠 길이에 따라 늘어나는 모바일 세로 흐름 */
+      .practice-four-points{height:auto;min-height:0}
+      .practice-four-stage{height:auto;min-height:0;padding:270px 28px 48px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+      .practice-four-heading{top:4.5%}
+      .practice-four-heading p{margin-top:16px;line-height:1.55}
+      .practice-four-panel{left:20px;top:235px;width:calc(100% - 40px);height:calc(100% - 259px);object-fit:fill}
+      .practice-four-title{position:relative;inset:auto;width:100%;margin:0 0 24px;font-size:clamp(19px,5.5vw,22px);line-height:1.35}
+      .practice-four-center{position:relative;inset:auto;width:min(58%,210px);height:150px;max-width:100%;margin:0 0 24px;transform:none;object-fit:contain;object-position:center}
+      .practice-point,.practice-point:nth-of-type(n){position:relative;inset:auto;width:100%;min-height:86px;height:auto;aspect-ratio:auto;margin:0 0 12px;padding:16px 20px;border:0;border-radius:22px;background:url('./assets/home/practice-four-card.png?v=20260901-3') center/100% 100% no-repeat;overflow:visible}
+      .practice-point:last-of-type{margin-bottom:0}
+      .site-header .logo img{height:clamp(22px,6.4vw,24px)}
+      .unity-heading h2.reveal-card,.unity-heading p.reveal-card{translate:0 30px;filter:blur(7px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),translate .75s cubic-bezier(.2,.8,.2,1),filter .75s ease}
+      .unity-heading h2.reveal-card.is-visible,.unity-heading p.reveal-card.is-visible{translate:0 0;filter:blur(0)}
+    }
+    @media(prefers-reduced-motion:reduce){.hero-badge,.hero h1,.hero-sub{animation:none}.cert,.certificate-card img,#putting .image-card,.history-row,.history-row li,.history::before,.reveal-card{transition:none!important}.reveal-card{opacity:1!important;transform:none!important;translate:none!important}#putting .image-card:hover{transform:none}}
+  </style>
+  <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
+  <link rel="stylesheet" href="./assets/english-responsive.css?v=20260910-3">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
+    <nav class="main-nav" id="main-navigation" aria-label="Main navigation"><ul>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="#products">Products & Development</a><a href="#history">History</a><a href="#about">ESG</a><a href="#exhibition">Global Highlights</a><a href="#news">News</a></div></div></li><li><a href="./smart-golf-ball.html">Smart Golf Ball</a></li><li><a href="./putting-mat.html">Slope Putting Mat</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
+    </ul></nav>
+    <div class="header-tools"><div class="language"><button class="language-button" type="button" aria-label="Select language"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="../index.html">한국어</a><a href="./index.html" aria-current="page">English</a></div></div><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./assets/videos/hero-video-poster.jpg"><source src="./assets/videos/hero-video.mp4" type="video/mp4"></video><div class="hero-copy"><span class="hero-badge">Simple Technology. Clear Feedback.</span><h1><span class="hero-line-desktop">Smart Touch, Clear Shot</span><span class="hero-line-desktop">Simple Play, Smart Data</span><span class="hero-line-mobile">Smart Touch,</span><span class="hero-line-mobile">Clear Shot</span><span class="hero-line-mobile">Simple Play,</span><span class="hero-line-mobile">Smart Data</span></h1><p class="hero-sub">A New Way to Play, Powered by Data</p></div></section>
+
+    <section class="home-feature home-section-one" id="products" data-editable-section="home-section-1" data-background-slot="section1Background">
+      <div class="home-feature-stage"><div class="home-copy"><p class="home-eyebrow" data-content-key="section1Eyebrow">GINOVO Smart Golf Ball</p><h2 data-content-key="section1Title">Beyond the Limits of Golf Balls,<br>A New Standard in Golf Analysis.</h2><p class="home-body" data-content-key="section1Body">Original. Advanced. Reliable. Impactful.
+A smart golf solution that sets a new standard
+for golf analysis.</p></div></div>
+    </section>
+    <section class="unity-section" id="unity-feature">
+      <div class="unity-stage">
+        <img class="unity-original-content" src="./assets/home/unity-section-inner-panel.png?v=20260901-7" alt="Seven smart-golf-ball shot metrics graphic">
+        <svg class="unity-connectors" viewBox="0 0 1920 1087" preserveAspectRatio="none" aria-hidden="true"><line x1="660" y1="515" x2="790" y2="600"/><line x1="560" y1="694" x2="785" y2="720"/><line x1="716" y1="863" x2="825" y2="790"/><line x1="1268" y1="474" x2="1145" y2="560"/><line x1="1376" y1="612" x2="1160" y2="612"/><line x1="1284" y1="756" x2="1135" y2="700"/><line x1="1163" y1="899" x2="1085" y2="800"/></svg>
+        <div class="unity-heading"><h2 data-unity-field="title"></h2><p><span data-unity-field="subtitle1"></span><br><span data-unity-field="subtitle2"></span></p></div>
+        <img class="unity-phone" data-unity-media="visual" alt="GINOVO smart golf mobile application screen">
+        <article class="unity-metric" data-unity-metric="0"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-trajectory.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="1"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-distance.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="2"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-angle.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="3"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-impact.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="4"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-speed.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="5"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-skid.png" alt=""></article>
+        <article class="unity-metric" data-unity-metric="6"><div class="unity-metric-copy"><strong></strong><small></small></div><img class="unity-metric-icon" src="./assets/home/unity-icon-spin.png" alt=""></article>
+      </div>
+    </section>
+    <section class="practice-four-points" id="practice-four-points">
+      <div class="practice-four-stage">
+        <header class="practice-four-heading"><h2 data-practice-heading></h2><p data-practice-subtitle></p></header>
+        <img class="practice-four-panel" data-practice-image="panel" src="./assets/home/practice-four-panel.png?v=20260901-5" alt="Four-point smart golf putting-practice panel">
+        <h2 class="practice-four-title" data-practice-title></h2>
+        <img class="practice-four-center" data-practice-image="center" src="./assets/home/practice-four-center-editable.png?v=20260901-1" alt="GINOVO Smart Golf Ball practice cycle">
+        <article class="practice-point" data-practice-point="0"><strong></strong><span></span></article>
+        <article class="practice-point" data-practice-point="1"><strong></strong><span></span></article>
+        <article class="practice-point" data-practice-point="2"><strong></strong><span></span></article>
+        <article class="practice-point" data-practice-point="3"><strong></strong><span></span></article>
+      </div>
+    </section>
+
+    <section class="section video-only-section" id="smartball-film"><div class="container"><div class="video-frame"><video src="./assets/videos/smartball-home.mp4" muted loop playsinline controls preload="none" data-autoplay-on-view aria-label="GINOVO Smart Golf Ball video"></video></div></div></section>
+
+    <section class="section alt" id="putting" data-editable-section="home-section-4" data-background-slot="section4Background"><div class="container"><div class="heading"><h2 class="title" data-content-key="section4Title">GINOVO <br>Slope Putting Mat</h2></div><div class="putting-grid">
+      <article class="card image-card"><img data-media-slot="section4Image1" src="./assets/putting-slope-en.png" alt="GINOVO Slope Putting Mat with slope board"></article>
+      <article class="card image-card"><img data-media-slot="section4Image2" src="./assets/home/putting-course.jpg.png" alt="Multiple putting-path practice configurations"></article>
+      <article class="card image-card putting-kit-card"><img data-media-slot="section4Image3" src="./assets/home/putting-kit.jpg.png?v=20260828-2" alt="GINOVO Slope Putting Mat components"></article>
+    </div></div></section>
+
+    <section class="section video-only-section"><div class="container"><div class="video-frame"><video src="./assets/videos/putting-home.mp4" muted loop playsinline controls preload="none" data-autoplay-on-view aria-label="Slope Putting Mat demonstration video"></video></div></div></section>
+
+    <section class="section alt" id="history"><div class="container"><div class="heading"><p class="eyebrow">History</p><h2 class="title">GREEN TALK History</h2></div><div class="history">
+      <div class="history-row"><div class="year">2026–Present</div><h3>Phase 4. Global Expansion & Product Advancement</h3><ul><li>26.01 Charger battery earned Japan PSE certification</li><li>26.05 Smart Golf Ball and wireless charger earned KC / CE / FCC certifications</li><li>26.02 ISO 9001 and ISO 14001 certifications obtained</li><li>26.02 Selected for the Export Voucher Program</li><li>26.05 GINOVO Slope Putting Mat launched on Amazon</li><li>26.07 Selected for the Design-Led Manufacturing Innovation Program</li><li>26.07 Selected for LIPS</li><li>26.07 GINOVO GSB-V2 launched in Korea</li><li>26.08 GINOVO GSB-V2 entered the U.S. Amazon market</li><li>26.09 GINOVO GSB-V2 launched on Japan Green Funding</li></ul></div>
+      <div class="history-row"><div class="year">2025</div><h3>Phase 3. Global Certification & Growth</h3><ul><li>25.04~06 Smart Golf Ball earned CE and FCC certifications</li><li>25.05 Official launch of the GINOVO Smart Golf Ball &amp; Long Fit Mat</li><li>25.06 Selected for the Startup Leap Package</li><li>25.07 TIPS (General R&amp;D)</li></ul></div>
+      <div class="history-row"><div class="year">2024</div><h3>Phase 2. Product Line Completion & Market Entry</h3><ul><li>23.11 GINOVO Slope Putting Mat launched</li><li>24.04 Selected for the Early-Stage Startup Package</li><li>24.05 Smart Manufacturing Support Program approved (mass-production infrastructure advancement)</li></ul></div>
+      <div class="history-row"><div class="year">2022.08~2023</div><h3>Phase 1. R&amp;D & Foundation Building</h3><ul><li>22.08 GREEN TALK Co., Ltd. established</li><li>23.02 Corporate R&amp;D center established and venture company certification obtained</li><li>23.05 Regional R&amp;D and smart-home component projects approved</li></ul></div>
+    </div></div></section>
+
+    <section class="section" id="about"><div class="container"><div class="esg-layout"><div class="card esg-image"><img data-media-slot="esgImage" src="./assets/home/esg-visual.png" alt="GREEN TALK ESG"></div><div><p class="eyebrow">ESG & Certification</p><h2 class="title">GREEN TALK ESG & Smart Connectivity</h2><p class="desc">Smart sensors and data technology improve usability,<br> enhance energy efficiency, and support responsible<br> quality and environmental management standards.</p></div></div><div class="esg-certs"><div class="card cert"><img src="./assets/home/korea-tech-market-certificate.png" alt="Korea Tech Market technology registration certificate"></div><div class="card cert"><img src="./assets/cert-024.png" alt="ESG English certificate"></div><div class="card cert"><img src="./assets/cert-022.png" alt="ISO 9001 Korean certificate"></div><div class="card cert"><img src="./assets/cert-023.png" alt="ISO 9001 English certificate"></div><div class="card cert"><img src="./assets/cert-037.png" alt="ISO 14001 Korean certificate"></div><div class="card cert"><img src="./assets/cert-038.png" alt="ISO 14001 English certificate"></div></div></div></section>
+
+    <section class="section alt" id="exhibition"><div class="container"><div class="heading center"><h2 class="title">Global Highlights</h2><p class="exhibition-subtitle">Green Talk Overseas Exhibitions</p></div><div class="exhibit-grid">
+      <article class="card exhibit-card"><img src="./assets/exhibition-british.png" alt="British Golf Show exhibition"><div class="exhibit-content"><div class="exhibit-meta"><span>2026.05</span><span class="exhibit-badge">UK</span></div><h3>British Golf Show</h3><p class="exhibit-description">GINOVO presents its precision putting-analysis technology at the British Golf Show, a gateway to the European market.</p><p class="exhibit-location">⌖ Wycombe Air Park, UK</p></div></article>
+      <article class="card exhibit-card"><img src="./assets/exhibition-pga.jpg" alt="PGA SHOW 2026 exhibition"><div class="exhibit-content"><div class="exhibit-meta"><span>2026.01</span><span class="exhibit-badge">January 2026</span></div><h3>PGA SHOW 2026</h3><p class="exhibit-description">GINOVO unveils its next-generation smart solution at the world's largest golf-industry exhibition in Orlando.</p><p class="exhibit-location">⌖ Orlando, Florida, USA</p></div></article>
+      <article class="card exhibit-card"><img src="./assets/exhibition-ces.jpg" alt="CES 2025 exhibition"><div class="exhibit-content"><div class="exhibit-meta"><span>2025.01</span><span class="exhibit-badge">CES Eureka Park</span></div><h3>CES 2025</h3><p class="exhibit-description">At CES, GINOVO demonstrates smart golf-ball sensing technology at the forefront of sports technology.</p><p class="exhibit-location">⌖ Las Vegas, Nevada, USA</p></div></article>
+    </div></div></section>
+
+    <section class="section" id="news">
+      <div class="container">
+        <div class="heading center"><p class="eyebrow">News</p><h2 class="title">News & Media</h2></div>
+        <div class="news-grid">
+          <a class="card news-card" href="https://magazine.hankyung.com/job-joy/article/202602094915d" target="_blank" rel="noopener noreferrer"><img src="./assets/img-022.jpg" alt="technology news"><div class="news-card-body"><p class="category">Startup Success Story</p><h3>Selected for the Startup Leap Package, proving the value of a technology-driven golf solution</h3><p class="summary">Read Article →</p></div></a>
+          <a class="card news-card" href="https://www.mk.co.kr/news/sports/11462153" target="_blank" rel="noopener noreferrer"><img src="./assets/img-023.jpg" alt="PGA exhibition news"><div class="news-card-body"><p class="category">Global Exhibition</p><h3>PGA SHOW: GREEN TALK Builds a Bridgehead for Global Expansion</h3><p class="summary">Read Article →</p></div></a>
+          <a class="card news-card" href="https://www.mk.co.kr/news/sports/11962984" target="_blank" rel="noopener noreferrer"><img data-media-slot="newsImage3" src="./assets/home/news-exhibition.png" alt="GREEN TALK global exhibition"><div class="news-card-body"><p class="category">Global Exhibition</p><h3>Innovation in Smart Golf Ball Sensor Technology</h3><p class="summary">Read Article →</p></div></a>
+          <a class="card news-card" href="https://www.newsprime.co.kr/news/article/?no=622819" target="_blank" rel="noopener noreferrer"><img src="./assets/img-025.jpg" alt="data-driven putting practice"><div class="news-card-body"><p class="category">Feature</p><h3>Improve Your Putting Through Data-Driven Practice</h3><p class="summary">Read Article →</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="certificates">
+      <div class="container">
+        <div class="ip-layout"><div><p class="eyebrow">Intellectual Property</p><h2 class="title">Proven, Distinctive Technology</h2><p class="desc" style="color:var(--cyan)">Core Technology Officially Recognized in Korea</p><div class="ip-list"><div class="ip-item"><span class="ip-dot">•</span><div><h3>Patents & Technology Registrations</h3><p>We protect the core structures and technical ideas behind smart golf practice as intellectual property.</p></div></div><div class="ip-item"><span class="ip-dot">•</span><div><h3>Trademarks & Brand Assets</h3><p>We strengthen the identity and credibility of the GINOVO and GREEN TALK brands.</p></div></div><div class="ip-item"><span class="ip-dot">•</span><div><h3>Design Registrations</h3><p>We secure design assets that balance product usability and visual form.</p></div></div><div class="ip-item"><span class="ip-dot">•</span><div><h3>Awards & Corporate Certifications</h3><p>These demonstrate our growth potential and commercialization capabilities as a technology company.</p></div></div></div></div><div class="ip-visual" aria-hidden="true"></div></div>
+        <div class="certificate-featured" aria-label="Six featured certificates">
+          <a class="certificate-card" href="./assets/certificates/patent-smart-ball-trajectory.pdf" target="_blank" rel="noopener" aria-label="View the original patent for the Smart Golf Ball trajectory information system"><img src="./assets/certificates/patent-smart-ball-trajectory.png" alt="Patent for the Smart Golf Ball trajectory information system"></a>
+          <a class="certificate-card" href="./assets/certificates/patent-putting-support-system.pdf" target="_blank" rel="noopener" aria-label="View the original patent for the putting support system"><img src="./assets/certificates/patent-putting-support-system.png" alt="Patent for the putting support system"></a>
+          <a class="certificate-card" href="./assets/certificates/patent-smart-ball-shot-shape.pdf" target="_blank" rel="noopener" aria-label="View the original patent for the Smart Golf Ball shot-shape information system"><img src="./assets/certificates/patent-smart-ball-shot-shape.png" alt="Patent for the Smart Golf Ball shot-shape information system"></a>
+          <a class="certificate-card" href="./assets/certificates/design-putting-practice-mat.pdf" target="_blank" rel="noopener" aria-label="View the original putting-practice mat design registration"><img src="./assets/certificates/design-putting-practice-mat.png" alt="Putting-practice mat design registration"></a>
+          <a class="certificate-card" href="./assets/certificates/trademark-ginovo.pdf" target="_blank" rel="noopener" aria-label="View the original GINOVO trademark registration"><img src="./assets/certificates/trademark-ginovo.png" alt="GINOVO trademark registration"></a>
+          <a class="certificate-card" href="./assets/certificates/good-design-selection.pdf" target="_blank" rel="noopener" aria-label="View the original Good Design selection certificate"><img src="./assets/certificates/good-design-selection.png" alt="Good Design selection certificate"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact"><div class="container"><div class="heading center"><p class="eyebrow">Contact</p><h2 class="title">Visit Us</h2></div><div class="contact-grid"><article class="card contact-card"><span>HEAD OFFICE</span><h3>Room 404, 45 Jamiro 6beon-gil, Buk-gu, Gwangju, Republic of Korea</h3></article><article class="card contact-card"><span>FACTORY</span><h3>Sebang Industry, 236 Sonjae-ro, Gwangsan-gu, Gwangju, Republic of Korea</h3></article><article class="card contact-card"><span>CONTACT</span><h3>062-716-0995<br>green-talk@naver.com</h3></article></div><div class="map"><iframe src="https://www.google.com/maps?hl=en&amp;q=Sebang%20Industry%2C%20236%20Sonjae-ro%2C%20Gwangsan-gu%2C%20Gwangju%2C%20South%20Korea&amp;output=embed" loading="lazy" title="GREEN TALK location"></iframe></div></div></section>
+
+    <section class="cta"><div class="cta-copy"><p>Beyond Tech, Into Culture: The New Standard Powered by Data</p><h2>Beyond the Limits of Technology, We Build a New Golf Culture with Data.</h2></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-grid"><div><h4>Customer Center</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">9:00 AM – 5:00 PM</p><p class="footer-muted">Lunch 12:00 PM – 1:00 PM</p><p class="footer-muted">Closed weekends and public holidays</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>Business Information</h4><p>Head Office: Room 404, 45 Jamiro 6beon-gil, Buk-gu, Gwangju, Republic of Korea</p><p>Factory: Sebang Industry, 236 Sonjae-ro, Gwangsan-gu, Gwangju, Republic of Korea</p></div></div></footer>
+  <script src="./assets/home-content-config.js?v=20260910-1"></script>
+  <script>
+    Object.keys(window.HOME_CONTENT || {}).forEach(function(key){
+      document.querySelectorAll('[data-content-key="'+key+'"]').forEach(function(node){
+        var value=window.HOME_CONTENT[key];
+        if(node.tagName==='H2'){node.innerHTML=String(value).replace(/\n/g,'<br>');}
+        else{node.textContent=value;}
+      });
+    });
+    Object.keys(window.HOME_MEDIA || {}).forEach(function(key){
+      var source=window.HOME_MEDIA[key];
+      document.querySelectorAll('[data-media-slot="'+key+'"]').forEach(function(node){node.src=source;});
+      document.querySelectorAll('[data-background-slot="'+key+'"]').forEach(function(node){node.style.backgroundImage='url("'+source.replace(/"/g,'\\"')+'")';});
+    });
+    var unityContent=window.getHomeUnityContent ? window.getHomeUnityContent() : window.HOME_UNITY_DEFAULTS;
+    var unitySection=document.getElementById('unity-feature');
+    if(unitySection&&unityContent){
+      unitySection.style.backgroundImage='url("'+String(unityContent.background).replace(/"/g,'\\"')+'")';
+      var unityVisual=unitySection.querySelector('[data-unity-media="visual"]');
+      if(unityVisual) unityVisual.src=unityContent.visual;
+      unitySection.querySelectorAll('[data-unity-field]').forEach(function(node){node.textContent=unityContent[node.dataset.unityField]||'';});
+      var unityTitle=unitySection.querySelector('[data-unity-field="title"]');
+      if(unityTitle&&unityContent.title==='Golf Innovation Powered by a Unity-Based Physics Engine'){
+        unityTitle.innerHTML='<span class="unity-title-desktop">Golf Innovation Powered by a Unity-Based Physics Engine</span><span class="unity-title-mobile">Golf Innovation Powered by a<br>Unity-Based Physics Engine</span>';
+      }
+      unitySection.querySelectorAll('[data-unity-metric]').forEach(function(card){
+        var metric=unityContent.metrics[Number(card.dataset.unityMetric)]||{};
+        card.querySelector('strong').textContent=metric.label||'';
+        card.querySelector('small').textContent=metric.english?'('+metric.english+')':'';
+        var metricValueNode=card.querySelector('.unity-metric-value');
+        if(metricValueNode) metricValueNode.textContent=metric.value?String(metric.value).replace(/\s+/, '\n'):'';
+      });
+      if(window.getHomeUnityImage){
+        Promise.all([window.getHomeUnityImage('background'),window.getHomeUnityImage('visual')]).then(function(images){
+          if(images[0]) unitySection.style.backgroundImage='url("'+URL.createObjectURL(images[0])+'")';
+          if(images[1]&&unityVisual) unityVisual.src=URL.createObjectURL(images[1]);
+        }).catch(function(){});
+      }
+    }
+    var practiceContent=window.getHomePracticeContent ? window.getHomePracticeContent() : window.HOME_PRACTICE_DEFAULTS;
+    var practiceSection=document.getElementById('practice-four-points');
+    if(practiceSection&&practiceContent){
+      var practiceHeading=practiceSection.querySelector('[data-practice-heading]');
+      var practiceSubtitle=practiceSection.querySelector('[data-practice-subtitle]');
+      var practiceTitle=practiceSection.querySelector('[data-practice-title]');
+      if(practiceHeading) practiceHeading.textContent=practiceContent.heading||'';
+      if(practiceSubtitle) practiceSubtitle.textContent=practiceContent.subtitle||'';
+      if(practiceTitle) practiceTitle.textContent=practiceContent.title||'';
+      practiceSection.querySelectorAll('[data-practice-point]').forEach(function(card){
+        var point=practiceContent.points[Number(card.dataset.practicePoint)]||{};
+        card.querySelector('strong').textContent=point.label||'';
+        card.querySelector('span').textContent=point.body||'';
+      });
+      if(window.getHomePracticeImage){
+        Promise.all([window.getHomePracticeImage('panel'),window.getHomePracticeImage('card'),window.getHomePracticeImage('center')]).then(function(images){
+          var panel=practiceSection.querySelector('[data-practice-image="panel"]');
+          var center=practiceSection.querySelector('[data-practice-image="center"]');
+          if(images[0]&&panel) panel.src=URL.createObjectURL(images[0]);
+          if(images[1]) practiceSection.querySelectorAll('[data-practice-point]').forEach(function(card){card.style.backgroundImage='url("'+URL.createObjectURL(images[1])+'")';});
+          if(images[2]&&center) center.src=URL.createObjectURL(images[2]);
+        }).catch(function(){});
+      }
+    }
+    document.querySelectorAll('video[autoplay]').forEach(function(video){video.muted=true;video.loop=true;video.addEventListener('ended',function(){video.currentTime=0;video.play().catch(function(){});});video.play().catch(function(){});});
+    document.querySelectorAll('video[data-autoplay-on-view]').forEach(function(video){
+      video.muted=true;
+      video.loop=true;
+      if(!('IntersectionObserver' in window)){video.load();return;}
+      var videoObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){video.play().catch(function(){});}
+          else{video.pause();}
+        });
+      },{rootMargin:'300px 0px',threshold:.05});
+      videoObserver.observe(video);
+    });
+    var siteHeader=document.querySelector('.site-header');
+    var menuToggle=document.querySelector('[data-menu-toggle]');
+    var mainNavigation=document.getElementById('main-navigation');
+    var aboutMenu=document.querySelector('.about-menu');
+    var aboutToggle=document.querySelector('[data-about-toggle]');
+    var mobileHeaderQuery=window.matchMedia('(max-width:1000px)');
+    function setAboutMenu(open){
+      if(!aboutMenu||!aboutToggle) return;
+      aboutMenu.classList.toggle('is-about-open',open);
+      aboutToggle.setAttribute('aria-expanded',String(open));
+    }
+    function setMobileMenu(open){
+      if(!siteHeader||!menuToggle) return;
+      siteHeader.classList.toggle('is-menu-open',open);
+      menuToggle.setAttribute('aria-expanded',String(open));
+      menuToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+      if(!open) setAboutMenu(false);
+    }
+    if(siteHeader&&menuToggle&&mainNavigation){
+      menuToggle.addEventListener('click',function(){
+        setMobileMenu(menuToggle.getAttribute('aria-expanded')!=='true');
+      });
+      mainNavigation.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click',function(){setMobileMenu(false);});
+      });
+      document.addEventListener('click',function(event){
+        if(aboutMenu&&!aboutMenu.contains(event.target)) setAboutMenu(false);
+        if(mobileHeaderQuery.matches&&!siteHeader.contains(event.target)) setMobileMenu(false);
+      });
+      document.addEventListener('keydown',function(event){
+        if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){
+          setMobileMenu(false);
+          menuToggle.focus();
+        }
+      });
+      mobileHeaderQuery.addEventListener('change',function(){setMobileMenu(false);});
+    }
+    if(aboutMenu&&aboutToggle){
+      aboutToggle.addEventListener('click',function(){
+        setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
+      });
+    }
+    /* 섹션이 충분히 화면에 들어오면 내부 항목을 지정된 순서로 한 번만 재생한다. */
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var revealGroups=[];
+      var toArray=function(nodes){return Array.prototype.slice.call(nodes||[]);};
+      var pick=function(root,selector){return root ? toArray(root.querySelectorAll(selector)) : [];};
+      var addRevealGroup=function(root,items,step){
+        if(!root) return;
+        items=items.filter(function(item,index,list){return item&&list.indexOf(item)===index;});
+        items.forEach(function(item,index){
+          item.classList.add('reveal-card');
+          item.style.transitionDelay=(index*(step||120))+'ms';
+        });
+        root.__revealItems=items;
+        revealGroups.push(root);
+      };
+
+      var products=document.getElementById('products');
+      addRevealGroup(products,pick(products,'.home-eyebrow, h2, .home-body'),145);
+
+      var unity=document.getElementById('unity-feature');
+      addRevealGroup(unity,pick(unity,'.unity-heading h2, .unity-heading p, .unity-phone').concat(pick(unity,'.unity-metric')),125);
+
+      var practice=document.getElementById('practice-four-points');
+      var practicePoints=pick(practice,'.practice-point');
+      addRevealGroup(practice,pick(practice,'.practice-four-heading h2, .practice-four-heading p, .practice-four-title, .practice-four-center').concat([
+        practicePoints[1],practicePoints[3],practicePoints[0],practicePoints[2]
+      ]),125);
+
+      var putting=document.getElementById('putting');
+      addRevealGroup(putting,pick(putting,'.putting-grid .card'),150);
+
+      document.querySelectorAll('.video-only-section').forEach(function(section){addRevealGroup(section,pick(section,'.video-frame'),120);});
+
+      var about=document.getElementById('about');
+      addRevealGroup(about,pick(about,'.esg-image, .esg-layout .eyebrow, .esg-layout .title, .esg-layout .desc').concat(pick(about,'.esg-certs .cert')),105);
+
+      var exhibition=document.getElementById('exhibition');
+      addRevealGroup(exhibition,pick(exhibition,'.heading .title, .heading .exhibition-subtitle').concat(pick(exhibition,'.exhibit-grid .card')),125);
+
+      var news=document.getElementById('news');
+      addRevealGroup(news,pick(news,'.heading .eyebrow, .heading .title').concat(pick(news,'.news-grid .card')),115);
+
+      var certificates=document.getElementById('certificates');
+      addRevealGroup(certificates,pick(certificates,'.ip-layout .eyebrow, .ip-layout .title, .ip-layout .desc').concat(pick(certificates,'.ip-item'),pick(certificates,'.certificate-featured .certificate-card')),90);
+
+      var contact=document.getElementById('contact');
+      addRevealGroup(contact,pick(contact,'.heading .eyebrow, .heading .title').concat(pick(contact,'.contact-grid .card'),pick(contact,'.map')),125);
+
+      var cta=document.querySelector('.cta');
+      addRevealGroup(cta,pick(cta,'.cta-copy p, .cta-copy h2'),135);
+
+      var sectionObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          (entry.target.__revealItems||[]).forEach(function(item){item.classList.add('is-visible');});
+          sectionObserver.unobserve(entry.target);
+        });
+      },{threshold:.01,rootMargin:'0px 0px -50% 0px'});
+      revealGroups.forEach(function(section){sectionObserver.observe(section);});
+
+      var historyTimeline=document.querySelector('#history .history');
+      var historyRows=historyTimeline ? pick(historyTimeline,'.history-row') : [];
+      if(historyTimeline){
+        historyTimeline.classList.add('history-reveal-ready');
+        var historyLineObserver=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting) return;
+            historyTimeline.classList.add('is-visible');
+            historyLineObserver.disconnect();
+          });
+        },{threshold:.01,rootMargin:'0px 0px -50% 0px'});
+        historyLineObserver.observe(historyTimeline);
+        var historyRowObserver=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            historyRowObserver.unobserve(entry.target);
+          });
+        },{threshold:.18,rootMargin:'0px 0px -12% 0px'});
+        historyRows.forEach(function(row){historyRowObserver.observe(row);});
+      }
+    }
+  </script>
+  <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
+  <script src="./assets/smartball-media-config.js?v=20260903-13"></script>
+  <script src="./assets/common-cta.js?v=20260903-5"></script>
+  <script src="./assets/mobile-copy-balance.js?v=20260910-1"></script>
+  <script src="./assets/language-menu.js?v=20260910-4"></script>
+</body>
+</html>

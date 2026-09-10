@@ -1,0 +1,248 @@
+/* Smart Golf Ball responsive refinements: mobile, tablet, desktop and wide desktop. */
+html[lang="en"],
+html[lang="en"] body {
+  max-width:100%;
+  overflow-x:clip;
+}
+
+html[lang="en"] .smartball-page :where(h1,h2,h3,p,li) {
+  overflow-wrap:break-word;
+}
+
+/* Tablet: replace scaled desktop coordinates with a deliberate content flow. */
+@media (min-width:701px) and (max-width:1100px) {
+  html[lang="en"] {
+    --tablet-container:min(calc(100% - 64px),920px);
+  }
+
+  html[lang="en"] .design-section {
+    padding-inline:32px;
+  }
+
+  html[lang="en"] .section-shell {
+    width:var(--tablet-container);
+    max-width:920px;
+  }
+
+  html[lang="en"] .section-heading,
+  html[lang="en"] .system-intro .accent,
+  html[lang="en"] .system-copy h3,
+  html[lang="en"] .field-kicker {
+    font-size:clamp(34px,5vw,48px)!important;
+  }
+
+  html[lang="en"] .anatomy-stage {
+    width:var(--tablet-container);
+    min-height:720px;
+    aspect-ratio:auto;
+    overflow:hidden;
+  }
+
+  html[lang="en"] .anatomy-heading {
+    top:5%;
+    left:5%;
+    right:5%;
+  }
+
+  html[lang="en"] .anatomy-title {
+    font-size:clamp(34px,5vw,46px)!important;
+  }
+
+  html[lang="en"] .anatomy-subtitle {
+    max-width:40rem;
+    margin-inline:auto;
+    font-size:clamp(16px,2.25vw,20px);
+  }
+
+  html[lang="en"] .anatomy-visual {
+    inset:0;
+    transform:translateY(4%);
+  }
+
+  html[lang="en"] .anatomy-copy h3 {
+    font-size:clamp(16px,2.2vw,21px);
+  }
+
+  html[lang="en"] .anatomy-copy p {
+    margin-top:6px;
+    font-size:clamp(13px,1.7vw,16px);
+    line-height:1.45;
+  }
+
+  html[lang="en"] .anatomy-layer { top:34%; left:12%; width:34%; }
+  html[lang="en"] .anatomy-elastomer { top:27%; left:55%; width:38%; }
+  html[lang="en"] .anatomy-shell { top:80%; left:43%; }
+  html[lang="en"] .anatomy-cover { top:86%; left:11%; width:35%; }
+
+  html[lang="en"] .system-section {
+    min-height:0;
+    padding-block:clamp(76px,9vw,104px);
+    background-size:cover;
+  }
+
+  html[lang="en"] .system-stage {
+    min-height:0;
+    aspect-ratio:auto;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(34px,5vw,58px);
+    align-items:center;
+  }
+
+  html[lang="en"] .system-intro,
+  html[lang="en"] .system-card,
+  html[lang="en"] .system-copy,
+  html[lang="en"] .system-charger-visual {
+    position:relative;
+    inset:auto;
+    width:100%;
+    transform:none;
+  }
+
+  html[lang="en"] .system-intro {
+    grid-column:1/-1;
+    grid-row:1;
+    text-align:center;
+  }
+
+  html[lang="en"] .system-intro .system-subtitle,
+  html[lang="en"] .system-intro .system-description {
+    max-width:44rem;
+    margin-inline:auto;
+  }
+
+  html[lang="en"] .system-card.primary {
+    grid-column:1/-1;
+    grid-row:2;
+    width:min(82%,760px);
+    height:auto;
+    aspect-ratio:4716/3536;
+    margin-inline:auto;
+  }
+
+  html[lang="en"] .system-card.primary img {
+    object-fit:contain;
+  }
+
+  html[lang="en"] .system-copy {
+    grid-column:1;
+    grid-row:3;
+    text-align:left;
+  }
+
+  html[lang="en"] .system-copy>p {
+    white-space:normal;
+    font-size:clamp(20px,2.8vw,27px);
+  }
+
+  html[lang="en"] .system-notes {
+    width:auto;
+    font-size:clamp(15px,2vw,19px);
+  }
+
+  html[lang="en"] .system-charger-visual {
+    grid-column:2;
+    grid-row:3;
+    aspect-ratio:3416/3032;
+  }
+
+  html[lang="en"] .practice-grid {
+    grid-template-columns:1fr;
+    width:min(100%,820px);
+    margin-inline:auto;
+  }
+
+  html[lang="en"] .distance-section,
+  html[lang="en"] .slope-section {
+    min-height:0;
+  }
+}
+
+/* Mobile: keep every section in a readable single-column flow. */
+@media (max-width:700px) {
+  html[lang="en"] .smartball-hero {
+    min-height:100svh;
+  }
+
+  html[lang="en"] .smartball-hero-copy {
+    width:calc(100% - 40px);
+    margin-bottom:clamp(44px,12vw,72px);
+  }
+
+  html[lang="en"] .smartball-hero-copy h1 {
+    max-width:10ch;
+    font-size:clamp(42px,13vw,56px);
+    line-height:1.04;
+  }
+
+  html[lang="en"] .composed-section,
+  html[lang="en"] .anatomy-section {
+    padding-block:clamp(64px,18vw,88px);
+  }
+
+  html[lang="en"] .system-card.primary {
+    width:100%;
+    max-width:520px;
+    aspect-ratio:4716/3536;
+  }
+
+  html[lang="en"] .system-card.primary img {
+    object-fit:contain;
+  }
+
+  html[lang="en"] .system-intro,
+  html[lang="en"] .system-copy {
+    text-align:left;
+  }
+
+  html[lang="en"] .system-intro .system-subtitle,
+  html[lang="en"] .system-intro .system-description,
+  html[lang="en"] .system-copy>p,
+  html[lang="en"] .system-notes {
+    text-align:left;
+  }
+
+  html[lang="en"] .system-notes {
+    list-style:disc;
+    list-style-position:outside;
+    padding-left:1.25rem;
+  }
+
+  html[lang="en"] .practice-card {
+    max-height:none;
+  }
+
+  html[lang="en"] .section-heading,
+  html[lang="en"] .section-lead,
+  html[lang="en"] .section-points {
+    max-width:100%;
+  }
+
+  html[lang="en"] .cta-copy {
+    padding-inline:4px;
+  }
+}
+
+/* Wide desktop: preserve the approved PC composition without excessive stretching. */
+@media (min-width:1600px) {
+  html[lang="en"] .smartball-hero-copy,
+  html[lang="en"] .section-shell,
+  html[lang="en"] .cta-copy {
+    max-width:1660px;
+  }
+
+  html[lang="en"] .design-section {
+    max-width:1920px;
+    margin-inline:auto;
+  }
+}
+
+@media (min-width:2200px) {
+  html[lang="en"] body {
+    background:#070c17;
+  }
+
+  html[lang="en"] .site-header {
+    max-width:1180px;
+  }
+}

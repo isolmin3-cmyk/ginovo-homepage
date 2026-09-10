@@ -1,0 +1,222 @@
+:root {
+  --ginovo-content-max: 1600px;
+  --ginovo-page-gutter: clamp(18px, 5vw, 96px);
+  --ginovo-container-width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max));
+  --ginovo-section-title-size: clamp(32px, calc(23px + 1.65vw), 54px);
+  --ginovo-lead-size: clamp(18px, calc(15px + .45vw), 22px);
+  --ginovo-body-size: clamp(16px, calc(14px + .3vw), 18px);
+  --ginovo-focus-ring: #31e6df;
+  --ginovo-motion-fast: 180ms;
+  --ginovo-motion-standard: 320ms;
+}
+
+html {
+  scroll-padding-top: 120px;
+}
+
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+[tabindex]:not([tabindex="-1"]) {
+  -webkit-tap-highlight-color: rgba(49, 230, 223, 0.18);
+}
+
+:where(a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid var(--ginovo-focus-ring) !important;
+  outline-offset: 4px !important;
+  border-radius: 8px;
+}
+
+.site-header :where(a, button) {
+  transition: color var(--ginovo-motion-fast) ease,
+              background-color var(--ginovo-motion-fast) ease,
+              border-color var(--ginovo-motion-fast) ease,
+              transform var(--ginovo-motion-fast) ease;
+}
+
+.site-header :where(a, button):active {
+  transform: scale(0.97);
+}
+
+/* 히어로·CTA·카드 제목을 제외한 페이지 대표 제목 규격 */
+.home-feature h2,
+.unity-heading h2,
+.practice-four-heading h2,
+.section .heading > .title,
+#about .title,
+#certificates .ip-layout > div:first-child > .title,
+.max-w-6xl > .mb-16 > h1,
+.anatomy-title,
+.section-heading,
+.system-intro .accent,
+.system-copy > h3,
+.field-kicker,
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) h2:not([style*="border-radius"]) {
+  font-size: var(--ginovo-section-title-size) !important;
+  line-height: 1.2 !important;
+}
+
+/* ESG 대표 제목은 Unity 대표 제목과 동일한 자간을 사용합니다. */
+#about .title {
+  letter-spacing: normal !important;
+}
+
+/* 공통 콘텐츠 기준선: 히어로·영상 배경은 풀블리드로 유지합니다. */
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+main > section[data-screen-label]:not([data-screen-label="히어로"]):not(.ginovo-common-cta) > div:first-child,
+.pm-review-inner,
+.anatomy-stage,
+.section-shell,
+.smartball-hero-copy,
+.ginovo-common-cta-content,
+.ginovo-footer-container,
+.cta-copy,
+.footer-grid,
+main > section.px-6 > .max-w-6xl {
+  width: var(--ginovo-container-width) !important;
+  max-width: var(--ginovo-content-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.pm-review-section,
+main > section.px-6,
+.design-section,
+.site-footer,
+.ginovo-common-cta,
+.ginovo-footer {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 모든 페이지의 마무리 CTA 문구를 화면 너비에 맞춰 동일하게 축소·줄바꿈합니다. */
+.cta-copy,
+.ginovo-common-cta-content {
+  box-sizing: border-box;
+  padding-inline: clamp(4px, 1.4vw, 22px) !important;
+}
+
+.cta h2,
+.ginovo-common-cta-content h2 {
+  max-width: 1120px;
+  margin-inline: auto !important;
+  font-size: clamp(26px, 3vw, 41px) !important;
+  line-height: 1.38 !important;
+  letter-spacing: -0.025em !important;
+  white-space: normal !important;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.cta p,
+.ginovo-common-cta-content p {
+  max-width: 920px;
+  margin-inline: auto !important;
+  margin-bottom: clamp(16px, 2vw, 26px) !important;
+  font-size: clamp(15px, 1.55vw, 21px) !important;
+  line-height: 1.55 !important;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+/* 두 가지 푸터 마크업 모두 같은 유동형 타이포그래피를 사용합니다. */
+.site-footer h4,
+.ginovo-footer h4 {
+  font-size: clamp(14px, 1.1vw, 18px) !important;
+}
+
+.footer-phone,
+.footer-email,
+.ginovo-footer-phone {
+  font-size: clamp(20px, 1.55vw, 26px) !important;
+}
+
+.footer-muted,
+.business p,
+.ginovo-footer-muted,
+.ginovo-footer-links a {
+  font-size: clamp(13px, 1vw, 17px) !important;
+}
+
+.ginovo-footer-info,
+.ginovo-footer-bottom p {
+  font-size: clamp(12px, .9vw, 15px) !important;
+}
+
+/* 모든 공개 페이지의 마무리 CTA는 같은 편집 가능 배경을 공유합니다. */
+.cta,
+.ginovo-common-cta {
+  min-height: clamp(360px, 27.0833vw, 520px) !important;
+  background: #070c17 url("./smartball-cta-bg-v2.jpg") center / cover no-repeat !important;
+}
+
+.ginovo-common-cta-bg {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --ginovo-page-gutter: 20px;
+    --ginovo-section-title-size: clamp(28px, 8vw, 34px);
+  }
+
+  .cta h2,
+  .ginovo-common-cta-content h2 {
+    font-size: clamp(24px, 6.2vw, 26px) !important;
+    line-height: 1.42 !important;
+  }
+
+  .cta p,
+  .ginovo-common-cta-content p {
+    font-size: clamp(14px, 3.8vw, 15px) !important;
+  }
+
+  .site-header .main-nav a,
+  .site-header .about-trigger,
+  .site-header .language-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-header .main-nav a,
+  .site-header .about-trigger {
+    padding-inline: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.language:not(.is-open) .language-menu { display:none!important; }
+.language.is-open .language-menu { display:grid!important; }
+
+.site-header .language-menu {
+  top: 100%;
+}
+
+.ginovo-lang:not(.is-open) .ginovo-dropdown-wrap { opacity:0!important; visibility:hidden!important; }
+.ginovo-lang.is-open .ginovo-dropdown-wrap { opacity:1!important; visibility:visible!important; }
