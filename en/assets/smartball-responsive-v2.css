@@ -285,6 +285,7 @@ html[lang="en"] .smartball-page :where(h1, h2, h3, p, li) {
 @media (min-width: 1001px) {
   html[lang="en"] .field-panel {
     top: 28.7%;
+    height: 62%;
   }
 }
 
@@ -378,5 +379,59 @@ html[lang="en"] .battle-section {
     height: auto !important;
     margin: 0 !important;
     object-fit: contain !important;
+  }
+
+  /* 고해상도 한국어 합성 화면 위에 영문 문구만 교체해 배경 손상을 막습니다. */
+  html[lang="en"] .battle-copy-mask {
+    position: absolute;
+    z-index: 5;
+    top: 5.1%;
+    left: 13%;
+    right: 13%;
+    height: 15.5%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(7, 12, 23, .98);
+    box-shadow: 0 0 24px 20px rgba(7, 12, 23, .98);
+  }
+
+  html[lang="en"] .battle-copy-mask .section-heading {
+    margin: 0;
+    font-size: clamp(28px, 2.55vw, 49px) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap;
+  }
+
+  html[lang="en"] .battle-copy-mask .section-lead {
+    margin: clamp(10px, 1vw, 19px) 0 0;
+    font-size: clamp(15px, 1.25vw, 24px) !important;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  html[lang="en"] .battle-canvas::after {
+    content: "Competition-Ready Practice Through Putting Matches";
+    position: absolute;
+    z-index: 5;
+    top: 23.25%;
+    left: 16.45%;
+    width: 67.1%;
+    height: 8.1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, .6);
+    border-radius: clamp(12px, 1.2vw, 23px);
+    background: rgba(24, 24, 24, .98);
+    color: #31e6df;
+    font-family: Inter, Arial, sans-serif;
+    font-size: clamp(20px, 1.75vw, 34px);
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
   }
 }
