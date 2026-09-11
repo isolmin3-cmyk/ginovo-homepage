@@ -279,75 +279,6 @@ html[lang="en"] .smartball-page :where(h1, h2, h3, p, li) {
 
 
 /* ==============================
-   6섹션: 패널 위치
-   ============================== */
-
-@media (min-width: 1001px) {
-  html[lang="en"] .field-panel {
-    top: 28.7%;
-    height: 62%;
-  }
-}
-
-
-/* ==============================
-   6섹션: 내부 박스 상하 여백 통일
-   ============================== */
-
-@media (min-width: 701px) {
-  html[lang="en"] .field-feature {
-    box-sizing: border-box;
-    min-height: clamp(62px, 6.45vw, 124px);
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    align-items: center !important;
-    align-content: center !important;
-  }
-
-  html[lang="en"] .field-feature > img {
-    align-self: center !important;
-  }
-
-  html[lang="en"] .field-feature > div {
-    align-self: center !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  html[lang="en"] .field-feature h3,
-  html[lang="en"] .field-feature p {
-    margin-bottom: 0;
-    transform: none !important;
-  }
-
-  html[lang="en"] .field-feature p {
-    margin-top: 6px !important;
-  }
-
-  html[lang="en"] .field-badge {
-    box-sizing: border-box;
-    min-height: clamp(58px, 5vw, 96px);
-    padding: 0 16px !important;
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center !important;
-    gap: 4px !important;
-  }
-
-  html[lang="en"] .field-badge strong,
-  html[lang="en"] .field-badge span {
-    width: 100%;
-    margin: 0 !important;
-    line-height: 1.25;
-    text-align: center;
-    transform: none !important;
-  }
-}
-
-
-/* ==============================
    7섹션: 한국어 페이지 배경 적용
    ============================== */
 
@@ -385,17 +316,17 @@ html[lang="en"] .battle-section {
   html[lang="en"] .battle-copy-mask {
     position: absolute;
     z-index: 5;
-    top: 5.1%;
+    top: 3.8%;
     left: 13%;
     right: 13%;
-    height: 15.5%;
+    height: 18.5%;
     display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: rgba(7, 12, 23, .98);
-    box-shadow: 0 0 24px 20px rgba(7, 12, 23, .98);
+    background: linear-gradient(180deg, #070c17 0%, #080d18 72%, rgba(8, 13, 24, .98) 100%);
+    box-shadow: 0 0 18px 14px rgba(7, 12, 23, .98);
   }
 
   html[lang="en"] .battle-copy-mask .section-heading {
@@ -416,10 +347,10 @@ html[lang="en"] .battle-section {
     content: "Competition-Ready Practice Through Putting Matches";
     position: absolute;
     z-index: 5;
-    top: 23.25%;
+    top: 21.35%;
     left: 16.45%;
     width: 67.1%;
-    height: 8.1%;
+    height: 12.1%;
     display: flex;
     align-items: center;
     justify-content: center;
