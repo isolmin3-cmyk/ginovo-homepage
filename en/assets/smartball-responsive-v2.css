@@ -365,8 +365,8 @@ html[lang="en"] .battle-section {
   }
 
   html[lang="en"] .battle-canvas {
-    width: 100% !important;
-    max-width: 1920px !important;
+    width: min(calc((100% - (var(--ginovo-page-gutter) * 2)) * 1.136364), 1818.182px) !important;
+    max-width: none !important;
     margin-inline: auto !important;
     overflow: hidden;
   }
