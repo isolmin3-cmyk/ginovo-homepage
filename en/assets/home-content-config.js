@@ -16,7 +16,7 @@ window.HOME_MEDIA = {
   section3Background: './assets/home/section-3-background.jpg',
   section3Visual: './assets/home/section-3-visual.png',
   section4Background: './assets/home/section-4-background.jpg',
-  section4Image1: './assets/putting-slope-en.png',
+  section4Image1: './assets/putting-slope-en-v2.png',
   section4Image2: './assets/home/putting-course.jpg.png',
   section4Image3: './assets/home/putting-kit.jpg.png?v=20260828-2',
   esgImage: './assets/home/esg-visual.png',

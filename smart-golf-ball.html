@@ -74,6 +74,14 @@
     .anatomy-section.anatomy-motion-ready .anatomy-image-frame>img{opacity:0;transform:translateY(20px) scale(.975);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
     .anatomy-section.anatomy-motion-ready.is-visible .anatomy-image-frame>img{opacity:1;transform:none}
     @media(max-width:700px){.design-section>img.field-background{object-position:68% center}.field-section::before{background:linear-gradient(180deg,rgba(7,12,23,.72),rgba(7,12,23,.24))}.field-feature{grid-template-columns:36px minmax(0,1fr);gap:14px}.field-badge{min-height:92px}}
+    .battle-ranking-update{position:absolute;z-index:4;left:36.8%;top:34.8%;width:46%;height:52%;padding:0;background:#141a14;font-family:Pretendard,"Noto Sans KR",Arial,sans-serif}
+    .battle-ranking-update-table{width:100%;height:100%;display:grid;grid-template-columns:.72fr 2.05fr .82fr;grid-template-rows:.82fr repeat(4,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.58);border-radius:clamp(6px,.9vw,16px)}
+    .battle-ranking-update-table>*{min-width:0;display:grid;place-items:center;margin:0;padding:0;border-left:1px solid rgba(255,255,255,.42);border-top:1px solid rgba(255,255,255,.34);color:#fff;font-size:clamp(13px,1.34vw,26px);font-style:normal;text-align:center}
+    .battle-ranking-update-table>:nth-child(-n+3){border-top:0;color:var(--cyan);font-weight:700;background:rgba(255,255,255,.025)}
+    .battle-ranking-update-table>:nth-child(3n+1){border-left:0}
+    .battle-ranking-update-table b{font-weight:700}
+    .battle-ranking-update-table em{color:var(--cyan);font-weight:700}
+    @media(max-width:700px){.battle-ranking-update{display:none}.battle-mobile-row{grid-template-columns:.7fr 1.7fr .9fr}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
   <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260908-10">
@@ -118,7 +126,7 @@
           <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-weight"><img alt="무게 게이지 이미지"></div><p class="spec-value" data-smartball-content="specWeight">무게 : 45.93g</p></article>
           <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-size"><img alt="외경 사이즈 게이지 이미지"></div><p class="spec-value" data-smartball-content="specSize">외경 사이즈 : 42.67mm</p></article>
           <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-rebound"><img alt="반발력 게이지 이미지"></div><p class="spec-value" data-smartball-content="specRebound">반발력 : 72.1</p></article>
-          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-eccentricity"><img alt="편심도 게이지 이미지"></div><p class="spec-value" data-smartball-content="specEccentricity">편심도 : 0.01mm</p></article>
+          <article class="spec-card"><div class="cms-slot spec-card-media" data-media-slot="spec-eccentricity"><img alt="편심도 게이지 이미지"></div><p class="spec-value" data-smartball-content="specEccentricity">편심도 : 0.1mm</p></article>
         </div>
       </div>
     </section>
@@ -198,6 +206,15 @@
         <div class="battle-copy-mask"><h2 class="section-heading" data-smartball-content="battleTitle">온·오프라인 대결 모드를 통한 실전 연습</h2><p class="section-lead" data-smartball-content="battleSubtitle">지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결</p></div>
         <div class="battle-face player-a"><img data-media-image="battle-player-a" alt="Player A 얼굴"></div>
         <div class="battle-face player-b"><img data-media-image="battle-player-b" alt="Player B 얼굴"></div>
+        <div class="battle-ranking-update" aria-label="수정된 퍼팅 대결 순위표">
+          <div class="battle-ranking-update-table">
+            <strong>Rank</strong><strong>Player</strong><strong>Score</strong>
+            <span>1</span><b>Player A</b><em>+1</em>
+            <span>2</span><b>Player B</b><em>0</em>
+            <span>3</span><b>Player C</b><em>-1</em>
+            <span>4</span><b>Player D</b><em>-1</em>
+          </div>
+        </div>
       </div>
       <div class="battle-mobile" aria-label="퍼팅 대결 순위">
         <div class="battle-mobile-copy"><h2 data-smartball-content="battleTitle">온·오프라인 대결 모드를 통한 실전 연습</h2><p data-smartball-content="battleSubtitle">지노버 스마트 골프공 하나로 가족, 친구들과 퍼팅 대결 및 온라인 퍼팅 대결</p></div>
@@ -209,12 +226,11 @@
             <article><img data-media-image="battle-player-b" alt="Player B"><strong>Player B</strong><span>SCORE : 7/10</span><span>CURRENT : 3m PUTT</span></article>
           </div>
           <div class="battle-mobile-ranking" role="table" aria-label="플레이어 순위">
-            <div class="battle-mobile-row battle-mobile-head" role="row"><span role="columnheader">Rank</span><span role="columnheader">Player</span><span role="columnheader">Score</span><span role="columnheader">Difference</span></div>
-            <div class="battle-mobile-row" role="row"><span role="cell">1</span><strong role="cell">Player A</strong><em role="cell">8</em><span role="cell">(+1)</span></div>
-            <div class="battle-mobile-row" role="row"><span role="cell">2</span><strong role="cell">Player B</strong><em role="cell">7</em><span role="cell">(E)</span></div>
-            <div class="battle-mobile-row" role="row"><span role="cell">3</span><strong role="cell">Player C</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
-            <div class="battle-mobile-row" role="row"><span role="cell">4</span><strong role="cell">Player D</strong><em role="cell">6</em><span role="cell">(-1)</span></div>
-            <div class="battle-mobile-row" role="row"><span role="cell">5</span><strong role="cell">Player E</strong><em role="cell">5</em><span role="cell">(-2)</span></div>
+            <div class="battle-mobile-row battle-mobile-head" role="row"><span role="columnheader">Rank</span><span role="columnheader">Player</span><span role="columnheader">Score</span></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">1</span><strong role="cell">Player A</strong><em role="cell">+1</em></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">2</span><strong role="cell">Player B</strong><em role="cell">0</em></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">3</span><strong role="cell">Player C</strong><em role="cell">-1</em></div>
+            <div class="battle-mobile-row" role="row"><span role="cell">4</span><strong role="cell">Player D</strong><em role="cell">-1</em></div>
           </div>
         </div>
       </div>
@@ -223,7 +239,7 @@
 
   <section class="cta" id="smartball-cta" data-editable-section="smartball-cta"><img class="cta-background" data-media-image="cta-background" alt="골프공을 티에 올리는 골퍼"><div class="cta-copy"><p data-smartball-content="ctaEyebrow">Beyond Tech, Into Culture: The New Standard Powered by Data</p><h2 data-smartball-content="ctaTitle">데이터로 기술의 한계를 넘어 새로운 골프 문화를 만듭니다.</h2></div></section>
   <footer class="site-footer"><div class="footer-grid"><div><h4>고객센터</h4><p class="footer-phone">062-716-0995</p><p class="footer-muted">오전 9:00 ~ 오후 5:00</p><p class="footer-muted">점심시간 12:00 ~ 13:00</p><p class="footer-muted">주말 및 공휴일 휴무</p></div><div><h4>E-mail</h4><a class="footer-email" href="mailto:green-talk@naver.com">green-talk@naver.com</a></div><div class="business"><h4>사업자 정보</h4><p>본사 : 전남광주통합특별시 북구 자미로6번길 45, 404호</p><p>공장 : 전남광주통합특별시 광산구 손재로 236, 세방산업</p></div></div></footer>
-  <script src="./assets/smartball-content-config.js?v=20260903-12"></script>
+  <script src="./assets/smartball-content-config.js?v=20260912-1"></script>
   <script src="./assets/smartball-media-config.js?v=20260904-15"></script>
   <script>
     (function () {
