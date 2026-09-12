@@ -3,8 +3,8 @@
  * Save uploaded image URLs by slot ID to publish them on the public page.
  * Empty values retain the current composed design assets.
  */
-window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media';
-window.SMARTBALL_MEDIA_SCHEMA_KEY = 'ginovo-smartball-media-schema';
+window.SMARTBALL_MEDIA_STORAGE_KEY = 'ginovo-smartball-media-en';
+window.SMARTBALL_MEDIA_SCHEMA_KEY = 'ginovo-smartball-media-schema-en';
 window.SMARTBALL_MEDIA_SCHEMA_VERSION = '20260910-system-localized-v6';
 window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-distance-media-schema';
 window.SMARTBALL_DISTANCE_MEDIA_SCHEMA_VERSION = '20260910-distance-en-v1';
@@ -12,8 +12,8 @@ window.SMARTBALL_SLOPE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-slope-media-schema';
 window.SMARTBALL_SLOPE_MEDIA_SCHEMA_VERSION = '20260910-slope-en-v1';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_KEY = 'ginovo-smartball-field-media-schema';
 window.SMARTBALL_FIELD_MEDIA_SCHEMA_VERSION = '20260904-field-v6';
-window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema';
-window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260911-battle-en-v2';
+window.SMARTBALL_BATTLE_MEDIA_SCHEMA_KEY = 'ginovo-smartball-battle-media-schema-en';
+window.SMARTBALL_BATTLE_MEDIA_SCHEMA_VERSION = '20260912-battle-en-v3';
 window.SMARTBALL_CTA_MEDIA_SCHEMA_KEY = 'ginovo-smartball-cta-media-schema';
 window.SMARTBALL_CTA_MEDIA_SCHEMA_VERSION = '20260903-cta-v1';
 window.SMARTBALL_MEDIA_DEFAULTS = {

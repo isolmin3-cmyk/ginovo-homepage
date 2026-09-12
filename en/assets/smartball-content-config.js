@@ -2,9 +2,9 @@
  * Smart Golf Ball page copy-management entry point.
  * A future admin page can update these values without editing image assets.
  */
-window.SMARTBALL_CONTENT_STORAGE_KEY = 'ginovo-smartball-content';
-window.SMARTBALL_CONTENT_SCHEMA_KEY = 'ginovo-smartball-content-schema';
-window.SMARTBALL_CONTENT_SCHEMA_VERSION = '20260910-en-v7';
+window.SMARTBALL_CONTENT_STORAGE_KEY = 'ginovo-smartball-content-en';
+window.SMARTBALL_CONTENT_SCHEMA_KEY = 'ginovo-smartball-content-schema-en';
+window.SMARTBALL_CONTENT_SCHEMA_VERSION = '20260912-en-v9';
 window.SMARTBALL_CONTENT_DEFAULTS = {
   anatomyTitle: 'A Simulator Built Inside\nA Smart Golf Ball',
   anatomySubtitle: 'A Smart Golf Ball Engineered to Feel and Perform Like a Standard Golf Ball',
