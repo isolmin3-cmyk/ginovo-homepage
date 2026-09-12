@@ -59,7 +59,8 @@ try {
     savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
     smartballContentMigrated = true;
   }
-  if (savedSmartballContent.specEccentricity === '편심도 : 0.095%' || savedSmartballContent.specEccentricity === '편심도 : 0.1%' || savedSmartballContent.specEccentricity === '편심도 : 0.01mm') {
+  // 확정된 제품 사양은 이전 관리자 저장값보다 우선합니다.
+  if (savedSmartballContent.specEccentricity !== window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity) {
     savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
     smartballContentMigrated = true;
   }
