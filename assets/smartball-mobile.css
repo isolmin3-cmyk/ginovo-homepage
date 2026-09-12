@@ -802,6 +802,10 @@
     line-height: 1.45;
   }
 
+  .battle-mobile-players article strong + span {
+    padding-top: 6px;
+  }
+
   .battle-mobile-players article span:last-child {
     padding-bottom: 8px;
   }
