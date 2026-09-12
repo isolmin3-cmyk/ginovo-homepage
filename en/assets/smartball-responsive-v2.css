@@ -347,15 +347,15 @@ html[lang="en"] .battle-section {
     content: "Competition-Ready Practice Through Putting Matches";
     position: absolute;
     z-index: 5;
-    top: 26.3%;
+    top: calc(26.3% - 3px);
     left: 16.45%;
     width: 67.1%;
-    height: 7.2%;
+    height: calc(7.2% + 3px);
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, .6);
+    border: 0;
     border-radius: clamp(8px, .95vw, 18px);
     background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("../../assets/smartball-section-07-bg-v2.png") 50% 28.34%/149.031% 1388.889% no-repeat;
     color: #31e6df;
