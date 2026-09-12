@@ -357,7 +357,7 @@ html[lang="en"] .battle-section {
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, .72);
     border-radius: clamp(8px, .95vw, 18px);
-    background: linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url("../../assets/smartball-section-07-bg-v2.png") 50% 28.34%/149.031% 1388.889% no-repeat;
+    background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("../../assets/smartball-section-07-bg-v2.png") 50% 28.34%/149.031% 1388.889% no-repeat;
     color: #31e6df;
     font-family: Inter, Arial, sans-serif;
     font-size: clamp(20px, 1.75vw, 34px);
