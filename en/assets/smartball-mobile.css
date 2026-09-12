@@ -820,7 +820,7 @@
 
   .battle-mobile-row {
     display: grid;
-    grid-template-columns: .65fr 1.45fr .8fr 1.1fr;
+    grid-template-columns: .7fr 1.7fr .9fr;
     min-height: 42px;
     align-items: stretch;
     border-top: 1px solid rgba(255, 255, 255, .2);
