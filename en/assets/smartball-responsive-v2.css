@@ -349,7 +349,8 @@ html[lang="en"] .battle-section {
     z-index: 5;
     top: calc(26.3% - 3px);
     left: 16.45%;
-    width: 67.1%;
+    right: 16.45%;
+    width: auto;
     height: calc(7.2% + 3px);
     display: flex;
     align-items: center;
@@ -364,5 +365,6 @@ html[lang="en"] .battle-section {
     font-weight: 700;
     line-height: 1.15;
     text-align: center;
+    padding-inline: clamp(24px, 3vw, 58px);
   }
 }
