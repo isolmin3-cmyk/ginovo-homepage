@@ -20,7 +20,7 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   specWeight: 'Weight: 45.93g',
   specSize: 'Diameter: 42.67mm',
   specRebound: 'Rebound: 72.1',
-  specEccentricity: 'Eccentricity: 0.01mm',
+  specEccentricity: 'Eccentricity: 0.1mm',
   systemTitle: 'GINOVO Putting System',
   systemSubtitle: 'A Complete Smart-Golf System\nBuilt for Focused Putting Practice',
   systemDescription: 'Includes a Smart Golf Ball, wireless charger,\nputting mat, reflector and mobile stand.',
@@ -66,7 +66,7 @@ try {
     savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
     smartballContentMigrated = true;
   }
-  if (savedSmartballContent.specEccentricity === 'Eccentricity: 0.095%' || savedSmartballContent.specEccentricity === 'Eccentricity: 0.1%') {
+  if (savedSmartballContent.specEccentricity === 'Eccentricity: 0.095%' || savedSmartballContent.specEccentricity === 'Eccentricity: 0.1%' || savedSmartballContent.specEccentricity === 'Eccentricity: 0.01mm') {
     savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
     smartballContentMigrated = true;
   }
