@@ -214,6 +214,7 @@
     <section class="design-section battle-section" data-editable-section="battle-practice">
       <div class="battle-canvas">
         <img class="battle-composite" data-media-image="battle-composite" alt="Competitive Practice Through Online & Offline Match Modes">
+        <img class="battle-content-panel" src="../assets/battle-content-panel.png" alt="" aria-hidden="true">
         <div class="battle-copy-mask"><h2 class="section-heading" data-smartball-content="battleTitle">Competitive Practice Through Online & Offline Match Modes</h2><p class="section-lead" data-smartball-content="battleSubtitle">Use one GINOVO Smart Golf Ball for putting matches with family and friends or online opponents.</p></div>
         <h3 class="battle-panel-copy" data-smartball-content="battlePanelTitle">Competition-Ready Practice Through Putting Matches</h3>
         <div class="battle-face player-a"><img data-media-image="battle-player-a" alt="Player A portrait"></div>
@@ -384,11 +385,21 @@
   <script src="./assets/language-menu.js?v=20260910-4"></script>
   <link rel="stylesheet" href="../assets/inline-editor.css?v=20260914-7">
   <style>
-    /* English battle section: use the supplied title plate with 20px top corners. */
+    /* English battle section: supplied translucent content panel and title plate. */
     @media (min-width:701px) {
-      .battle-panel-copy {
-        border-radius:20px 20px 0 0 !important;
+      .battle-content-panel {
+        position:absolute;
+        z-index:1;
+        top:21.76%;
+        left:5.87%;
+        width:87.66%;
+        height:auto;
+        max-width:none;
+        pointer-events:none;
       }
+    }
+    @media (max-width:700px) {
+      .battle-content-panel { display:none; }
     }
   </style>
   <script src="../assets/inline-editor.js?v=20260914-7"></script>
