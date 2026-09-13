@@ -5,3 +5,56 @@
 .unity-phone-editor{position:absolute!important;z-index:6;left:50%;top:42.2%;width:24%;aspect-ratio:1/1;transform:translateX(-50%);overflow:hidden;border-radius:20px}.unity-phone-editor .unity-phone{position:static!important;width:100%!important;height:100%!important;max-width:none!important;transform:none!important;object-fit:cover!important;object-position:center!important;filter:none!important;pointer-events:auto!important;border-radius:20px}.unity-stage>.unity-metric:nth-of-type(7){left:auto!important;right:8%!important;top:79%!important}.battle-player-copy{position:absolute;z-index:5;left:16.45%;width:15.45%;height:9.35%;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border-radius:0 0 18px 18px;background:transparent;color:#fff;text-align:center;text-shadow:0 2px 5px #000}.battle-player-copy.player-a{top:46.5%}.battle-player-copy.player-b{top:76.35%}.battle-player-copy strong{display:block;font-size:clamp(13px,1.35vw,25px);line-height:1.2}.battle-player-copy span{display:block;margin-top:2%;font-size:clamp(9px,.78vw,15px);line-height:1.2}.battle-panel-title-edit{position:absolute;z-index:6;top:27%;left:14%;right:14%;margin:0;color:#2fe8dc;font-size:clamp(20px,2vw,38px);font-weight:700;text-align:center;text-shadow:0 2px 8px #000}.feature90-column [data-feature90-image]{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;object-fit:cover!important;object-position:center!important}.feature90-column>div>div:nth-child(3)>.gt-media-button{top:12px!important;right:12px!important;bottom:auto!important}
 @media(max-width:700px){.unity-phone-editor{top:27%;width:min(82%,300px);height:260px;aspect-ratio:auto}.unity-stage>.unity-metric:nth-of-type(7){left:30%!important;right:auto!important;top:85%!important}.battle-player-copy,.battle-panel-title-edit{display:none!important}}
 @media(prefers-reduced-motion:reduce){.gt-edit-section{transition:none}}
+
+/* 2026-09-13: stable per-slot editing and responsive alignment fixes */
+@media(min-width:701px){
+  .unity-stage>.unity-metric:nth-of-type(7){left:auto!important;right:21.7%!important;top:74.1%!important}
+}
+.feature90-media-box{
+  position:relative!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border-radius:20px!important;
+}
+.feature90-media-box>[data-feature90-image],
+.feature90-media-box>.gt-edit-media-fill{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:20px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.feature90-media-box>.gt-media-button{
+  top:12px!important;
+  right:12px!important;
+  bottom:auto!important;
+  left:auto!important;
+  z-index:30!important;
+}
+.battle-player-copy,.battle-panel-title-edit{display:none!important}
+@media(min-width:701px){
+  .battle-copy-mask{
+    position:absolute!important;
+    z-index:7!important;
+    top:4.5%!important;
+    left:0!important;
+    width:100%!important;
+    height:18.5%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0 10%!important;
+    box-sizing:border-box!important;
+    background:#070c17 url('./smartball-section-07-bg-v2.png') center top/100% auto no-repeat!important;
+    text-align:center!important;
+  }
+  .battle-copy-mask .section-heading{font-size:clamp(28px,3vw,56px)!important;line-height:1.2!important}
+  .battle-copy-mask .section-lead{margin-top:2.2%!important;font-size:clamp(15px,1.55vw,30px)!important;line-height:1.35!important}
+}
