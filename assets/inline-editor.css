@@ -58,3 +58,44 @@
   .battle-copy-mask .section-heading{font-size:clamp(28px,3vw,56px)!important;line-height:1.2!important}
   .battle-copy-mask .section-lead{margin-top:2.2%!important;font-size:clamp(15px,1.55vw,30px)!important;line-height:1.35!important}
 }
+
+/* 2026-09-13 follow-up: equal metric rhythm and durable editable overlays */
+@media(min-width:701px){
+  .unity-stage>.unity-metric:nth-of-type(7){right:21.7%!important;top:77.4%!important}
+  .battle-panel-copy{
+    position:absolute!important;
+    z-index:7!important;
+    top:27.05%!important;
+    left:14.25%!important;
+    width:71.5%!important;
+    height:7.1%!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin:0!important;
+    border-radius:20px!important;
+    background:rgba(19,27,24,.96)!important;
+    color:#2fe8dc!important;
+    font-size:clamp(20px,2vw,38px)!important;
+    font-weight:700!important;
+    text-align:center!important;
+  }
+  .battle-player-copy{
+    display:flex!important;
+    background:rgba(5,10,9,.97)!important;
+    text-shadow:none!important;
+  }
+}
+@media(max-width:700px){.battle-panel-copy,.battle-player-copy{display:none!important}}
+.feature90-media-box[data-inline-image-box="feature90-detail"]{
+  padding:0!important;
+  border-width:1px!important;
+}
+.feature90-media-box[data-inline-image-box="feature90-detail"]>[data-feature90-image],
+.feature90-media-box[data-inline-image-box="feature90-detail"]>.gt-edit-media-fill{
+  inset:-1px!important;
+  width:calc(100% + 2px)!important;
+  height:calc(100% + 2px)!important;
+  transform:scale(1.08)!important;
+  transform-origin:center!important;
+}
