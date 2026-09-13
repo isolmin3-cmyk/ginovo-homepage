@@ -52,8 +52,20 @@
     justify-content:center!important;
     padding:0 10%!important;
     box-sizing:border-box!important;
+    isolation:isolate!important;
     background:transparent!important;
     text-align:center!important;
+  }
+  .battle-copy-mask::before{
+    content:""!important;
+    position:absolute!important;
+    z-index:-1!important;
+    left:0!important;
+    top:-24.325%!important;
+    width:100%!important;
+    height:540.541%!important;
+    background:url('./smartball-section-07-bg-v2.png') center/100% 100% no-repeat!important;
+    pointer-events:none!important;
   }
   .battle-copy-mask .section-heading{font-size:clamp(28px,3vw,56px)!important;line-height:1.2!important}
   .battle-copy-mask .section-lead{margin-top:2.2%!important;font-size:clamp(15px,1.55vw,30px)!important;line-height:1.35!important}
@@ -74,7 +86,9 @@
     justify-content:center!important;
     margin:0!important;
     border-radius:20px!important;
-    background:transparent!important;
+    isolation:isolate!important;
+    border:1px solid rgba(255,255,255,.82)!important;
+    background:rgb(19,27,24)!important;
     color:#2fe8dc!important;
     font-size:clamp(20px,2vw,38px)!important;
     font-weight:700!important;
@@ -85,7 +99,7 @@
     box-sizing:border-box!important;
     border:1px solid rgba(255,255,255,.82)!important;
     border-top:0!important;
-    background:transparent!important;
+    background:rgb(5,10,9)!important;
     text-shadow:none!important;
   }
   .battle-face{
