@@ -52,7 +52,7 @@
     justify-content:center!important;
     padding:0 10%!important;
     box-sizing:border-box!important;
-    background:#070c17 url('./smartball-section-07-bg-v2.png') center top/100% auto no-repeat!important;
+    background:transparent!important;
     text-align:center!important;
   }
   .battle-copy-mask .section-heading{font-size:clamp(28px,3vw,56px)!important;line-height:1.2!important}
@@ -74,7 +74,7 @@
     justify-content:center!important;
     margin:0!important;
     border-radius:20px!important;
-    background:rgba(19,27,24,.96)!important;
+    background:transparent!important;
     color:#2fe8dc!important;
     font-size:clamp(20px,2vw,38px)!important;
     font-weight:700!important;
@@ -82,8 +82,16 @@
   }
   .battle-player-copy{
     display:flex!important;
-    background:rgba(5,10,9,.97)!important;
+    box-sizing:border-box!important;
+    border:1px solid rgba(255,255,255,.82)!important;
+    border-top:0!important;
+    background:transparent!important;
     text-shadow:none!important;
+  }
+  .battle-face{
+    box-sizing:border-box!important;
+    border:1px solid rgba(255,255,255,.82)!important;
+    border-bottom:0!important;
   }
 }
 @media(max-width:700px){.battle-panel-copy,.battle-player-copy{display:none!important}}
