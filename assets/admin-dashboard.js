@@ -4,6 +4,8 @@
   var PASS_KEY='ginovo-admin-preview-password';
   var isEnglish=document.documentElement.lang==='en';
   var visualEditorUrl='./index.html?edit=1';
+  var requestedEditorUrl=sessionStorage.getItem('ginovo-admin-return');
+  if(requestedEditorUrl){try{var requestedUrl=new URL(requestedEditorUrl,location.href);if(requestedUrl.origin===location.origin&&requestedUrl.pathname.indexOf('/admin')<0)visualEditorUrl=requestedUrl.pathname+requestedUrl.search+requestedUrl.hash}catch(_){}}
   var t=isEnglish?{
     title:'Content Manager',intro:'Edit website text and images without changing the layout.',preview:'Preview mode',site:'Open website',logout:'Log out',login:'Administrator login',loginHelp:'This local login is for UI testing. Supabase authentication will replace it before launch.',id:'Admin ID',pw:'Password',enter:'Log in',setup:'Set the preview password on first use (8+ characters).',error:'Check your ID and password.',short:'Use at least 8 characters.',menu:'Menu',overview:'Dashboard',mat:'Putting Mat',ball:'Smart Golf Ball',home:'Home',sections:'EDIT SECTIONS'
   }:{
@@ -13,7 +15,7 @@
   function makeLogin(){
     var gate=document.createElement('div');gate.className='admin-login';gate.innerHTML='<form class="admin-login-card"><div class="admin-login-logo"><span class="admin-login-mark">G</span> GINOVO ADMIN</div><h1>'+t.login+'</h1><p>'+t.loginHelp+'</p><label for="admin-id">'+t.id+'</label><input id="admin-id" name="username" autocomplete="username" value="admin"><label for="admin-password">'+t.pw+'</label><input id="admin-password" type="password" name="password" autocomplete="current-password" minlength="8" required><p class="admin-login-error" role="alert">'+(!localStorage.getItem(PASS_KEY)?t.setup:'')+'</p><button type="submit">'+t.enter+'</button></form>';
     document.body.appendChild(gate);document.body.classList.add('admin-locked');
-    gate.querySelector('form').addEventListener('submit',async function(e){e.preventDefault();var id=gate.querySelector('#admin-id').value.trim(),pw=gate.querySelector('#admin-password').value,stored=localStorage.getItem(PASS_KEY);if(id!=='admin'||pw.length<8){gate.querySelector('[role=alert]').textContent=pw.length<8?t.short:t.error;return}var digest=await hash(pw);if(!stored){localStorage.setItem(PASS_KEY,digest);stored=digest}if(digest!==stored){gate.querySelector('[role=alert]').textContent=t.error;return}sessionStorage.setItem(SESSION_KEY,'1');location.replace(visualEditorUrl)});
+    gate.querySelector('form').addEventListener('submit',async function(e){e.preventDefault();var id=gate.querySelector('#admin-id').value.trim(),pw=gate.querySelector('#admin-password').value,stored=localStorage.getItem(PASS_KEY);if(id!=='admin'||pw.length<8){gate.querySelector('[role=alert]').textContent=pw.length<8?t.short:t.error;return}var digest=await hash(pw);if(!stored){localStorage.setItem(PASS_KEY,digest);stored=digest}if(digest!==stored){gate.querySelector('[role=alert]').textContent=t.error;return}sessionStorage.setItem(SESSION_KEY,'1');sessionStorage.removeItem('ginovo-admin-return');location.replace(visualEditorUrl)});
   }
   function classify(title){if(/퍼팅매트|Putting Mat|90cm/.test(title))return t.mat;if(/골프공|Golf Ball|스펙|거리|경사 연습|필드|대결|CTA/.test(title))return t.ball;return t.home}
   function buildShell(){
