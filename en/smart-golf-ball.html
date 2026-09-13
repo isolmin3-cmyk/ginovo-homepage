@@ -216,12 +216,12 @@
         <img class="battle-composite" data-media-image="battle-composite" alt="Competitive Practice Through Online & Offline Match Modes">
         <div class="battle-clean-panel" aria-hidden="true"></div>
         <img class="battle-content-panel" src="../assets/battle-content-panel.png" alt="" aria-hidden="true">
+        <img class="battle-players-layer" src="../assets/smartball-battle-overlay-v2.webp" alt="" aria-hidden="true">
         <div class="battle-copy-mask"><h2 class="section-heading" data-smartball-content="battleTitle">Competitive Practice Through Online & Offline Match Modes</h2><p class="section-lead" data-smartball-content="battleSubtitle">Use one GINOVO Smart Golf Ball for putting matches with family and friends or online opponents.</p></div>
         <h3 class="battle-panel-copy" data-smartball-content="battlePanelTitle">Competition-Ready Practice Through Putting Matches</h3>
         <div class="battle-face player-a"><img data-media-image="battle-player-a" alt="Player A portrait"></div>
         <div class="battle-face player-b"><img data-media-image="battle-player-b" alt="Player B portrait"></div>
         <div class="battle-player-copy player-a"><strong data-smartball-content="battlePlayerAName">Player A</strong><span data-smartball-content="battlePlayerAScore">SCORE : 8/10</span><span data-smartball-content="battlePlayerACurrent">CURRENT : 3m PUTT</span></div>
-        <div class="battle-versus" aria-hidden="true">v/s</div>
         <div class="battle-player-copy player-b"><strong data-smartball-content="battlePlayerBName">Player B</strong><span data-smartball-content="battlePlayerBScore">SCORE : 7/10</span><span data-smartball-content="battlePlayerBCurrent">CURRENT : 3m PUTT</span></div>
         <div class="battle-ranking-update" aria-label="Updated putting match rankings">
           <div class="battle-ranking-update-table">
@@ -412,32 +412,22 @@
       .battle-panel-copy {
         background:url('../assets/battle-title-panel.png') center/100% 100% no-repeat !important;
       }
-      .battle-face {
-        z-index:4 !important;
-        display:block !important;
-      }
-      .battle-versus {
+      .battle-players-layer {
         position:absolute;
-        z-index:5;
-        top:59.05%;
-        left:16.45%;
-        width:15.45%;
-        height:5.55%;
-        display:grid;
-        place-items:center;
-        box-sizing:border-box;
-        border:1px solid rgba(255,255,255,.82);
-        border-radius:18px;
-        background:rgba(5,10,9,.5);
-        color:#fff;
-        font-size:clamp(24px,2.6vw,50px);
-        font-weight:800;
+        z-index:3;
+        inset:0;
+        width:100%;
+        height:100%;
+        max-width:none;
+        object-fit:contain;
+        clip-path:inset(34.5% 67.5% 12.5% 15.9%);
+        pointer-events:none;
       }
     }
     @media (max-width:700px) {
       .battle-clean-panel,
       .battle-content-panel,
-      .battle-versus { display:none; }
+      .battle-players-layer { display:none; }
     }
   </style>
   <script src="../assets/inline-editor.js?v=20260914-7"></script>
