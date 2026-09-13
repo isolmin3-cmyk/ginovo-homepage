@@ -96,28 +96,18 @@
     text-align:center!important;
   }
   .battle-panel-copy::before{
-    content:""!important;
-    position:absolute!important;
-    z-index:-1!important;
-    top:16%!important;
-    bottom:16%!important;
-    left:27%!important;
-    right:27%!important;
-    border:0!important;
-    border-radius:0!important;
-    background:rgb(19,27,24)!important;
-    pointer-events:none!important;
+    display:none!important;
   }
   .battle-player-copy{
     display:flex!important;
     box-sizing:border-box!important;
     border:0!important;
-    background:rgb(5,10,9)!important;
+    background:rgba(5,10,9,.5)!important;
     text-shadow:none!important;
   }
   .battle-face{
     box-sizing:border-box!important;
-    border:0!important;
+    border:1px solid rgba(255,255,255,.9)!important;
   }
 }
 @media(max-width:700px){.battle-panel-copy,.battle-player-copy{display:none!important}}
