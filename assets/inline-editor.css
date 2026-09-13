@@ -102,8 +102,8 @@
   .battle-player-copy{
     display:flex!important;
     box-sizing:border-box!important;
-    border:1px solid rgba(255,255,255,.9)!important;
-    border-radius:0 0 18px 18px!important;
+    border:0!important;
+    border-radius:0!important;
     background-image:linear-gradient(rgba(5,10,9,.5),rgba(5,10,9,.5)),url('./smartball-section-07-bg-v2.png')!important;
     background-repeat:no-repeat!important;
     background-size:647.249% 1069.519%!important;
@@ -113,8 +113,7 @@
   .battle-player-copy.player-b{background-position:19.456% 84.225%!important}
   .battle-face{
     box-sizing:border-box!important;
-    border:1px solid rgba(255,255,255,.9)!important;
-    border-bottom:0!important;
+    border:0!important;
   }
 }
 @media(max-width:700px){.battle-panel-copy,.battle-player-copy{display:none!important}}
