@@ -89,7 +89,7 @@
     border-radius:20px!important;
     isolation:isolate!important;
     box-sizing:border-box!important;
-    border:1px solid rgba(255,255,255,.82)!important;
+    border:0!important;
     background:linear-gradient(rgba(19,27,24,.5),rgba(19,27,24,.5)),url('./smartball-section-07-bg-v2.png') 19.713% 28.278%/151.286% 1408.451% no-repeat!important;
     color:#2fe8dc!important;
     font-size:clamp(20px,2vw,38px)!important;
@@ -102,7 +102,8 @@
   .battle-player-copy{
     display:flex!important;
     box-sizing:border-box!important;
-    border:0!important;
+    border:1px solid rgba(255,255,255,.9)!important;
+    border-radius:0 0 18px 18px!important;
     background-image:linear-gradient(rgba(5,10,9,.5),rgba(5,10,9,.5)),url('./smartball-section-07-bg-v2.png')!important;
     background-repeat:no-repeat!important;
     background-size:647.249% 1069.519%!important;
@@ -113,6 +114,7 @@
   .battle-face{
     box-sizing:border-box!important;
     border:1px solid rgba(255,255,255,.9)!important;
+    border-bottom:0!important;
   }
 }
 @media(max-width:700px){.battle-panel-copy,.battle-player-copy{display:none!important}}
