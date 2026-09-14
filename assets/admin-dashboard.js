@@ -1,7 +1,8 @@
 (function(){
   'use strict';
   var SESSION_KEY='ginovo-admin-preview-session';
-  var PASS_KEY='ginovo-admin-preview-password';
+  var PASS_KEY='ginovo-admin-preview-password-v2';
+  var DEFAULT_PASS_HASH='5cc4c9714f696d108644a872e0e62364e3cfd7c3e7c4c3806b91e84c90638768';
   var isEnglish=document.documentElement.lang==='en';
   var visualEditorUrl='./index.html?edit=1';
   var requestedEditorUrl=sessionStorage.getItem('ginovo-admin-return');
@@ -13,9 +14,9 @@
   };
   function hash(value){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(value)).then(function(buf){return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')})}
   function makeLogin(){
-    var gate=document.createElement('div');gate.className='admin-login';gate.innerHTML='<form class="admin-login-card"><div class="admin-login-logo"><span class="admin-login-mark">G</span> GINOVO ADMIN</div><h1>'+t.login+'</h1><p>'+t.loginHelp+'</p><label for="admin-id">'+t.id+'</label><input id="admin-id" name="username" autocomplete="username" value="admin"><label for="admin-password">'+t.pw+'</label><input id="admin-password" type="password" name="password" autocomplete="current-password" minlength="8" required><p class="admin-login-error" role="alert">'+(!localStorage.getItem(PASS_KEY)?t.setup:'')+'</p><button type="submit">'+t.enter+'</button></form>';
+    var gate=document.createElement('div');gate.className='admin-login';gate.innerHTML='<form class="admin-login-card"><div class="admin-login-logo"><img src="./assets/logo.png" alt="GREEN TALK"></div><h1>'+t.login+'</h1><p>'+t.loginHelp+'</p><label for="admin-id">'+t.id+'</label><input id="admin-id" name="username" autocomplete="username" value="admin"><label for="admin-password">'+t.pw+'</label><input id="admin-password" type="password" name="password" autocomplete="current-password" minlength="8" required><p class="admin-login-error" role="alert"></p><button type="submit">'+t.enter+'</button></form>';
     document.body.appendChild(gate);document.body.classList.add('admin-locked');
-    gate.querySelector('form').addEventListener('submit',async function(e){e.preventDefault();var id=gate.querySelector('#admin-id').value.trim(),pw=gate.querySelector('#admin-password').value,stored=localStorage.getItem(PASS_KEY);if(id!=='admin'||pw.length<8){gate.querySelector('[role=alert]').textContent=pw.length<8?t.short:t.error;return}var digest=await hash(pw);if(!stored){localStorage.setItem(PASS_KEY,digest);stored=digest}if(digest!==stored){gate.querySelector('[role=alert]').textContent=t.error;return}sessionStorage.setItem(SESSION_KEY,'1');sessionStorage.removeItem('ginovo-admin-return');location.replace(visualEditorUrl)});
+    gate.querySelector('form').addEventListener('submit',async function(e){e.preventDefault();var id=gate.querySelector('#admin-id').value.trim(),pw=gate.querySelector('#admin-password').value,stored=localStorage.getItem(PASS_KEY)||DEFAULT_PASS_HASH;if(id!=='admin'||pw.length<8){gate.querySelector('[role=alert]').textContent=pw.length<8?t.short:t.error;return}var digest=await hash(pw);if(digest!==stored){gate.querySelector('[role=alert]').textContent=t.error;return}sessionStorage.setItem(SESSION_KEY,'1');sessionStorage.removeItem('ginovo-admin-return');location.replace(visualEditorUrl)});
   }
   function classify(title){if(/퍼팅매트|Putting Mat|90cm/.test(title))return t.mat;if(/골프공|Golf Ball|스펙|거리|경사 연습|필드|대결|CTA/.test(title))return t.ball;return t.home}
   function buildShell(){
