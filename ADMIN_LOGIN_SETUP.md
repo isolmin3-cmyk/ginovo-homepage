@@ -42,6 +42,15 @@ Authentication → URL Configuration에서 다음 값을 등록합니다.
 3. 비밀번호 재설정 이메일 링크가 관리자 주소로 돌아와야 합니다.
 4. 로그아웃 후 편집 모드 주소에 직접 접근하면 다시 로그인 화면으로 이동해야 합니다.
 
-현재 편집 결과는 아직 브라우저 로컬 저장소에만 보관됩니다. 로그인과 권한 기반을 먼저
-운영 수준으로 교체한 것이며, 여러 기기에서 같은 내용을 즉시 게시하려면 다음 단계에서
-콘텐츠 테이블·Storage·공개 읽기 경로를 연결해야 합니다.
+## 5. 공용 콘텐츠 게시
+
+1. SQL Editor에서 `supabase/migrations/202609210002_site_content.sql`을 실행합니다.
+2. Storage에 `site-media`라는 **Public** 버킷을 만듭니다. PNG, JPEG, WebP,
+   MP4, WebM을 허용하고 파일당 50 MB 이하로 제한합니다.
+3. SQL Editor에서 `supabase/migrations/202609210003_site_media.sql`을 실행합니다.
+4. 관리자 편집 화면에서 문구 또는 이미지를 바꾸고 **게시**를 누릅니다.
+5. 시크릿 창에서 `https://www.greentalk.co.kr`을 열어 수정 내용이 보이는지 확인합니다.
+
+문구와 링크는 `public.site_content`에, 이미지와 동영상은 `site-media` 버킷에
+저장됩니다. 기존 브라우저 로컬 저장소에 저장한 수정 사항은 자동 이전되지 않습니다.
+원본 HTML의 내용은 공유 콘텐츠가 없을 때만 기본값으로 표시됩니다.
