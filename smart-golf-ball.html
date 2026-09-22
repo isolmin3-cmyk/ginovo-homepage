@@ -402,7 +402,10 @@
         pointer-events:none;
       }
       .battle-panel-copy {
-        background:url('./assets/battle-title-panel.png') center/100% 100% no-repeat !important;
+        /* Crop the image's faint outline so the card-matching CSS border is the only edge. */
+        background:url('./assets/battle-title-panel.png') center/calc(100% + 8px) calc(100% + 8px) no-repeat !important;
+        background-clip:padding-box !important;
+        border:1px solid rgba(255,255,255,.82) !important;
       }
       .battle-players-layer {
         position:absolute;
