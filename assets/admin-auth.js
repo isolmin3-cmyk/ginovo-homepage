@@ -76,7 +76,7 @@
   }
 
   async function sendPasswordReset(email) {
-    var redirectTo = new URL('./admin.html?recovery=1', location.href).href;
+    var redirectTo = new URL(/\/admin\/(?:index\.html)?$/.test(location.pathname) ? '../admin.html?recovery=1' : './admin.html?recovery=1', location.href).href;
     var result = await getClient().auth.resetPasswordForEmail(email, { redirectTo: redirectTo });
     if (result.error) throw result.error;
   }

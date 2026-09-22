@@ -3,7 +3,8 @@
 
   var SESSION_KEY = 'ginovo-admin-authenticated-session';
   var isEnglish = document.documentElement.lang === 'en';
-  var visualEditorUrl = './index.html?edit=1';
+  var adminEntry = /\/admin\/(?:index\.html)?$/.test(location.pathname);
+  var visualEditorUrl = adminEntry ? '../index.html?edit=1' : './index.html?edit=1';
   var requestedEditorUrl = sessionStorage.getItem('ginovo-admin-return');
   var auth = window.GINOVO_ADMIN_AUTH;
 
@@ -45,7 +46,7 @@
     var gate = document.createElement('div');
     gate.className = 'admin-login';
     gate.innerHTML = '<form class="admin-login-card" novalidate>' +
-      '<div class="admin-login-logo"><img src="./assets/logo.png" alt="GREEN TALK"></div>' +
+      '<div class="admin-login-logo"><img src="' + (adminEntry ? '../' : './') + 'assets/logo.png" alt="GREEN TALK"></div>' +
       '<h1>' + t.login + '</h1><p>' + t.loginHelp + '</p>' +
       '<div class="admin-setup-note" data-setup-note hidden></div>' +
       '<label for="admin-email">' + t.email + '</label>' +
@@ -224,6 +225,10 @@
   document.addEventListener('DOMContentLoaded', async function () {
     if (new URLSearchParams(location.search).get('recovery') === '1') {
       makeRecovery();
+      return;
+    }
+    if (adminEntry || new URLSearchParams(location.search).get('legacy') !== '1') {
+      makeLogin();
       return;
     }
     if (!auth || !auth.isConfigured()) {
