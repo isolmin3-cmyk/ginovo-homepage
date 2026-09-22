@@ -38,7 +38,7 @@
     if(!editing){if(save)toast(locale('수정할 섹션의 연필 아이콘을 먼저 눌러주세요.','Choose a section with its pencil icon first.'));return}
     if(save){
       var changes={},inputs=Array.from(editing.querySelectorAll('.gt-link-input')),invalid=false,mirror=isKoreanPage();
-      editing.querySelectorAll('.gt-editable-text').forEach(function(el){var key=elementKey(editing,el),value=el.innerText.trim();changes[key]=value;if(mirror)changes[mirroredKey(key)]=value});
+      editing.querySelectorAll('.gt-editable-text').forEach(function(el){var key=elementKey(editing,el),value=el.innerText.trim();changes[key]=value});
       inputs.forEach(function(input){input.removeAttribute('aria-invalid');if(!validLink(input.value)){input.setAttribute('aria-invalid','true');invalid=true}});
       if(invalid){toast(locale('http:// 또는 https://로 시작하는 올바른 링크를 입력해 주세요.','Enter a valid link beginning with http:// or https://.'));return}
       inputs.forEach(function(input){var value=input.value.trim(),key=input.dataset.linkKey;changes[key]=value;if(mirror)changes[mirroredKey(key)]=value});
@@ -49,7 +49,7 @@
         for(var [backgroundKeyValue,backgroundRecord] of pendingBackgrounds){var backgroundUrl=await uploadMedia(backgroundRecord.blob);changes[backgroundKeyValue]={url:backgroundUrl,kind:'background'};if(mirror)changes[mirroredKey(backgroundKeyValue)]=changes[backgroundKeyValue]}
         await publishChanges(changes);
         inputs.forEach(function(input){var link=linkTargets(editing).find(function(candidate){return linkKey(editing,candidate)===input.dataset.linkKey});if(link)link.href=input.value.trim()});
-        toast(mirror?locale('사이트에 게시했습니다. 영어 페이지에도 반영됩니다.','Published to the site and English page.'):locale('사이트에 게시했습니다.','Published to the site.'));
+        toast(locale('사이트에 게시했습니다.','Published to the site.'));
       }catch(error){console.error('GINOVO publish failed',error);toast(locale('게시 실패: 저장되지 않았습니다. 다시 시도해 주세요.','Publish failed. Changes were not saved; please try again.'));saving=false;if(saveButton){saveButton.disabled=false;saveButton.textContent=locale('게시','Publish')}return}
       saving=false;if(saveButton){saveButton.disabled=false;saveButton.textContent=locale('게시','Publish')}
     }else{originalText.forEach(function(value,el){setTextLines(el,value)});originalMedia.forEach(function(state){if(state.current&&state.current.isConnected)state.current.replaceWith(state.clone)});originalBackgrounds.forEach(function(value,section){section.style.backgroundImage=value})}
@@ -83,6 +83,11 @@
       rows.forEach(function(row){publishedContent[row.content_key]=row.content_value});
       offset+=rows.length;
     }while(rows.length===1000);
+    Object.keys(publishedContent).forEach(function(key){
+      if(!key.startsWith('/en/'))return;
+      var value=publishedContent[key];
+      if(typeof value==='string'&&/[가-힣]/.test(value))delete publishedContent[key];
+    });
   }
   async function publishChanges(changes){
     var rows=Object.keys(changes).map(function(key){return{content_key:key,content_value:changes[key],updated_at:new Date().toISOString()}});
