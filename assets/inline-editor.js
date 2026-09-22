@@ -9,7 +9,7 @@
   function locale(ko,en){return document.documentElement.lang==='en'?en:ko}
   var publishedContent={};
   function store(){return publishedContent}
-  function pageKey(){return location.pathname.replace(/\/+$/,'')||'/'}
+  function pageKey(){var pathname=location.pathname;return pathname.endsWith('/')?pathname+'index.html':pathname}
   function isKoreanPage(){return document.documentElement.lang!=='en'&&pageKey().indexOf('/en/')<0}
   function englishPageKey(){var current=pageKey(),slash=current.lastIndexOf('/');return current.slice(0,slash+1)+'en/'+current.slice(slash+1)}
   function mirroredKey(key){var current=pageKey();return englishPageKey()+key.slice(current.length)}
