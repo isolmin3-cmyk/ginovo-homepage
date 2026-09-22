@@ -343,28 +343,4 @@ html[lang="en"] .battle-section {
     white-space: nowrap;
   }
 
-  html[lang="en"] .battle-canvas::after {
-    content: "Competition-Ready Practice Through Putting Matches";
-    position: absolute;
-    z-index: 5;
-    top: calc(26.3% - 3px);
-    left: 16.45%;
-    right: 17.2%;
-    width: auto;
-    height: calc(7.2% + 3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, .72);
-    border-radius: clamp(8px, .95vw, 18px);
-    background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("../../assets/smartball-section-07-bg-v2.png") 50% 28.34%/149.031% 1388.889% no-repeat;
-    color: #31e6df;
-    font-family: Inter, Arial, sans-serif;
-    font-size: clamp(20px, 1.75vw, 34px);
-    font-weight: 700;
-    line-height: 1.15;
-    text-align: center;
-    padding-inline: clamp(24px, 3vw, 58px);
-  }
 }
