@@ -389,14 +389,15 @@
   <style>
     /* English battle section: supplied translucent content panel and title plate. */
     @media (min-width:701px) {
+      .battle-canvas > .battle-composite { visibility:hidden; }
       .battle-clean-panel {
+        display:none;
         position:absolute;
         z-index:1;
         top:21.76%;
         left:5.87%;
         width:87.66%;
         aspect-ratio:6732/3348;
-        border-radius:20px 20px 0 0;
         background:url('./assets/smartball-section-07-bg-v2.png') 47.57% 70.33%/114.08% 144.84% no-repeat;
         pointer-events:none;
       }
@@ -408,6 +409,7 @@
         width:87.66%;
         height:auto;
         max-width:none;
+        border-radius:20px 20px 0 0;
         pointer-events:none;
       }
       .battle-panel-copy {
