@@ -42,6 +42,19 @@
     else sessionStorage.removeItem(SESSION_KEY);
   }
 
+  function showVisualEditor() {
+    var gate = document.querySelector('.admin-login');
+    if (gate) gate.remove();
+    document.body.classList.remove('admin-locked');
+    document.body.classList.add('admin-editor');
+    document.title = isEnglish ? 'Website editor | GINOVO' : '홈페이지 편집 | GINOVO';
+    var frame = document.createElement('iframe');
+    frame.className = 'admin-editor-frame';
+    frame.title = isEnglish ? 'Website editing area' : '홈페이지 편집 화면';
+    frame.src = visualEditorUrl;
+    document.body.appendChild(frame);
+  }
+
   function makeLogin() {
     var gate = document.createElement('div');
     gate.className = 'admin-login';
@@ -93,7 +106,7 @@
         var publisher = await auth.signIn(email.value.trim(), password.value);
         setSession(publisher);
         sessionStorage.removeItem('ginovo-admin-return');
-        location.replace(visualEditorUrl);
+        showVisualEditor();
       } catch (error) {
         errorBox.textContent = messageFor(error);
         password.focus();
