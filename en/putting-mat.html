@@ -210,6 +210,7 @@
         .ginovo-common-cta::after { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(0,0,0,.18); }
         .ginovo-common-cta-content { width: min(calc(100% - (var(--ginovo-page-gutter) * 2)), var(--ginovo-content-max)); max-width: var(--ginovo-content-max); margin: 0 auto; text-align: center; position: relative; z-index: 1; }
         .ginovo-common-cta-content p { font-size: clamp(16px, 1.45vw, 21px); font-weight: 700; margin: 0 0 26px; color: #d6dbe3; letter-spacing: .01em; text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.85); }
+        .ginovo-common-cta-content .mobile-cta-break { display: none; }
         .ginovo-common-cta-content h2 { font-size: clamp(30px, 4.2vw, 41px); font-weight: 700; margin: 0; line-height: 1.4; color: #FFFFFF; letter-spacing: normal; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.75); }
         .ginovo-footer { position: relative; z-index: 1; min-height: auto; background: #070C17; color: #FFFFFF; border-top: 1px solid rgba(255,255,255,0.1); padding: 64px 32px 44px; }
         .ginovo-footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, max-content); justify-content: space-between; gap: 40px; }
@@ -234,6 +235,7 @@
             .ginovo-header { top: 16px; overflow-x: auto; justify-content: flex-start; }
             .ginovo-footer-container { grid-template-columns: 1fr; }
             .ginovo-common-cta-content h2 { white-space: normal; }
+            .ginovo-common-cta-content .mobile-cta-break { display: block !important; }
             .pm-hero-copy { width: calc(100% - 36px); }
             .pm-hero-copy h1 { font-size: 48px; }
             .pm-hero-copy { margin-bottom: 48px; }
@@ -729,7 +731,7 @@
             <img class="ginovo-common-cta-image" src="./assets/smartball-cta-bg-v2.jpg?v=20260903-2" alt="Golfer placing a ball on a tee">
             <div class="ginovo-common-cta-bg"></div>
             <div class="ginovo-common-cta-content">
-                <p>Beyond Tech, Into Culture: The New Standard Powered by Data</p>
+                <p>Beyond Tech, Into Culture: <br class="mobile-cta-break" aria-hidden="true">The New Standard Powered by Data</p>
                 <h2>Beyond the Limits of Technology, We Build a New Golf Culture with Data.</h2>
             </div>
         </section>
@@ -1079,7 +1081,7 @@ class Component extends DCLogic {
     var isMobile=window.matchMedia('(max-width:700px)').matches;
     var selector='main h1, main h2, main h3, main p, main li span';
     document.querySelectorAll(selector).forEach(function(element){
-      if(element.closest('.pm-reference-hidden')||element.children.length&&Array.from(element.children).some(function(child){return child.tagName!=='BR';})) return;
+      if(element.closest('.pm-reference-hidden, .ginovo-common-cta')||element.children.length&&Array.from(element.children).some(function(child){return child.tagName!=='BR';})) return;
       if(element._mobileBalanceOriginalHtml===undefined) element._mobileBalanceOriginalHtml=element.innerHTML;
       element.innerHTML=element._mobileBalanceOriginalHtml;
       if(!isMobile||getComputedStyle(element).display==='none') return;
@@ -1149,7 +1151,7 @@ class Component extends DCLogic {
 }());
 </script>
 <script src="./assets/language-menu.js?v=20260910-4"></script>
-<script src="./assets/common-cta.js?v=20260930-1"></script>
+<script src="./assets/common-cta.js?v=20260930-2"></script>
 <link rel="stylesheet" href="../assets/inline-editor.css?v=20260914-7"><script src="../assets/inline-editor.js?v=20260922-4"></script>
 </body>
 </html>
