@@ -213,7 +213,7 @@
   <header class="site-header">
     <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
     <nav class="main-nav" id="main-navigation" aria-label="Main navigation"><ul>
-      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="#products">Products & Development</a><a href="#history">History</a><a href="#about">ESG</a><a href="#exhibition">Global Highlights</a><a href="#news">News</a></div></div></li><li><a href="./smart-golf-ball.html">Smart Golf Ball</a></li><li><a href="./putting-mat.html">Slope Putting Mat</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="./index.html#products">Products & Development</a><a href="./index.html#history">History</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">Global Highlights</a><a href="./index.html#news">News</a></div></div></li><li><a href="./smart-golf-ball.html">Smart Golf Ball</a></li><li><a href="./putting-mat.html">Slope Putting Mat</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
     </ul></nav>
     <div class="header-tools"><div class="language"><button class="language-button" type="button" aria-label="Select language"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="../index.html">한국어</a><a href="./index.html" aria-current="page">English</a></div></div><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
   </header>
@@ -429,6 +429,20 @@ for golf analysis.</p></div></div>
         setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
       });
     }
+    document.querySelectorAll('.about-dropdown-panel a[href*="#"]').forEach(function(link){
+      link.addEventListener('click',function(event){
+        var targetId=new URL(link.href,window.location.href).hash.slice(1);
+        var target=document.getElementById(targetId);
+        if(!target) return;
+        event.preventDefault();
+        setMobileMenu(false);
+        setAboutMenu(false);
+        window.history.pushState(null,'','#'+targetId);
+        window.requestAnimationFrame(function(){
+          target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+        });
+      });
+    });
     /* 섹션이 충분히 화면에 들어오면 내부 항목을 지정된 순서로 한 번만 재생한다. */
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       var revealGroups=[];

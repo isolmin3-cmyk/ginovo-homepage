@@ -212,7 +212,7 @@
   <header class="site-header">
     <a class="logo" href="./index.html"><img src="./assets/logo.png" alt="GREEN TALK"></a>
     <nav class="main-nav" id="main-navigation" aria-label="주 메뉴"><ul>
-      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="#products">생산·개발 제품</a><a href="#history">연혁</a><a href="#about">ESG</a><a href="#exhibition">글로벌 하이라이트</a><a href="#news">뉴스 기사</a></div></div></li><li><a href="./smart-golf-ball.html">스마트 골프공</a></li><li><a href="./putting-mat.html">경사 퍼팅매트</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
+      <li class="about-menu"><button class="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-navigation" data-about-toggle>About us</button><div class="about-dropdown" id="about-navigation"><div class="about-dropdown-panel"><a href="./index.html#products">생산·개발 제품</a><a href="./index.html#history">연혁</a><a href="./index.html#about">ESG</a><a href="./index.html#exhibition">글로벌 하이라이트</a><a href="./index.html#news">뉴스 기사</a></div></div></li><li><a href="./smart-golf-ball.html">스마트 골프공</a></li><li><a href="./putting-mat.html">경사 퍼팅매트</a></li><li><a href="https://smartstore.naver.com/ginovo" target="_blank" rel="noopener">Shop</a></li>
     </ul></nav>
     <div class="header-tools"><div class="language"><button class="language-button" type="button" aria-label="언어 선택"><img src="./assets/language-icon.png" alt=""><span class="language-caret">⌄</span></button><div class="language-menu"><a href="./index.html" aria-current="page">한국어</a><a href="./en/index.html">English</a></div></div><button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span><span class="menu-toggle-line" aria-hidden="true"></span></button></div>
   </header>
@@ -428,6 +428,20 @@
         setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
       });
     }
+    document.querySelectorAll('.about-dropdown-panel a[href*="#"]').forEach(function(link){
+      link.addEventListener('click',function(event){
+        var targetId=new URL(link.href,window.location.href).hash.slice(1);
+        var target=document.getElementById(targetId);
+        if(!target) return;
+        event.preventDefault();
+        setMobileMenu(false);
+        setAboutMenu(false);
+        window.history.pushState(null,'','#'+targetId);
+        window.requestAnimationFrame(function(){
+          target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+        });
+      });
+    });
     /* 섹션이 충분히 화면에 들어오면 내부 항목을 지정된 순서로 한 번만 재생한다. */
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       var revealGroups=[];
