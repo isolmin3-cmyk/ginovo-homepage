@@ -408,7 +408,7 @@ html[lang="en"] #putting .title br { display:none; }
     min-height:0;
   }
   html[lang="en"] .unity-stage {
-    padding:530px 30px 42px;
+    padding:530px clamp(18px,7.2vw,30px) 42px;
     display:flex;
     flex-direction:column;
     gap:12px;
@@ -437,20 +437,26 @@ html[lang="en"] #putting .title br { display:none; }
     height:195px;
     object-fit:contain;
   }
-  html[lang="en"] .unity-stage>.unity-metric {
-    position:relative;
-    inset:auto;
+  html[lang="en"] .unity-stage>.unity-metric,
+  html[lang="en"] .unity-stage>.unity-metric:nth-of-type(n) {
+    position:relative!important;
+    inset:auto!important;
     flex:0 0 auto;
-    width:100%;
-    height:78px;
+    width:100%!important;
+    max-width:100%;
+    height:78px!important;
+    min-height:0!important;
     margin:0;
-    padding:5px 18px;
-    grid-template-columns:minmax(0,1fr) 66px;
+    padding:5px clamp(10px,4.5vw,18px)!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) clamp(54px,16vw,66px)!important;
+    align-items:center;
     column-gap:10px;
-    border-radius:18px;
+    border-radius:18px!important;
+    overflow:hidden;
   }
   html[lang="en"] .unity-stage>.unity-metric:nth-of-type(n+4) {
-    grid-template-columns:minmax(0,1fr) 66px;
+    grid-template-columns:minmax(0,1fr) clamp(54px,16vw,66px)!important;
   }
   html[lang="en"] .unity-stage>.unity-metric .unity-metric-copy {
     min-width:0;
@@ -470,11 +476,12 @@ html[lang="en"] #putting .title br { display:none; }
     white-space:normal;
   }
   html[lang="en"] .unity-stage>.unity-metric .unity-metric-icon {
-    order:initial;
-    width:66px;
-    height:62px;
-    margin:0;
-    transform:none;
+    order:initial!important;
+    width:clamp(54px,16vw,66px)!important;
+    height:62px!important;
+    margin:0!important;
+    transform:none!important;
+    object-fit:contain;
   }
 
   html[lang="en"] .practice-four-stage {

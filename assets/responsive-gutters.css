@@ -240,7 +240,7 @@ main > section.px-6,
   }
 
   html[lang="ko"] #unity-feature .unity-stage {
-    padding: 530px 30px 42px !important;
+    padding: 530px clamp(18px, 7.2vw, 30px) 42px !important;
     display: flex !important;
     flex-direction: column;
     gap: 12px;
@@ -294,9 +294,9 @@ main > section.px-6,
     height: 78px !important;
     min-height: 0 !important;
     margin: 0;
-    padding: 5px 18px !important;
+    padding: 5px clamp(10px, 4.5vw, 18px) !important;
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 66px !important;
+    grid-template-columns: minmax(0, 1fr) clamp(54px, 16vw, 66px) !important;
     align-items: center;
     column-gap: 10px;
     border: 0 !important;
@@ -329,7 +329,7 @@ main > section.px-6,
 
   html[lang="ko"] #unity-feature .unity-metric-icon {
     order: initial !important;
-    width: 66px !important;
+    width: clamp(54px, 16vw, 66px) !important;
     height: 62px !important;
     margin: 0 !important;
     transform: none !important;
