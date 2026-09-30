@@ -1039,6 +1039,7 @@ class Component extends DCLogic {
     if(!open) setAbout(false);
   }
   if(header&&menuToggle&&navigation){
+    menuToggle.dataset.puttingMenuBound='true';
     menuToggle.addEventListener('click',function(){setMenu(menuToggle.getAttribute('aria-expanded')!=='true');});
     navigation.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){setMenu(false);});});
     document.addEventListener('click',function(event){
@@ -1151,6 +1152,7 @@ class Component extends DCLogic {
 }());
 </script>
 <script src="./assets/language-menu.js?v=20260910-4"></script>
+<script src="../assets/putting-mat-navigation.js?v=20260930-1"></script>
 <script src="./assets/common-cta.js?v=20260930-2"></script>
 <link rel="stylesheet" href="../assets/inline-editor.css?v=20260914-7"><script src="../assets/inline-editor.js?v=20260922-4"></script>
 </body>
