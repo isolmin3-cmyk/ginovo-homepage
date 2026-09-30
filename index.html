@@ -428,19 +428,39 @@
         setAboutMenu(aboutToggle.getAttribute('aria-expanded')!=='true');
       });
     }
+    var aboutTargetIds=['products','history','about','exhibition','news'];
+    function scrollToAboutTarget(targetId,behavior){
+      if(aboutTargetIds.indexOf(targetId)===-1) return false;
+      var target=document.getElementById(targetId);
+      if(!target) return false;
+      var targetTop=target.getBoundingClientRect().top+window.scrollY;
+      window.scrollTo({top:targetTop,left:0,behavior:behavior||'auto'});
+      return true;
+    }
     document.querySelectorAll('.about-dropdown-panel a[href*="#"]').forEach(function(link){
       link.addEventListener('click',function(event){
         var targetId=new URL(link.href,window.location.href).hash.slice(1);
-        var target=document.getElementById(targetId);
-        if(!target) return;
+        if(aboutTargetIds.indexOf(targetId)===-1||!document.getElementById(targetId)) return;
         event.preventDefault();
         setMobileMenu(false);
         setAboutMenu(false);
         window.history.pushState(null,'','#'+targetId);
         window.requestAnimationFrame(function(){
-          target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+          scrollToAboutTarget(targetId,window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth');
         });
       });
+    });
+    window.addEventListener('load',function(){
+      var targetId=window.location.hash.slice(1);
+      if(aboutTargetIds.indexOf(targetId)!==-1){
+        window.requestAnimationFrame(function(){scrollToAboutTarget(targetId,'auto');});
+      }
+    });
+    window.addEventListener('hashchange',function(){
+      var targetId=window.location.hash.slice(1);
+      if(aboutTargetIds.indexOf(targetId)!==-1){
+        window.requestAnimationFrame(function(){scrollToAboutTarget(targetId,'auto');});
+      }
     });
     /* 섹션이 충분히 화면에 들어오면 내부 항목을 지정된 순서로 한 번만 재생한다. */
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
