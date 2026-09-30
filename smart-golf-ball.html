@@ -306,13 +306,14 @@
         element.append(document.createTextNode(parts.shift()+needle));
         var lineBreak=document.createElement('br');
         lineBreak.className='mobile-copy-break';
-        element.append(lineBreak,document.createTextNode(parts.join(needle).replace(/^\s+/,'')));
+        element.append(lineBreak,document.createTextNode(' '+parts.join(needle).replace(/^\s+/,'')));
       };
       addMobileBreak('[data-smartball-content="systemDescription"]','퍼팅매트,');
       addMobileBreak('[data-smartball-content="chargerNote1"]','management를 통한');
       addMobileBreak('[data-smartball-content="distancePoint2"]','반복 연습을');
       addMobileBreak('[data-smartball-content="slopePoint1"]','반복 연습을');
       addMobileBreak('[data-smartball-content="fieldSubtitle"]','경사 영향');
+      addMobileBreak('[data-smartball-content="ctaEyebrow"]','Culture:');
       var media = window.SMARTBALL_MEDIA || {};
       document.querySelectorAll('[data-media-slot]').forEach(function (slot) {
         var source = media[slot.getAttribute('data-media-slot')];
