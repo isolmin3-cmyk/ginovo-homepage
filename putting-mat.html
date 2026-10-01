@@ -6,6 +6,8 @@
 <meta name="description" content="실제 그린의 경사와 라인을 실내에서 훈련하는 지노버 경사 퍼팅매트">
 <title>경사 퍼팅매트 | GREEN TALK</title>
 <script src="./support.js"></script>
+<script src="./assets/putting-mat-navigation.js?v=20261001-1" defer></script>
+<script src="./assets/section-anchor-navigation.js?v=20261001-1" defer></script>
 <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
 </head>
 <body>
@@ -277,7 +279,7 @@
         </nav>
         <div class="ginovo-header-right">
             <div class="ginovo-lang">
-                <a href="#"><i class="ph ph-globe" style="font-size: 16px;"></i> <i class="ph ph-caret-down" style="font-size: 11px;"></i></a>
+                <a href="#"><img src="./assets/language-icon.png" alt="" style="width:20px;height:20px;object-fit:contain;display:block;"> <i class="ph ph-caret-down" style="font-size: 11px;"></i></a>
                 <div class="ginovo-dropdown-wrap">
                     <div class="ginovo-dropdown-panel">
                         <a href="./putting-mat.html" aria-current="page">한국어</a>
@@ -1036,7 +1038,7 @@ class Component extends DCLogic {
     menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');
     if(!open) setAbout(false);
   }
-  if(header&&menuToggle&&navigation){
+  if(header&&menuToggle&&navigation&&menuToggle.dataset.puttingNavigationReady!=='true'){
     menuToggle.dataset.puttingMenuBound='true';
     menuToggle.addEventListener('click',function(){setMenu(menuToggle.getAttribute('aria-expanded')!=='true');});
     navigation.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){setMenu(false);});});
@@ -1052,7 +1054,7 @@ class Component extends DCLogic {
     });
     mobileQuery.addEventListener('change',function(){setMenu(false);});
   }
-  if(aboutToggle){aboutToggle.addEventListener('click',function(){setAbout(aboutToggle.getAttribute('aria-expanded')!=='true');});}
+  if(aboutToggle&&menuToggle&&menuToggle.dataset.puttingNavigationReady!=='true'){aboutToggle.addEventListener('click',function(){setAbout(aboutToggle.getAttribute('aria-expanded')!=='true');});}
 
   function playHeroVideo() {
     var video = document.querySelector('.pm-hero-video');
@@ -1076,7 +1078,6 @@ class Component extends DCLogic {
 }());
 </script>
 <script src="./assets/language-menu.js?v=20260910-2"></script>
-<script src="./assets/putting-mat-navigation.js?v=20260930-1"></script>
 <script src="./assets/common-cta.js?v=20260930-2"></script>
 <link rel="stylesheet" href="./assets/inline-editor.css?v=20260914-7"><script src="./assets/inline-editor.js?v=20260922-4"></script>
 </body>

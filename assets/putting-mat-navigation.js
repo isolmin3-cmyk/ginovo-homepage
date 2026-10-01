@@ -1,4 +1,5 @@
 (function () {
+  var observer;
   function initPuttingMatNavigation() {
     var header = document.querySelector('.ginovo-header');
     var menuToggle = document.querySelector('[data-putting-menu-toggle]');
@@ -18,6 +19,7 @@
     var aboutItem = aboutToggle && aboutToggle.closest('.ginovo-nav-item');
     var mobileQuery = window.matchMedia('(max-width: 700px)');
     menuToggle.dataset.puttingNavigationReady = 'true';
+    if (observer) observer.disconnect();
 
     function setAbout(open) {
       if (!aboutItem || !aboutToggle) return;
@@ -68,5 +70,7 @@
   } else {
     initPuttingMatNavigation();
   }
+  observer = new MutationObserver(initPuttingMatNavigation);
+  observer.observe(document.documentElement, { childList: true, subtree: true });
   window.addEventListener('load', initPuttingMatNavigation, { once: true });
 }());
