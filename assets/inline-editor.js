@@ -133,12 +133,22 @@
     return window.GINOVO_ADMIN_AUTH.getClient();
   }
   async function loadPublishedContent(){
-    var client=await contentClient(),offset=0,rows;
+    if(!window.GINOVO_SUPABASE)await loadScript(scriptBase+'supabase-config.js?v=20260921-1');
+    var config=window.GINOVO_SUPABASE,offset=0,rows;
+    if(!config||!config.url||!config.publishableKey)throw new Error('SUPABASE_NOT_CONFIGURED');
     publishedContent={};
     do{
-      var result=await client.from('site_content').select('content_key,content_value').range(offset,offset+999);
-      if(result.error)throw result.error;
-      rows=result.data||[];
+      var endpoint=config.url.replace(/\/$/,'')+'/rest/v1/site_content?select=content_key,content_value&limit=1000&offset='+offset;
+      var response;
+      for(var attempt=0;attempt<2;attempt++){
+        try{
+          response=await fetch(endpoint,{headers:{apikey:config.publishableKey,Authorization:'Bearer '+config.publishableKey,Accept:'application/json'},cache:'no-store'});
+          if(response.ok)break;
+          throw new Error('CONTENT_HTTP_'+response.status);
+        }catch(error){if(attempt===1)throw error}
+      }
+      rows=await response.json();
+      if(!Array.isArray(rows))throw new Error('INVALID_CONTENT_RESPONSE');
       rows.forEach(function(row){publishedContent[row.content_key]=row.content_value});
       offset+=rows.length;
     }while(rows.length===1000);
@@ -169,9 +179,10 @@
     return client.storage.from('site-media').getPublicUrl(path).data.publicUrl;
   }
   async function verifyPublisher(){try{if(!window.supabase)await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');if(!window.GINOVO_SUPABASE)await loadScript(scriptBase+'supabase-config.js?v=20260921-1');if(!window.GINOVO_ADMIN_AUTH)await loadScript(scriptBase+'admin-auth.js?v=20260921-1');if(!window.GINOVO_ADMIN_AUTH.isConfigured())return false;var publisher=await window.GINOVO_ADMIN_AUTH.getPublisher(true);if(!publisher)return false;sessionStorage.setItem(SESSION,'1');return true}catch(_){return false}}
+  var publishedContentPromise=loadPublishedContent();
   document.addEventListener('DOMContentLoaded',async function(){
     var loaded=false;
-    try{await loadPublishedContent();loaded=true;await applySaved();window.addEventListener('load',function(){if(!editing)applySaved().catch(function(error){console.error('GINOVO content reapply failed',error)})},{once:true})}catch(error){console.error('GINOVO content load failed',error)}
+    try{await publishedContentPromise;loaded=true;await applySaved();window.addEventListener('load',function(){if(!editing)applySaved().catch(function(error){console.error('GINOVO content reapply failed',error)})},{once:true})}catch(error){console.error('GINOVO content load failed',error)}
     if(new URLSearchParams(location.search).get(PARAM)!=='1')return;
     if(!(await verifyPublisher())){sessionStorage.removeItem(SESSION);sessionStorage.setItem('ginovo-admin-return',location.href);location.href='./admin.html';return}
     if(!loaded){toast(locale('게시된 내용을 불러오지 못했습니다. 새로고침해 주세요.','Could not load published content. Please refresh.'));return}
