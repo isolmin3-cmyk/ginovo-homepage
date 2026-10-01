@@ -252,12 +252,7 @@
       var publisher = await auth.getPublisher(true);
       if (publisher) {
         setSession(publisher);
-        var legacy = new URLSearchParams(location.search).get('legacy') === '1';
-        if (!legacy) {
-          location.replace(visualEditorUrl);
-          return;
-        }
-        buildShell(publisher);
+        location.replace(visualEditorUrl);
         return;
       }
     } catch (_) {}

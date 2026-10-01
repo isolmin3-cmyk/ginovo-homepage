@@ -55,20 +55,7 @@ window.HOME_PRACTICE_DEFAULTS = {
 };
 
 window.getHomePracticeContent = function () {
-  try {
-    var saved = JSON.parse(localStorage.getItem(window.HOME_PRACTICE_STORAGE_KEY) || 'null');
-    if (!saved || typeof saved !== 'object') return JSON.parse(JSON.stringify(window.HOME_PRACTICE_DEFAULTS));
-    return {
-      heading: saved.heading || window.HOME_PRACTICE_DEFAULTS.heading,
-      subtitle: saved.subtitle || window.HOME_PRACTICE_DEFAULTS.subtitle,
-      title: saved.title || window.HOME_PRACTICE_DEFAULTS.title,
-      points: window.HOME_PRACTICE_DEFAULTS.points.map(function (point, index) {
-        return Object.assign({}, point, saved.points && saved.points[index]);
-      })
-    };
-  } catch (_) {
-    return JSON.parse(JSON.stringify(window.HOME_PRACTICE_DEFAULTS));
-  }
+  return JSON.parse(JSON.stringify(window.HOME_PRACTICE_DEFAULTS));
 };
 
 window.HOME_PRACTICE_IMAGE_DB = 'ginovo-home-practice-images-v1';
@@ -81,12 +68,7 @@ window.openHomePracticeImageDB = function () {
   });
 };
 window.getHomePracticeImage = async function (key) {
-  var db = await window.openHomePracticeImageDB();
-  return new Promise(function (resolve, reject) {
-    var request = db.transaction('images').objectStore('images').get(key);
-    request.onsuccess = function () { resolve(request.result || null); };
-    request.onerror = function () { reject(request.error); };
-  });
+  return null;
 };
 window.setHomePracticeImage = async function (key, file) {
   var db = await window.openHomePracticeImageDB();
@@ -108,18 +90,7 @@ window.clearHomePracticeImages = async function () {
 };
 
 window.getHomeUnityContent = function () {
-  try {
-    var saved = JSON.parse(localStorage.getItem(window.HOME_UNITY_STORAGE_KEY) || 'null');
-    if (!saved || typeof saved !== 'object') return JSON.parse(JSON.stringify(window.HOME_UNITY_DEFAULTS));
-    return Object.assign({}, window.HOME_UNITY_DEFAULTS, saved, {
-      background: window.HOME_UNITY_DEFAULTS.background,
-      metrics: window.HOME_UNITY_DEFAULTS.metrics.map(function (metric, index) {
-        return Object.assign({}, metric, Array.isArray(saved.metrics) ? saved.metrics[index] : null);
-      })
-    });
-  } catch (_) {
-    return JSON.parse(JSON.stringify(window.HOME_UNITY_DEFAULTS));
-  }
+  return JSON.parse(JSON.stringify(window.HOME_UNITY_DEFAULTS));
 };
 
 window.HOME_UNITY_IMAGE_DB = 'ginovo-home-unity-images-v3';
@@ -132,12 +103,7 @@ window.openHomeUnityImageDB = function () {
   });
 };
 window.getHomeUnityImage = async function (key) {
-  var db = await window.openHomeUnityImageDB();
-  return new Promise(function (resolve, reject) {
-    var request = db.transaction('images').objectStore('images').get(key);
-    request.onsuccess = function () { resolve(request.result || null); };
-    request.onerror = function () { reject(request.error); };
-  });
+  return null;
 };
 window.setHomeUnityImage = async function (key, file) {
   var db = await window.openHomeUnityImageDB();

@@ -23,33 +23,7 @@ window.PUTTING_MAT_COMPARISON_DEFAULTS = [
 window.PUTTING_MAT_COMPARISON_STORAGE_KEY = 'ginovo-putting-mat-comparison-v1';
 
 window.getPuttingMatComparisonContent = function () {
-  const defaults = window.PUTTING_MAT_COMPARISON_DEFAULTS;
-  try {
-    const saved = JSON.parse(localStorage.getItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY) || 'null');
-    if (!Array.isArray(saved)) return defaults;
-    let migrated = false;
-    const legacyImages = [
-      ['./assets/img-016.png', './assets/putting-comparison-90-v2.png', './assets/putting-comparison-90-v3.png'],
-      ['./assets/img-014.png', './assets/putting-comparison-70-v2.png', './assets/putting-comparison-70-v3.png'],
-      ['./assets/img-015.png', './assets/putting-comparison-60-v2.png', './assets/putting-comparison-60-v3.png']
-    ];
-    const result = defaults.map((fallback, index) => {
-      const current = { ...fallback, ...(saved[index] || {}) };
-      if (legacyImages[index].includes(current.image)) {
-        current.image = fallback.image;
-        migrated = true;
-      }
-      if (index === 1 && current.subtitle === '슬로핑 퍼팅매트 / 게임형 훈련 / 경사+게임 결합') {
-        current.subtitle = fallback.subtitle;
-        migrated = true;
-      }
-      return current;
-    });
-    if (migrated) localStorage.setItem(window.PUTTING_MAT_COMPARISON_STORAGE_KEY, JSON.stringify(result));
-    return result;
-  } catch (_) {
-    return defaults;
-  }
+  return window.PUTTING_MAT_COMPARISON_DEFAULTS.map(card => ({ ...card, items: [...card.items] }));
 };
 
 window.applyPuttingMatComparisonContent = function () {
@@ -94,17 +68,7 @@ window.PUTTING_MAT_FEATURE90_STORAGE_KEY = 'ginovo-putting-mat-feature90-v1';
 
 window.getPuttingMatFeature90Content = function () {
   const defaults = window.PUTTING_MAT_FEATURE90_DEFAULTS;
-  try {
-    const saved = JSON.parse(localStorage.getItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY) || 'null');
-    if (!saved || typeof saved !== 'object') return defaults;
-    if (saved.subtitle === '필드 퍼팅 환경을 구현한 경사퍼팅매트') {
-      saved.subtitle = defaults.subtitle;
-      localStorage.setItem(window.PUTTING_MAT_FEATURE90_STORAGE_KEY, JSON.stringify(saved));
-    }
-    return { ...defaults, ...saved, images: { ...defaults.images, ...(saved.images || {}) } };
-  } catch (_) {
-    return defaults;
-  }
+  return { ...defaults, images: { ...defaults.images } };
 };
 
 window.applyPuttingMatFeature90Content = function () {

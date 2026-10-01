@@ -51,21 +51,4 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   ctaEyebrow: 'Beyond Tech, Into Culture: The New Standard Powered by Data',
   ctaTitle: '데이터로 기술의 한계를 넘어 새로운 골프 문화를 만듭니다.'
 };
-try {
-  var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');
-  var smartballContentMigrated = false;
-  if (savedSmartballContent.anatomyTitle === '일반 골프공의 타구감과 성능을 구현한 스마트 골프공') {
-    savedSmartballContent.anatomyTitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomyTitle;
-    savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
-    smartballContentMigrated = true;
-  }
-  // 확정된 제품 사양은 이전 관리자 저장값보다 우선합니다.
-  if (savedSmartballContent.specEccentricity !== window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity) {
-    savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
-    smartballContentMigrated = true;
-  }
-  if (smartballContentMigrated) localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(savedSmartballContent));
-  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, savedSmartballContent);
-} catch (_) {
-  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);
-}
+window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);

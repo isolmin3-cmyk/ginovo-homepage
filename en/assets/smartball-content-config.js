@@ -53,25 +53,4 @@ window.SMARTBALL_CONTENT_DEFAULTS = {
   ctaEyebrow: 'Beyond Tech, Into Culture: The New Standard Powered by Data',
   ctaTitle: 'Beyond the Limits of Technology, We Build a New Golf Culture with Data.'
 };
-try {
-  var savedSmartballContent = JSON.parse(localStorage.getItem(window.SMARTBALL_CONTENT_STORAGE_KEY) || '{}');
-  if (localStorage.getItem(window.SMARTBALL_CONTENT_SCHEMA_KEY) !== window.SMARTBALL_CONTENT_SCHEMA_VERSION) {
-    savedSmartballContent = {};
-    localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, '{}');
-    localStorage.setItem(window.SMARTBALL_CONTENT_SCHEMA_KEY, window.SMARTBALL_CONTENT_SCHEMA_VERSION);
-  }
-  var smartballContentMigrated = false;
-  if (savedSmartballContent.anatomyTitle === 'A Smart Golf Ball Engineered to Feel and Perform Like a Standard Golf Ball') {
-    savedSmartballContent.anatomyTitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomyTitle;
-    savedSmartballContent.anatomySubtitle = window.SMARTBALL_CONTENT_DEFAULTS.anatomySubtitle;
-    smartballContentMigrated = true;
-  }
-  if (savedSmartballContent.specEccentricity === 'Eccentricity: 0.095%' || savedSmartballContent.specEccentricity === 'Eccentricity: 0.1%' || savedSmartballContent.specEccentricity === 'Eccentricity: 0.01mm') {
-    savedSmartballContent.specEccentricity = window.SMARTBALL_CONTENT_DEFAULTS.specEccentricity;
-    smartballContentMigrated = true;
-  }
-  if (smartballContentMigrated) localStorage.setItem(window.SMARTBALL_CONTENT_STORAGE_KEY, JSON.stringify(savedSmartballContent));
-  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS, savedSmartballContent);
-} catch (_) {
-  window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);
-}
+window.SMARTBALL_CONTENT = Object.assign({}, window.SMARTBALL_CONTENT_DEFAULTS);
