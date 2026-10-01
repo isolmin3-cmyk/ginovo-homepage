@@ -1,6 +1,6 @@
-/* 스마트 골프공 전용 모바일 레이아웃
-   701px 이상에서 사용 중인 대형 PC 구성을 그대로 유지합니다. */
-@media (max-width: 700px) {
+/* 스마트 골프공 전용 모바일/태블릿 레이아웃.
+   모바일 브라우저의 데스크톱 표시 폭(보통 980px)까지 동일한 HTML 콘텐츠를 사용합니다. */
+@media (max-width: 1000px) {
   :root {
     --smartball-content-max: 1200px;
     --smartball-gutter: clamp(18px, 5.2vw, 24px);
@@ -594,7 +594,7 @@
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
   /* 섹션 2: 원본 이미지의 하단 문구는 잘라내고 편집 가능한 HTML 문구를 사용합니다. */
   .spec-value {
     display: block;
@@ -865,7 +865,7 @@
   }
 }
 
-@media (min-width: 701px) {
+@media (min-width: 1001px) {
   .mobile-copy-break {
     display: none;
   }

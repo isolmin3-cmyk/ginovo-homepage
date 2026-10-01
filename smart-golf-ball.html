@@ -85,7 +85,7 @@
     @media(max-width:700px){.battle-ranking-update{display:none}.battle-mobile-row{grid-template-columns:.7fr 1.7fr .9fr}}
   </style>
   <link rel="stylesheet" href="./assets/responsive-gutters.css?v=20260910-5">
-  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20260912-12">
+  <link rel="stylesheet" href="./assets/smartball-mobile.css?v=20261001-1">
 </head>
 <body>
   <header class="site-header">
@@ -255,7 +255,7 @@
       var mainNavigation=document.getElementById('main-navigation');
       var aboutMenu=document.querySelector('.about-menu');
       var aboutToggle=document.querySelector('[data-about-toggle]');
-      var mobileHeaderQuery=window.matchMedia('(max-width:700px)');
+      var mobileHeaderQuery=window.matchMedia('(max-width:1000px)');
       function setAboutMenu(open){
         if(!aboutMenu||!aboutToggle) return;
         aboutMenu.classList.toggle('is-about-open',open);
@@ -379,7 +379,7 @@
   <style>
     /* Keep the composite's layout dimensions, but use the clean section background so
        its baked rectangular panel cannot show behind the rounded overlay. */
-    @media (min-width:701px) {
+    @media (min-width:1001px) {
       .battle-canvas > .battle-composite { visibility:hidden; }
       .battle-clean-panel {
         display:none;
@@ -421,12 +421,12 @@
         pointer-events:none;
       }
     }
-    @media (max-width:700px) {
+    @media (max-width:1000px) {
       .battle-clean-panel,
       .battle-content-panel,
       .battle-players-layer { display:none; }
     }
   </style>
-  <script src="./assets/inline-editor.js?v=20261001-1"></script>
+  <script src="./assets/inline-editor.js?v=20261001-2"></script>
 </body>
 </html>
