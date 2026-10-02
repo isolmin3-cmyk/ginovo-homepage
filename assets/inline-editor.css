@@ -10,6 +10,7 @@
 
 /* Keep the header edit action separate from the language control. */
 @media(min-width:701px){
+  .gt-header-edit-button,
   header.gt-edit-section>.gt-edit-section-button,
   .site-header.gt-edit-section>.gt-edit-section-button,
   .ginovo-header.gt-edit-section>.gt-edit-section-button{
@@ -19,6 +20,7 @@
   }
 }
 @media(max-width:700px){
+  .gt-header-edit-button,
   header.gt-edit-section>.gt-edit-section-button,
   .site-header.gt-edit-section>.gt-edit-section-button,
   .ginovo-header.gt-edit-section>.gt-edit-section-button{
