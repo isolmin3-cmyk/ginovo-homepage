@@ -120,6 +120,30 @@ html[lang="en"] [data-screen-label="사이즈 비교"] li {
     font-family:'Pretendard','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
 
+  html[lang="en"] .ginovo-header .ginovo-logo img {
+    width:auto!important;
+    height:24px!important;
+    max-width:none!important;
+  }
+
+  html[lang="en"] .ginovo-header .ginovo-lang>a {
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    min-height:44px!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+
+  html[lang="en"] .ginovo-header .ginovo-lang>a>img {
+    width:20px!important;
+    height:20px!important;
+    min-width:20px!important;
+    object-fit:contain!important;
+  }
+
   html[lang="en"] .ginovo-nav-link,
   html[lang="en"] .ginovo-about-trigger {
     font-size:15px!important;
