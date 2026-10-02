@@ -8,6 +8,26 @@
 @media(max-width:700px){.unity-phone-editor{top:27%;width:min(82%,300px);height:260px;aspect-ratio:auto}.unity-stage>.unity-metric:nth-of-type(7){left:30%!important;right:auto!important;top:85%!important}.battle-player-copy,.battle-panel-title-edit{display:none!important}}
 @media(prefers-reduced-motion:reduce){.gt-edit-section{transition:none}}
 
+/* Keep the header edit action separate from the language control. */
+@media(min-width:701px){
+  header.gt-edit-section>.gt-edit-section-button,
+  .site-header.gt-edit-section>.gt-edit-section-button,
+  .ginovo-header.gt-edit-section>.gt-edit-section-button{
+    top:50%!important;
+    right:-66px!important;
+    transform:translateY(-50%)!important;
+  }
+}
+@media(max-width:700px){
+  header.gt-edit-section>.gt-edit-section-button,
+  .site-header.gt-edit-section>.gt-edit-section-button,
+  .ginovo-header.gt-edit-section>.gt-edit-section-button{
+    top:calc(100% + 8px)!important;
+    right:0!important;
+    transform:none!important;
+  }
+}
+
 /* 2026-09-13: stable per-slot editing and responsive alignment fixes */
 @media(min-width:701px){
   .unity-stage>.unity-metric:nth-of-type(7){left:auto!important;right:21.7%!important;top:74.1%!important}
