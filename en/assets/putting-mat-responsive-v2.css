@@ -113,6 +113,32 @@ html[lang="en"] [data-screen-label="사이즈 비교"] li {
 
 /* Mobile spacing and type are proportional to the approved PC page. */
 @media (max-width:700px) {
+  /* Keep this legacy page's mobile navigation typography aligned with the
+     shared English header. This must override english-responsive.css. */
+  html[lang="en"] .ginovo-header,
+  html[lang="en"] .ginovo-header :where(a,button) {
+    font-family:'Pretendard','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+
+  html[lang="en"] .ginovo-nav-link,
+  html[lang="en"] .ginovo-about-trigger {
+    font-size:15px!important;
+    font-weight:500!important;
+    line-height:1.4!important;
+  }
+
+  html[lang="en"] .ginovo-nav .ginovo-dropdown-panel a {
+    font-size:14px!important;
+    font-weight:600!important;
+    line-height:1.4!important;
+  }
+
+  html[lang="en"] .ginovo-lang .ginovo-dropdown-panel a {
+    font-size:16px!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+  }
+
   html[lang="en"] .pm-hero-copy :where(h1,p),
   html[lang="en"] main>section[data-screen-label]:not([data-screen-label="히어로"]) :where(h2,h3,p,li,span),
   html[lang="en"] .ginovo-common-cta-content :where(h2,p) {
