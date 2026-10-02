@@ -43,7 +43,7 @@
         .train-card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
         .train-card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); border-color: rgba(52,211,153,0.6) !important; }
         .ginovo-nav-link.is-active,
-        body.pm-header-on-light .ginovo-nav-link.is-active { color: #2BFFE5 !important; font-weight: 700; }
+        body.pm-header-on-light .ginovo-nav-link.is-active { color: #2BFFE5 !important; font-weight: 500; }
         [data-screen-label="대표 모델 90cm"],
         [data-screen-label="Sloping Mat"] { padding-top: 96px !important; padding-bottom: 96px !important; }
         [data-screen-label="사이즈 비교"] { padding-top: 120px !important; padding-bottom: 96px !important; }
@@ -149,6 +149,7 @@
             line-height: normal;
             box-sizing: border-box;
             color: #FFFFFF;
+            font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         .ginovo-header a { text-decoration: none; }
         .ginovo-logo { display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; }
@@ -156,22 +157,26 @@
         .ginovo-nav { flex-shrink: 0; }
         .ginovo-nav-list { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
         .ginovo-nav-item { position: relative; }
-        .ginovo-nav-link { color: #FFFFFF; font-size: 18px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+        .ginovo-nav-link { color: #FFFFFF; font-family: inherit; font-size: 18px; font-weight: 500; line-height: normal; cursor: pointer; white-space: nowrap; }
         .ginovo-dropdown-wrap { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; background: transparent; z-index: 1001; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
         .ginovo-nav-item:hover .ginovo-dropdown-wrap,
         .ginovo-nav-item:focus-within .ginovo-dropdown-wrap,
         .ginovo-lang:hover .ginovo-dropdown-wrap { opacity: 1; visibility: visible; }
         .ginovo-about-trigger { padding: 0; border: 0; background: none; font-family: inherit; cursor: pointer; }
         .ginovo-about-trigger::after { content: "⌄"; margin-left: 7px; font-size: 14px; }
-        .ginovo-dropdown-panel { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); padding: 12px; min-width: 160px; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.22); display: flex; flex-direction: column; }
-        .ginovo-dropdown-panel a { padding: 8px 16px; border-radius: 8px; display: block; color: #111111; font-size: 14px; font-weight: 500; white-space: nowrap; }
-        .ginovo-dropdown-panel a:hover { background: rgba(0,0,0,0.05); }
+        .ginovo-nav .ginovo-dropdown-panel { min-width: 210px; padding: 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 18px; background: rgba(16,22,34,.97); box-shadow: 0 18px 44px rgba(0,0,0,.38); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: flex; flex-direction: column; }
+        .ginovo-nav .ginovo-dropdown-panel a { display: block; padding: 11px 13px; border-radius: 10px; color: #D9D9D9; font-family: inherit; font-size: 15px; font-weight: 600; line-height: normal; white-space: nowrap; }
+        .ginovo-nav .ginovo-dropdown-panel a:hover,
+        .ginovo-nav .ginovo-dropdown-panel a:focus { color: #2BFFE5; background: rgba(42,232,215,.1); }
         .ginovo-header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
         .ginovo-login { color: #FFFFFF; font-size: 17px; font-weight: 600; background: #210BBD; padding: 9px 22px; border-radius: 100px; white-space: nowrap; }
         .ginovo-lang { position: relative; opacity: 0.78; }
         .ginovo-lang > a { color: #FFFFFF; font-size: 18px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
         .ginovo-lang .ginovo-dropdown-wrap { right: 0; left: auto; transform: none; }
-        .ginovo-lang .ginovo-dropdown-panel { min-width: 140px; }
+        .ginovo-lang .ginovo-dropdown-panel { min-width: 120px; padding: 8px; border: 0; border-radius: 12px; background: #FFFFFF; box-shadow: 0 18px 40px rgba(0,0,0,.28); display: flex; flex-direction: column; }
+        .ginovo-lang .ginovo-dropdown-panel a { display: block; padding: 9px 12px; border-radius: 8px; color: #111111; font-family: inherit; font-size: 16px; font-weight: 400; line-height: normal; white-space: nowrap; }
+        .ginovo-lang .ginovo-dropdown-panel a:hover,
+        .ginovo-lang .ginovo-dropdown-panel a:focus { color: #111111; background: #F0F2F4; }
         body.gt-header-on-light .ginovo-header,
         body.pm-header-on-light .ginovo-header,
         body.sgb-header-on-light .ginovo-header,
