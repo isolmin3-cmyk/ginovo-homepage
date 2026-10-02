@@ -184,8 +184,8 @@
     }
     @media(max-width:700px){
       .hero h1{font-size:clamp(36px,11.2vw,48px);line-height:1.08}
-      .hero-line-desktop{display:none!important}
-      .hero-line-mobile{display:block!important;white-space:nowrap}
+      .hero-line-desktop{display:block!important;white-space:normal}
+      .hero-line-mobile{display:none!important}
 
       /* 섹션 2: 모든 시각 요소를 외곽 패널 안에 유지 */
       .unity-stage::before{top:25%;bottom:4%}
@@ -220,7 +220,7 @@
   </header>
 
   <main>
-    <section class="hero" id="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./assets/videos/hero-video-poster.jpg"><source src="./assets/videos/hero-video.mp4" type="video/mp4"></video><div class="hero-copy"><span class="hero-badge">Simple Technology. Clear Feedback.</span><h1><span class="hero-line-desktop">Smart Touch, Clear Shot</span><span class="hero-line-desktop">Simple Play, Smart Data</span><span class="hero-line-mobile">Smart Touch,</span><span class="hero-line-mobile">Clear Shot</span><span class="hero-line-mobile">Simple Play,</span><span class="hero-line-mobile">Smart Data</span></h1><p class="hero-sub">A New Way to Play, Powered by Data</p></div></section>
+    <section class="hero" id="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./assets/videos/hero-video-poster.jpg"><source src="./assets/videos/hero-video.mp4" type="video/mp4"></video><div class="hero-copy"><span class="hero-badge">Simple Technology. Clear Feedback.</span><h1><span class="hero-line-desktop" data-content-key="heroTitleLine1">Smart Touch, Clear Shot</span><span class="hero-line-desktop" data-content-key="heroTitleLine2">Simple Play, Smart Data</span></h1><p class="hero-sub">A New Way to Play, Powered by Data</p></div></section>
 
     <section class="home-feature home-section-one" id="products" data-editable-section="home-section-1" data-background-slot="section1Background">
       <div class="home-feature-stage"><div class="home-copy"><p class="home-eyebrow" data-content-key="section1Eyebrow">GINOVO Smart Golf Ball</p><h2 data-content-key="section1Title">Beyond the Limits of Golf Balls,<br>A New Standard in Golf Analysis.</h2><p class="home-body" data-content-key="section1Body">Original. Advanced. Reliable. Impactful.
@@ -552,6 +552,6 @@ for golf analysis.</p></div></div>
   <script src="./assets/common-cta.js?v=20260930-1"></script>
   <script src="./assets/mobile-copy-balance.js?v=20260910-1"></script>
   <script src="./assets/language-menu.js?v=20260910-4"></script>
-  <link rel="stylesheet" href="../assets/inline-editor.css?v=20260914-7"><script src="../assets/inline-editor.js?v=20261002-6"></script>
+  <link rel="stylesheet" href="../assets/inline-editor.css?v=20260914-7"><script src="../assets/inline-editor.js?v=20261002-7"></script>
 </body>
 </html>
