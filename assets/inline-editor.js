@@ -181,13 +181,26 @@
   }
   async function verifyPublisher(){try{if(!window.supabase)await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');if(!window.GINOVO_SUPABASE)await loadScript(scriptBase+'supabase-config.js?v=20260921-1');if(!window.GINOVO_ADMIN_AUTH)await loadScript(scriptBase+'admin-auth.js?v=20260921-1');if(!window.GINOVO_ADMIN_AUTH.isConfigured())return false;var publisher=await window.GINOVO_ADMIN_AUTH.getPublisher(true);if(!publisher)return false;sessionStorage.setItem(SESSION,'1');return true}catch(_){return false}}
   var publishedContentPromise=loadPublishedContent();
+  var publishedContentRefreshPromise=null;
+  async function refreshPublishedContent(){
+    if(publishedContentRefreshPromise)return publishedContentRefreshPromise;
+    publishedContentRefreshPromise=(async function(){try{await loadPublishedContent();if(!editing)await applySaved()}finally{publishedContentRefreshPromise=null}})();
+    return publishedContentRefreshPromise;
+  }
   function keepPublishedContentSynchronized(){
     var root=document.getElementById('dc-root')||document.body,timer;
-    new MutationObserver(function(){
+    function scheduleApply(){
       if(editing)return;
       clearTimeout(timer);
       timer=setTimeout(function(){applySaved().catch(function(error){console.error('GINOVO content synchronization failed',error)})},80);
+    }
+    new MutationObserver(function(){
+      scheduleApply();
     }).observe(root,{childList:true,subtree:true});
+    window.addEventListener('resize',scheduleApply,{passive:true});
+    window.addEventListener('orientationchange',scheduleApply,{passive:true});
+    window.addEventListener('pageshow',function(){refreshPublishedContent().catch(function(error){console.error('GINOVO content refresh failed',error)})});
+    document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')refreshPublishedContent().catch(function(error){console.error('GINOVO content refresh failed',error)})});
   }
   document.addEventListener('DOMContentLoaded',async function(){
     var loaded=false;
